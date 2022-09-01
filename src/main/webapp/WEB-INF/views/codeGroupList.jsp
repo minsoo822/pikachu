@@ -139,62 +139,62 @@
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>1</td>
-				<td>김민수</td>
-				<td>남자</td>
-				<td>31</td>
-				<td>92. 06. 22</td>
-				<td>175</td>
-				<td>55</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>2</td>
-				<td>김동욱</td>
-				<td>남자</td>
-				<td>36</td>
-				<td>87. 06. 18</td>
-				<td>172</td>
-				<td>62</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>3</td>
-				<td>김태리</td>
-				<td>여자</td>
-				<td>33</td>
-				<td>87. 06. 18</td>
-				<td>167</td>
-				<td>53</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>4</td>
-				<td>박정민</td>
-				<td>남자</td>
-				<td>34</td>
-				<td>87. 06. 18</td>
-				<td>172</td>
-				<td>52</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>5</td>
-				<td>안재홍</td>
-				<td>남자</td>
-				<td>38</td>
-				<td>87. 06. 18</td>
-				<td>179</td>
-				<td>77</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>6</td>
-				<td>박명훈</td>
-				<td>남자</td>
-				<td>43</td>
-				<td>87. 06. 18</td>
-				<td>178</td>
-				<td>73</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 		</table>
 		<div>

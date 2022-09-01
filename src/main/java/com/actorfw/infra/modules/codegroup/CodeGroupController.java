@@ -16,7 +16,8 @@ public class CodeGroupController {
 	
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model) throws Exception {
+	public String codeGroupListPage(Model model) throws Exception {
+
 
 		List<CodeGroup> list = service.selectList();
 		model.addAttribute("list", list);

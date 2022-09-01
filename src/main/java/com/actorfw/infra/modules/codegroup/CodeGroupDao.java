@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CodeGroupDao {
 
-	@Inject								
-	@Resource(name = "sqlSession")		
-	private SqlSession sqlSession;		
+	@Inject
+	@Resource(name = "sqlSession")
+	private SqlSession sqlSession;
 	
 	private static String namespace = "com.actorfw.infra.modules.codegroup.CodeGroupMapper";
 	
