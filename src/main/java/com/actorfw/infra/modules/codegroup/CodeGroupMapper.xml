@@ -9,16 +9,22 @@
     <resultMap id="resultMapObj" type="com.actorfw.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
+		
+	 	SELECT DISTINCT
 			a.seq
 		    ,a.name
 		    ,b.name as codename
 		    ,b.seq as codeseq
 		    ,b.oder
+		    ,(select 
+				COUNT(ccg_seq) 
+			from cc 
+		    WHERE ccg_seq = a.seq 
+		    ) AS codeCount
 		    ,b.useNy
 		FROM ccg a
-		inner join cc b on a.seq = b.ccg_seq
-		;
+		join cc b on a.seq = b.ccg_seq
+		; 
 		
 	</select>
 

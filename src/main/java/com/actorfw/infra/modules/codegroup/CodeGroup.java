@@ -9,6 +9,7 @@ public class CodeGroup {
 	private Integer oder;
 	private Integer useNy;
 	private Integer delNy;
+	private Integer codeCount;
 	
 	
 	
@@ -55,6 +56,12 @@ public class CodeGroup {
 	}
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
+	}
+	public Integer getCodeCount() {
+		return codeCount;
+	}
+	public void setCodeCount(Integer codeCount) {
+		this.codeCount = codeCount;
 	}
 	
 	

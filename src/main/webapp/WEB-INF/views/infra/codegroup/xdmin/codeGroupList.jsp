@@ -80,24 +80,41 @@
 		<table class="table table-striped table-hover" style="text-align: center;">
 			<tr style="background-color: #EDE5FF;">
 				<th ><input type="checkbox" onclick="selectAll(this)"></th>
+				<th>#</th>
 				<th>코드시퀀스</th>
 				<th>코드그룹 이름</th>
 				<th>코드이름</th>
 				<th>코드 시퀀스</th>
 				<th>순서</th>
+				<th>코드갯수</th>
 				<th>사용 N:0 Y:1</th>
 			</tr>
+		
+	<c:choose>
+		<c:when test="${fn:length(list) eq 50}">
+			<tr>
+				<td style="text-align: center;" colspan="9"> no Data!</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
 					<td><input type="checkbox"></td>
+					<td>
+						<c:out value="${vo.totalRows + ((vo.thispage - 1) * vo.rowNumToShow + status.index) }"></c:out>
+					</td>
 					<td><c:out value="${list.seq }"/></td>
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.codename }"/></td>
 					<td><c:out value="${list.codeseq }"/></td>
 					<td><c:out value="${list.oder }"/></td>
+					<td><c:out value="${list.codeCount }"/></td>
 					<td><c:out value="${list.useNy }"/></td>
 				</tr>	
 			</c:forEach>
+		</c:otherwise>
+	</c:choose>	
+	
 		</table>
 		<div>
 			<nav aria-label="Page navigation example">
