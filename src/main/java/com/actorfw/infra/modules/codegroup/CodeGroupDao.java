@@ -17,6 +17,16 @@ public class CodeGroupDao {
 	
 	private static String namespace = "com.actorfw.infra.modules.codegroup.CodeGroupMapper";
 	
-	public List<CodeGroup> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
+	public List<CodeGroup> selectList(CodeGroupVo vo){ 
+		return sqlSession.selectList(namespace + ".selectList", vo); }
 	
-}
+	public List<CodeGroup> searchList(CodeGroupVo vo){ 
+		return sqlSession.selectList(namespace + ".searchList", vo); }
+	
+	
+	
+	
+	
+	
+	
+	}

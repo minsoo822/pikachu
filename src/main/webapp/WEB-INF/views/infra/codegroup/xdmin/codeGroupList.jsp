@@ -44,7 +44,7 @@
 	</style>
 </head>
 <body>
-	<form action="">
+	<form action="http://localhost:8080/codeGroup/codeGroupListsrc">
 	<div id="navbarFont">
 	<div>
 	<div style="margin: 50px 0px 50px 100px;">
@@ -52,27 +52,16 @@
 	</div>
 	<div style="margin: 0px 300px 10px 100px;">
 		<table class="table table-borderless">
+			
 			<tr>
 				<td>
-					<select style="width: 200px;">
-						<option>N</option>
-						<option>Y</option>
+					<select style="width: 200px;" id="shOption" name="shOption">
+						<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+						<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹이름</option>
+						<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드사용 여부</option>
 					</select> 
-					<select style="width: 200px;">
-						<option>수정일</option>
-						<option>-</option>
-					</select>
-					<input type="text" placeholder="시작일" style="width: 200px;">
-					<input type="text" placeholder="종료일" style="width: 200px;">
-				</td>
-			</tr>
-			<tr>
-				<td>		
-					
-					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-						<button type="button" class="btn btn-outline-primary">검색</button>
-						<button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-arrow-rotate-right"></i></button>
-					</div>
+					<input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="내용" style="width: 200px;">
+					<button type="submit" class="btn btn-outline-primary">검색</button>
 				</td>
 			</tr>
 		</table>
@@ -91,7 +80,7 @@
 			</tr>
 		
 	<c:choose>
-		<c:when test="${fn:length(list) eq 50}">
+		<c:when test="${fn:length(list) eq 0}">
 			<tr>
 				<td style="text-align: center;" colspan="9"> no Data!</td>
 			</tr>
@@ -104,8 +93,8 @@
 						<c:out value="${vo.totalRows + ((vo.thispage - 1) * vo.rowNumToShow + status.index) }"></c:out>
 					</td>
 					<td><c:out value="${list.seq }"/></td>
-					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.codename }"/></td>
+					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.codeseq }"/></td>
 					<td><c:out value="${list.oder }"/></td>
 					<td><c:out value="${list.codeCount }"/></td>

@@ -10,21 +10,31 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		
-	 	SELECT DISTINCT
-			a.seq
-		    ,a.name
-		    ,b.name as codename
-		    ,b.seq as codeseq
-		    ,b.oder
-		    ,(select 
-				COUNT(ccg_seq) 
-			from cc 
-		    WHERE ccg_seq = a.seq 
-		    ) AS codeCount
-		    ,b.useNy
-		FROM ccg a
-		join cc b on a.seq = b.ccg_seq
-		; 
+	 	SELECT 
+			a.*
+			 ,(select COUNT(ccg_seq) from cc WHERE ccg_seq = a.seq ) AS codeCount
+		FROM cc a
+		WHERE 1=1
+			<!-- AND useNy = 1 -->
+			<!-- AND name LIKE CONCAT('%',#{shValue},'%') -->
+		
+	</select>
+	
+	
+	<resultMap id="resultMapObj2" type="com.actorfw.infra.modules.codegroup.CodeGroup"></resultMap>
+	
+	<select id="searchList" resultMap="resultMapObj2">
+		
+	 	SELECT
+	 		*
+ 		FROM ccg
+ 		WHERE 1=1
+		AND
+		<choose>
+			<when test="#{shOption == 1}">name</when>
+			<when test="#{shOption == 2}">useNy</when>
+		</choose>
+		LIKE CONCAT('%',#{shValue},'%')
 		
 	</select>
 
