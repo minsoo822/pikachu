@@ -31,8 +31,8 @@
  		WHERE 1=1
 		AND
 		<choose>
-			<when test="#{shOption == 1}">name</when>
-			<when test="#{shOption == 2}">useNy</when>
+			<when test="shOption == 1"> name </when>
+			<when test="shOption == 2"> useNy </when>
 		</choose>
 		LIKE CONCAT('%',#{shValue},'%')
 		
