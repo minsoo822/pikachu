@@ -18,9 +18,6 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupListPage(Model model, CodeGroupVo vo) throws Exception {
 
-		System.out.println("vo.getshValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
-		
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);

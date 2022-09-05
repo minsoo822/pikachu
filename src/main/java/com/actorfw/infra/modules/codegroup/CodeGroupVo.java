@@ -4,6 +4,7 @@ public class CodeGroupVo {
 
 	private String shValue;
 	private Integer shOption;
+
 	
 	
 //--------------------------------------

@@ -23,7 +23,7 @@ public class MemberController {
 		List<Member> list = service.selectList();
 		model.addAttribute("list", list);
 		
-		return "infra/member/xdmin/memberGroupList";
+		return "infra/codegroup/xdmin/memberGroupList";
 	}
 	
 	@RequestMapping(value = "memBerListSrc")
@@ -35,7 +35,7 @@ public class MemberController {
 		List<Member> list = service.searchList(vo);
 		model.addAttribute("list", list);
 		
-		return "infra/member/xdmin/memberGroupList";
+		return "infra/codegroup/xdmin/memberGroupList";
 	}
 	
 	

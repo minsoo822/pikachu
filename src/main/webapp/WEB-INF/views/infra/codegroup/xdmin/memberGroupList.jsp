@@ -162,7 +162,7 @@
 	    <div class="main">    
 	      <div class="mainSearch">
 	        <div class="title">
-	          <h5>코드그룹관리</h5>
+	          <h5>회원관리</h5>
 	        </div>
 	        <div class="two">
 	          <div class="three">
@@ -211,14 +211,22 @@
 	            <table class="table table-striped">
 	              <tr class="tableTr">
 	                <th><input type="checkbox"></th>
-	                <th>#</th>
-	                <th>코드그룹 코드</th>
-	                <th>코드그룹 이름</th>
-	                <th>코드그룹 삭제여부 N:0 Y:1</th>
-	                <th>코드그룹 사용여부 N:0 Y:1</th>
-	                <th>코드갯수</th>
-	                <th>등록일</th>
-	                <th>수정일</th>
+	                <th>멤버 코드</th>
+	                <th>user_type7</th>
+	                <th>id</th>
+	                <th>password</th>
+	                <th>이름</th>
+	                <th>dob</th>
+	                <th>성별</th>
+	                <th>이메일</th>
+	                <th>휴대폰</th>
+	                <th>D_타입</th>
+	                <th>A_타입</th>
+	                <th>키</th>
+	                <th>몸무게</th>
+	                <th>쌍꺼풀유무</th>
+	                <th>목소리톤</th>
+	                <th>나이</th>
 	              </tr>
 	<c:choose>
 		<c:when test="${fn:length(list) eq 0}">
@@ -230,14 +238,22 @@
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
 					<td><input type="checkbox"></td>
-					<td></td>
 					<td><c:out value="${list.seq }"/></td>
+					<td><c:out value="${list.user_type }"/></td>
+					<td><c:out value="${list.id }"/></td>
+					<td><c:out value="${list.password }"/></td>
 					<td><c:out value="${list.name }"/></td>
-					<td><c:out value="${list.delNy }"/></td>
-					<td><c:out value="${list.useNy }"/></td>
-					<td><c:out value="${list.codeCount }"/></td>
-					<td></td>
-					<td></td>
+					<td><c:out value="${list.dob }"/></td>
+					<td><c:out value="${list.gender }"/></td>
+					<td><c:out value="${list.email }"/></td>
+					<td><c:out value="${list.phone_number }"/></td>
+					<td><c:out value="${list.director_type }"/></td>
+					<td><c:out value="${list.actor_type }"/></td>
+					<td><c:out value="${list.actor_height }"/></td>
+					<td><c:out value="${list.actor_weight }"/></td>
+					<td><c:out value="${list.eyelid }"/></td>
+					<td><c:out value="${list.actor_voice }"/></td>
+					<td><c:out value="${list.age }"/></td>
 				</tr>	
 			</c:forEach>
 		</c:otherwise>
@@ -287,21 +303,6 @@
 		  
 	  });
   });
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   </script>
 

@@ -19,7 +19,7 @@
 	
 	<resultMap id="resultMapObj2" type="com.actorfw.infra.modules.member.Member"></resultMap>
 	
-	<select id="searchList" resultMap="resultMapObj2">
+	<!-- <select id="searchList" resultMap="resultMapObj2">
 		
 	 	SELECT
 	 		*
@@ -37,7 +37,7 @@
 		</choose>
 		LIKE CONCAT('%',#{shValue},'%')
 		
-	</select>
+	</select> -->
 	
 	
 </mapper>	
