@@ -8,25 +8,35 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-
-
-
 	@Autowired
 	MemberDao dao;
 	
 	@Override
-	public List<Member> selectList() throws Exception {
+	public List<Member> selectList(MemberVo vo) throws Exception {
 		
-		return dao.selectList();
+		return dao.selectList(vo);
 	}
 
 	@Override
-	public List<Member> searchList(MemberVo vo) throws Exception {
-		
-		return dao.searchList(vo);
+	public int insert(Member dto) throws Exception {
+		int result = dao.insert(dto);
+		System.out.println("service result" + result);
+		return result;
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	/*
+	 * @Override public List<Member> searchList(MemberVo vo) throws Exception {
+	 * 
+	 * return dao.searchList(vo); }
+	 * 
+	 */
 	
 
 }	

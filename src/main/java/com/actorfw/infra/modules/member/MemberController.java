@@ -18,26 +18,54 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memBerList")
-	public String MemberListPage(Model model) throws Exception {
+	public String MemberListPage(Model model, MemberVo vo) throws Exception {
 
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/memberGroupList";
 	}
 	
-	@RequestMapping(value = "memBerListSrc")
-	public String MemberListSrcPage(Model model, MemberVo vo) throws Exception {
-
-		System.out.println("vo.getShValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
+	@RequestMapping(value = "memberForm")
+	public String memberForm() throws Exception {
 		
-		List<Member> list = service.searchList(vo);
-		model.addAttribute("list", list);
+		return "infra/codegroup/xdmin/memberForm";
 		
-		return "infra/codegroup/xdmin/memberGroupList";
+	}
+	@RequestMapping(value = "memberActorForm")
+	public String memberActorForm() throws Exception {
+		
+		return "infra/codegroup/xdmin/memberActorForm";
+	}
+	
+	@RequestMapping(value = "memberDirectorForm")
+	public String memberDirectorForm() throws Exception {
+		
+		return "infra/codegroup/xdmin/memberDirectorForm";
 	}
 	
 	
+	
+	@RequestMapping(value = "memberInst")
+	public String memberInst(Member dto) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println("controller result" + result);
+		
+		return "redirect:/Member/memBerList";
+	}
+	
+	/*
+	 * @RequestMapping(value = "memBerListsrc") public String
+	 * MemberListSrcPage(Model model, MemberVo vo) throws Exception {
+	 * 
+	 * System.out.println("vo.getShValue(): " + vo.getShValue());
+	 * System.out.println("vo.getShOption(): " + vo.getShOption());
+	 * 
+	 * List<Member> list = service.searchList(vo); model.addAttribute("list", list);
+	 * 
+	 * return "infra/codegroup/xdmin/memberGroupList"; }
+	 * 
+	 */
 	
 }

@@ -25,18 +25,33 @@ public class CodeGroupController {
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
-	@RequestMapping(value = "codeGroupListsrc")
-	public String codeGroupListPagesrc(Model model, CodeGroupVo vo) throws Exception {
-
-		System.out.println("vo.getshValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
+	@RequestMapping(value = "codeGroupForm")
+	public String codeGroupForm() throws Exception {
 		
-		
-		List<CodeGroup> list = service.searchList(vo);
-		model.addAttribute("list", list);
-		
-		return "infra/codegroup/xdmin/codeGroupList";
+		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
+	@RequestMapping(value = "codeGroupInst")
+	public String codeGroupInst(CodeGroup dto) throws Exception {
+		
+		 int result = service.insert(dto);
+		System.out.println("controller result" + result);
+
+		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	/*
+	 * @RequestMapping(value = "codeGroupListsrc") public String
+	 * codeGroupListPagesrc(Model model, CodeGroupVo vo) throws Exception {
+	 * 
+	 * System.out.println("vo.getshValue(): " + vo.getShValue());
+	 * System.out.println("vo.getShOption(): " + vo.getShOption());
+	 * 
+	 * 
+	 * List<CodeGroup> list = service.searchList(vo); model.addAttribute("list",
+	 * list);
+	 * 
+	 * return "infra/codegroup/xdmin/codeGroupList"; }
+	 */
 	
 }

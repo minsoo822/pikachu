@@ -12,14 +12,66 @@
 		
 	 	SELECT 
 			*
-		FROM member
+		FROM member 
 		WHERE 1=1
+
+		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
+		<choose>
+			<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%') </when>
+			<when test="shOption == 2">AND user_type LIKE CONCAT('%',#{shValue},'%') </when>
+			<when test="shOption == 3">AND password LIKE CONCAT('%',#{shValue},'%') </when>
+			<when test="shOption == 4">AND dob LIKE CONCAT('%',#{shValue},'%') </when>
+			<when test="shOption == 5">AND gender LIKE CONCAT('%',#{shValue},'%') </when>
+			<when test="shOption == 6">AND email LIKE CONCAT('%',#{shValue},'%') </when>
+		</choose>
 		
 	</select>
 	
-	<resultMap id="resultMapObj2" type="com.actorfw.infra.modules.member.Member"></resultMap>
+	<insert id="insert">
+		INSERT INTO member (
+			user_type
+			,id
+			,password
+			,name
+			,dob
+			,gender
+			,email
+			,phone_number
+			,director_type
+			,actor_type
+			,actor_height
+			,actor_weight
+			,actor_eyelid
+			,actor_voice
+			,age
+			,company_useNy
+		)
+		VALUE(
+			${user_type}
+			,${id}
+			,${password}
+			,${name}
+			,${dob}
+			,${gender}
+			,${email}
+			,${phone_number}
+			,${director_type}
+			,${actor_type}
+			,${actor_height}
+			,${actor_weight}
+			,${actor_eyelid}
+			,${actor_voice}
+			,${age}
+			,${company_useNy}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	
-	<!-- <select id="searchList" resultMap="resultMapObj2">
+ 	<!-- <resultMap id="resultMapObj2" type="com.actorfw.infra.modules.member.Member"></resultMap>
+	
+	<select id="searchList" resultMap="resultMapObj2">
 		
 	 	SELECT
 	 		*
@@ -33,7 +85,6 @@
 			<when test="shOption == 4"> dob </when>
 			<when test="shOption == 5"> gender </when>
 			<when test="shOption == 6"> email </when>
-			
 		</choose>
 		LIKE CONCAT('%',#{shValue},'%')
 		

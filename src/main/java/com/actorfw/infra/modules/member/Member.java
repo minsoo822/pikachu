@@ -2,13 +2,13 @@ package com.actorfw.infra.modules.member;
 
 public class Member {
 	
-	private Integer seq;
+	private String seq;
 	private Integer user_type;
 	private String id;
 	private String password;
 	private String name;
 	private String dob;
-	private String gender;
+	private Integer gender;
 	private String email;
 	private Integer phone_number;
 	private Integer director_type;
@@ -18,13 +18,21 @@ public class Member {
 	private Integer actor_eyelid;
 	private Integer actor_voice;
 	private Integer age;
+	private Integer company_useNy;
 	
 //--------------------------------------------------	
 	
-	public Integer getSeq() {
+	
+	public Integer getCompany_useNy() {
+		return company_useNy;
+	}
+	public void setCompany_useNy(Integer company_useNy) {
+		this.company_useNy = company_useNy;
+	}
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public Integer getUser_type() {
@@ -57,10 +65,10 @@ public class Member {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public String getGender() {
+	public Integer getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 	public String getEmail() {

@@ -28,7 +28,7 @@
 	
 </head>
 <body>
-	<form action="http://localhost:8080/codeGroup/codeGroupListsrc">
+	<form action="http://localhost:8080/memBer/memBerList">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -180,11 +180,13 @@
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
 	            <select id="shOption" name="shOption">
-	              <option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
-	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 코드</option>
-	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
-	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
-	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
+					<option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
+					<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
+					<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>감독/배우</option>
+					<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>비밀번호</option>
+					<option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>생년월일</option>
+					<option value="5" <c:if test="${vo.shOption eq 5 }">selected</c:if>>성별</option>
+					<option value="6" <c:if test="${vo.shOption eq 6 }">selected</c:if>>이메일</option>
 	            </select>
 	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
 	            <div class="searchBtn">
@@ -210,7 +212,7 @@
 	            </div>
 	            <table class="table table-striped">
 	              <tr class="tableTr">
-	                <th><input type="checkbox"></th>
+	                <th><input class="form-check-input" type="checkbox"></th>
 	                <th>멤버 코드</th>
 	                <th>user_type7</th>
 	                <th>id</th>
@@ -227,6 +229,7 @@
 	                <th>쌍꺼풀유무</th>
 	                <th>목소리톤</th>
 	                <th>나이</th>
+	                <th>소속사</th>
 	              </tr>
 	<c:choose>
 		<c:when test="${fn:length(list) eq 0}">
@@ -237,7 +240,7 @@
 		<c:otherwise>
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
-					<td><input type="checkbox"></td>
+					<td><input class="form-check-input" type="checkbox"></td>
 					<td><c:out value="${list.seq }"/></td>
 					<td><c:out value="${list.user_type }"/></td>
 					<td><c:out value="${list.id }"/></td>
@@ -251,28 +254,59 @@
 					<td><c:out value="${list.actor_type }"/></td>
 					<td><c:out value="${list.actor_height }"/></td>
 					<td><c:out value="${list.actor_weight }"/></td>
-					<td><c:out value="${list.eyelid }"/></td>
+					<td><c:out value="${list.actor_eyelid }"/></td>
 					<td><c:out value="${list.actor_voice }"/></td>
 					<td><c:out value="${list.age }"/></td>
+					<td><c:out value="${list.company_useNy }"/></td>
 				</tr>	
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>	
 	            </table>
 	          </div>
-	          <div class="pagination">
-	            <a href="#">Prev</a>
-	            <a href="#" class="active">1</a>
-	            <a href="#" class="active">2</a>
-	            <a href="#" class="active">3</a>
-	            <a href="#" class="active">4</a>
-	            <a href="#" class="active">5</a>
-	            <a href="#">Next</a>
-	          </div>
+	          <div class="Pagingdp">
+					<div class="pagination">
+						<a href="#">Prev</a>
+						<a href="#" class="active">1</a>
+						<a href="#" class="active">2</a>
+						<a href="#" class="active">3</a>
+						<a href="#" class="active">4</a>
+						<a href="#" class="active">5</a>
+						<a href="#">Next</a>
+					</div>
+				</div>
+				<div class="groupbutton">
+					<div class="d-grid gap-2 d-md-block" style="float: left;">
+						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
+						<button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="submit" ><i class="fa-solid fa-trash-can"></i></button>
+					</div>
+					<div class="d-grid gap-2 d-md-flex">
+						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
+						<a href="/memBer/memberForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
+					</div>
+				</div>
 	        </div>
 	      </div>
 	    </div>
-	  </section>
+		</section>
+		<!-- Modal -->
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Actor's</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						정말 삭제하시겠습니까??
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary">저장</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</form>
   <script>
   let arrow = document.querySelectorAll(".arrow");

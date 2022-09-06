@@ -15,21 +15,8 @@
 			 ,(select COUNT(ccg_seq) from cc WHERE ccg_seq = a.seq ) AS codeCount
 		FROM ccg a
 		WHERE 1=1
-			<!-- AND useNy = 1 -->
-			<!-- AND name LIKE CONCAT('%',#{shValue},'%') -->
 		
-	</select>
-	
-	<resultMap id="resultMapObj2" type="com.actorfw.infra.modules.codegroup.CodeGroup"></resultMap>
-	
-	<select id="searchList" resultMap="resultMapObj2">
-		
-	 	SELECT
-	 		*
- 		FROM ccg
- 		WHERE 1=1
- 		
- 		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
+		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 		<choose>
 			<when test="shOption == 0"></when>
 			<when test="shOption == 1">AND seq = #{shValue}</when>
@@ -39,6 +26,62 @@
 		</choose>
 		
 		
+			<!-- AND useNy = 1 -->
+			<!-- AND name LIKE CONCAT('%',#{shValue},'%') -->
+		
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO ccg (
+			name
+			,useNy
+			,delNY	
+		)
+		VALUE (
+			#{name}
+			,#{useNy}
+			,#{delNy}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+<!-- 	<resultMap id="resultMapObj2" type="com.actorfw.infra.modules.codegroup.CodeGroup"></resultMap>
+	
+	<select id="searchList" resultMap="resultMapObj2">
+		
+	 	SELECT
+	 		*
+	 		,(select COUNT(ccg_seq) from cc WHERE ccg_seq = a.seq ) AS codeCount
+ 		FROM ccg
+ 		WHERE 1=1
+ 		
+ 		<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 0"></when>
+			<when test="shOption == 1">AND seq = #{shValue}</when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%') </when>
+			<when test="shOption == 3">AND delNy LIKE CONCAT('%',#{shValue},'%') </when>	
+			<when test="shOption == 4">AND useNy LIKE CONCAT('%',#{shValue},'%') </when>
+		</choose>
+		
+	</select>
+ -->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </mapper>	

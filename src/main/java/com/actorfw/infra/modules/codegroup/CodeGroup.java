@@ -2,7 +2,9 @@ package com.actorfw.infra.modules.codegroup;
 
 public class CodeGroup {
 	
-	private Integer seq;
+	
+//	ccg
+	private String seq;
 	private Integer codeseq;
 	private String name;
 	private String codename;
@@ -15,10 +17,10 @@ public class CodeGroup {
 	
 //-----------------------------------------------------	
 	
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void String(String seq) {
 		this.seq = seq;
 	}
 	public Integer getCodeseq() {
