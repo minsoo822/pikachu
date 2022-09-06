@@ -9,6 +9,9 @@
 <form action="/codeGroup/codeGroupInst">
 	codeGourpFrom<br>
 	<input type="text" name="name"><br>
+	<select name="codeGroupName">
+		<option></option>
+	</select>
 	<input type="text" name="useNy"><br>
 	<input type="text" name="delNy"><br>
 	<button type="submit">선택</button>

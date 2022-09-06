@@ -162,14 +162,14 @@
 	    <div class="main">    
 	      <div class="mainSearch">
 	        <div class="title">
-	          <h5>코드그룹관리</h5>
+	          <h5>코드 관리</h5>
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="shUseOption">
-					<option disabled>삭제여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+	            <select>
+					<option>삭제여부</option>
+					<option>N</option>
+					<option>Y</option>
 	            </select>
 	            <select>
 	              <option>날짜</option>
@@ -181,7 +181,7 @@
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
 	            <select id="shOption" name="shOption">
 	              <option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
-	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
+	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
 	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
 	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
 	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
@@ -235,9 +235,8 @@
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.delNy }"/></td>
 					<td><c:out value="${list.useNy }"/></td>
-					<td><c:out value="${list.codeCount }"/></td>
-					<td></td>
-					<td></td>
+					<td><c:out value="${list.creDate }"/></td>
+					<td><c:out value="${list.modDate }"/></td>
 				</tr>	
 			</c:forEach>
 		</c:otherwise>
