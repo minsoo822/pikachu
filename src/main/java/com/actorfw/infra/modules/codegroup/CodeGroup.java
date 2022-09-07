@@ -12,15 +12,16 @@ public class CodeGroup {
 	private Integer useNy;
 	private Integer delNy;
 	private Integer codeCount;
-	
-	
+	private String creDate;
+	private String modDate;
+
 	
 //-----------------------------------------------------	
 	
 	public String getSeq() {
 		return seq;
 	}
-	public void String(String seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public Integer getCodeseq() {
@@ -65,7 +66,18 @@ public class CodeGroup {
 	public void setCodeCount(Integer codeCount) {
 		this.codeCount = codeCount;
 	}
-	
+	public String getCreDate() {
+		return creDate;
+	}
+	public void setCreDate(String creDate) {
+		this.creDate = creDate;
+	}
+	public String getModDate() {
+		return modDate;
+	}
+	public void setModDate(String modDate) {
+		this.modDate = modDate;
+	}
 	
 	
 

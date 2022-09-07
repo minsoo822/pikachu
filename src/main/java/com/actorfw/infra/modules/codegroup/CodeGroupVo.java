@@ -5,6 +5,10 @@ public class CodeGroupVo {
 	private String shValue;
 	private Integer shOption;
 	private Integer shUseOption;
+	
+	
+//--------------------------------------
+	
 	public String getShValue() {
 		return shValue;
 	}
@@ -23,9 +27,6 @@ public class CodeGroupVo {
 	public void setShUseOption(Integer shUseOption) {
 		this.shUseOption = shUseOption;
 	}
-	
-	
-//--------------------------------------
 	
 	
 	

@@ -40,12 +40,12 @@
 		INSERT INTO ccg (
 			name
 			,useNy
-			,delNY	
+			,oder	
 		)
 		VALUE (
 			#{name}
 			,#{useNy}
-			,#{delNy}
+			,#{oder}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

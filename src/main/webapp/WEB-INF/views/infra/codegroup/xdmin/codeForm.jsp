@@ -6,7 +6,10 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-<html lang="KO">
+
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="ko">
 <head>
 	<title>Home</title>
 	<!-- Boxiocns CDN Link -->
@@ -28,7 +31,7 @@
 	
 </head>
 <body>
-	<form action="http://localhost:8080/codeGroup/codeGroupList">
+	<form action="">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -135,7 +138,7 @@
 	      <li>
 	        <div class="profile-details">
 	          <div class="profile-content">
-	            <img src="/resources/image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
+	            <img src="image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
 	          </div>
 	          <div class="name-job">
 	            <div class="profile_name">Min soo</div>
@@ -154,7 +157,7 @@
 	        <div class="search">
 	          <input type="text" placeholder="Search...">
 	          <button type="submit">
-	            <img src="/resources/image/2093656_seach_look_search_see_icon.png" alt="">
+	            <img src="image/2093656_seach_look_search_see_icon.png" alt="">
 	          </button>
 	        </div>
 	      </div>
@@ -162,31 +165,29 @@
 	    <div class="main">    
 	      <div class="mainSearch">
 	        <div class="title">
-	          <h5>코드그룹관리</h5>
+	          <h5>코드관리</h5>
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="shUseOption">
-					<option value="" hidden selected>삭제여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+	            <select>
+	              <option>N</option>
+	              <option>Y</option>
+	              <option></option>
 	            </select>
 	            <select>
-	              <option hidden selected>날짜</option>
+	              <option>날짜</option>
 	              <option>수정일</option>
 	              <option>등록일</option>
 	              <option>생일</option>
 	            </select>
-	            <input type="text" id="StDatePicker" placeholder="시작일">
-	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	            <select id="shOption" name="shOption">
-	              <option value="" hidden selected>검색구분</option>
-	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
-	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
-	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
-	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
+	            <input type="text" placeholder="시작일">
+	            <input type="text" placeholder="종료일">
+	            <select>
+	              <option>검색구분</option>
+	              <option>코드그룹 코드</option>
+	              <option>코드그룹 이름</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
+	            <input type="text" placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
 	              <button  type="submit">리셋</button>
@@ -196,57 +197,68 @@
 	        <div class="wow">
 	          <select>
 	            <option>10</option>
-	            <option>20</option>
-	            <option>30</option>
-	            <option>40</option>
-	            <option>50</option>
-	            
 	          </select>  
 	        </div>
 	        <div class="four">
 	          <div class="five">
 	            <div class="line">
-	            <!--   <h6>코드그룹 관리</h6> -->
+	              <!-- <h6>코드그룹 관리</h6> -->
 	            </div>
-	            <table class="table table-striped">
-	              <tr class="tableTr">
-	                <th><input class="form-check-input" type="checkbox"></th>
-	                <th>#</th>
-	                <th>코드그룹 코드</th>
-	                <th>코드그룹 이름</th>
-	                <th>코드그룹 삭제여부 N:0 Y:1</th>
-	                <th>코드그룹 사용여부 N:0 Y:1</th>
-	                <th>순서</th>
-	                <th>코드갯수</th>
-	                <th>등록일</th>
-	                <th>수정일</th>
-	              </tr>
-	<c:choose>
-		<c:when test="${fn:length(list) eq 0}">
-			<tr>
-				<td style="text-align: center;" colspan="9"> no Data!</td>
-			</tr>
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${list}" var="list" varStatus="status">
-				<tr>
-					<td><input class="form-check-input" type="checkbox"></td>
-					<td></td>
-					<td><c:out value="${list.seq }"/></td>
-					<td><c:out value="${list.name }"/></td>
-					<td><c:out value="${list.delNy }"/></td>
-					<td><c:out value="${list.useNy }"/></td>
-					<td><c:out value="${list.oder }"/></td>
-					<td><c:out value="${list.codeCount }"/></td>
-					<td><c:out value="${list.creDate }"/></td>
-					<td><c:out value="${list.modDate }"/></td>
-				</tr>	
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>	
-	            </table>
-	          </div>
-	          <div class="Pagingdp">
+	            <div class="row" style="margin: 25px; text-align: center;">
+	            	<div class="col">
+	            		<div class="row mb-2">
+	            			<div class="col">코드그룹 코드</div>
+							<div class="col">
+								<select class="form-select">
+								<c:forEach items="${list}" var="list" varStatus="status">
+									<option value="${list.seq}"/>
+									<c:out value="${list.name }"></c:out>
+								</c:forEach>	
+								</select>
+							</div>
+	            		</div>
+						<div class="row mb-2">
+							<div class="col">코드</div>
+							<div class="col">
+								<input type="text" class="form-control" placeholder="자동생성" disabled>
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col">코드이름</div>
+							<div class="col">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col">순서</div>
+							<div class="col">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col">사용여부</div>
+							<div class="col">
+								<select class="form-select">
+									<option>N</option>
+									<option>Y</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">설명</div>
+							<div class="col">
+								<textarea cols="40"></textarea>
+							</div>
+						</div>
+						<div class="row mt-5 d-grid justify-content-end">
+							<div class="col">
+								<button type="submit" class="btn btn-primary">등록</button>
+							</div>
+						</div>
+	            	</div>
+	            </div>
+				</div>
+				<div class="Pagingdp">
 					<div class="pagination">
 						<a href="#">Prev</a>
 						<a href="#" class="active">1</a>
@@ -264,7 +276,7 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="/codeGroup/codeGroupForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
+						<a href="#"><button class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></button></a>
 					</div>
 				</div>
 	        </div>
@@ -304,44 +316,7 @@
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
   });
-  
-  $(function() {
-	  $( "#StDatePicker" ).datepicker({
-		  changeMonth: true,
-		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
-		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
-	  });
-  });
-  $(function() {
-	  $( "#EnDatePicker" ).datepicker({
-		  changeMonth: true,
-		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
-		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
-	  });
-  });
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   </script>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>

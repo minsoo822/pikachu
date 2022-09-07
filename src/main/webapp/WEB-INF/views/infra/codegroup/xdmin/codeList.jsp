@@ -261,7 +261,7 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="/codeGroup/codeGroupForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
+						<a href="/code/codeForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
 					</div>
 				</div>
 	        </div>

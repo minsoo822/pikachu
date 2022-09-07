@@ -6,4 +6,6 @@ public interface CodeService {
 
 	public List<Code> selectList() throws Exception;
 	
+	public List<Code> addCodeName() throws Exception;
+	
 }

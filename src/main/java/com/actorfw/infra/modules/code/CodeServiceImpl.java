@@ -18,6 +18,14 @@ public class CodeServiceImpl implements CodeService {
 		
 		return list;
 	}
+
+	@Override
+	public List<Code> addCodeName() throws Exception {
+		
+		List<Code> add = dao.addCodeName();
+		
+		return add;
+	}
 	
 	
 	

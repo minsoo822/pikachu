@@ -24,5 +24,11 @@ public class CodeController {
 		
 	}
 	
+	@RequestMapping(value = "codeForm")
+	public String codeGroupForm() throws Exception {
+		
+		return "infra/codegroup/xdmin/codeForm";
+	}
+	
 	
 }
