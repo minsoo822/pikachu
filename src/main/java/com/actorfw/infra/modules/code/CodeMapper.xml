@@ -16,15 +16,22 @@
 		WHERE
 		1=1
 		
+		<choose>
+			<!-- <when test="shOption == 0"></when> -->
+			<when test="shOption == 1">AND seq = #{shValue} </when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND useNY LIKE CONCAT ('%',#{shValue},'%')</when>
+		</choose>
+		
 		</select>
-
+ 
 		<resultMap type="com.actorfw.infra.modules.code.Code" id="resultMapObj2"></resultMap>
 		
 		<select id="addCodeName" resultMap="resultMapObj2">
 		
 		SELECT
 			name
-		FROM cc
+		FROM ccg
 		WHERE
 		1=1
 		

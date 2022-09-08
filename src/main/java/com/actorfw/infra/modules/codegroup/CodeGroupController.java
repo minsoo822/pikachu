@@ -14,24 +14,19 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupServiceImpl service;
 	
-
+	
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupListPage(Model model, CodeGroupVo vo) throws Exception {
 
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		model.addAttribute("vo", vo);
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
-	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm() throws Exception {
-		
-		return "infra/codegroup/xdmin/codeGroupForm";
-	}
-	
-	@RequestMapping(value = "codeGroupInst")
+	@RequestMapping(value = "codeGroupInst")							//데이터 넣는 컨트롤
 	public String codeGroupInst(CodeGroup dto) throws Exception {
 		
 		 int result = service.insert(dto);
@@ -39,6 +34,46 @@ public class CodeGroupController {
 
 		return "redirect:/codeGroup/codeGroupList";
 	}
+	
+	@RequestMapping(value = "codeGroupView")
+	public String codeGroupView(Model model, CodeGroupVo vo) throws Exception {
+		
+		CodeGroup result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		
+		return "infra/codegroup/xdmin/codeGroupForm";
+	}
+	
+//-----------------------------------------페이지 이동 컨트롤
+	
+	
+	@RequestMapping(value = "codeGroupForm")			//코드그룹폼 페이지
+	public String codeGroupForm() throws Exception {
+		
+		return "infra/codegroup/xdmin/codeGroupForm";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * @RequestMapping(value = "codeGroupListsrc") public String
@@ -48,8 +83,8 @@ public class CodeGroupController {
 	 * System.out.println("vo.getShOption(): " + vo.getShOption());
 	 * 
 	 * 
-	 * List<CodeGroup> list = service.searchList(vo); model.addAttribute("list",
-	 * list);
+	 * List<CodeGroup> list = service.searchList(vo); 
+	 * model.addAttribute("list", * list);
 	 * 
 	 * return "infra/codegroup/xdmin/codeGroupList"; }
 	 */

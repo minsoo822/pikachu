@@ -53,9 +53,9 @@
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
 	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">코드그룹 리스트 관리</a></li>
-	          <li><a href="#">코드 관리</a></li>
-	          <li><a href="#">코드그룹 관리</a></li>
+	          <li><a class="link_name" href="/codeGroup/codeGroupList">코드그룹 리스트 관리</a></li>
+	          <li><a href="/code/CodeList">코드 관리</a></li>
+	          <li><a href="/codeGroup/codeGroupList">코드그룹 관리</a></li>
 	        </ul>
 	      </li>
 	      <li>
@@ -232,7 +232,11 @@
 				<tr>
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td></td>
-					<td><c:out value="${list.seq }"/></td>
+					<td>	
+						<a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>">
+							<c:out value="${list.seq }"/>
+						</a>
+					</td>
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.delNy }"/></td>
 					<td><c:out value="${list.useNy }"/></td>

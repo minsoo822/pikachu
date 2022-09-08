@@ -55,10 +55,10 @@
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
-	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">코드그룹 리스트 관리</a></li>
-	          <li><a href="#">코드 관리</a></li>
-	          <li><a href="#">코드그룹 관리</a></li>
+	       <ul class="sub-menu">
+	          <li><a class="link_name" href="/codeGroup/codeGroupList">코드그룹 리스트 관리</a></li>
+	          <li><a href="/code/CodeList">코드 관리</a></li>
+	          <li><a href="/codeGroup/codeGroupList">코드그룹 관리</a></li>
 	        </ul>
 	      </li>
 	      <li>
@@ -210,10 +210,10 @@
 	            			<div class="col">코드그룹 코드</div>
 							<div class="col">
 								<select class="form-select">
-								<c:forEach items="${list}" var="list" varStatus="status">
-									<option value="${list.seq}"/>
-									<c:out value="${list.name }"></c:out>
-								</c:forEach>	
+			            	<c:forEach items="${add}" var="add" varStatus="status">
+			            			<option hidden selected>선택</option>
+									<option><c:out value="${add.name }"/></option>
+							</c:forEach>
 								</select>
 							</div>
 	            		</div>

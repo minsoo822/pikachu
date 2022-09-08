@@ -17,7 +17,9 @@ public class CodeDao {
 	
 	private static String namespace = "com.actorfw.infra.modules.code.CodeMapper";
 	
-	public List<Code> selectList() { return sqlsession.selectList(namespace + ".selectList", "");}
+	public List<Code> selectList(CodeVo vo) { return sqlsession.selectList(namespace + ".selectList", vo);}
 	
+	
+	public List<Code> addCodeName() { return sqlsession.selectList(namespace +".addCodeName", "");}
 	
 }

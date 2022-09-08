@@ -36,7 +36,24 @@
 		
 	</select>
 	
-	<insert id="insert">
+	<select id="selectOne" resultMap="resultMapObj">
+		
+		SELECT 
+			a.seq
+			,a.name
+			,a.useNy
+			,a.oder
+			,a.delNy
+			,a.creDate
+			,a.modDate
+		FROM 
+		ccg a
+		WHERE 1=1
+		AND seq = #{seq}
+	
+	</select>
+	
+	<insert id="insert">		<!-- 데이터 넣기 -->
 		INSERT INTO ccg (
 			name
 			,useNy

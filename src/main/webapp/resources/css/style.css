@@ -98,9 +98,8 @@ nav ul > li > ul {
 nav ul > li:hover > ul {
 		display:block;
 		color: #f9004d;
-	}	
-
-.btn {
+}	
+.hero nav .btn {
 	background-color: #f9004d;
 	color: white;
 	border: 2px solid transparent;
@@ -109,7 +108,8 @@ nav ul > li:hover > ul {
 	border-radius: 30px;
 	transition: transform .4s;
 }
-.btn:hover {
+
+.hero nav .btn:hover {
 	transform: scale(1.1);
 	background-color: #f9004d;
 	color: #101010;
@@ -135,7 +135,7 @@ nav ul > li:hover > ul {
 	align-items: center;
 	min-height: 200px;
 }
-.card {
+.box .card {
 	height: 250px;
 	width: 450px;
 	padding: 20px 15px;
@@ -146,8 +146,7 @@ nav ul > li:hover > ul {
 	overflow: hidden;
 	text-align: left;
 }
-
-h5 {
+.box .card h5 {
 	color: white;
 	font-size: 23px;
 	margin-bottom: 15px;
@@ -195,13 +194,17 @@ h5 {
 	margin: 15px;
 	position: relative;
 	overflow: hidden;
-	
 }
 .cardactor:hover {
 	transform: scale(1.1);
 	overflow:hidden;
 	cursor: pointer;
 	transition: .3s;
+}
+.cardactor h5 {
+	color: white;
+	font-size: 23px;
+	margin-bottom: 15px;
 }
 
 .card-img-top{
@@ -229,7 +232,7 @@ h5 {
 	width: 100%;
 	padding: 50px 0px 120px 0px;
 }
-.table {
+.tour .table {
 	width: 1400px;
 	margin-top: 35px;
 	margin-left: auto;
@@ -260,13 +263,13 @@ td {
 	padding: 30px 0px;	
 }
 
-.footerlogo {
+.footer .footerlogo {
 	width: 1500px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 }
-.footermain {
+.footer .footermain {
 	width: 1500px;
 	margin-left: auto;
 	margin-right: auto;
@@ -556,14 +559,7 @@ h1 {
 	color: #483949;
 	line-height: 1.25em;
 }
-a {
-	color: inherit;
-	text-decoration: none;
-	-moz-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
-	-webkit-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
-	-ms-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
-	transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
-}
+
 
 .indexhr {
 	position: relative;
@@ -594,23 +590,6 @@ hr:after {
 header {
 	margin: 0 0 1em 0;
 }
-
-.indexbtn {
-	background-color: #f9004d;
-	color: #fff;
-	text-decoration: none;
-	border: 2px solid transparnt;
-	font-weight: bold;
-	padding: 10px 25px;
-	border-radius: 30px;
-	transition: transform .4s;
-}
-.indexbtn:hover {
-	transform: scale(1.2);
-}
-	
-	
-	
 #header {
 	position: relative;
 	background-image: url("../image/banner/photo-manipulation-g5ee022c2a_1920.jpg");
@@ -636,21 +615,23 @@ header {
 	display: inline-block;
 	vertical-align: middle;
 }
-#header header {
+#header .indexHeader {
 	display: inline-block;
 }
-#header header > p {
+#header .indexHeader > p {
 	font-size: 1.25em;
 	margin: 0;
 }
-#header h1 {
+#header .indexHeader h1 {
 	color: #fff;
 	font-size: 3em;
 	line-height: 1em;
 	
 }
-#header h1 a{
-	color: inherit;
+#logo{
+	color: white;
+	border-bottom: solid 1px rgba(128, 128, 128, 0.15);
+	text-decoration: none;
 }
 #header .button {
 	display: inline-block;
@@ -704,14 +685,27 @@ body.homepage #header:after {
 body.homepage.is-preload #header::after {
 	opacity: 1;
 }
+.indexFooter a {
+	color: inherit;
+	text-decoration: none;
+	transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
+}
+.indexFooter .indexbtn {
+	background-color: #f9004d;
+	color: white;
+	border: 2px solid transparent;
+	font-weight: bold;
+	padding: 8px 18px;
+	border-radius: 30px;
+	transition: transform .4s;
+}
 
 
-
-
-
-
-
-
+.indexFooter .indexbtn:hover {
+    /* transform: scale(1.1); */
+    background-color: #f9004d;
+    color: #101010;
+}
 
 
 

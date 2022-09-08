@@ -2,6 +2,8 @@ package com.actorfw.infra.modules.codegroup;
 
 public class CodeGroupVo {
 
+	private String seq;
+	
 	private String shValue;
 	private Integer shOption;
 	private Integer shUseOption;
@@ -9,6 +11,12 @@ public class CodeGroupVo {
 	
 //--------------------------------------
 	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public String getShValue() {
 		return shValue;
 	}
@@ -27,8 +35,6 @@ public class CodeGroupVo {
 	public void setShUseOption(Integer shUseOption) {
 		this.shUseOption = shUseOption;
 	}
-	
-	
 	
 	
 	

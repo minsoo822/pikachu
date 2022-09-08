@@ -53,10 +53,10 @@
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
-	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">코드그룹 리스트 관리</a></li>
-	          <li><a href="#">코드 관리</a></li>
-	          <li><a href="#">코드그룹 관리</a></li>
+	     	 <ul class="sub-menu">
+	          <li><a class="link_name" href="/codeGroup/codeGroupList">코드그룹 리스트 관리</a></li>
+	          <li><a href="/code/CodeList">코드 관리</a></li>
+	          <li><a href="/codeGroup/codeGroupList">코드그룹 관리</a></li>
 	        </ul>
 	      </li>
 	      <li>
@@ -207,19 +207,19 @@
 						<div class="row mb-2">
 							<div class="col">코드</div>
 							<div class="col">
-								<input type="text" class="form-control" placeholder="자동생성" disabled>
+								<input type="text" class="form-control" placeholder="자동생성" disabled value="<c:out value="${item.seq}"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">코드이름</div>
 							<div class="col">
-								<input type="text" class="form-control" name="name" id="name">
+								<input type="text" class="form-control" name="name" id="name" value="<c:out value="${item.name}"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">순서</div>
 							<div class="col">
-								<input type="text" class="form-control"name="oder" id="oder">
+								<input type="text" class="form-control"name="oder" id="oder" value="<c:out value="${item.oder}"/>">
 							</div>
 						</div>
 						<div class="row mb-2">

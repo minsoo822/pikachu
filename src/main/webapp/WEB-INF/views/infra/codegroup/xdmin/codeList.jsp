@@ -28,7 +28,7 @@
 	
 </head>
 <body>
-	<form action="http://localhost:8080/codeGroup/codeGroupList">
+	<form action="http://localhost:8080/code/CodeList">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -52,10 +52,10 @@
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
-	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">코드그룹 리스트 관리</a></li>
-	          <li><a href="#">코드 관리</a></li>
-	          <li><a href="#">코드그룹 관리</a></li>
+	      	 <ul class="sub-menu">
+	          <li><a class="link_name" href="/codeGroup/codeGroupList">코드그룹 리스트 관리</a></li>
+	          <li><a href="/code/CodeList">코드 관리</a></li>
+	          <li><a href="/codeGroup/codeGroupList">코드그룹 관리</a></li>
 	        </ul>
 	      </li>
 	      <li>
@@ -167,26 +167,26 @@
 	        <div class="two">
 	          <div class="three">
 	            <select>
-					<option>삭제여부</option>
+					<option hidden selected>삭제여부</option>
 					<option>N</option>
 					<option>Y</option>
 	            </select>
 	            <select>
-	              <option>날짜</option>
+	              <option hidden selected>날짜</option>
 	              <option>수정일</option>
 	              <option>등록일</option>
 	              <option>생일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
+	            	
 	            <select id="shOption" name="shOption">
-	              <option value="0" <c:if test="${vo.shOption eq 0 }">selected</c:if>>검색구분</option>
-	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 이름</option>
-	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
-	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
-	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
+	              <option value="" hidden selected>검색구분</option>	
+	              <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+	              <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
+	              <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 사용여부</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
+	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
 	              <button  type="submit">리셋</button>
@@ -216,7 +216,6 @@
 	                <th>코드그룹 이름</th>
 	                <th>코드그룹 삭제여부 N:0 Y:1</th>
 	                <th>코드그룹 사용여부 N:0 Y:1</th>
-	                <th>코드갯수</th>
 	                <th>등록일</th>
 	                <th>수정일</th>
 	              </tr>

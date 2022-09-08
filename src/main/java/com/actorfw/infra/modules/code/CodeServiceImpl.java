@@ -12,18 +12,17 @@ public class CodeServiceImpl implements CodeService {
 	CodeDao dao;
 
 	@Override
-	public List<Code> selectList() throws Exception {
+	public List<Code> selectList(CodeVo vo) throws Exception {
 		
-		List<Code> list = dao.selectList();
+		List<Code> list = dao.selectList(vo);
 		
 		return list;
 	}
 
 	@Override
-	public List<Code> addCodeName() throws Exception {
+	public List<Code> addCodeName() throws Exception {	
 		
 		List<Code> add = dao.addCodeName();
-		
 		return add;
 	}
 	
