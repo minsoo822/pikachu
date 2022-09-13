@@ -31,7 +31,7 @@
 	
 </head>
 <body>
-	<form action="">
+	<form action="http://localhost:8080/code/CodeList">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>

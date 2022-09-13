@@ -1,0 +1,35 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+span {
+	 color: #f9004d;
+}
+.title {
+	color: white; 
+	font-size: 70px; 
+	letter-spacing: 1px; 
+	cursor: pointer; 
+	text-align: center; 
+	margin-top: 150px; 
+	margin-bottom: 50px;
+}
+.idpasswordinput {
+	width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 16px;
+}
+.find {
+	color: white;
+	font-size: 20px;
+}
+.find:hover {
+	color: #AFAFAF;
+}

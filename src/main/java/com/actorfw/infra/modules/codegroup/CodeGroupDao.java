@@ -43,7 +43,11 @@ public class CodeGroupDao {
 		return result;
 	}
 	
+	public int update1(CodeGroup dto) { return sqlSession.update(namespace + ".update1" , dto); }
 	
+	public int uelete(CodeGroup dto) { return sqlSession.update(namespace + ".uelete" , dto); }
+	
+	public int delete(CodeGroupVo vo) { return sqlSession.delete(namespace + ".delelte" , vo); }
 	
 	
 //	

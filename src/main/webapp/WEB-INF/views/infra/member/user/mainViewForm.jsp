@@ -27,10 +27,10 @@
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="mainViewForm.html">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/member/mainViewForm">Actor'<span>s</span></a></h2>
 			<ul>
-				<li><a href="tourpostViewForm.html">프로필 투어</a></li>
-				<li><a href="oditionPostViewForm.html">오디션 공고</a>
+				<li><a href="/member/tourPostViewForm">프로필 투어</a></li>
+				<li><a href="/member/oditionMod">오디션 공고</a>
 					<ul>
 						<li><a href="#">전체</a></li>
 						<li><a href="#">상업영화</a></li>
@@ -39,11 +39,11 @@
 						<li><a href="#">(바이럴)광고</a></li>
 					</ul>
 				</li>	
-				<li><a href="actorPostViewForm.html">프로필 정보</a>
+				<li><a href="/member/actorPostViewForm">프로필 정보</a>
 					<ul>
-						<li><a href="actorPostViewForm.html">전체</a></li><br>
-						<li><a href="actorPostManViewForm.html">남자</a></li><br>
-						<li><a href="actorPostWomanViewForm.html">여자</a></li>
+						<li><a href="/member/actorPostViewForm">전체</a></li><br>
+						<li><a href="#">남자</a></li><br>
+						<li><a href="#">여자</a></li>
 					</ul>
 				</li>	
 				<li><a href="#" class="disableLink">커뮤니티</a>
@@ -65,8 +65,8 @@
 				</li>
 			</ul>
 			<div>
-			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
-			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
+			<a href="/member/signUpForm" class="btn">회원가입</a>
+			<a href="/member/signInForm" class="btn">로그인</a>
 			</div>
 		</nav>
 	</div>

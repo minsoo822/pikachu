@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+
 <html lang="ko">
 <head>
 	<title>Home</title>
@@ -14,22 +14,18 @@
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">   
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
 </head>
 <body>
-	<form action="/codeGroup/codeGroupInst" id="FormInst">
+	<form action="" id="" name="form">
+	<input hidden="hidden" name="seq" value="<c:out value="${item.seq}"/>">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -136,7 +132,7 @@
 	      <li>
 	        <div class="profile-details">
 	          <div class="profile-content">
-	            <img src="image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
+	            <img src="/resources/image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
 	          </div>
 	          <div class="name-job">
 	            <div class="profile_name">Min soo</div>
@@ -155,7 +151,7 @@
 	        <div class="search">
 	          <input type="text" placeholder="Search...">
 	          <button type="submit">
-	            <img src="image/2093656_seach_look_search_see_icon.png" alt="">
+	            <img src="/resources/image/2093656_seach_look_search_see_icon.png" alt="">
 	          </button>
 	        </div>
 	      </div>
@@ -225,7 +221,17 @@
 						<div class="row mb-2">
 							<div class="col">사용여부</div>
 							<div class="col">
-								<select class="form-select" id="useNy" name="useNy">
+								<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
+									<option value="2" hidden selected>선택</option>
+									<option value="0">N</option>
+									<option value="1">Y</option>
+								</select>
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col">삭제여부</div>
+							<div class="col">
+								<select class="form-select" id="delNy" name="delNy" value="<c:out value="${item.delNy }"/>">
 									<option value="2" hidden selected>선택</option>
 									<option value="0">N</option>
 									<option value="1">Y</option>
@@ -240,7 +246,8 @@
 						</div>
 						<div class="row mt-5 d-grid justify-content-end">
 							<div class="col">
-								<button type="button" class="btn btn-primary" onclick="reg();">등록</button>
+								<button type="button" class="btn btn-primary" id="btnSave">등록</button>
+								<a href="/codeGroup/codeGroupList"><button type="button" class="btn btn-primary">목록</button></a>
 							</div>
 						</div>
 	            	</div>
@@ -307,7 +314,7 @@
   </script>
   
   <script>
-  function reg() {
+ /*  function reg() {
 	
   
 	  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
@@ -326,6 +333,37 @@
 	
 	  document.getElementById("FormInst").submit();
   }	  
+   */
+	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("form[name=form]");
+	
+	
+	$("#btnSave").on("click", function(){
+		alert("가능하다")
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   	//	if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   	//	if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	}); 
+	
+	
+  
+  
+  
+  
 //  alert("test");
   
 //  alert(document.getElementById('name').value);			//input

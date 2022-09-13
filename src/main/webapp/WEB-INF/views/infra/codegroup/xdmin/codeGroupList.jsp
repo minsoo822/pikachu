@@ -28,7 +28,8 @@
 	
 </head>
 <body>
-	<form action="http://localhost:8080/codeGroup/codeGroupList">
+	<form name="form" action="" >
+		<input hidden="hidden" name="seq" value="<c:out value="${dto.seq}"/>">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -233,7 +234,7 @@
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td></td>
 					<td>	
-						<a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>">
+						<a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>">
 							<c:out value="${list.seq }"/>
 						</a>
 					</td>
@@ -328,8 +329,31 @@
 	  });
   });
   
-  
-  
+	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("form[name=form]");
+	var formVo = $("form[name=formVo]");
+	
+	
+	$("#btnSave").on("click", function(){
+		
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   	//	if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   	//	if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	}); 
   
   
   

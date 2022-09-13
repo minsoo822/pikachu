@@ -16,6 +16,7 @@
 		FROM ccg a
 		WHERE 1=1
 		
+		
 		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 		<choose>
 			<when test="shOption == 0"></when>
@@ -33,7 +34,7 @@
 		
 			<!-- AND useNy = 1 -->
 			<!-- AND name LIKE CONCAT('%',#{shValue},'%') -->
-		
+		 ORDER BY a.seq DESC  	<!-- DESC내림차순 정렬  ASC오름차순 정렬 -->
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -44,16 +45,15 @@
 			,a.useNy
 			,a.oder
 			,a.delNy
-			,a.creDate
-			,a.modDate
 		FROM 
 		ccg a
 		WHERE 1=1
 		AND seq = #{seq}
+		
 	
 	</select>
 	
-	<insert id="insert">		<!-- 데이터 넣기 -->
+ 	<insert id="insert">		<!-- 데이터 넣기 -->
 		INSERT INTO ccg (
 			name
 			,useNy
@@ -69,39 +69,38 @@
 		</selectKey>
 	</insert>
 	
-<!-- 	<resultMap id="resultMapObj2" type="com.actorfw.infra.modules.codegroup.CodeGroup"></resultMap>
+ 	
+	<update id="update1">   		<!-- 데이터 수정 -->
 	
-	<select id="searchList" resultMap="resultMapObj2">
-		
-	 	SELECT
-	 		*
-	 		,(select COUNT(ccg_seq) from cc WHERE ccg_seq = a.seq ) AS codeCount
- 		FROM ccg
- 		WHERE 1=1
- 		
- 		<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
-		<choose>
-			<when test="shOption == 0"></when>
-			<when test="shOption == 1">AND seq = #{shValue}</when>
-			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%') </when>
-			<when test="shOption == 3">AND delNy LIKE CONCAT('%',#{shValue},'%') </when>	
-			<when test="shOption == 4">AND useNy LIKE CONCAT('%',#{shValue},'%') </when>
-		</choose>
-		
-	</select>
- -->
+		UPDATE ccg 
+		SET
+			name = #{name}
+			,useNy = #{useNy}
+			,oder = #{oder}
+			<!-- <include refid=""></include> -->
+		WHERE 1=1
+			AND seq = #{seq}
+			
+	</update>
 	
 
-
-
-
-
-
-
-
-
-
-
+	<update id="uelete"> 		<!-- delNY만 삭제처리 -->
+	
+		UPDATE ccg 
+		SET
+			delNY = 1
+			<!-- <include refid=""></include> -->
+		WHERE 1=1
+			seq = #{seq}
+	
+	</update>
+	
+	<delete id="delete">		<!-- 데이터 삭제 -->
+	
+		DELETE FROM ccg WHERE seq = #{seq}
+	
+	</delete>
+	
 
 
 
