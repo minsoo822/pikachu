@@ -163,10 +163,10 @@
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select>
-					<option hidden selected>선택</option>
-					<option>N</option>
-					<option>Y</option>
+	            <select name="shUseOption">
+					<option value="" hidden selected>사용여부</option>
+					<option value="0">N</option>
+					<option value="1">Y</option>
 	            </select>
 	            <select>
 	              <option hidden selected>날짜</option>
@@ -174,17 +174,24 @@
 	              <option>등록일</option>
 	              <option>생일</option>
 	            </select>
-	            <input type="text" placeholder="시작일">
-	            <input type="text" placeholder="종료일">
-	            <select>
-	              <option hidden selected>검색구분</option>
-	              <option>코드그룹 코드</option>
-	              <option>코드그룹 이름</option>
+	            <input type="text" id="StDatePicker" placeholder="시작일">
+	            <input type="text" id="EnDatePicker" placeholder="종료일">
+	             <select name="shDelOption">
+					<option value="" hidden selected>삭제여부</option>
+					<option value="0">N</option>
+					<option value="1">Y</option>
 	            </select>
-	            <input type="text" placeholder="검색어">
+	            <select id="shOption" name="shOption">
+	              <option value="" hidden selected>검색구분</option>
+	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
+	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
+	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
+	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
+	            </select>
+	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="submit">리셋</button>
+	              <button  type="button" onclick="reSet();">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -222,7 +229,7 @@
 							<div class="col">사용여부</div>
 							<div class="col">
 								<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
-									<option value="2" hidden selected>선택</option>
+									<option value="<c:out value="${item.useNy }"/>" hidden selected>선택</option>
 									<option value="0">N</option>
 									<option value="1">Y</option>
 								</select>
@@ -232,7 +239,7 @@
 							<div class="col">삭제여부</div>
 							<div class="col">
 								<select class="form-select" id="delNy" name="delNy" value="<c:out value="${item.delNy }"/>">
-									<option value="2" hidden selected>선택</option>
+									<option value="<c:out value="${item.delNy }"/>" hidden selected>선택</option>
 									<option value="0">N</option>
 									<option value="1">Y</option>
 								</select>
@@ -246,7 +253,7 @@
 						</div>
 						<div class="row mt-5 d-grid justify-content-end">
 							<div class="col">
-								<button type="button" class="btn btn-primary" id="btnSave">등록</button>
+								<button type="button" class="btn btn-primary" id="btnSave" onclick="reg()">등록</button>
 								<a href="/codeGroup/codeGroupList"><button type="button" class="btn btn-primary">목록</button></a>
 							</div>
 						</div>
@@ -314,7 +321,7 @@
   </script>
   
   <script>
- /*  function reg() {
+  function reg() {
 	
   
 	  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
@@ -333,7 +340,7 @@
 	
 	  document.getElementById("FormInst").submit();
   }	  
-   */
+  
 	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
 	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
@@ -346,7 +353,6 @@
 	
 	
 	$("#btnSave").on("click", function(){
-		alert("가능하다")
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 	   	//	if (validationInst() == false) return false;

@@ -6,10 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-
-<!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
-<html lang="ko">
+<html lang="KO">
 <head>
 	<title>Home</title>
 	<!-- Boxiocns CDN Link -->
@@ -31,7 +28,8 @@
 	
 </head>
 <body>
-	<form action="http://localhost:8080/code/CodeList">
+	<form name="form" action="" >
+		<input hidden="hidden" name="seq" value="<c:out value="${dto.seq}"/>">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -55,7 +53,7 @@
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
-	       <ul class="sub-menu">
+	        <ul class="sub-menu">
 	          <li><a class="link_name" href="/codeGroup/codeGroupList">코드그룹 리스트 관리</a></li>
 	          <li><a href="/code/CodeList">코드 관리</a></li>
 	          <li><a href="/codeGroup/codeGroupList">코드그룹 관리</a></li>
@@ -138,7 +136,7 @@
 	      <li>
 	        <div class="profile-details">
 	          <div class="profile-content">
-	            <img src="image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
+	            <img src="/resources/image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
 	          </div>
 	          <div class="name-job">
 	            <div class="profile_name">Min soo</div>
@@ -157,7 +155,7 @@
 	        <div class="search">
 	          <input type="text" placeholder="Search...">
 	          <button type="submit">
-	            <img src="image/2093656_seach_look_search_see_icon.png" alt="">
+	            <img src="/resources/image/2093656_seach_look_search_see_icon.png" alt="">
 	          </button>
 	        </div>
 	      </div>
@@ -165,12 +163,12 @@
 	    <div class="main">    
 	      <div class="mainSearch">
 	        <div class="title">
-	          <h5>코드관리</h5>
+	          <h5>전체회원 관리</h5>
 	        </div>
 	        <div class="two">
 	          <div class="three">
 	            <select name="shUseOption">
-					<option value="" hidden selected>사용여부</option>
+					<option value="" hidden selected>삭제여부</option>
 					<option value="0">N</option>
 					<option value="1">Y</option>
 	            </select>
@@ -182,11 +180,6 @@
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	             <select name="shDelOption">
-					<option value="" hidden selected>삭제여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
-	            </select>
 	            <select id="shOption" name="shOption">
 	              <option value="" hidden selected>검색구분</option>
 	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
@@ -197,75 +190,84 @@
 	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="button" onclick="reSet();">리셋</button>
+	              <button  type="submit">리셋</button>
 	            </div>
 	          </div>
 	        </div>
 	        <div class="wow">
 	          <select>
 	            <option>10</option>
+	            <option>20</option>
+	            <option>30</option>
+	            <option>40</option>
+	            <option>50</option>
+	            
 	          </select>  
 	        </div>
 	        <div class="four">
 	          <div class="five">
 	            <div class="line">
-	              <!-- <h6>코드그룹 관리</h6> -->
+	            <!--   <h6>코드그룹 관리</h6> -->
 	            </div>
-	            <div class="row" style="margin: 25px; text-align: center;">
-	            	<div class="col">
-	            		<div class="row mb-2">
-	            			<div class="col">코드그룹 코드</div>
-							<div class="col">
-								<select class="form-select">
-			            	<c:forEach items="${add}" var="add" varStatus="status">
-			            			<option hidden selected>선택</option>
-									<option><c:out value="${add.name }"/></option>
-							</c:forEach>
-								</select>
-							</div>
-	            		</div>
-						<div class="row mb-2">
-							<div class="col">코드</div>
-							<div class="col">
-								<input type="text" class="form-control" placeholder="자동생성" disabled>
-							</div>
-						</div>
-						<div class="row mb-2">
-							<div class="col">코드이름</div>
-							<div class="col">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-						<div class="row mb-2">
-							<div class="col">순서</div>
-							<div class="col">
-								<input type="text" class="form-control">
-							</div>
-						</div>
-						<div class="row mb-2">
-							<div class="col">사용여부</div>
-							<div class="col">
-								<select class="form-select">
-									<option>N</option>
-									<option>Y</option>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">설명</div>
-							<div class="col">
-								<textarea cols="40"></textarea>
-							</div>
-						</div>
-						<div class="row mt-5 d-grid justify-content-end">
-							<div class="col">
-								<button type="submit" class="btn btn-primary">등록</button>
-							</div>
-						</div>
-	            	</div>
-	            </div>
-				</div>
-				<div class="Pagingdp">
+	            <table class="table table-striped">
+	              <tr class="tableTr">
+	                <th><input class="form-check-input" type="checkbox"></th>
+	                <th>#</th>
+	                <th>회원 코드</th>
+	                <th>user_type</th>
+	                <th>아이디</th>
+	                <th>비밀번호</th>
+	                <th>이름</th>
+	                <th>생년월일</th>
+	                <th>성별</th>
+	                <th>이메일</th>
+	                <th>전화번호</th>
+	                <th>디렉터타입</th>
+	                <th>키</th>
+	                <th>몸무게</th>
+	                <th>쌍꺼풀유무</th>
+	                <th>목소리톤</th>
+	                <th>나이</th>
+	                <th>회사유무</th>
+	              </tr>
+	<c:choose>
+		<c:when test="${fn:length(list) eq 0}">
+			<tr>
+				<td style="text-align: center;" colspan="9"> no Data!</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${list}" var="list" varStatus="status">
+				<tr>
+					<td><input class="form-check-input" type="checkbox"></td>
+					<td></td>
+					<td>	
+						<a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>">
+							<c:out value="${list.seq }"/>
+						</a>
+					</td>
+					<td><c:out value="${list.user_type }"/></td>
+					<td><c:out value="${list.id }"/></td>
+					<td><c:out value="${list.password }"/></td>
+					<td><c:out value="${list.name }"/></td>
+					<td><c:out value="${list.dob }"/></td>
+					<td><c:out value="${list.gender }"/></td>
+					<td><c:out value="${list.email }"/></td>
+					<td><c:out value="${list.phone_number }"/></td>
+					<td><c:out value="${list.direct_type }"/></td>
+					<td><c:out value="${list.actor_height }"/></td>
+					<td><c:out value="${list.actor_weight }"/></td>
+					<td><c:out value="${list.actor_eyelid }"/></td>
+					<td><c:out value="${list.actor_voice }"/></td>
+					<td><c:out value="${list.age }"/></td>
+					<td><c:out value="${list.company_useNy }"/></td>
+				</tr>	
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>	
+	            </table>
+	          </div>
+	          <div class="Pagingdp">
 					<div class="pagination">
 						<a href="#">Prev</a>
 						<a href="#" class="active">1</a>
@@ -283,7 +285,7 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="#"><button class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></button></a>
+						<a href="/codeGroup/codeGroupForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
 					</div>
 				</div>
 	        </div>
@@ -323,7 +325,67 @@
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
   });
+  
+  $(function() {
+	  $( "#StDatePicker" ).datepicker({
+		  changeMonth: true,
+		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+	  });
+  });
+  $(function() {
+	  $( "#EnDatePicker" ).datepicker({
+		  changeMonth: true,
+		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+	  });
+  });
+  
+	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("form[name=form]");
+	var formVo = $("form[name=formVo]");
+	
+	
+	$("#btnSave").on("click", function(){
+		
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   	//	if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   	//	if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	}); 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </script>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>

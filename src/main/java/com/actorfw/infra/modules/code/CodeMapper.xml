@@ -15,25 +15,31 @@
 		FROM cc
 		WHERE
 		1=1
-		
 		<choose>
 			<!-- <when test="shOption == 0"></when> -->
 			<when test="shOption == 1">AND seq = #{shValue} </when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND useNY LIKE CONCAT ('%',#{shValue},'%')</when>
 		</choose>
+		<choose>
+			<!-- useNy -->
+			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
+		</choose>
+		<choose>
+			<!-- delNy -->
+			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
+		</choose>							
 		
 		</select>
  
-		
+		<!-- 코드그룹이름 자동로드 -->
 		<select id="addCodeName" resultMap="resultMapObj">
-		
 		SELECT
 			name
 		FROM ccg
 		WHERE
 		1=1
-		
 		</select>
 
 		

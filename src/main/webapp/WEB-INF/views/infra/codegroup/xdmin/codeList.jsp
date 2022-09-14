@@ -13,15 +13,10 @@
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">   
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -166,10 +161,10 @@
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select>
-					<option hidden selected>삭제여부</option>
-					<option>N</option>
-					<option>Y</option>
+	            <select name="shUseOption">
+					<option value="" hidden selected>사용여부</option>
+					<option value="0">N</option>
+					<option value="1">Y</option>
 	            </select>
 	            <select>
 	              <option hidden selected>날짜</option>
@@ -179,7 +174,11 @@
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	            	
+	             <select name="shDelOption">
+					<option value="" hidden selected>삭제여부</option>
+					<option value="0">N</option>
+					<option value="1">Y</option>
+	            </select>	
 	            <select id="shOption" name="shOption">
 	              <option value="" hidden selected>검색구분</option>	
 	              <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
@@ -189,7 +188,7 @@
 	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="submit">리셋</button>
+	              <button  type="button" onclick="reSet();">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -320,7 +319,9 @@
 	  });
   });
   
-  
+  function reSet() {
+	  location.href=("/code/CodeList")
+  }
   
   
   

@@ -22,15 +22,16 @@
 			<when test="shOption == 0"></when>
 			<when test="shOption == 1">AND seq = #{shValue}</when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%') </when>
-			<when test="shOption == 3">AND delNy LIKE CONCAT('%',#{shValue},'%') </when>	
-			<when test="shOption == 4">AND useNy LIKE CONCAT('%',#{shValue},'%') </when>
 		</choose>
 		
 		<choose>
 			<when test="shUseOption == 0">AND delNy LIKE CONCAT('%',0,'%') </when>
 			<when test="shUseOption == 1">AND delNy LIKE CONCAT('%',1,'%') </when>
 		</choose>
-		
+		<choose>
+			<when test="shDelOption == 0">AND delNy LIKE CONCAT('%',0,'%') </when>
+			<when test="shDelOption == 1">AND delNy LIKE CONCAT('%',1,'%') </when>
+		</choose>
 		
 			<!-- AND useNy = 1 -->
 			<!-- AND name LIKE CONCAT('%',#{shValue},'%') -->
@@ -58,11 +59,13 @@
 			name
 			,useNy
 			,oder	
+			,delNy
 		)
 		VALUE (
 			#{name}
 			,#{useNy}
 			,#{oder}
+			,#{delNy}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -77,6 +80,7 @@
 			name = #{name}
 			,useNy = #{useNy}
 			,oder = #{oder}
+			,delNy = #{delNy}
 			<!-- <include refid=""></include> -->
 		WHERE 1=1
 			AND seq = #{seq}

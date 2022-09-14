@@ -28,7 +28,7 @@
 	
 </head>
 <body>
-	<form name="form" action="" >
+	<form name="form" action="http://localhost:8080/codeGroup/codeGroupList" >
 		<input hidden="hidden" name="seq" value="<c:out value="${dto.seq}"/>">
 	  <div class="sidebar close">
 	    <div class="logo-details">
@@ -168,7 +168,7 @@
 	        <div class="two">
 	          <div class="three">
 	            <select name="shUseOption">
-					<option value="" hidden selected>삭제여부</option>
+					<option value="" hidden selected>사용여부</option>
 					<option value="0">N</option>
 					<option value="1">Y</option>
 	            </select>
@@ -180,6 +180,11 @@
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
+	             <select name="shDelOption">
+					<option value="" hidden selected>삭제여부</option>
+					<option value="0">N</option>
+					<option value="1">Y</option>
+	            </select>
 	            <select id="shOption" name="shOption">
 	              <option value="" hidden selected>검색구분</option>
 	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
@@ -190,7 +195,7 @@
 	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="submit">리셋</button>
+	              <button  type="button" onclick="reSet();">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -253,12 +258,15 @@
 	          </div>
 	          <div class="Pagingdp">
 					<div class="pagination">
+						<!-- 이전페이지 버튼 -->
 						<a href="#">Prev</a>
+						<!-- 각 번호 페이지 버튼 -->
 						<a href="#" class="active">1</a>
 						<a href="#" class="active">2</a>
 						<a href="#" class="active">3</a>
 						<a href="#" class="active">4</a>
 						<a href="#" class="active">5</a>
+						<!-- 다음페이지 버튼 -->
 						<a href="#">Next</a>
 					</div>
 				</div>
@@ -342,7 +350,7 @@
 	
 	
 	$("#btnSave").on("click", function(){
-		
+		alert
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 	   	//	if (validationInst() == false) return false;
@@ -355,7 +363,9 @@
 	   	}
 	}); 
   
-  
+  	function reSet() {
+  		location.href = ("/codeGroup/codeGroupList");
+  	}
   
   
   

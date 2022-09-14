@@ -7,6 +7,7 @@ public class CodeGroupVo {
 	private String shValue;
 	private Integer shOption;
 	private Integer shUseOption;
+	private Integer shDelOption;
 	
 	
 //--------------------------------------
@@ -35,7 +36,13 @@ public class CodeGroupVo {
 	public void setShUseOption(Integer shUseOption) {
 		this.shUseOption = shUseOption;
 	}
-	
+	public Integer getShDelOption() {
+		return shDelOption;
+	}
+	public void setShDelOption(Integer shDelOption) {
+		this.shDelOption = shDelOption;
+	}
+
 	
 	
 	
