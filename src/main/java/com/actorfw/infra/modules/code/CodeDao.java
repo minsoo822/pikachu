@@ -19,7 +19,29 @@ public class CodeDao {
 	
 	public List<Code> selectList(CodeVo vo) { return sqlsession.selectList(namespace + ".selectList", vo);}
 	
+	public Code selectOne(CodeVo vo) { 
+		
+		Code result = sqlsession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao result" + result);
+		return result;
+	}
 	
 	public List<Code> addCodeName() { return sqlsession.selectList(namespace +".addCodeName", "");}
+	
+	public int insertCd(Code dto) { 
+		
+		int result = sqlsession.insert(namespace + ".insertCd", dto);
+		System.out.println("Dao result" + result);
+		
+		return result;
+	}
+		
+		
+	public int updateCd(Code dto) { return sqlsession.update(namespace + ".updateCd", dto); }
+	
+	
+	
+	
+	
 	
 }

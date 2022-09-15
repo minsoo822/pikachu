@@ -25,7 +25,7 @@
 </head>
 <body>
 	<form action="" id="" name="form">
-	<input hidden="hidden" name="seq" value="<c:out value="${item.seq}"/>">
+	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>

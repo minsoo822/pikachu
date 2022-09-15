@@ -25,6 +25,33 @@ public class CodeController {
 		
 	}
 	
+	@RequestMapping(value = "codeView")
+	public String CodaForm(Model model, CodeVo vo) throws Exception {
+		
+		Code result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		
+		return "infra/codegroup/xdmin/codeForm";
+	}
+	
+	@RequestMapping(value = "CodeInst")
+	public String CodeInst(Code dto) throws Exception {
+		
+		int insertCd = service.insertCd(dto);
+		System.out.println("Controller insertCd" + insertCd);
+		
+		return "redirect:/code/codeList";
+	}
+	
+	public String CodeUpdt(Code dto) throws Exception {
+		
+		int updateCd = service.updateCd(dto);
+		System.out.println("Controller updateCd" + updateCd);
+		
+		return "redirect:/code/codeList";
+	}
+	
+	
 	@RequestMapping(value ="codeForm")
 	public String CodeName(Model model) throws Exception {
 		

@@ -31,7 +31,8 @@
 	
 </head>
 <body>
-	<form action="http://localhost:8080/code/CodeList">
+	<form action="http://localhost:8080/code/CodeList" id="" name="form">
+	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -191,8 +192,6 @@
 	              <option value="" hidden selected>검색구분</option>
 	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
 	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
-	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
-	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
 	            </select>
 	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
 	            <div class="searchBtn">
@@ -227,27 +226,38 @@
 						<div class="row mb-2">
 							<div class="col">코드</div>
 							<div class="col">
-								<input type="text" class="form-control" placeholder="자동생성" disabled>
+								<input type="text" class="form-control" placeholder="자동생성" disabled value="<c:out value="${item.seq }"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">코드이름</div>
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control"name="name" id="" value="<c:out value="${item.name}"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">순서</div>
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="oder" id="" value="<c:out value="${item.oder}"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">사용여부</div>
 							<div class="col">
-								<select class="form-select">
-									<option>N</option>
-									<option>Y</option>
+								<select class="form-select" name="useNy" id="" value="<c:out value="${item.useNy }"/>">
+									<option value="<c:out value="${item.useNy}"/>" hidden selected>선택</option>
+									<option value="0">N</option>
+									<option value="1">Y</option>
+								</select>
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col">삭제여부</div>
+							<div class="col">
+								<select class="form-select" id="delNy" name="delNy" value="<c:out value="${item.delNy }"/>">
+									<option value="<c:out value="${item.delNy}"/>" hidden selected>선택</option>
+									<option value="0">N</option>
+									<option value="1">Y</option>
 								</select>
 							</div>
 						</div>
@@ -259,7 +269,8 @@
 						</div>
 						<div class="row mt-5 d-grid justify-content-end">
 							<div class="col">
-								<button type="submit" class="btn btn-primary">등록</button>
+								<button type="button" id="btnSave" class="btn btn-primary">등록</button>
+								<a href="/code/CodeList"><button type="button" class="btn btn-primary">목록</button></a>
 							</div>
 						</div>
 	            	</div>
@@ -323,6 +334,34 @@
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
   });
+  </script>
+  
+  <script type="text/javascript">
+  
+  var goUrlList = "/code/CodeList"; 			/* #-> */
+	var goUrlInst = "/code/CodeInst"; 			/* #-> */
+	var goUrlUpdt = "/code/CodeUpdt";				/* #-> */
+	var goUrlUele = "/code/CodeUele";				/* #-> */
+	var goUrlDele = "/code/CodeDele";				/* #-> */
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("form[name=form]");
+	
+	
+	$("#btnSave").on("click", function(){
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   	//	if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   	//	if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	});
+  
   </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

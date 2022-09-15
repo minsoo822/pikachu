@@ -39,7 +39,7 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 //	데이터 수정
 	@Override
 	public int update1(CodeGroup dto) throws Exception {
-		System.out.println("dgfd");
+
 		return dao.update1(dto);
 	}
 //	데이터 가삭제
@@ -56,8 +56,6 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	}
 	
 	
-	
-	
 //	 @Override 
 //	 public List<CodeGroup> searchList(CodeGroupVo vo) throws Exception
 //	 {
@@ -65,6 +63,14 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 //	 return dao.searchList(vo); 
 //	 }
 	 
+//---------------------------------------------------------------------
+	
+	//paging
+	@Override
+	public int selectOneCount(CodeGroupVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
 	
 	
 	

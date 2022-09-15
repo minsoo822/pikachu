@@ -8,7 +8,7 @@
 	
 	<resultMap type="com.actorfw.infra.modules.code.Code" id="resultMapObj"></resultMap>
 		
-		<select id="selectList" resultMap="resultMapObj">
+	<select id="selectList" resultMap="resultMapObj">
 		
 		SELECT
 			*
@@ -30,8 +30,63 @@
 			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
 		</choose>							
+	
+	</select>
+
+	<select id="selectOne" resultMap="resultMapObj">
+	
+		SELECT
+			a.seq
+			,a.name
+			,a.dore
+			,a.useNy
+			,a.delNy
+			,a.ccg_seq
+		FROM 
+		cc a
+		WHERE 1=1
+		AND seq = #{seq}
 		
-		</select>
+	</select> 
+	
+	<insert id="insertCd">
+	
+		INSERT INTO cc (
+			name
+			,oder
+			,useNy
+			,delNy
+			,ccg_seq
+		)
+		VALUE(
+			#{name}
+			,#{oder}
+			,#{useNy}
+			,#{delNy}
+			,#{ccg_seq}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		
+	</insert>
+	
+	<update id="updateCd">
+		
+		UPDATE cc
+		SET
+			name = #{name}
+			,oder = #{oder}
+			,useNy = #{useNy}
+			,delNy = #{delNy}
+			,ccg_seq = #{ccg_seq}
+		WHERE 1=1
+			AND seq = #{seq}			
+	
+	</update>
+	
+		
+ 
  
 		<!-- 코드그룹이름 자동로드 -->
 		<select id="addCodeName" resultMap="resultMapObj">

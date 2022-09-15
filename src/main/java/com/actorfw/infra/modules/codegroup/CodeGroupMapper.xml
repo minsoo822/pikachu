@@ -8,15 +8,30 @@
 
     <resultMap id="resultMapObj" type="com.actorfw.infra.modules.codegroup.CodeGroup"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		
-	 	SELECT 
-			*
-			 ,(select COUNT(ccg_seq) from cc WHERE ccg_seq = a.seq ) AS codeCount
+	<!-- paging -->
+	<sql id ="selectCommon">
 		FROM ccg a
 		WHERE 1=1
-		
-		
+			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.seq
+				,a.name
+				,a.delNy
+				,a.useNy
+				,a.oder
+				,(select COUNT(aa.ccg_seq) from cc aa WHERE aa.ccg_seq = a.seq ) AS codeCount
+				,a.creDate
+				,a.modDate
+		<include refid="selectCommon" />
+		<include refid="Base.selectListLowerForMysql"/>
 		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 		<choose>
 			<when test="shOption == 0"></when>
@@ -35,8 +50,16 @@
 		
 			<!-- AND useNy = 1 -->
 			<!-- AND name LIKE CONCAT('%',#{shValue},'%') -->
-		 ORDER BY a.seq DESC  	<!-- DESC내림차순 정렬  ASC오름차순 정렬 -->
+		  <!-- ORDER BY a.seq DESC -->   	<!-- DESC내림차순 정렬  ASC오름차순 정렬 -->
 	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	
+	
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		
@@ -105,8 +128,7 @@
 	
 	</delete>
 	
-
-
+	
 
 
 </mapper>	

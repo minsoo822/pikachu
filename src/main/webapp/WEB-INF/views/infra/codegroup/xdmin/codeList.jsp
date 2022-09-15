@@ -229,7 +229,11 @@
 				<tr>
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td></td>
-					<td><c:out value="${list.seq }"/></td>
+					<td>
+						<a href="/code/codeView?seq=<c:out value="${list.seq}"/>">
+							<c:out value="${list.seq }"/>
+						</a>
+					</td>
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.delNy }"/></td>
 					<td><c:out value="${list.useNy }"/></td>

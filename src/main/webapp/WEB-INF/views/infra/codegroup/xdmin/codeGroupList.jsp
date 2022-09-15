@@ -25,11 +25,14 @@
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
 	<form name="form" action="http://localhost:8080/codeGroup/codeGroupList" >
-		<input hidden="hidden" name="seq" value="<c:out value="${dto.seq}"/>">
+		<input type="hidden" name="seq" value="<c:out value="${dto.seq}"/>">
+		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+		<input type="hidden" name="thisPage" value="">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -237,7 +240,9 @@
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
 					<td><input class="form-check-input" type="checkbox"></td>
-					<td></td>
+					<td>
+					<%-- 	<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> 순서 카운트  --%>
+					</td>
 					<td>	
 						<a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>">
 							<c:out value="${list.seq }"/>
@@ -256,20 +261,27 @@
 	</c:choose>	
 	            </table>
 	          </div>
-	          <div class="Pagingdp">
+				<!-- pagination s -->
+			<%-- 	<%@include file="../xdmin/includeV1/pagination.jsp"%> --%>
+				<!-- pagination e -->
+				<!-- pagination s -->
+				<%@include file="../xdmin/includeV1/pagination1.jsp"%>
+				<!-- pagination e -->
+		
+	         <!--  <div class="Pagingdp">
 					<div class="pagination">
-						<!-- 이전페이지 버튼 -->
+						이전페이지 버튼
 						<a href="#">Prev</a>
-						<!-- 각 번호 페이지 버튼 -->
+						각 번호 페이지 버튼
 						<a href="#" class="active">1</a>
 						<a href="#" class="active">2</a>
 						<a href="#" class="active">3</a>
 						<a href="#" class="active">4</a>
 						<a href="#" class="active">5</a>
-						<!-- 다음페이지 버튼 -->
+						다음페이지 버튼
 						<a href="#">Next</a>
 					</div>
-				</div>
+				</div> -->
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
 						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
@@ -367,7 +379,10 @@
   		location.href = ("/codeGroup/codeGroupList");
   	}
   
-  
+  	goList = function(keyValue) {
+  		$("input:hidden[name=thisPage]").val(thisPage);
+  		form.attr("actor", goUrlList).submit();
+  	}
   
   
   
@@ -380,7 +395,7 @@
   </script>
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 </body>

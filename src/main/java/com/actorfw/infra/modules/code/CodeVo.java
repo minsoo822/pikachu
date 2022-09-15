@@ -2,6 +2,8 @@ package com.actorfw.infra.modules.code;
 
 public class CodeVo {
 
+	private String seq;
+	
 	private Integer shOption;
 	private String shValue;
 //	useNy
@@ -11,6 +13,12 @@ public class CodeVo {
 
 //----------------------------------------------------	
 	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public Integer getShOption() {
 		return shOption;
 	}

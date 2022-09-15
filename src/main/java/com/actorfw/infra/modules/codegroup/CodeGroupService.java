@@ -17,5 +17,11 @@ public interface CodeGroupService {
 	public int delete(CodeGroupVo vo) throws Exception;
 	
 	
-//	 public List<CodeGroup> searchList(CodeGroupVo vo) throws Exception; 
+//	 public List<CodeGroup> searchList(CodeGroupVo vo) throws Exception;
+	
+	
+	//------------------------------------------------------------------------
+	
+	public int selectOneCount(CodeGroupVo vo) throws Exception;
+	
 }

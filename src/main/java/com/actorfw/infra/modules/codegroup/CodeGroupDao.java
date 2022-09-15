@@ -53,7 +53,9 @@ public class CodeGroupDao {
 //	
 //	  public List<CodeGroup> searchList(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".searchList", vo); }
 //	 
-	 
+//------------------------------------------------------------------------------------------------------------------
+	
+	public int selectOneCount(CodeGroupVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	
 	
 	
