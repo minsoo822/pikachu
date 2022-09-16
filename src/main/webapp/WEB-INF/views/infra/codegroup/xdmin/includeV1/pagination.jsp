@@ -27,3 +27,17 @@
         </div>
     </div>
 </div>
+				<div class="Pagingdp">
+					<div class="pagination">
+						이전페이지 버튼
+						<a href="#">Prev</a>
+						각 번호 페이지 버튼
+						<a href="#" class="active">1</a>
+						<a href="#" class="active">2</a>
+						<a href="#" class="active">3</a>
+						<a href="#" class="active">4</a>
+						<a href="#" class="active">5</a>
+						다음페이지 버튼
+						<a href="#">Next</a>
+					</div>
+				</div> 

@@ -13,26 +13,27 @@
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">   
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
-	<form name="form" action="http://localhost:8080/codeGroup/codeGroupList" >
+<%-- 	<form name="form" action="" >
 		<input type="hidden" name="seq" value="<c:out value="${dto.seq}"/>">
-		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-		<input type="hidden" name="thisPage" value="">
+--%>	
+ 	<form name="formList" id="formList" method="post">
+			<input type="hidden" name="seq" value="${dto.seq}">
+			<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+			<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+			<input type="hidden" name="checkboxSeqArray" >
+		
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -170,23 +171,23 @@
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="shUseOption">
-					<option value="" hidden selected>사용여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+	            <select name="shUseOption" id="shUseOption">
+					<option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>사용여부</option>
+					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <select>
-	              <option hidden selected>날짜</option>
-	              <option>수정일</option>
-	              <option>등록일</option>
-	              <option>생일</option>
+	            <select id="shOptionDate" name="shOptionDate">
+	              <option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>날짜</option>
+	              <option value="1" <c:if test="${vo.shOptionDate eq 1 }">selected</c:if>>수정일</option>
+	              <option value="2" <c:if test="${vo.shOptionDate eq 2 }">selected</c:if>>등록일</option>
+	              <option value="3" <c:if test="${vo.shOptionDate eq 3 }">selected</c:if>>생일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	             <select name="shDelOption">
-					<option value="" hidden selected>삭제여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+	             <select name="shDelOption" id="shDelOption">
+					<option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>삭제여부</option>
+					<option value="0" <c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
 	            <select id="shOption" name="shOption">
 	              <option value="" hidden selected>검색구분</option>
@@ -241,13 +242,13 @@
 				<tr>
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td>
-					<%-- 	<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> 순서 카운트  --%>
+					<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>       <%--  순서 카운트  --%>
 					</td>
-					<td>	
-						<a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>">
+					 <td>
+						<a href="javascript:goForm(${list.seq })" class="text-decoration-none">
 							<c:out value="${list.seq }"/>
 						</a>
-					</td>
+					</td> 
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.delNy }"/></td>
 					<td><c:out value="${list.useNy }"/></td>
@@ -262,75 +263,64 @@
 	            </table>
 	          </div>
 				<!-- pagination s -->
-			<%-- 	<%@include file="../xdmin/includeV1/pagination.jsp"%> --%>
-				<!-- pagination e -->
-				<!-- pagination s -->
 				<%@include file="../xdmin/includeV1/pagination1.jsp"%>
 				<!-- pagination e -->
-		
-	         <!--  <div class="Pagingdp">
-					<div class="pagination">
-						이전페이지 버튼
-						<a href="#">Prev</a>
-						각 번호 페이지 버튼
-						<a href="#" class="active">1</a>
-						<a href="#" class="active">2</a>
-						<a href="#" class="active">3</a>
-						<a href="#" class="active">4</a>
-						<a href="#" class="active">5</a>
-						다음페이지 버튼
-						<a href="#">Next</a>
-					</div>
-				</div> -->
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
 						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
 						<button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="submit" ><i class="fa-solid fa-trash-can"></i></button>
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
-						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="/codeGroup/codeGroupForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
+						<button class="btn btn-success" type="button"><i class="fa-solid fa-file-excel"></i></button>
+						<button type="button" class="btn btn-primary" id="btnForm" name=""><i class="fa-solid fa-plus"></i></button>
+						
 					</div>
 				</div>
 	        </div>
 	      </div>
-	    </div>
-		</section>
-		<!-- Modal -->
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Actor's</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						정말 삭제하시겠습니까??
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">저장</button>
-					</div>
-				</div>
-			</div>
 		</div>
-	</form>
+	</section>
+</form>
   <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
   
-  $(function() {
+	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	var goUrlForm = "/codeGroup/codeGroupForm";
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+// 	var form = $("form[name=form]");
+	var form = $("form[name=formList]");
+	var formVo = $("form[name=formVo]");
+	
+	
+  	function reSet() {
+  		location.href = ("/codeGroup/codeGroupList");
+  	}
+  
+  	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action",goUrlList).submit();
+	}
+  	
+   	goForm = function(key) {
+    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */ 
+    	seq.attr("value",key);
+		form.attr("action", goUrlForm).submit();
+	}
+
+	$('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+
+	
+	
+  
+  
+	$(function() {
 	  $( "#StDatePicker" ).datepicker({
 		  changeMonth: true,
 		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
@@ -338,8 +328,8 @@
 		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
 	  });
-  });
-  $(function() {
+	 });
+	 $(function() {
 	  $( "#EnDatePicker" ).datepicker({
 		  changeMonth: true,
 		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
@@ -347,51 +337,23 @@
 		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
 	  });
-  });
-  
-	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
-	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
-	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
-	
-	var seq = $("input:hidden[name=seq]");				/* #-> */
-	
-	var form = $("form[name=form]");
-	var formVo = $("form[name=formVo]");
-	
-	
-	$("#btnSave").on("click", function(){
-		alert
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   	//	if (validationInst() == false) return false;
-	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		/* keyName.val(atob(keyName.val())); */
-	   	//	if (validationUpdt() == false) return false;
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-	}); 
-  
-  	function reSet() {
-  		location.href = ("/codeGroup/codeGroupList");
-  	}
-  
-  	goList = function(keyValue) {
-  		$("input:hidden[name=thisPage]").val(thisPage);
-  		form.attr("actor", goUrlList).submit();
-  	}
+	 });
   
   
-  
-  
-  
-  
-  
-  
-  
+	let arrow = document.querySelectorAll(".arrow");
+	for (var i = 0; i < arrow.length; i++) {
+	  arrow[i].addEventListener("click", (e)=>{
+	 let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+	 arrowParent.classList.toggle("showMenu");
+	  });
+	}
+	let sidebar = document.querySelector(".sidebar");
+	let sidebarBtn = document.querySelector(".bx-menu");
+	console.log(sidebarBtn);
+	sidebarBtn.addEventListener("click", ()=>{
+	  sidebar.classList.toggle("close");
+	});
+	    
   </script>
 
 

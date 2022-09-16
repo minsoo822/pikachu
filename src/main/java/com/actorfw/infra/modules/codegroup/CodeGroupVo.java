@@ -4,61 +4,20 @@ import com.actorfw.infra.common.constants.Constants;
 
 public class CodeGroupVo {
 
-	private String seq;
-	
-	private String shValue;
-	private Integer shOption;
-	private Integer shUseOption;
-	private Integer shDelOption;
-	
+	private String seq;						//시퀀스
+	private String mainKey;					
+	//	search
+	private String shValue;					//value값(내용)
+	private Integer shOption;				//선택옵션
+	private Integer shUseOption;			//useNY
+	private Integer shDelOption;			//delNy
 	private String shDelNy;
-	
-	
-//--------------------------------------
-	
-	public String getSeq() {
-		return seq;
-	}
-	public void setSeq(String seq) {
-		this.seq = seq;
-	}
-	public String getShValue() {
-		return shValue;
-	}
-	public void setShValue(String shValue) {
-		this.shValue = shValue;
-	}
-	public Integer getShOption() {
-		return shOption;
-	}
-	public void setShOption(Integer shOption) {
-		this.shOption = shOption;
-	}
-	public Integer getShUseOption() {
-		return shUseOption;
-	}
-	public void setShUseOption(Integer shUseOption) {
-		this.shUseOption = shUseOption;
-	}
-	public Integer getShDelOption() {
-		return shDelOption;
-	}
-	public void setShDelOption(Integer shDelOption) {
-		this.shDelOption = shDelOption;
-	}
-	public String getShDelvalue() {
-		return shDelNy;
-	}
-	public void setShDelvalue(String shDelvalue) {
-		this.shDelNy = shDelvalue;
-	}
+//	날짜
+	private Integer shOptionDate;			//날짜선택 옵션
+	private Integer shDateStart;			//시작날짜
+	private Integer shDateEnd;				//끝날짜
 
-	
-	//------------------------------------------------------------------------
-	
-	
-
-	//	paging
+//	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수
 	private int pageNumToShow = Constants.PAGE_NUM_TO_SHOW;		// 화면에 보여줄 페이징 번호 갯수
@@ -113,17 +72,98 @@ public class CodeGroupVo {
 			setStartRnumForMysql((getRowNumToShow() * (getThisPage()-1)));
 		}
 		
-		System.out.println("getThisPage():" + getThisPage());
-		System.out.println("getTotalRows():" + getTotalRows());
-		System.out.println("getRowNumToShow():" + getRowNumToShow());
-		System.out.println("getTotalPages():" + getTotalPages());
-		System.out.println("getStartPage():" + getStartPage());
-		System.out.println("getEndPage():" + getEndPage());		
-		System.out.println("getStartRnumForOracle():" + getStartRnumForOracle());
-		System.out.println("getEndRnumForOracle():" + getEndRnumForOracle());
-		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
+//		System.out.println("getThisPage():" + getThisPage());
+//		System.out.println("getTotalRows():" + getTotalRows());
+//		System.out.println("getRowNumToShow():" + getRowNumToShow());
+//		System.out.println("getTotalPages():" + getTotalPages());
+//		System.out.println("getStartPage():" + getStartPage());
+//		System.out.println("getEndPage():" + getEndPage());		
+//		System.out.println("getStartRnumForOracle():" + getStartRnumForOracle());
+//		System.out.println("getEndRnumForOracle():" + getEndRnumForOracle());
+//		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
+	
+//----------------------------------------------------------------------------------	
+		
+		
+		public String getSeq() {
+			return seq;
+		}
+		public void setSeq(String seq) {
+			this.seq = seq;
+		}
+
+		public String getMainKey() {
+			return mainKey;
+		}
+
+		public void setMainKey(String mainKey) {
+			this.mainKey = mainKey;
+		}
+
+		public String getShDelNy() {
+			return shDelNy;
+		}
+
+		public void setShDelNy(String shDelNy) {
+			this.shDelNy = shDelNy;
+		}
+
+		public String getShValue() {
+			return shValue;
+		}
+		public void setShValue(String shValue) {
+			this.shValue = shValue;
+		}
+		public Integer getShOption() {
+			return shOption;
+		}
+		public void setShOption(Integer shOption) {
+			this.shOption = shOption;
+		}
+		public Integer getShUseOption() {
+			return shUseOption;
+		}
+		public void setShUseOption(Integer shUseOption) {
+			this.shUseOption = shUseOption;
+		}
+		public Integer getShDelOption() {
+			return shDelOption;
+		}
+		public void setShDelOption(Integer shDelOption) {
+			this.shDelOption = shDelOption;
+		}
+		public String getShDelvalue() {
+			return shDelNy;
+		}
+		public void setShDelvalue(String shDelvalue) {
+			this.shDelNy = shDelvalue;
+		}
+		public Integer getShOptionDate() {
+			return shOptionDate;
+		}
+
+		public void setShOptionDate(Integer shOptionDate) {
+			this.shOptionDate = shOptionDate;
+		}
+
+		public Integer getShDateStart() {
+			return shDateStart;
+		}
+
+		public void setShDateStart(Integer shDateStart) {
+			this.shDateStart = shDateStart;
+		}
+
+		public Integer getShDateEnd() {
+			return shDateEnd;
+		}
+
+		public void setShDateEnd(Integer shDateEnd) {
+			this.shDateEnd = shDateEnd;
+		}
+//---------------------------------------------------------------------		
 		public int getThisPage() {
 			return thisPage;
 		}

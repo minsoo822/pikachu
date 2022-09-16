@@ -24,8 +24,9 @@
 	
 </head>
 <body>
-	<form action="" id="" name="form">
-	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
+	<form action="" id="" name="form" method="post">
+		<input type="hidden" name="seq" value="${vo.seq}">
+
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -216,7 +217,7 @@
 						<div class="row mb-2">
 							<div class="col">코드이름</div>
 							<div class="col">
-								<input type="text" class="form-control" name="name" id="name" value="<c:out value="${item.name}"/>">
+								<input type="text" class="form-control" name="name" id="name" value="${item.name}">
 							</div>
 						</div>
 						<div class="row mb-2">
@@ -229,7 +230,7 @@
 							<div class="col">사용여부</div>
 							<div class="col">
 								<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
-									<option value="<c:out value="${item.useNy }"/>" hidden selected>선택</option>
+									<option value="" <c:out value="${item.useNy }"/>" hidden selected>선택</option>
 									<option value="0">N</option>
 									<option value="1">Y</option>
 								</select>
@@ -239,7 +240,7 @@
 							<div class="col">삭제여부</div>
 							<div class="col">
 								<select class="form-select" id="delNy" name="delNy" value="<c:out value="${item.delNy }"/>">
-									<option value="<c:out value="${item.delNy }"/>" hidden selected>선택</option>
+									<option value=""<c:out value="${item.delNy }"/>" hidden selected>선택</option>
 									<option value="0">N</option>
 									<option value="1">Y</option>
 								</select>
@@ -254,7 +255,7 @@
 						<div class="row mt-5 d-grid justify-content-end">
 							<div class="col">
 								<button type="button" class="btn btn-primary" id="btnSave" onclick="reg()">등록</button>
-								<a href="/codeGroup/codeGroupList"><button type="button" class="btn btn-primary">목록</button></a>
+								<button type="button" class="btn btn-primary" id="btnList">목록</button>
 							</div>
 						</div>
 	            	</div>
@@ -285,62 +286,16 @@
 	      </div>
 	    </div>
 		</section>
-		<!-- Modal -->
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Actor's</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						정말 삭제하시겠습니까??
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">저장</button>
-					</div>
-				</div>
-			</div>
-		</div>
 	</form>
+ 	
+	<form name="formVo" id="formVo" method="post">
+		<!-- *Vo.jsp s -->
+		<%@include file="../xdmin/includeV1/codeGroupVo.jsp"%>		<!-- #-> -->
+		<!-- *Vo.jsp e -->
+	</form>
+
   <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
-  </script>
-  
-  <script>
-  function reg() {
-	
-  
-	  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
-		  alert("코드그룹 이름을 입력해주세요.");
-		  document.getElementById("name").value = "";
-		  document.getElementById("name").focus();
-		  return false;
-	  }
-	  
-	  if(document.getElementById("useNy").value == 2) {
-		  alert("코드그룹 사용유무를 선택해주세요.");
-		  document.getElementById("useNy").value = 2;
-		  document.getElementById("useNy").focus();
-		  return false;
-	  }
-	
-	  document.getElementById("FormInst").submit();
-  }	  
-  
+
 	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
 	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
@@ -350,6 +305,7 @@
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
 	var form = $("form[name=form]");
+	var formVo = $("form[name=formVo]");
 	
 	
 	$("#btnSave").on("click", function(){
@@ -364,7 +320,10 @@
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
 	}); 
-	
+
+	$("#btnList").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	});
 	
   
   
@@ -383,9 +342,38 @@
   
   
   
+  function reg() {
+	
+	  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
+		  alert("코드그룹 이름을 입력해주세요.");
+		  document.getElementById("name").value = "";
+		  document.getElementById("name").focus();
+		  return false;
+	  }
+	  
+	  if(document.getElementById("useNy").value == 2) {
+		  alert("코드그룹 사용유무를 선택해주세요.");
+		  document.getElementById("useNy").value = 2;
+		  document.getElementById("useNy").focus();
+		  return false;
+	  }
+	
+		  document.getElementById("FormInst").submit();
+  }	  
   
-  
-  
+  let arrow = document.querySelectorAll(".arrow");
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e)=>{
+   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+   arrowParent.classList.toggle("showMenu");
+    });
+  }
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".bx-menu");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("close");
+  });
   </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

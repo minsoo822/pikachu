@@ -14,8 +14,17 @@
 		WHERE 1=1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
 			<choose>
+				<when test="shOption == 0"></when>
 				<when test="shOption == 1">AND seq = #{shValue}</when>
 				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+			<choose>
+				<when test="shUseOption == 0">AND useNy LIKE CONCAT('%',0,'%') </when>
+				<when test="shUseOption == 1">AND useNy LIKE CONCAT('%',1,'%') </when>
+			</choose>
+			<choose>
+				<when test="shDelOption == 0">AND delNy LIKE CONCAT('%',0,'%') </when>
+				<when test="shDelOption == 1">AND delNy LIKE CONCAT('%',1,'%') </when>
 			</choose>
 	</sql>
 	
@@ -31,35 +40,14 @@
 				,a.creDate
 				,a.modDate
 		<include refid="selectCommon" />
+				ORDER BY a.seq DESC	<!-- DESC내림차순 정렬  ASC오름차순 정렬 -->
 		<include refid="Base.selectListLowerForMysql"/>
-		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
-		<choose>
-			<when test="shOption == 0"></when>
-			<when test="shOption == 1">AND seq = #{shValue}</when>
-			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%') </when>
-		</choose>
-		
-		<choose>
-			<when test="shUseOption == 0">AND delNy LIKE CONCAT('%',0,'%') </when>
-			<when test="shUseOption == 1">AND delNy LIKE CONCAT('%',1,'%') </when>
-		</choose>
-		<choose>
-			<when test="shDelOption == 0">AND delNy LIKE CONCAT('%',0,'%') </when>
-			<when test="shDelOption == 1">AND delNy LIKE CONCAT('%',1,'%') </when>
-		</choose>
-		
-			<!-- AND useNy = 1 -->
-			<!-- AND name LIKE CONCAT('%',#{shValue},'%') -->
-		  <!-- ORDER BY a.seq DESC -->   	<!-- DESC내림차순 정렬  ASC오름차순 정렬 -->
 	</select>
 	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
 	</select>
-	
-	
-	
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		
@@ -73,8 +61,7 @@
 		ccg a
 		WHERE 1=1
 		AND seq = #{seq}
-		
-	
+
 	</select>
 	
  	<insert id="insert">		<!-- 데이터 넣기 -->
