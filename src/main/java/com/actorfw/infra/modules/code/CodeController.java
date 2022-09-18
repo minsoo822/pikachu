@@ -19,6 +19,10 @@ public class CodeController {
 	public String CodeList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 		
 		List<Code> list = service.selectList(vo);
+		
+		System.out.println("검색어 :" + vo.getShValue());
+		System.out.println("검색옵션 :" + vo.getShOption());
+		
 		model.addAttribute("list", list);
 //		model.addAttribute("vo", vo);
 		
@@ -26,14 +30,22 @@ public class CodeController {
 		
 	}
 	
-	@RequestMapping(value = "codeView")
-	public String CodaForm(Model model, CodeVo vo) throws Exception {
+	@RequestMapping(value = "codeForm")
+	public String CodaForm(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 		
+//		정보를 하나씩 가져올때
 		Code result = service.selectOne(vo);
+		
+		System.out.println("검색어 :" + vo.getShValue());
+		System.out.println("검색옵션 :" + vo.getShOption());
 		model.addAttribute("item", result);
+//		코드그룹이름을 가져올때
+		List<Code> add = service.addCodeName(vo);
+		model.addAttribute("add", add);
 		
 		return "infra/codegroup/xdmin/codeForm";
 	}
+	
 	
 	@RequestMapping(value = "CodeInst")
 	public String CodeInst(Code dto) throws Exception {
@@ -44,6 +56,7 @@ public class CodeController {
 		return "redirect:/code/codeList";
 	}
 	
+	@RequestMapping(value = "CodeUpdt")
 	public String CodeUpdt(Code dto) throws Exception {
 		
 		int updateCd = service.updateCd(dto);
@@ -53,15 +66,7 @@ public class CodeController {
 	}
 	
 	
-	@RequestMapping(value ="codeForm")
-	public String CodeName(Model model) throws Exception {
-		
-		List<Code> add = service.addCodeName();
-		model.addAttribute("add", add);
-		
-		return "infra/codegroup/xdmin/codeForm";
-		
-	}
+	
 	
 //-----------------------------------------페이지이동
 	

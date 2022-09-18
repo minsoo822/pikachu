@@ -11,24 +11,29 @@
 	<select id="selectList" resultMap="resultMapObj">
 		
 		SELECT
-			*
-		FROM cc
+			a.seq
+			,a.name
+			,a.oder
+			,a.useNy
+			,a.delNy
+			,a.creDate
+			,a.modDate
+		FROM cc a
 		WHERE
 		1=1
 		<choose>
 			<!-- <when test="shOption == 0"></when> -->
 			<when test="shOption == 1">AND seq = #{shValue} </when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-		</choose>
-		<choose>
 			<!-- useNy -->
 			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
-		</choose>
-		<choose>
 			<!-- delNy -->
 			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
+			<!-- Date -->
+			<when test="shDateOption == 1"> And modDate LIKE CONCAT (1)</when>
+			<when test="shDateOption == 2"> And creDate LIKE CONCAT (2)</when>
 		</choose>							
 	
 	</select>
@@ -38,7 +43,7 @@
 		SELECT
 			a.seq
 			,a.name
-			,a.dore
+			,a.oder
 			,a.useNy
 			,a.delNy
 			,a.ccg_seq
@@ -56,14 +61,14 @@
 			,oder
 			,useNy
 			,delNy
-			,ccg_seq
+			<!-- ,ccg_seq -->
 		)
 		VALUE(
 			#{name}
 			,#{oder}
 			,#{useNy}
 			,#{delNy}
-			,#{ccg_seq}
+			<!-- ,#{ccg_seq} -->
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

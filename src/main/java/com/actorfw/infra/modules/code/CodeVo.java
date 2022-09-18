@@ -3,13 +3,14 @@ package com.actorfw.infra.modules.code;
 public class CodeVo {
 
 	private String seq;
-	
+	private String ccg_seq;
 	private Integer shOption;
 	private String shValue;
 //	useNy
 	private Integer shUseOption;
 //	delNy
 	private Integer shDelOption;
+	private String shDateOption;
 
 //----------------------------------------------------	
 	
@@ -18,6 +19,12 @@ public class CodeVo {
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public String getCcg_seq() {
+		return ccg_seq;
+	}
+	public void setCcg_seq(String ccg_seq) {
+		this.ccg_seq = ccg_seq;
 	}
 	public Integer getShOption() {
 		return shOption;
@@ -42,6 +49,12 @@ public class CodeVo {
 	}
 	public void setShDelOption(Integer shDelOption) {
 		this.shDelOption = shDelOption;
+	}
+	public String getShDateOption() {
+		return shDateOption;
+	}
+	public void setShDateOption(String shDateOption) {
+		this.shDateOption = shDateOption;
 	}
 	
 	

@@ -16,23 +16,18 @@
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">   
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
 </head>
 <body>
-	<form action="http://localhost:8080/code/CodeList" id="" name="form">
-	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
+	<form id="mainForm" name="form">
+	<input type="hidden" name="seq" value="${dto.seq}">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -139,7 +134,7 @@
 	      <li>
 	        <div class="profile-details">
 	          <div class="profile-content">
-	            <img src="image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
+	            <img src="/resources/image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
 	          </div>
 	          <div class="name-job">
 	            <div class="profile_name">Min soo</div>
@@ -158,7 +153,7 @@
 	        <div class="search">
 	          <input type="text" placeholder="Search...">
 	          <button type="submit">
-	            <img src="image/2093656_seach_look_search_see_icon.png" alt="">
+	            <img src="/resources/image/2093656_seach_look_search_see_icon.png" alt="">
 	          </button>
 	        </div>
 	      </div>
@@ -193,10 +188,10 @@
 	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
 	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
+	            <input type="text" id="shValue" name="shValue" value="${vo.shValue}"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="button" onclick="reSet();">리셋</button>
+	              <button  type="button" onclick="reSet()">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -215,10 +210,10 @@
 	            		<div class="row mb-2">
 	            			<div class="col">코드그룹 코드</div>
 							<div class="col">
-								<select class="form-select">
+								<select class="form-select" name="seq">
 			            	<c:forEach items="${add}" var="add" varStatus="status">
 			            			<option hidden selected>선택</option>
-									<option><c:out value="${add.name }"/></option>
+									<option value="${item.ccg_seq }"><c:out value="${add.name }"/></option>
 							</c:forEach>
 								</select>
 							</div>
@@ -270,7 +265,7 @@
 						<div class="row mt-5 d-grid justify-content-end">
 							<div class="col">
 								<button type="button" id="btnSave" class="btn btn-primary">등록</button>
-								<a href="/code/CodeList"><button type="button" class="btn btn-primary">목록</button></a>
+								<button type="button" class="btn btn-primary" onclick="goList()">목록</button>
 							</div>
 						</div>
 	            	</div>
@@ -338,16 +333,16 @@
   
   <script type="text/javascript">
   
-  var goUrlList = "/code/CodeList"; 			/* #-> */
+ 	var goUrlList = "/code/CodeList"; 			/* #-> */
 	var goUrlInst = "/code/CodeInst"; 			/* #-> */
 	var goUrlUpdt = "/code/CodeUpdt";				/* #-> */
 	var goUrlUele = "/code/CodeUele";				/* #-> */
 	var goUrlDele = "/code/CodeDele";				/* #-> */
+	var goUrlForm = "/code/codeForm";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
 	var form = $("form[name=form]");
-	
 	
 	$("#btnSave").on("click", function(){
 		if (seq.val() == "0" || seq.val() == ""){
@@ -362,6 +357,19 @@
 	   	}
 	});
   
+	function reSet() {
+		location.href=("/code/CodeList");
+	}
+	
+	function goList() {
+		alert("안뇽");
+		form.attr("action", "/code/CodeList").submit();
+	}
+	
+	
+	
+	
+	
   </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

@@ -196,10 +196,10 @@
 	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
 	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
+	            <input type="text" id="shValue" name="shValue" value="${vo.shValue }"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="button" onclick="reSet();">리셋</button>
+	              <button  type="button" onclick="reSet1()">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -281,6 +281,7 @@
 		</div>
 	</section>
 </form>
+
   <script>
   
 	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
@@ -296,9 +297,9 @@
 	var form = $("form[name=formList]");
 	var formVo = $("form[name=formVo]");
 	
-	
+	 
   	function reSet() {
-  		location.href = ("/codeGroup/codeGroupList");
+  		location.href = "/codeGorup/codeGroupList";
   	}
   
   	goList = function(thisPage) {
@@ -316,7 +317,9 @@
 		goForm(0);                
 	});
 
-	
+	function reSet1() {
+		alert("하이루");
+	}
 	
   
   

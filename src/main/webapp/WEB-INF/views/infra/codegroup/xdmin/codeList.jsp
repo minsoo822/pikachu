@@ -23,7 +23,8 @@
 	
 </head>
 <body>
-	<form action="http://localhost:8080/code/CodeList">
+	<form id="mainForm">
+	<input type="hidden" name="seq" id="seq" value="${dto.seq }">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -161,29 +162,28 @@
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="shUseOption">
+	            <select name="shUseOption" id="shUseOption">
 					<option value="" hidden selected>사용여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N<option>
+					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <select>
+	            <select name="shDateOption" id="shDateOption">
 	              <option hidden selected>날짜</option>
-	              <option>수정일</option>
-	              <option>등록일</option>
-	              <option>생일</option>
+	              <option value="" <c:if test="${empty vo.shDateOption}">selected</c:if>>생일</option>
+	              <option value="1" <c:if test="${vo.shDateOption eq 1 }">selected</c:if>>수정일<option>
+	              <option value="2" <c:if test="${vo.shDateOption eq 2 }">selected</c:if>>등록일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	             <select name="shDelOption">
+	             <select name="shDelOption" id="shDelOption">
 					<option value="" hidden selected>삭제여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+					<option value="0"value="0"<c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
+					<option value="1"value="0"<c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
 	            </select>	
 	            <select id="shOption" name="shOption">
 	              <option value="" hidden selected>검색구분</option>	
 	              <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
 	              <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
-	              <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 사용여부</option>
 	            </select>
 	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어">
 	            <div class="searchBtn">
@@ -230,7 +230,7 @@
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td></td>
 					<td>
-						<a href="/code/codeView?seq=<c:out value="${list.seq}"/>">
+						<a href="javascript:editForm(${list.seq})">
 							<c:out value="${list.seq }"/>
 						</a>
 					</td>
@@ -263,33 +263,19 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="/code/codeForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
+						<a href="" class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></a>
 					</div>
 				</div>
 	        </div>
 	      </div>
 	    </div>
 		</section>
-		<!-- Modal -->
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Actor's</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						정말 삭제하시겠습니까??
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">저장</button>
-					</div>
-				</div>
-			</div>
-		</div>
 	</form>
   <script>
+  
+  
+  
+  
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
     arrow[i].addEventListener("click", (e)=>{
@@ -327,17 +313,14 @@
 	  location.href=("/code/CodeList")
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  var Form = $('#mainForm');
+  var seq = $("input:hidden[name=seq]");	
+  var editSeq = $('#seq')	
+  	
+	editForm = function(seq) {
+		editSeq.attr("Value",seq);
+		Form.attr("action", "/code/codeForm").submit();
+	} 
   
   
   </script>

@@ -34,7 +34,10 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupListPage(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
+		
 		setParamsPaging(vo);
+		
+		
 		System.out.println(vo.getStartRnumForMysql());
 		System.out.println(vo.getThisPage());
 		

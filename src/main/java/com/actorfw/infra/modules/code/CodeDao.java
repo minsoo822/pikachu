@@ -26,7 +26,7 @@ public class CodeDao {
 		return result;
 	}
 	
-	public List<Code> addCodeName() { return sqlsession.selectList(namespace +".addCodeName", "");}
+	public List<Code> addCodeName(CodeVo vo) { return sqlsession.selectList(namespace +".addCodeName", "");}
 	
 	public int insertCd(Code dto) { 
 		

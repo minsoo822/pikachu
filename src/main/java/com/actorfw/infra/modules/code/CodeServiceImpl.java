@@ -27,9 +27,9 @@ public class CodeServiceImpl implements CodeService {
 	}
 
 	@Override
-	public List<Code> addCodeName() throws Exception {	
+	public List<Code> addCodeName(CodeVo vo) throws Exception {	
 		
-		List<Code> add = dao.addCodeName();
+		List<Code> add = dao.addCodeName(vo);
 		return add;
 	}
 

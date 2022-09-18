@@ -17,9 +17,12 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	
 	@Override
 	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception {
+		/*
+		 * List<CodeGroup> list = dao.selectList(vo); 
+		 * return list;
+		 */
 		
-		List<CodeGroup> list = dao.selectList(vo);
-		return list;
+		return dao.selectList(vo);
 	}
 //	데이터 삽입
 	@Override

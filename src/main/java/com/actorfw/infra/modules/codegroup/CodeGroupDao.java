@@ -23,13 +23,12 @@ public class CodeGroupDao {
 	
 	
 	
-	
 	public List<CodeGroup> selectList(CodeGroupVo vo){ 
-		List<CodeGroup> list = sqlSession.selectList(namespace + ".selectList", vo);
+		List<CodeGroup> dto = sqlSession.selectList(namespace + ".selectList", vo);
 //		List<CodeGroup> list = sqlSession.selectList("com.actorfw.infra.modules.codegroup.CodeGroupMapper", vo);
-		return sqlSession.selectList(namespace + ".selectList", vo); }
-//		return list;
-	
+//		return sqlSession.selectList(namespace + ".selectList", vo);
+		return dto;
+	}
 	public int insert(CodeGroup dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		System.out.println("dao result" + result);
