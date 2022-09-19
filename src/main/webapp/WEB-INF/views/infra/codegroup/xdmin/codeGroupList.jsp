@@ -199,7 +199,7 @@
 	            <input type="text" id="shValue" name="shValue" value="${vo.shValue }"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="button" onclick="reSet1()">리셋</button>
+	              <button  type="button" onclick="location.href="/codeGroup/CodeGroupList">리셋</button>
 	            </div>
 	          </div>
 	        </div>
