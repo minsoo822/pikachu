@@ -19,7 +19,6 @@
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
@@ -28,7 +27,7 @@
 		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 --%>	
- 	<form name="formList" id="formList" method="post">
+ 	<form name="" id="mainForm" method="post">
 			<input type="hidden" name="seq" value="${dto.seq}">
 			<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 			<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
@@ -172,7 +171,7 @@
 	        <div class="two">
 	          <div class="three">
 	            <select name="shUseOption" id="shUseOption">
-					<option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>사용여부</option>
+					<option value="" <c:if test="${empty vo.shUseOption }">selected</c:if>>사용여부</option>
 					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N</option>
 					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
@@ -185,7 +184,7 @@
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
 	             <select name="shDelOption" id="shDelOption">
-					<option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>삭제여부</option>
+					<option value="" <c:if test="${empty vo.shDelOption }">selected</c:if>>삭제여부</option>
 					<option value="0" <c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
 					<option value="1" <c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
@@ -199,7 +198,7 @@
 	            <input type="text" id="shValue" name="shValue" value="${vo.shValue }"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="button" onclick="location.href="/codeGroup/CodeGroupList">리셋</button>
+	              <button  type="button" onclick="reSet()">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -283,7 +282,23 @@
 </form>
 
   <script>
-  
+
+	let arrow = document.querySelectorAll(".arrow");
+	for (var i = 0; i < arrow.length; i++) {
+	  arrow[i].addEventListener("click", (e)=>{
+	 let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+	 arrowParent.classList.toggle("showMenu");
+	  });
+	}
+	let sidebar = document.querySelector(".sidebar");
+	let sidebarBtn = document.querySelector(".bx-menu");
+	console.log(sidebarBtn);
+	sidebarBtn.addEventListener("click", ()=>{
+	  sidebar.classList.toggle("close");
+	});
+	
+	
+	
 	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
 	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
@@ -294,12 +309,12 @@
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
 // 	var form = $("form[name=form]");
-	var form = $("form[name=formList]");
+	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
 	 
   	function reSet() {
-  		location.href = "/codeGorup/codeGroupList";
+  		location.href = "/codeGroup/codeGroupList";
   	}
   
   	goList = function(thisPage) {
@@ -317,48 +332,25 @@
 		goForm(0);                
 	});
 
-	function reSet1() {
-		alert("하이루");
-	}
-	
-  
-  
-	$(function() {
-	  $( "#StDatePicker" ).datepicker({
-		  changeMonth: true,
-		  changeYear: true,
-		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
-		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ]
-	  });
-	 });
 	 $(function() {
-	  $( "#EnDatePicker" ).datepicker({
-		  changeMonth: true,
-		  changeYear: true,
-		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
-		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
-	 	  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+		  $( "#StDatePicker" ).datepicker({
+			  changeMonth: true,
+			  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+			  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+			  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+			  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+		  });
 	  });
-	 });
-  
-  
-	let arrow = document.querySelectorAll(".arrow");
-	for (var i = 0; i < arrow.length; i++) {
-	  arrow[i].addEventListener("click", (e)=>{
-	 let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-	 arrowParent.classList.toggle("showMenu");
+	  $(function() {
+		  $( "#EnDatePicker" ).datepicker({
+			  changeMonth: true,
+			  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+			  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+			  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+			  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+		  });
 	  });
-	}
-	let sidebar = document.querySelector(".sidebar");
-	let sidebarBtn = document.querySelector(".bx-menu");
-	console.log(sidebarBtn);
-	sidebarBtn.addEventListener("click", ()=>{
-	  sidebar.classList.toggle("close");
-	});
+  
 	    
   </script>
 

@@ -211,10 +211,10 @@
 	              <tr class="tableTr">
 	                <th><input class="form-check-input" type="checkbox"></th>
 	                <th>#</th>
-	                <th>코드그룹 코드</th>
-	                <th>코드그룹 이름</th>
-	                <th>코드그룹 삭제여부 N:0 Y:1</th>
-	                <th>코드그룹 사용여부 N:0 Y:1</th>
+	                <th>코드 코드</th>
+	                <th>코드 이름</th>
+	                <th>코드 삭제여부 N:0 Y:1</th>
+	                <th>코드 사용여부 N:0 Y:1</th>
 	                <th>등록일</th>
 	                <th>수정일</th>
 	              </tr>
@@ -230,7 +230,7 @@
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td></td>
 					<td>
-						<a href="javascript:editForm(${list.seq})">
+						<a href="javascript:goUpdtForm(${list.seq})" class="text-decoration-none">
 							<c:out value="${list.seq }"/>
 						</a>
 					</td>
@@ -263,7 +263,7 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="" class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></a>
+						<a href=javascript:goInstForm() class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></a>
 					</div>
 				</div>
 	        </div>
@@ -272,6 +272,20 @@
 		</section>
 	</form>
   <script>
+  
+  var goUrlForm = "/code/codeForm";
+  
+  var form = $('#mainForm');
+  var seq = $("input:hidden[name=seq]");	
+  var editSeq = $('#seq')	
+  	
+	goUpdtForm = function(seq) {
+		editSeq.attr("Value",seq);
+		form.attr("action", goUrlForm).submit();
+	} 
+	goInstForm = function() {
+		form.attr("action", goUrlForm).submit();
+	}
   
   
   
@@ -312,16 +326,6 @@
   function reSet() {
 	  location.href=("/code/CodeList")
   }
-  
-  var Form = $('#mainForm');
-  var seq = $("input:hidden[name=seq]");	
-  var editSeq = $('#seq')	
-  	
-	editForm = function(seq) {
-		editSeq.attr("Value",seq);
-		Form.attr("action", "/code/codeForm").submit();
-	} 
-  
   
   </script>
 

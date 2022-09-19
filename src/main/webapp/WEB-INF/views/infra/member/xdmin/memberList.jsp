@@ -167,10 +167,10 @@
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="shUseOption">
+	            <select name="">
 					<option value="" hidden selected>삭제여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+					<option>N</option>
+					<option>Y</option>
 	            </select>
 	            <select>
 	              <option hidden selected>날짜</option>
@@ -180,14 +180,14 @@
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	            <select id="shOption" name="shOption">
+	            <select id="" name="">
 	              <option value="" hidden selected>검색구분</option>
-	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
-	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
-	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
-	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
+	              <option >코드그룹 번호</option>
+	              <option>코드그룹 이름</option>
+	              <option>코드그룹 삭제여부</option>
+	              <option>코드그룹 사용여부</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
+	            <input type="text" id="" name="" placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
 	              <button  type="submit">리셋</button>
@@ -214,21 +214,21 @@
 	                <th><input class="form-check-input" type="checkbox"></th>
 	                <th>#</th>
 	                <th>회원 코드</th>
-	                <th>user_type</th>
+	                <th>회원 타입</th>
 	                <th>아이디</th>
 	                <th>비밀번호</th>
 	                <th>이름</th>
-	                <th>생년월일</th>
+	                <th>생일</th>
 	                <th>성별</th>
 	                <th>이메일</th>
-	                <th>전화번호</th>
-	                <th>디렉터타입</th>
+	                <th>휴대폰번호</th>
+	                <th>감독타입</th>
 	                <th>키</th>
 	                <th>몸무게</th>
-	                <th>쌍꺼풀유무</th>
+	                <th>쌍꺼풀 유무</th>
 	                <th>목소리톤</th>
-	                <th>나이</th>
-	                <th>회사유무</th>
+	       			<th>나이</th>
+	       			<th>회사유무</th>
 	              </tr>
 	<c:choose>
 		<c:when test="${fn:length(list) eq 0}">
@@ -242,9 +242,10 @@
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td></td>
 					<td>	
-						<a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>">
+						<%-- <a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>">
 							<c:out value="${list.seq }"/>
-						</a>
+						</a> --%>
+						<c:out value="${list.seq }"/>
 					</td>
 					<td><c:out value="${list.user_type }"/></td>
 					<td><c:out value="${list.id }"/></td>
@@ -254,7 +255,7 @@
 					<td><c:out value="${list.gender }"/></td>
 					<td><c:out value="${list.email }"/></td>
 					<td><c:out value="${list.phone_number }"/></td>
-					<td><c:out value="${list.direct_type }"/></td>
+					<td><c:out value="${list.director_type }"/></td>
 					<td><c:out value="${list.actor_height }"/></td>
 					<td><c:out value="${list.actor_weight }"/></td>
 					<td><c:out value="${list.actor_eyelid }"/></td>

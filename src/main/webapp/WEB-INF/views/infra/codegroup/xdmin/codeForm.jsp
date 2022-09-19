@@ -26,7 +26,7 @@
 	
 </head>
 <body>
-	<form id="mainForm" name="form">
+	<form id="mainForm" name="">
 	<input type="hidden" name="seq" value="${dto.seq}">
 	  <div class="sidebar close">
 	    <div class="logo-details">
@@ -212,8 +212,8 @@
 							<div class="col">
 								<select class="form-select" name="seq">
 			            	<c:forEach items="${add}" var="add" varStatus="status">
-			            			<option hidden selected>선택</option>
-									<option value="${item.ccg_seq }"><c:out value="${add.name }"/></option>
+			            			<option value="${item.seq }" hidden selected>선택</option>
+									<option value=""><c:out value="${add.name }"/></option>
 							</c:forEach>
 								</select>
 							</div>
@@ -265,7 +265,7 @@
 						<div class="row mt-5 d-grid justify-content-end">
 							<div class="col">
 								<button type="button" id="btnSave" class="btn btn-primary">등록</button>
-								<button type="button" class="btn btn-primary" onclick="goList()">목록</button>
+								<a href="javascript:goFormList()" type="button" class="btn btn-primary">목록</a>
 							</div>
 						</div>
 	            	</div>
@@ -296,25 +296,7 @@
 	      </div>
 	    </div>
 		</section>
-		<!-- Modal -->
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Actor's</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						정말 삭제하시겠습니까??
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">저장</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
+s	</form>
   <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
@@ -342,7 +324,12 @@
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
-	var form = $("form[name=form]");
+	var form = $("#mainForm");
+	
+	goFormList = function() {
+		form.attr("action", goUrlList).submit();
+	}
+	
 	
 	$("#btnSave").on("click", function(){
 		if (seq.val() == "0" || seq.val() == ""){
@@ -361,10 +348,6 @@
 		location.href=("/code/CodeList");
 	}
 	
-	function goList() {
-		alert("안뇽");
-		form.attr("action", "/code/CodeList").submit();
-	}
 	
 	
 	

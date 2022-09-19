@@ -57,7 +57,7 @@
 	<insert id="insertCd">
 	
 		INSERT INTO cc (
-			name
+			,name
 			,oder
 			,useNy
 			,delNy
@@ -95,9 +95,10 @@
  
 		<!-- 코드그룹이름 자동로드 -->
 		<select id="addCodeName" resultMap="resultMapObj">
-		SELECT
-			name
-		FROM ccg
+		 SELECT
+			a.name
+			
+		FROM ccg a 
 		WHERE
 		1=1
 		</select>
