@@ -90,19 +90,29 @@
 	
 	</update>
 	
-		
- 
- 
-		<!-- 코드그룹이름 자동로드 -->
-		<select id="addCodeName" resultMap="resultMapObj">
+	<!-- 코드그룹이름 자동로드 -->
+	<select id="addCodeName" resultMap="resultMapObj">
 		 SELECT
 			a.name
 			
 		FROM ccg a 
 		WHERE
 		1=1
-		</select>
+	</select>
 
+
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+			SELECT 
+				seq
+				,name
+				,ccg_seq
+				,oder
+			FROM
+				cc
+			WHERE 1=1
+				AND delNy = 0
+			    AND useNy = 1
+	</select>
 		
 
 

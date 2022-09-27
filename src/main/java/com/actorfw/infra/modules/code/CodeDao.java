@@ -1,5 +1,6 @@
 package com.actorfw.infra.modules.code;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -38,6 +39,11 @@ public class CodeDao {
 		
 		
 	public int updateCd(Code dto) { return sqlsession.update(namespace + ".updateCd", dto); }
+
+	public List<Code> selectListCachedCodeArrayList() {
+		
+		return sqlsession.selectList(namespace + ".selectListCachedCodeArrayList", null); 
+	}
 	
 	
 	

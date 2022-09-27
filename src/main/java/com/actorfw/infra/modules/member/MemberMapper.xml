@@ -25,10 +25,122 @@
 			<when test="shDelOption == 0"> AND useNy LIKE CONCAT (0)</when>
 			<when test="shDelOption == 1"> AND useNy LIKE CONCAT (1)</when>
 		</choose>
+		ORDER BY seq DESC
 		
 	</select>
+	
+	<select id="selectOne" resultMap="resultObj">
+		SELECT
+			*
+		FROM
+		member
+		WHERE 1=1
+		AND seq = #{seq}
+	
+	</select>
+	
+	<insert id="insertCd">
+		INSERT INTO member (
+			user_type
+			,id
+			,password
+			,name
+			,dob
+			,gender
+			,email
+			,phone_number
+			,director_type
+			,actor_picture
+			,actor_height
+			,actor_weight
+			,actor_eyelid
+			,actor_voice
+			,age
+			,company_useNy
+			,zip_code
+			,address
+			,address_detail
+		)
+		VALUES (
+			#{user_type}
+			,#{id}
+			,#{password}
+			,#{name}
+			,#{dob}
+			,#{gender}
+			,#{email}
+			,#{phone_number}
+			,#{director_type}
+			,#{actor_picture}
+			,#{actor_height}
+			,#{actor_weight}
+			,#{actor_eyelid}
+			,#{actor_voice}
+			,#{age}
+			,#{company_useNy}
+			,#{zip_code}
+			,#{address}
+			,#{address_detail}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		
+	</insert>
+	
+	<!-- 아이디중복 체크 -->
+	<select id="idCheck" resultType="Integer">
+		
+		SELECT
+			COUNT(*)
+		FROM
+			member a
+		WHERE 1=1
+			AND id = #{id}
+	
+	</select>
 
-
+	<select id="logInCd" resultMap="resultObj">
+	
+		SELECT
+			seq
+			,id
+			,password
+			,name
+		FROM 
+			member
+		WHERE 1=1
+			AND id = #{id}
+			AND password = #{password}
+			
+	</select>
+	
+	<update id="updateCd">
+		UPDATE member
+		SET
+			user_type = #{user_type}
+			,id = #{id}
+			,password = #{password}
+			,name = #{name}
+			,dob = #{dob}
+			,gender = #{gender}
+			,email = #{email}
+			,phone_number = #{phone_number}
+			,director_type = #{director_type}
+			,actor_picture = #{actor_picture}
+			,actor_height = #{actor_height}
+			,actor_weight = #{actor_weight}
+			,actor_eyelid = #{actor_eyelid}
+			,actor_voice = #{actor_voice}
+			,age = #{age}
+			,company_useNy = #{company_useNy}
+			,zip_code = #{zip_code}
+			,address = #{address}
+			,address_detail = #{address_detail}
+		WHERE 1=1
+			AND seq = #{seq}
+	
+	</update>
 
 
 

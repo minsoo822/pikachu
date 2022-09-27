@@ -13,13 +13,16 @@ public class Member {
 	private String email;
 	private String phone_number;
 	private Integer director_type;
-//	private Integer actor_picture;
+	private Integer actor_picture;
 	private Integer actor_height;
 	private Integer actor_weight;
 	private Integer actor_eyelid;
 	private Integer actor_voice;
 	private Integer age;
 	private Integer company_useNy;
+	private String zip_code;
+	private String address;
+	private String address_detail;
 	
 //----------------------------------------------------------	
 	
@@ -118,6 +121,30 @@ public class Member {
 	}
 	public void setCompany_useNy(Integer company_useNy) {
 		this.company_useNy = company_useNy;
+	}
+	public Integer getActor_picture() {
+		return actor_picture;
+	}
+	public void setActor_picture(Integer actor_picture) {
+		this.actor_picture = actor_picture;
+	}
+	public String getZip_code() {
+		return zip_code;
+	}
+	public void setZip_code(String zip_code) {
+		this.zip_code = zip_code;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getAddress_detail() {
+		return address_detail;
+	}
+	public void setAddress_detail(String address_detail) {
+		this.address_detail = address_detail;
 	}
 	
 	

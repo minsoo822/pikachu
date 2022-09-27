@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.actorfw.infra.modules.code.CodeServiceImpl"/>
 
 
 <html lang="KO">
@@ -13,23 +14,25 @@
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">   
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
 </head>
 <body>
-	<form name="form" action="" >
-		<input hidden="hidden" name="seq" value="<c:out value="${dto.seq}"/>">
+	<form name="mainForm" id="mainForm" method="post">
+			<input type="hidden" name="seq" value="${dto.seq}">
+			<%-- <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>"> --%>
+			<%-- <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> --%>
+			<!-- <input type="hidden" name="checkboxSeqArray" > -->
+			<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode(10)}"/>
+			<c:set var="listCodeUser_type" value="${CodeServiceImpl.selectListCachedCode(6)}"/>
+			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode(7)}"/>
+			<c:set var="listCodeDirector_type" value="${CodeServiceImpl.selectListCachedCode(8)}"/>
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -164,6 +167,9 @@
 	      <div class="mainSearch">
 	        <div class="title">
 	          <h5>전체회원 관리</h5>
+	        	sessSeq: <c:out value="${sessSeq }"/><br>
+				sessName: <c:out value="${sessName }"/><br>
+				sessId: <c:out value="${sessId }"/><br>
 	        </div>
 	        <div class="two">
 	          <div class="three">
@@ -242,24 +248,39 @@
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td></td>
 					<td>	
-						<%-- <a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>">
+						<a href="javascript:goForm(${list.seq })" class="text-decoration-none">
 							<c:out value="${list.seq }"/>
-						</a> --%>
-						<c:out value="${list.seq }"/>
+						</a>
 					</td>
-					<td><c:out value="${list.user_type }"/></td>
+					<td>
+						<c:forEach items="${listCodeUser_type}" var="listUser_type" varStatus="statusVoice">
+							<c:if test="${list.user_type eq listUser_type.seq}"><c:out value="${listUser_type.name }"/></c:if>
+						</c:forEach>
+					</td>
 					<td><c:out value="${list.id }"/></td>
 					<td><c:out value="${list.password }"/></td>
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.dob }"/></td>
-					<td><c:out value="${list.gender }"/></td>
+					<td>
+						<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusVoice">
+							<c:if test="${list.gender eq listGender.seq}"><c:out value="${listGender.name }"/></c:if>
+						</c:forEach>
+					</td>
 					<td><c:out value="${list.email }"/></td>
 					<td><c:out value="${list.phone_number }"/></td>
-					<td><c:out value="${list.director_type }"/></td>
+					<td>
+						<c:forEach items="${listCodeDirector_type}" var="listDirector_type" varStatus="statusVoice">
+							<c:if test="${list.director_type eq listDirector_type.seq}"><c:out value="${listDirector_type.name }"/></c:if>
+						</c:forEach>
+					</td>
 					<td><c:out value="${list.actor_height }"/></td>
 					<td><c:out value="${list.actor_weight }"/></td>
 					<td><c:out value="${list.actor_eyelid }"/></td>
-					<td><c:out value="${list.actor_voice }"/></td>
+					<td>
+						<c:forEach items="${listCodeVoice}" var="listVoice" varStatus="statusVoice">
+							<c:if test="${list.actor_voice eq listVoice.seq}"><c:out value="${listVoice.name }"/></c:if>
+						</c:forEach>
+					</td>
 					<td><c:out value="${list.age }"/></td>
 					<td><c:out value="${list.company_useNy }"/></td>
 				</tr>	
@@ -286,75 +307,26 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="/codeGroup/codeGroupForm" class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></a>
+						<button class="btn btn-primary" type="button" id="btnForm"><i class="fa-solid fa-plus"></i></button>
 					</div>
 				</div>
 	        </div>
 	      </div>
 	    </div>
 		</section>
-		<!-- Modal -->
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Actor's</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						정말 삭제하시겠습니까??
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">저장</button>
-					</div>
-				</div>
-			</div>
-		</div>
 	</form>
   <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
   
-  $(function() {
-	  $( "#StDatePicker" ).datepicker({
-		  changeMonth: true,
-		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
-		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
-	  });
-  });
-  $(function() {
-	  $( "#EnDatePicker" ).datepicker({
-		  changeMonth: true,
-		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
-		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
-	  });
-  });
-  
-	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
-	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
-	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	var goUrlList = "/member/memberList"; 			/* #-> */
+	var goUrlForm = "/member/memberForm";
+	var goUrlInst = "/member/memberInst"; 			/* #-> */
+	var goUrlUpdt = "/member/memberUpdt";				/* #-> */
+	var goUrlUele = "/member/memberUele";				/* #-> */
+	var goUrlDele = "/member/memberDele";				/* #-> */
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
-	var form = $("form[name=form]");
+	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
 	
@@ -372,17 +344,54 @@
 	   	}
 	}); 
   
+	goForm = function(key) {
+    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */ 
+    	seq.attr("value",key);
+		form.attr("action", goUrlForm).submit();
+	}
+
+	$('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+
   
   
   
   
   
+	 $(function() {
+		  $( "#StDatePicker" ).datepicker({
+			  changeMonth: true,
+			  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+			  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+			  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+			  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+		  });
+	  });
+	  $(function() {
+		  $( "#EnDatePicker" ).datepicker({
+			  changeMonth: true,
+			  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+			  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+			  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+			  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+		  });
+	  });
   
   
-  
-  
-  
-  
+	let arrow = document.querySelectorAll(".arrow");
+	  for (var i = 0; i < arrow.length; i++) {
+	    arrow[i].addEventListener("click", (e)=>{
+	   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+	   arrowParent.classList.toggle("showMenu");
+	    });
+	  }
+	  let sidebar = document.querySelector(".sidebar");
+	  let sidebarBtn = document.querySelector(".bx-menu");
+	  console.log(sidebarBtn);
+	  sidebarBtn.addEventListener("click", ()=>{
+	    sidebar.classList.toggle("close");
+	  });
   
   </script>
 

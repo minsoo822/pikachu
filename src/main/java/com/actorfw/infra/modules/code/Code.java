@@ -1,5 +1,8 @@
 package com.actorfw.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 	
 //	cc
@@ -12,7 +15,10 @@ public class Code {
 	private String creDate;
 	private String modDate;
 	
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
+	
 //-------------------------------------	
+	
 	
 	public String getName() {
 		return name;
@@ -62,7 +68,12 @@ public class Code {
 	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
-	
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
+	}
 	
 	
 	

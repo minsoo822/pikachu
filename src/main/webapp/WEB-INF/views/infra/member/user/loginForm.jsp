@@ -26,23 +26,23 @@
 </head>
 
 <body style="background-color: black;">
-	<form action="">
+	<form mane="" method="post">
 		<div class="container">
 			<div>
-				<a href="../main/mainViewForm.html">
+				<a href="#" style="text-decoration: none;">
 					<h1 class="title">Actor'<span>s</span></h1>
 				</a>
 			</div>
-			<div>
-				<input class="form-control idpasswordinput" type="text"placeholder="ID">
-				<input class="form-control idpasswordinput" type="text"  placeholder="Password">
+			<div style="width: 400px; margin-left: auto; margin-right: auto;">
+				<input id="id" style="margin-bottom: 16px;" class="form-control" type="text"placeholder="ID">
+				<input id="password" class="form-control" type="text"  placeholder="Password">
 			</div>
 			<div class="row form-check form-switch" style="margin: 10px 0px 0px 450px;" >
-				<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+				<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
 				<label class="form-check-label" for="flexSwitchCheckChecked" style="color: white; margin-bottom: 20px;">아이디 저장</label>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-3" style="width: 400px;">
-				<button type="button" class="btn btn-secondary">Login</button>
+				<button type="button" class="btn btn-secondary" onclick="logIn()">Login</button>
 			</div>
 			<div class="col-2 mx-auto my-4" style="text-align: center;">
 			<a class="find" href="">아이디 / 비밀번호 찾기</a>
@@ -64,7 +64,41 @@
 			</div>
 		</div>
 	</form>
-
+	
+	<script type="text/javascript">
+	
+	/* === singInCheck === */
+	function logIn() {
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,dataType:"json"
+			,url: "/member/loginCheck"
+			/* ,data : $("#formLogin").serialize() */
+			,data : { "id" : $("#id").val(), "password" : $("#password").val() }
+			,success: function(response) {
+				if(response.rt == "success") {
+					swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
+					.then(function() {
+						location.href="${pageContext.request.contextPath}/member/memberList.do";
+					});
+					/* form.attr("action", goUrlMain).submit(); */
+				} else {
+					swal("로그인 실패!", "계정이 존재하지 않습니다. 다시 확인해 주세요.", "error");
+					return false;
+				}
+			}
+			,error : function(){
+				alert("error");
+			}
+		});
+	}
+	
+	
+	
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 </body>
