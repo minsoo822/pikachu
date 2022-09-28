@@ -11,6 +11,8 @@ public class Member {
 	private String dob;
 	private Integer gender;
 	private String email;
+	private Integer email_domain;
+	private Integer telecom;
 	private String phone_number;
 	private Integer director_type;
 	private Integer actor_picture;
@@ -23,8 +25,12 @@ public class Member {
 	private String zip_code;
 	private String address;
 	private String address_detail;
+	private Integer address_Lat;
+	private Integer address_Lng;
+	
 	
 //----------------------------------------------------------	
+	
 	
 	public String getSeq() {
 		return seq;
@@ -73,6 +79,12 @@ public class Member {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Integer getEmail_domain() {
+		return email_domain;
+	}
+	public void setEmail_domain(Integer email_domain) {
+		this.email_domain = email_domain;
 	}
 	public String getPhone_number() {
 		return phone_number;
@@ -146,7 +158,24 @@ public class Member {
 	public void setAddress_detail(String address_detail) {
 		this.address_detail = address_detail;
 	}
-	
+	public Integer getAddress_Lat() {
+		return address_Lat;
+	}
+	public void setAddress_Lat(Integer address_Lat) {
+		this.address_Lat = address_Lat;
+	}
+	public Integer getAddress_Lng() {
+		return address_Lng;
+	}
+	public void setAddress_Lng(Integer address_Lng) {
+		this.address_Lng = address_Lng;
+	}
+	public Integer getTelecom() {
+		return telecom;
+	}
+	public void setTelecom(Integer telecom) {
+		this.telecom = telecom;
+	}
 	
 	
 	

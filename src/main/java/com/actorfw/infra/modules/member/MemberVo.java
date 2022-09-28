@@ -3,13 +3,18 @@ package com.actorfw.infra.modules.member;
 public class MemberVo {
 //	seq
 	private String seq;
+
 //	search
-	private String shValue;
-	private Integer shOption;
-//	useNy
-	private Integer shUseOption;
-//	delNy
-	private Integer shDelOption;
+	private String shValue;					//value값(내용)
+	private Integer shOption;				//선택옵션
+	private Integer shUseOption;			//useNY
+	private Integer shDelOption;			//delNy
+	private String shDelNy;
+//	날짜
+	private Integer shOptionDate;			//날짜선택 옵션
+	private Integer shDateStart;			//시작날짜
+	private Integer shDateEnd;				//끝날짜
+
 	
 	
 //------------------------------------
@@ -43,6 +48,30 @@ public class MemberVo {
 	}
 	public void setShDelOption(Integer shDelOption) {
 		this.shDelOption = shDelOption;
+	}
+	public String getShDelNy() {
+		return shDelNy;
+	}
+	public void setShDelNy(String shDelNy) {
+		this.shDelNy = shDelNy;
+	}
+	public Integer getShOptionDate() {
+		return shOptionDate;
+	}
+	public void setShOptionDate(Integer shOptionDate) {
+		this.shOptionDate = shOptionDate;
+	}
+	public Integer getShDateStart() {
+		return shDateStart;
+	}
+	public void setShDateStart(Integer shDateStart) {
+		this.shDateStart = shDateStart;
+	}
+	public Integer getShDateEnd() {
+		return shDateEnd;
+	}
+	public void setShDateEnd(Integer shDateEnd) {
+		this.shDateEnd = shDateEnd;
 	}
 	
 }

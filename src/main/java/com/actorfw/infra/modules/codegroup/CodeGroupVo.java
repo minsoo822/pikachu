@@ -6,7 +6,7 @@ public class CodeGroupVo {
 
 	private String seq;						//시퀀스
 	private String mainKey;					
-	//	search
+//	search
 	private String shValue;					//value값(내용)
 	private Integer shOption;				//선택옵션
 	private Integer shUseOption;			//useNY

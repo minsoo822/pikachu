@@ -14,6 +14,7 @@
 			a.seq
 			,a.name
 			,a.oder
+			,a.ccg_seq
 			,a.useNy
 			,a.delNy
 			,a.creDate
@@ -61,14 +62,14 @@
 			,oder
 			,useNy
 			,delNy
-			<!-- ,ccg_seq -->
+			,ccg_seq
 		)
 		VALUE(
 			#{name}
 			,#{oder}
 			,#{useNy}
 			,#{delNy}
-			<!-- ,#{ccg_seq} -->
+			,#{ccg_seq}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -94,7 +95,6 @@
 	<select id="addCodeName" resultMap="resultMapObj">
 		 SELECT
 			a.name
-			
 		FROM ccg a 
 		WHERE
 		1=1

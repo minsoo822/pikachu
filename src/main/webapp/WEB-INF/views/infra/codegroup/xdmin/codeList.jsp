@@ -213,6 +213,7 @@
 	                <th>#</th>
 	                <th>코드 코드</th>
 	                <th>코드 이름</th>
+	                <th>코드그룹 코드</th>
 	                <th>코드 삭제여부 N:0 Y:1</th>
 	                <th>코드 사용여부 N:0 Y:1</th>
 	                <th>등록일</th>
@@ -235,6 +236,7 @@
 						</a>
 					</td>
 					<td><c:out value="${list.name }"/></td>
+					<td><c:out value="${list.ccg_seq }"></c:out></td>
 					<td><c:out value="${list.delNy }"/></td>
 					<td><c:out value="${list.useNy }"/></td>
 					<td><c:out value="${list.creDate }"/></td>

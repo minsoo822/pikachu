@@ -53,15 +53,14 @@ public class MemberController {
 		return "redirect:/member/memberList";
 	}
 	@RequestMapping(value = "memberUpdt")
-	public String updateCd(Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String updateCd(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		int updateCd = service.updateCd(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
+		System.out.println("주소나와라 : " + updateCd);
 		
 		
 		return "redirect:/member/memberList";
 	}
-	
-	
 	
 	
 //	아이디 중복확인
@@ -84,10 +83,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "loginForm")
-	public String loginForm() throws Exception {
-	
-		return "infra/member/user/loginForm";
+	public String loginForm(Member dto) throws Exception {
 		
+		Member loginForm = service.logInCd(dto);
+		System.out.println("loginForm : " + loginForm);
+		
+		return "infra/member/user/loginForm";
 	}
 	
 	@ResponseBody
@@ -101,21 +102,40 @@ public class MemberController {
 		System.out.println("logInCd: " + logInCd);
 		
 		if(logInCd != null) {
+			
 			returnMap.put("rt", "success");
+			
 			httpSession.setMaxInactiveInterval(60 * 30); // 60second * 30 = 30minute
 			httpSession.setAttribute("sessSeq", logInCd.getSeq());
 			httpSession.setAttribute("sessId", logInCd.getId());
 			httpSession.setAttribute("sessName", logInCd.getName());
+			
 			returnMap.put("name", logInCd.getName());
+			
 		} else {
 			returnMap.put("rt", "fail");
 		}
-		
-		
 		return returnMap;
 	}
 	
+	@RequestMapping(value = "logoutForm")
+	public String logoutForm(HttpSession httpSession) throws Exception {
+		
+		httpSession.invalidate();
+		
+		return "infra/member/user/mainViewForm";
+	}
 	
+//------------------------------------------------------------------------------------- 화면구현
 	
-	
+	@RequestMapping(value = "mainIndex")
+	public String inDex() throws Exception {
+		
+		return "infra/member/user/mainIndex";
+	}
+	@RequestMapping(value = "mainHome")
+	public String mainPage() throws Exception {
+		
+		return "infra/member/user/mainViewForm";
+	}
 }

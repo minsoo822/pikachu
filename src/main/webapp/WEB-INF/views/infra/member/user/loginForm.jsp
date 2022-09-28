@@ -67,7 +67,7 @@
 	
 	<script type="text/javascript">
 	
-	/* === singInCheck === */
+	/* === loginCheck === */
 	function logIn() {
 		$.ajax({
 			async: true 
@@ -81,7 +81,7 @@
 				if(response.rt == "success") {
 					swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
 					.then(function() {
-						location.href="${pageContext.request.contextPath}/member/memberList.do";
+						location.href="${pageContext.request.contextPath}/member/mainHome.do";
 					});
 					/* form.attr("action", goUrlMain).submit(); */
 				} else {
@@ -90,7 +90,7 @@
 				}
 			}
 			,error : function(){
-				alert("error");
+				alert("에러 왜떠");
 			}
 		});
 	}

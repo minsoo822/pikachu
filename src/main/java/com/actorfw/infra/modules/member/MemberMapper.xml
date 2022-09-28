@@ -48,6 +48,7 @@
 			,dob
 			,gender
 			,email
+			,email_domain
 			,phone_number
 			,director_type
 			,actor_picture
@@ -60,6 +61,10 @@
 			,zip_code
 			,address
 			,address_detail
+			,address_Lat
+			,address_Lng
+			,telecom
+			
 		)
 		VALUES (
 			#{user_type}
@@ -69,6 +74,7 @@
 			,#{dob}
 			,#{gender}
 			,#{email}
+			,#{email_domain}
 			,#{phone_number}
 			,#{director_type}
 			,#{actor_picture}
@@ -81,6 +87,9 @@
 			,#{zip_code}
 			,#{address}
 			,#{address_detail}
+			,#{address_Lat}
+			,#{address_Lng}
+			,#{telecom}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -99,7 +108,8 @@
 			AND id = #{id}
 	
 	</select>
-
+	
+	<!-- 로그인세션 -->
 	<select id="logInCd" resultMap="resultObj">
 	
 		SELECT
@@ -116,6 +126,7 @@
 	</select>
 	
 	<update id="updateCd">
+	
 		UPDATE member
 		SET
 			user_type = #{user_type}

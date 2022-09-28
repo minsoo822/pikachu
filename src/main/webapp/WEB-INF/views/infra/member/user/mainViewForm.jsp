@@ -24,6 +24,7 @@
 </head>
 	
 <body>
+<form method="post" name="mainForm" id="mainForm">
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -65,9 +66,19 @@
 				</li>
 			</ul>
 			<div>
-			<a href="/member/signUpForm" class="btn">회원가입</a>
-			<a href="/member/signInForm" class="btn">로그인</a>
+			<c:if test="${sessSeq eq null }">
+				<button type="button" class="btn">회원가입</button>
+				<button type="button" class="btn" id="btnLogin">로그인</button>
+			</c:if>
+			<c:if test="${sessSeq ne null }">
+				<button type="button" class="btn">마이페이지</button>
+				<button type="button" class="btn" id="btnLogout">로그아웃</button>
+			</c:if>	
+				<br>sessSeq: <c:out value="${sessSeq }"/><br>
+				sessName: <c:out value="${sessName }"/><br>
+				sessId: <c:out value="${sessId }"/><br>
 			</div>
+			
 		</nav>
 	</div>
 	<!-- odition post summary -->
@@ -409,21 +420,37 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
-	
-	
-	<script type="text/javascript">
-		document.querySelector(".disableLink").removeAttribute('href');
-	
-	
-	</script>
-	
+</form>	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
+	<script type="text/javascript">
+	
+	var goUrlLogout = "/member/logoutForm";
+	var goUrlLogin = "/member/loginForm";
+	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
+	var goUrlMain = "/member/mainHome";
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("#mainForm");
+	var formVo = $("form[name=formVo]");
+	
+	$("#btnLogin").on("click", function() {
+		form.attr("action", goUrlLogin).submit();
+	});
+	
+	$("#btnLogout").on("click", function() {
+		form.attr("action", goUrlLogout).submit();
+	});
+	
+	
+	
+	//상단바 디세이블처리
+	document.querySelector(".disableLink").removeAttribute('href');
+	</script>
+	
+
 </body>
 </html>

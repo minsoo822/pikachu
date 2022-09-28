@@ -29,10 +29,12 @@
 			<%-- <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>"> --%>
 			<%-- <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> --%>
 			<!-- <input type="hidden" name="checkboxSeqArray" > -->
-			<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode(10)}"/>
+			<c:set var="listCodeDomain" value="${CodeServiceImpl.selectListCachedCode(2)}"/>
 			<c:set var="listCodeUser_type" value="${CodeServiceImpl.selectListCachedCode(6)}"/>
 			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode(7)}"/>
 			<c:set var="listCodeDirector_type" value="${CodeServiceImpl.selectListCachedCode(8)}"/>
+			<c:set var="listCodeEyelid" value="${CodeServiceImpl.selectListCachedCode(9)}"/>
+			<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode(10)}"/>
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -167,36 +169,36 @@
 	      <div class="mainSearch">
 	        <div class="title">
 	          <h5>전체회원 관리</h5>
-	        	sessSeq: <c:out value="${sessSeq }"/><br>
-				sessName: <c:out value="${sessName }"/><br>
-				sessId: <c:out value="${sessId }"/><br>
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="">
-					<option value="" hidden selected>삭제여부</option>
-					<option>N</option>
-					<option>Y</option>
+	            <select name="shUseOption" id="shUseOption">
+					<option value="" <c:if test="${empty vo.shUseOption }">selected</c:if>>사용여부</option>
+					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <select>
-	              <option hidden selected>날짜</option>
-	              <option>수정일</option>
-	              <option>등록일</option>
-	              <option>생일</option>
+	            <select id="shOptionDate" name="shOptionDate">
+	              <option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>날짜</option>
+	              <option value="1" <c:if test="${vo.shOptionDate eq 1 }">selected</c:if>>수정일</option>
+	              <option value="2" <c:if test="${vo.shOptionDate eq 2 }">selected</c:if>>등록일</option>
+	              <option value="3" <c:if test="${vo.shOptionDate eq 3 }">selected</c:if>>생일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	            <select id="" name="">
-	              <option value="" hidden selected>검색구분</option>
-	              <option >코드그룹 번호</option>
-	              <option>코드그룹 이름</option>
-	              <option>코드그룹 삭제여부</option>
-	              <option>코드그룹 사용여부</option>
+	             <select name="shDelOption" id="shDelOption">
+					<option value="" <c:if test="${empty vo.shDelOption }">selected</c:if>>삭제여부</option>
+					<option value="0" <c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <input type="text" id="" name="" placeholder="검색어">
+	            <select id="shOption" name="shOption">
+	              <option value="" hidden selected>검색구분</option>
+	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
+	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
+	            </select>
+	            <input type="text" id="shValue" name="shValue" value="${vo.shValue }"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="submit">리셋</button>
+	              <button  type="button"  id="searchReset">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -212,9 +214,9 @@
 	        </div>
 	        <div class="four">
 	          <div class="five">
-	            <div class="line">
-	            <!--   <h6>코드그룹 관리</h6> -->
-	            </div>
+	           <!--  <div class="line">
+	              <h6>코드그룹 관리</h6>
+	            </div> -->
 	            <table class="table table-striped">
 	              <tr class="tableTr">
 	                <th><input class="form-check-input" type="checkbox"></th>
@@ -227,6 +229,7 @@
 	                <th>생일</th>
 	                <th>성별</th>
 	                <th>이메일</th>
+	                <th>도메인</th>
 	                <th>휴대폰번호</th>
 	                <th>감독타입</th>
 	                <th>키</th>
@@ -267,6 +270,11 @@
 						</c:forEach>
 					</td>
 					<td><c:out value="${list.email }"/></td>
+					<td>
+						<c:forEach items="${listCodeDomain}" var="listDomain" varStatus="statusVoice">
+							<c:if test="${list.email_domain eq listDomain.seq}"><c:out value="${listDomain.name }"/></c:if>
+						</c:forEach>
+					</td>
 					<td><c:out value="${list.phone_number }"/></td>
 					<td>
 						<c:forEach items="${listCodeDirector_type}" var="listDirector_type" varStatus="statusVoice">
@@ -275,7 +283,11 @@
 					</td>
 					<td><c:out value="${list.actor_height }"/></td>
 					<td><c:out value="${list.actor_weight }"/></td>
-					<td><c:out value="${list.actor_eyelid }"/></td>
+					<td>
+						<c:forEach items="${listCodeEyelid}" var="listEyelid" varStatus="statusVoice">
+							<c:if test="${list.actor_eyelid eq listEyelid.seq}"><c:out value="${listEyelid.name }"/></c:if>
+						</c:forEach>
+					</td>
 					<td>
 						<c:forEach items="${listCodeVoice}" var="listVoice" varStatus="statusVoice">
 							<c:if test="${list.actor_voice eq listVoice.seq}"><c:out value="${listVoice.name }"/></c:if>
@@ -303,7 +315,7 @@
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
 						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
-						<button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="submit" ><i class="fa-solid fa-trash-can"></i></button>
+						<a class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="submit" ><i class="fa-solid fa-trash-can"></i></a>
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
@@ -329,6 +341,9 @@
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
+	$("#searchReset").on("click", function() {
+		form.attr("action", "/member/memberList").submit();
+	});
 	
 	$("#btnSave").on("click", function(){
 		

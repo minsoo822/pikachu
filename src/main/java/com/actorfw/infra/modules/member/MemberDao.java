@@ -32,8 +32,7 @@ public class MemberDao {
 	}
 	
 //	로그인
-	public Member logInCd(Member dto) {
-		return sqlSession.selectOne(namespace + ".logInCd", dto);
+	public Member logInCd(Member dto) { return sqlSession.selectOne(namespace + ".logInCd", dto);
 	}
 	
 	

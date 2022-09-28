@@ -158,30 +158,33 @@
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="">
-					<option value="" hidden selected>삭제여부</option>
-					<option>N</option>
-					<option>Y</option>
+	            <select name="shUseOption" id="shUseOption">
+					<option value="" <c:if test="${empty vo.shUseOption }">selected</c:if>>사용여부</option>
+					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <select>
-	              <option hidden selected>날짜</option>
-	              <option>수정일</option>
-	              <option>등록일</option>
-	              <option>생일</option>
+	            <select id="shOptionDate" name="shOptionDate">
+	              <option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>날짜</option>
+	              <option value="1" <c:if test="${vo.shOptionDate eq 1 }">selected</c:if>>수정일</option>
+	              <option value="2" <c:if test="${vo.shOptionDate eq 2 }">selected</c:if>>등록일</option>
+	              <option value="3" <c:if test="${vo.shOptionDate eq 3 }">selected</c:if>>생일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	            <select id="" name="">
-	              <option value="" hidden selected>검색구분</option>
-	              <option >코드그룹 번호</option>
-	              <option>코드그룹 이름</option>
-	              <option>코드그룹 삭제여부</option>
-	              <option>코드그룹 사용여부</option>
+	             <select name="shDelOption" id="shDelOption">
+					<option value="" <c:if test="${empty vo.shDelOption }">selected</c:if>>삭제여부</option>
+					<option value="0" <c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <input type="text" id="" name="" placeholder="검색어">
+	            <select id="shOption" name="shOption">
+	              <option value="" hidden selected>검색구분</option>
+	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>회원 번호</option>
+	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>회원 이름</option>
+	            </select>
+	            <input type="text" id="shValue" name="shValue" value="${vo.shValue }"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="submit">리셋</button>
+	              <button  type="button" id="searchReset">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -206,22 +209,28 @@
 	            				<div class="row mb-2" style="text-align: center;">
 	            					<div class="col g-2">회원타입</div>
 	            					<div class="col">
-	            						<select class="form-select" name="user_type" value="${item.user_type }">
-	            							<option value="${item.user_type}">선택</option>
-	            							<option value="26">배우</option>
-	            							<option value="27">감독</option>
+	            						<select class="form-select" name="user_type">
+	            							<option value=""<c:if test="${empty item.user_type }">selected</c:if>>선택</option>
+	            							<option value="26" <c:if test="${item.user_type eq 26 }">selected</c:if>>배우</option>
+	            							<option value="27" <c:if test="${item.user_type eq 27 }">selected</c:if>>감독</option>
 	            						</select>
 									</div>
 									<div class="col g-2">감독타입</div>
 	            					<div class="col">
-										<input type="text" class="form-control" name="director_type" value="${item.director_type }">
+										<select class="form-select" name="director_type">
+											<option value="" <c:if test="${empty item.director_type }">selected</c:if>>선택</option>
+											<option value="33" <c:if test="${item.director_type eq 33 }">selected</c:if>>감독</option>
+											<option value="34" <c:if test="${item.director_type eq 34 }">selected</c:if>>제작사</option>
+											<option value="35" <c:if test="${item.director_type eq 35 }">selected</c:if>>캐스팅디렉터</option>
+											<option value="36" <c:if test="${item.director_type eq 36 }">selected</c:if>>에이전시</option>
+										</select>
 									</div>
 									<div class="col g-2">회사유무</div>
 	            					<div class="col">
 										<select class="form-select" name="company_useNy" value="${item.company_useNy }">
-											<option value="${item.company_useNy}">선택</option>
-											<option value="0">N</option>
-											<option value="1">Y</option>
+											<option value="" <c:if test="${empty item.director_type }">selected</c:if>>선택</option>
+											<option value="0" <c:if test="${item.company_useNy eq 0 }">selected</c:if>>N</option>
+											<option value="1" <c:if test="${item.company_useNy eq 1 }">selected</c:if>>Y</option>
 										</select>
 									</div>
 	            				</div>
@@ -235,12 +244,12 @@
 										<span id="id_check"></span>
 									</div>
 	            					<div class="col">
-										<input type="text" class="form-control" name="password" value="${item.password }">
+										<input type="password" class="form-control" name="password" value="${item.password }">
 									</div>
 	            				</div>
 	            				<div class="row mb-1">
 	            					<div class="col">이름</div>
-	            					<div class="col">&nbsp;</div>
+	            					<div class="col">성별</div>
 	            					<div class="col">생일</div>
 	            					<div class="col">나이</div>
 	            				</div>
@@ -248,7 +257,13 @@
 	            					<div class="col">
 										<input type="text" class="form-control" name="name" value="${item.name }">
 									</div>
-									<div class="col">&nbsp;</div>
+									<div class="col">
+										<select class="form-select" name="gender">
+											<option value="" <c:if test="${empty item.gender }">selected</c:if>>선택</option>
+											<option value="28" <c:if test="${item.gender eq 28}">selected</c:if>>남자</option>
+											<option value="29" <c:if test="${item.gender eq 29}">selected</c:if>>여자</option>
+										</select>
+									</div>
 	            					<div class="col">
 										<input type="date" class="form-control" name="dob" value="${item.dob }">
 									</div>
@@ -257,36 +272,35 @@
 									</div>
 	            				</div>
 	            				<div class="row mb-1">
-	            					<div class="col">성별</div>
+	            					<div class="col-3">통신사</div>
+	            					<div class="col-3">휴대폰번호</div>
 	            					<div class="col">이메일</div>
 	            				</div>
 	            				<div class="row mb-3">
-	            					<div class="col">
-										<select class="form-select" name="gender" value="${item.gender}">
-											<option value="${item.gender}">선택</option>
-											<option value="28">남자</option>
-											<option value="29">여자</option>
+	            					<div class="col-3">
+										<select class="form-select" name="telecom" value="${item.telecom }">
+											<option value="" <c:if test="${empty item.telecom }">selected</c:if>>선택</option>
+											<option value="1" <c:if test="${item.telecom eq 1}">selected</c:if>>SKT</option>
+											<option value="2" <c:if test="${item.telecom eq 2}">selected</c:if>>KT</option>
+											<option value="3" <c:if test="${item.telecom eq 3}">selected</c:if>>LGU+</option>
 										</select>
 									</div>
-	            					<div class="col">
-										<input type="text" class="form-control">
-									</div>
-	            				</div>
-	            				<div class="row mb-1">
-	            					<div class="col">통신사</div>
-	            					<div class="col">휴대폰번호</div>
-	            				</div>
-	            				<div class="row mb-3">
-	            					<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>SKT</option>
-											<option>KT</option>
-											<option>LGU+</option>
-										</select>
-									</div>
-									<div class="col">
+									<div class="col-3">
 										<input type="text" class="form-control" name="phone_number" value="${item.phone_number }">
+									</div>
+									<div class="col input-group">
+										<input type="text" class="form-control" name="email" value="${item.email}">
+										<span class="input-group-text">@</span>
+										<select class="form-select"  name="email_domain" value="${item.email_domain}">
+											<option value="" <c:if test="${empty item.email_domain }">selected</c:if>>선택</option>
+											<option value="4" <c:if test="${item.email_domain eq 4}">selected</c:if>>naver.com</option>
+											<option value="5" <c:if test="${item.email_domain eq 5}">selected</c:if>>gamil.com</option>
+											<option value="6" <c:if test="${item.email_domain eq 6}">selected</c:if>>daum.net</option>
+											<option value="7" <c:if test="${item.email_domain eq 7}">selected</c:if>>nate.com</option>
+											<option value="8" <c:if test="${item.email_domain eq 8}">selected</c:if>>dreamwiz.com</option>
+											<option value="9" <c:if test="${item.email_domain eq 9}">selected</c:if>>freechal.com</option>
+											<option value="10" <c:if test="${item.email_domain eq 10}">selected</c:if>>직접입력</option>
+										</select>
 									</div>
 	            				</div>
 	            				<div class="row mb-1">
@@ -303,66 +317,86 @@
 										<input type="text" class="form-control" name="actor_weight" value="${item.actor_weight }">
 									</div>
 									<div class="col">
-										<select class="form-select" name="actor_eyelid" value="${item.actor_eyelid }">
-											<option value="${item.actor_eyelid}">선택</option>
-											<option value="37">겉쌍꺼풀</option>
-											<option value="38">속쌍꺼풀</option>
-											<option value="39">무쌍꺼풀</option>
+										<select class="form-select" name="actor_eyelid">
+											<option value="" <c:if test="${empty item.actor_eyelid }">selected</c:if>>선택</option>
+											<option value="37" <c:if test="${item.actor_eyelid eq 37}">selected</c:if>>겉쌍꺼풀</option>
+											<option value="38" <c:if test="${item.actor_eyelid eq 38}">selected</c:if>>속쌍꺼풀</option>
+											<option value="39" <c:if test="${item.actor_eyelid eq 39}">selected</c:if>>무쌍꺼풀</option>
 										</select>
 									</div>
 									<div class="col">
 										<select class="form-select" name="actor_voice" value="${item.actor_voice }">
-											<option value="${item.actor_voice}">선택</option>
-											<option value="40">고음</option>
-											<option value="41">중음</option>
-											<option value="42">저음</option>
+											<option value="" <c:if test="${empty item.actor_voice }">selected</c:if>>선택</option>
+											<option value="40" <c:if test="${item.actor_voice eq 40}">selected</c:if>>고음</option>
+											<option value="41" <c:if test="${item.actor_voice eq 41}">selected</c:if>>중음</option>
+											<option value="42" <c:if test="${item.actor_voice eq 42}">selected</c:if>>저음</option>
 										</select>
 									</div>
 	            				</div>
 	            				<div class="row mb-1">
 	            					<div class="col">주소</div>
-	            					<div class="col">관리자</div>
+	            					<div class="col">&nbsp;</div>
 	            				</div>
 	            				<div class="row mb-1">
-									<div class="col input-group">
-										<input disabled type="text" class="form-control" id="sample4_postcode" name="zip_code" placeholder="우편번호" value="${item.zip_code }">
-										<button type="button" class="input-group-text" onclick="sample4_execDaumPostcode()"><i class="fa-solid fa-magnifying-glass"></i></button>
-										<button class="input-group-text"><i class="fa-solid fa-rotate-left"></i></button>
+									<div class="col-6">
+										<div class="input-group">
+											<input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="우편번호" value="${item.zip_code }">
+											<button type="button" class="input-group-text" onclick="sample4_execDaumPostcode()"><i class="fa-solid fa-magnifying-glass"></i></button>
+											<button type="button" class="input-group-text" id="address_reset"><i class="fa-solid fa-rotate-left"></i></button>
+										</div>
+									</div>
+									<div class="col-2">
+										&nbsp;
 									</div>
 									<div class="col">
-										<select class="form-select">
+										&nbsp;
+									</div>
+	            				</div>
+	            				<div class="row mb-1">
+									<div class="col">
+										<input type="text" class="form-control" id="address" name="address" placeholder="도로명주소" value="${item.address }">
+									</div>
+									<div class="col">&nbsp;</div>
+	            				</div>
+	            				<div class="row mb-1">
+									<div class="col">
+										<input type="text" class="form-control" id="address_detail" name="address_detail" placeholder="상세주소" value="${item.address_detail }">
+									</div>
+									<div class="col">&nbsp;</div>
+	            				</div>
+	            				<div class="row mb-3">
+									<div class="col">
+										<input type="text" class="form-control" id="address_Lat" name="address_Lat" placeholder="위도" value="${item.address_Lat }">
+									</div>
+									<div class="col">
+										<input type="text" class="form-control" id="address_Lng" name="address_Lng" placeholder="경도" value="${item.address_Lng }">
+									</div>
+									<div class="col">&nbsp;</div>
+									<div class="col">&nbsp;</div>
+	            				</div>
+	            				<div class="row mb-1">
+	            					<div class="col-6">SNS</div>
+	            				</div>
+	            				<div class="row mb-3">
+	            					<div class="col-2">
+										<select class="form-select" name="">
 											<option>선택</option>
-											<option>N</option>
-											<option>Y</option>
+											<option value="">Instagram</option>
+											<option value="">Facebook</option>
+											<option value="">Youtube</option>
+											<option value="">Homepage</option>
 										</select>
 									</div>
-	            				</div>
-	            				<div class="row mb-1">
-									<div class="col">
-										<input disabled type="text" class="form-control" id=sample4_roadAddress name="address" placeholder="도로명주소" value="${item.address }">
+									<div class="col-4">
+										<div class="input-group">
+											<input type="text" class="form-control">
+											<button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-plus"></i></button>
+										</div>
 									</div>
-									<div class="col">&nbsp;</div>
-	            				</div>
-	            				<div class="row mb-1">
-									<div class="col">
-										<input type="text" class="form-control" id="sample4_detailAddress" name="address_detail" placeholder="상세주소" value="${item.address_detail }">
-									</div>
-									<div class="col">&nbsp;</div>
-	            				</div>
-	            				<div class="row mb-1">
-									<div class="col">
-										<input disabled type="text" class="form-control" placeholder="위도">
-									</div>
-									<div class="col">
-										<input disabled type="text" class="form-control" placeholder="경도">
-									</div>
-									<div class="col">&nbsp;</div>
-									<div class="col">&nbsp;</div>
-	            				</div>
-	            				
+								</div>	
 	            				<div class="row mt-5 d-grid justify-content-end">
 									<div class="col">
-										<button type="button" class="btn btn-primary" id="btnSave" onclick="reg()">등록</button>
+										<button type="button" class="btn btn-primary" id="btnSave">등록</button>
 										<button type="button" class="btn btn-primary" id="btnList">목록</button>
 									</div>
 								</div>
@@ -430,7 +464,9 @@
 		form.attr("action", goUrlList).submit();
 	});
 	
-	
+	$("#searchReset").on("click", function() {
+		form.attr("action", goUrlList).submit();
+	});
 	
 	/* 중복아이디 체크 */
 	$("#id").on("focusout", function(){ 
@@ -482,13 +518,21 @@
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById('zip_code').value = data.zonecode;
+                document.getElementById("address").value = roadAddr;
+                // 커서를 상세주소로 이동한다
+                document.getElementById('address_detail').focus();
+                
             }
         }).open();
     }
 	
-	
+	//주소 리셋
+	$("#address_reset").on("click", function() {
+		$("#zip_code").val('');
+		$("#address").val('');
+		$("#address_detail").val('');
+	})
 	
 	//이미지 미리보기
 	$('input[name="file_path"]').change(function(){
@@ -504,6 +548,10 @@
 	  reader.readAsDataURL(input.files[0]);
 	  }
 	}
+	
+	//validation
+	
+	
 	
 	
 	$(function() {

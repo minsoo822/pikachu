@@ -38,6 +38,7 @@ public class CodeController {
 		
 		System.out.println("검색어 :" + vo.getShValue());
 		System.out.println("검색옵션 :" + vo.getShOption());
+		
 		model.addAttribute("item", result);
 //		코드그룹이름을 가져올때
 		List<Code> add = service.addCodeName(vo);

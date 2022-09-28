@@ -41,7 +41,7 @@
 							<!-- <div class="baba"> -->
 							<footer class="indexFooter">
 								<a href="/member/signInForm" class="indexbtn" style="margin-right: 15px;">로그인</a>
-								<a href="/member/mainViewForm" class="indexbtn" style="margin-right: 15px; background-color: gray;">둘러보기</a>
+								<a href="/member/mainHome" class="indexbtn" style="margin-right: 15px; background-color: gray;">둘러보기</a>
 								<a href="/member/signUpForm" class="indexbtn">회원가입</a>
 							</footer>	
 							<!-- </div> -->

@@ -32,7 +32,7 @@ public class CodeDao {
 	public int insertCd(Code dto) { 
 		
 		int result = sqlsession.insert(namespace + ".insertCd", dto);
-		System.out.println("Dao result" + result);
+		System.out.println("Dao Insert: " + result);
 		
 		return result;
 	}

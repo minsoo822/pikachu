@@ -231,18 +231,18 @@
 							<div class="col">
 								<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
 									<option value="" <c:out value="${item.useNy }"/>" hidden selected>선택</option>
-									<option value="0">N</option>
-									<option value="1">Y</option>
+									<option value="0" <c:if test="${item.useNy eq 0 }">selected</c:if>>N</option>
+									<option value="1" <c:if test="${item.useNy eq 1 }">selected</c:if>>Y</option>
 								</select>
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">삭제여부</div>
 							<div class="col">
-								<select class="form-select" id="delNy" name="delNy" value="<c:out value="${item.delNy }"/>">
-									<option value=""<c:out value="${item.delNy }"/>" hidden selected>선택</option>
-									<option value="0">N</option>
-									<option value="1">Y</option>
+								<select class="form-select" id="delNy" name="delNy">
+									<option value="" hidden selected>선택</option>
+									<option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>>N<option>
+									<option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>>Y</option>
 								</select>
 							</div>
 						</div>
@@ -307,8 +307,26 @@
 	var form = $("form[name=form]");
 	var formVo = $("form[name=formVo]");
 	
+	function reg() {
+		
+		  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
+			  alert("코드그룹 이름을 입력해주세요.");
+			  document.getElementById("name").value = "";
+			  document.getElementById("name").focus();
+			  return false;
+		  }
+		  
+		  if(document.getElementById("useNy").value == 2) {
+			  alert("코드그룹 사용유무를 선택해주세요.");
+			  document.getElementById("useNy").value = 2;
+			  document.getElementById("useNy").focus();
+			  return false;
+		  }
+		
+			  document.getElementById("FormInst").submit();
+	  }	  
 	
-	$("#btnSave").on("click", function(){
+	$("#btnSave").on("click", function(){ 
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 	   	//	if (validationInst() == false) return false;
@@ -342,24 +360,7 @@
   
   
   
-  function reg() {
-	
-	  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
-		  alert("코드그룹 이름을 입력해주세요.");
-		  document.getElementById("name").value = "";
-		  document.getElementById("name").focus();
-		  return false;
-	  }
-	  
-	  if(document.getElementById("useNy").value == 2) {
-		  alert("코드그룹 사용유무를 선택해주세요.");
-		  document.getElementById("useNy").value = 2;
-		  document.getElementById("useNy").focus();
-		  return false;
-	  }
-	
-		  document.getElementById("FormInst").submit();
-  }	  
+  
   
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
