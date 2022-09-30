@@ -63,6 +63,7 @@ public class MemberController {
 	}
 	
 	
+	
 //	아이디 중복확인
 	@ResponseBody
 	@RequestMapping(value = "idCheck")
@@ -109,8 +110,10 @@ public class MemberController {
 			httpSession.setAttribute("sessSeq", logInCd.getSeq());
 			httpSession.setAttribute("sessId", logInCd.getId());
 			httpSession.setAttribute("sessName", logInCd.getName());
+			httpSession.setAttribute("sessAdmin", logInCd.getAdminNy());
 			
 			returnMap.put("name", logInCd.getName());
+			returnMap.put("admin", logInCd.getAdminNy());
 			
 		} else {
 			returnMap.put("rt", "fail");
@@ -125,17 +128,98 @@ public class MemberController {
 		
 		return "infra/member/user/mainViewForm";
 	}
+//	유저 회원가입 공통페이지
+	@RequestMapping(value = "signUpForm")
+	public String signUp() throws Exception {
+		
+		  return "infra/member/user/signUpForm";
+	}
+	@RequestMapping(value = "signUpInst")
+	public String signUpInst(Member dto) throws Exception {
+		
+		int signUpInst = service.insertCd(dto);
+		
+		return "infra/member/user/signUpActor";
+	}	
+	
+	
+//	유저회원가입 배우페이지
+	@RequestMapping(value = "signUpActorForm")
+	public String signUpActor() throws Exception {
+		return "infra/member/user/signUpActor";
+	}
+	
+//	유저회원가입 감독페이지
+	@RequestMapping(value = "signUpDirectorForm")
+	public String signUpDirector() throws Exception {
+		return "infra/member/user/signUpDirector";
+	}
+	
+	@RequestMapping(value = "signUpDirectorInst")
+	public String signUpDirectorInst(Member dto) throws Exception {
+		
+		int signUpDirectorInst = service.insertCd(dto);
+		System.out.println("signUpDirectorInst : " + signUpDirectorInst);
+//		
+//		Member signUpDirectorInst1 = service.logInCd(dto);
+//		redirectAttributes.addFlashAttribute("vo", vo);
+//		
+//		httpSession.setMaxInactiveInterval(60 * 30); // 60second * 30 = 30minute
+//		httpSession.setAttribute("sessSeq", signUpDirectorInst1.getSeq());
+//		httpSession.setAttribute("sessId", signUpDirectorInst1.getId());
+//		httpSession.setAttribute("sessName", signUpDirectorInst1.getName());
+//		httpSession.setAttribute("sessAdmin", signUpDirectorInst1.getAdminNy());
+//		
+		return "infra/member/user/mainViewForm";
+	}
 	
 //------------------------------------------------------------------------------------- 화면구현
 	
+	//초기페이지
 	@RequestMapping(value = "mainIndex")
 	public String inDex() throws Exception {
 		
 		return "infra/member/user/mainIndex";
 	}
+	//메인페이지
 	@RequestMapping(value = "mainHome")
 	public String mainPage() throws Exception {
 		
 		return "infra/member/user/mainViewForm";
 	}
+
+	//메인페이지
+		@RequestMapping(value = "/member/tourPostViewForm")
+		public String tourPostViewForm() throws Exception {
+			
+		return "infra/member/user/tourPostViewForm";
+	}
+	
+	//메인페이지
+	@RequestMapping(value = "oditionPostViewForm")
+	public String oditionMod() throws Exception {
+		
+		return "infra/member/user/oditionPostViewForm";
+	}	
+	//메인페이지
+		@RequestMapping(value = "actorPostViewForm")
+		public String actorPostViewForm() throws Exception {
+			
+		return "infra/member/user/actorPostViewForm";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

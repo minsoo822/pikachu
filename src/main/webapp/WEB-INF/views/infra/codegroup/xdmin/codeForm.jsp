@@ -210,14 +210,22 @@
 	            		<div class="row mb-2">
 	            			<div class="col">코드그룹 코드</div>
 							<div class="col">
-								<select class="form-select" name="seq">
-			            	<c:forEach items="${add}" var="add" varStatus="status">
-			            			<option value="${item.seq }" hidden selected>선택</option>
-									<option value=""><c:out value="${add.name }"/></option>
-							</c:forEach>
+								<select class="form-select" name="">
+										<option value="" hidden selected>::코드그룹명::</option>
+					            	<c:forEach items="${add}" var="add" varStatus="status">
+										<option value="" <c:if test="${item.seq eq ccg_seq }">selected</c:if>><c:out value="${add.name }"/></option>
+									</c:forEach>
 								</select>
 							</div>
-	            		</div>
+            		</div>
+						<%-- 		<label for="code" class="form-label">코드그룹명</label>
+								<select class="form-select" name="codeGroupName">
+									<c:forEach items="${add}" var="add" varStatus="status">
+										<option value="" hidden selected>::코드그룹명::</option>
+										<option value="" <c:if test="${item.seq eq codeGroup_seq }"> selected</c:if>><c:out value="${add.propertyKor }"/></option>
+									</c:forEach>
+								</select>
+							</div>  --%>
 						<div class="row mb-2">
 							<div class="col">코드</div>
 							<div class="col">

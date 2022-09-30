@@ -6,7 +6,7 @@ import java.util.List;
 public class Code {
 	
 //	cc
-	private Integer seq;
+	private String seq;
 	private String name;
 	private Integer oder;
 	private Integer useNy;
@@ -62,10 +62,10 @@ public class Code {
 	public void setModDate(String modDate) {
 		this.modDate = modDate;
 	}
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public static List<Code> getCachedCodeArrayList() {

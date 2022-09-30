@@ -27,6 +27,8 @@ public class Member {
 	private String address_detail;
 	private Integer address_Lat;
 	private Integer address_Lng;
+	private Integer delNy;
+	private Integer adminNy;
 	
 	
 //----------------------------------------------------------	
@@ -175,6 +177,18 @@ public class Member {
 	}
 	public void setTelecom(Integer telecom) {
 		this.telecom = telecom;
+	}
+	public Integer getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(Integer delNy) {
+		this.delNy = delNy;
+	}
+	public Integer getAdminNy() {
+		return adminNy;
+	}
+	public void setAdminNy(Integer adminNy) {
+		this.adminNy = adminNy;
 	}
 	
 	

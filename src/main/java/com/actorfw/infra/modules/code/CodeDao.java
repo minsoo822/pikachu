@@ -27,14 +27,14 @@ public class CodeDao {
 		return result;
 	}
 	
-	public List<Code> addCodeName(CodeVo vo) { return sqlsession.selectList(namespace +".addCodeName", "");}
+	public List<Code> addCodeName(CodeVo vo) { return sqlsession.selectList(namespace +".addCodeName", vo);}
 	
 	public int insertCd(Code dto) { 
-		
-		int result = sqlsession.insert(namespace + ".insertCd", dto);
-		System.out.println("Dao Insert: " + result);
-		
-		return result;
+	
+	int result = sqlsession.insert(namespace + ".insertCd", dto);
+	System.out.println("Dao Insert: " + result);
+	
+	return result;
 	}
 		
 		

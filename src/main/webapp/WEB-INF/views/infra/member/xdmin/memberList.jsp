@@ -17,7 +17,7 @@
     <!-- jquery ui CSS -->    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
-    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -219,7 +219,7 @@
 	            </div> -->
 	            <table class="table table-striped">
 	              <tr class="tableTr">
-	                <th><input class="form-check-input" type="checkbox"></th>
+	                <th><input class="form-check-input" type="checkbox" name="allCheck"></th>
 	                <th>#</th>
 	                <th>회원 코드</th>
 	                <th>회원 타입</th>
@@ -248,7 +248,7 @@
 		<c:otherwise>
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
-					<td><input class="form-check-input" type="checkbox"></td>
+					<td><input class="form-check-input" type="checkbox" name="rowCheck" value="${list.seq }"></td>
 					<td></td>
 					<td>	
 						<a href="javascript:goForm(${list.seq })" class="text-decoration-none">
@@ -315,7 +315,7 @@
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
 						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
-						<a class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="submit" ><i class="fa-solid fa-trash-can"></i></a>
+						<a class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" onclick="btnDelete()"><i class="fa-solid fa-trash-can"></i></a>
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
@@ -368,8 +368,28 @@
 	$('#btnForm').on("click", function() {
 		goForm(0);                
 	});
-
-  
+	
+//	체크박스
+	$(function() {
+		var chkObj = document.getElementsByName("rowCheck");
+		var rowCnt = chkObj.length;
+		
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr = $("input[name='rowCheck']");
+			for (var i=0; i<chk_listArr.length; i++){
+				chk_listArr[i].check = this.checked;
+			} 
+		});
+		$("input[name='rowCheck']").click(function(){
+			if($("input[name='rowCheck']:checked").length == rowCnt){
+				$("input[name='allCheck']")[0].checked == true;
+			} else {
+				$("input[name='allCheck']")[0].checked == false;
+			}
+		});
+	});
+	
+	
   
   
   

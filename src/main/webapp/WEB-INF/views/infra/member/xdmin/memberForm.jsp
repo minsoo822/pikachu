@@ -64,7 +64,7 @@
 	          <li><a href="#">디렉터 관리</a></li>
 	        </ul>
 	      </li>
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-pie-chart-alt-2' ></i>
 	          <span class="link_name">Analytics</span>
@@ -114,7 +114,7 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">History</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <a href="#">
 	          <i class='bx bx-cog' ></i>
@@ -340,7 +340,7 @@
 	            				<div class="row mb-1">
 									<div class="col-6">
 										<div class="input-group">
-											<input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="우편번호" value="${item.zip_code }">
+											<input readonly type="text" class="form-control" id="zip_code" name="zip_code" placeholder="우편번호" value="${item.zip_code }">
 											<button type="button" class="input-group-text" onclick="sample4_execDaumPostcode()"><i class="fa-solid fa-magnifying-glass"></i></button>
 											<button type="button" class="input-group-text" id="address_reset"><i class="fa-solid fa-rotate-left"></i></button>
 										</div>
@@ -354,7 +354,7 @@
 	            				</div>
 	            				<div class="row mb-1">
 									<div class="col">
-										<input type="text" class="form-control" id="address" name="address" placeholder="도로명주소" value="${item.address }">
+										<input readonly type="text" class="form-control" id="address" name="address" placeholder="도로명주소" value="${item.address }">
 									</div>
 									<div class="col">&nbsp;</div>
 	            				</div>
@@ -364,12 +364,12 @@
 									</div>
 									<div class="col">&nbsp;</div>
 	            				</div>
-	            				<div class="row mb-3">
+	            				<div hidden class="row mb-3">
 									<div class="col">
-										<input type="text" class="form-control" id="address_Lat" name="address_Lat" placeholder="위도" value="${item.address_Lat }">
+										<input readonly type="text" class="form-control" id="address_Lat" name="address_Lat" placeholder="위도" value="${item.address_Lat }">
 									</div>
 									<div class="col">
-										<input type="text" class="form-control" id="address_Lng" name="address_Lng" placeholder="경도" value="${item.address_Lng }">
+										<input readonly type="text" class="form-control" id="address_Lng" name="address_Lng" placeholder="경도" value="${item.address_Lng }">
 									</div>
 									<div class="col">&nbsp;</div>
 									<div class="col">&nbsp;</div>
@@ -377,10 +377,10 @@
 	            				<div class="row mb-1">
 	            					<div class="col-6">SNS</div>
 	            				</div>
-	            				<div class="row mb-3">
+	            				<!-- <div class="row mb-3">
 	            					<div class="col-2">
 										<select class="form-select" name="">
-											<option>선택</option>
+											<option value="">선택</option>
 											<option value="">Instagram</option>
 											<option value="">Facebook</option>
 											<option value="">Youtube</option>
@@ -389,11 +389,11 @@
 									</div>
 									<div class="col-4">
 										<div class="input-group">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="">
 											<button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-plus"></i></button>
 										</div>
 									</div>
-								</div>	
+								</div> -->	
 	            				<div class="row mt-5 d-grid justify-content-end">
 									<div class="col">
 										<button type="button" class="btn btn-primary" id="btnSave">등록</button>

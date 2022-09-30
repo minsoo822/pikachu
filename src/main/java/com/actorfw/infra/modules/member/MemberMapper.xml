@@ -26,17 +26,14 @@
 			<when test="shDelOption == 1"> AND useNy LIKE CONCAT (1)</when>
 		</choose>
 		ORDER BY seq DESC
-		
 	</select>
 	
 	<select id="selectOne" resultMap="resultObj">
 		SELECT
 			*
-		FROM
-		member
+		FROM member 
 		WHERE 1=1
 		AND seq = #{seq}
-	
 	</select>
 	
 	<insert id="insertCd">
@@ -49,6 +46,7 @@
 			,gender
 			,email
 			,email_domain
+			,telecom
 			,phone_number
 			,director_type
 			,actor_picture
@@ -63,8 +61,6 @@
 			,address_detail
 			,address_Lat
 			,address_Lng
-			,telecom
-			
 		)
 		VALUES (
 			#{user_type}
@@ -75,6 +71,7 @@
 			,#{gender}
 			,#{email}
 			,#{email_domain}
+			,#{telecom}
 			,#{phone_number}
 			,#{director_type}
 			,#{actor_picture}
@@ -89,44 +86,13 @@
 			,#{address_detail}
 			,#{address_Lat}
 			,#{address_Lng}
-			,#{telecom}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-		
 	</insert>
 	
-	<!-- 아이디중복 체크 -->
-	<select id="idCheck" resultType="Integer">
-		
-		SELECT
-			COUNT(*)
-		FROM
-			member a
-		WHERE 1=1
-			AND id = #{id}
-	
-	</select>
-	
-	<!-- 로그인세션 -->
-	<select id="logInCd" resultMap="resultObj">
-	
-		SELECT
-			seq
-			,id
-			,password
-			,name
-		FROM 
-			member
-		WHERE 1=1
-			AND id = #{id}
-			AND password = #{password}
-			
-	</select>
-	
 	<update id="updateCd">
-	
 		UPDATE member
 		SET
 			user_type = #{user_type}
@@ -136,6 +102,8 @@
 			,dob = #{dob}
 			,gender = #{gender}
 			,email = #{email}
+			,email_domain = #{email_domain}
+			,telecom = #{telecom}
 			,phone_number = #{phone_number}
 			,director_type = #{director_type}
 			,actor_picture = #{actor_picture}
@@ -148,10 +116,39 @@
 			,zip_code = #{zip_code}
 			,address = #{address}
 			,address_detail = #{address_detail}
+			,address_Lat = #{address_Lat}
+			,address_Lng = #{address_Lng}
+			,sns_type = #{sns_type}
+			,sns_url = #{sns_url}
 		WHERE 1=1
 			AND seq = #{seq}
-	
 	</update>
+	
+	<!-- 아이디중복 체크 -->
+	<select id="idCheck" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			member a
+		WHERE 1=1
+			AND id = #{id}
+	</select>
+	
+	<!-- 로그인세션 -->
+	<select id="logInCd" resultMap="resultObj">
+		SELECT
+			seq
+			,id
+			,password
+			,name
+		FROM 
+			member
+		WHERE 1=1
+			AND id = #{id}
+			AND password = #{password}
+	</select>
+	
+	
 
 
 

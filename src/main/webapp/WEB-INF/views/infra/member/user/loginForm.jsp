@@ -35,7 +35,7 @@
 			</div>
 			<div style="width: 400px; margin-left: auto; margin-right: auto;">
 				<input id="id" style="margin-bottom: 16px;" class="form-control" type="text"placeholder="ID">
-				<input id="password" class="form-control" type="text"  placeholder="Password">
+				<input id="password" class="form-control" type="password"  placeholder="Password">
 			</div>
 			<div class="row form-check form-switch" style="margin: 10px 0px 0px 450px;" >
 				<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
@@ -94,6 +94,7 @@
 			}
 		});
 	}
+	
 	
 	
 	

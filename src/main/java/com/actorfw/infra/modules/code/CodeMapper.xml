@@ -7,22 +7,13 @@
 <mapper namespace="com.actorfw.infra.modules.code.CodeMapper">
 	
 	<resultMap type="com.actorfw.infra.modules.code.Code" id="resultMapObj"></resultMap>
-		
-	<select id="selectList" resultMap="resultMapObj">
-		
-		SELECT
-			a.seq
-			,a.name
-			,a.oder
-			,a.ccg_seq
-			,a.useNy
-			,a.delNy
-			,a.creDate
-			,a.modDate
+	
+	<!-- paging -->
+	<sql id ="selectCommon">
 		FROM cc a
-		WHERE
-		1=1
-		<choose>
+		WHERE 1=1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
+			<choose>
 			<!-- <when test="shOption == 0"></when> -->
 			<when test="shOption == 1">AND seq = #{shValue} </when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
@@ -35,41 +26,55 @@
 			<!-- Date -->
 			<when test="shDateOption == 1"> And modDate LIKE CONCAT (1)</when>
 			<when test="shDateOption == 2"> And creDate LIKE CONCAT (2)</when>
-		</choose>							
+		</choose>
+	</sql>
+		
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+			a.seq
+			,a.name
+			,a.oder
+			,a.ccg_seq
+			,a.useNy
+			,a.delNy
+			,a.creDate
+			,a.modDate
+		<include refid="selectCommon" />
+			ORDER BY a.seq DESC	
+		<include refid="Base.selectListLowerForMysql"/>
+	</select>
 	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 
 	<select id="selectOne" resultMap="resultMapObj">
 	
 		SELECT
-			a.seq
-			,a.name
-			,a.oder
-			,a.useNy
-			,a.delNy
-			,a.ccg_seq
+			a.*
 		FROM 
-		cc a
+			cc a
 		WHERE 1=1
-		AND seq = #{seq}
+		AND a.seq = #{seq}
 		
 	</select> 
 	
 	<insert id="insertCd">
-	
 		INSERT INTO cc (
+			ccg_seq
 			,name
 			,oder
 			,useNy
 			,delNy
-			,ccg_seq
 		)
 		VALUE(
-			#{name}
+			#{ccg_seq}
+			,#{name}
 			,#{oder}
 			,#{useNy}
 			,#{delNy}
-			,#{ccg_seq}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -81,11 +86,12 @@
 		
 		UPDATE cc
 		SET
-			name = #{name}
+			seq = #{seq}
+			ccg_seq = #{ccg_seq}
+			,name = #{name}
 			,oder = #{oder}
 			,useNy = #{useNy}
 			,delNy = #{delNy}
-			,ccg_seq = #{ccg_seq}
 		WHERE 1=1
 			AND seq = #{seq}			
 	
@@ -94,8 +100,8 @@
 	<!-- 코드그룹이름 자동로드 -->
 	<select id="addCodeName" resultMap="resultMapObj">
 		 SELECT
-			a.name
-		FROM ccg a 
+			name
+		FROM ccg
 		WHERE
 		1=1
 	</select>

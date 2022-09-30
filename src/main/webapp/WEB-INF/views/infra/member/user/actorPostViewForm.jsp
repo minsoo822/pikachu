@@ -30,8 +30,8 @@
 		<nav class="top-fixed">
 			<h2 class="logo"><a class="logolink" href="/member/mainViewForm">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="tourpostViewForm.html">프로필 투어</a></li>
-					<li><a href="oditionPostViewForm.html">오디션 공고</a>
+					<li><a href="/member/tourPostViewForm">프로필 투어</a></li>
+					<li><a href="/member/oditionPostViewForm">오디션 공고</a>
 						<ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">상업영화</a></li>
@@ -40,7 +40,7 @@
 							<li><a href="#">(바이럴)광고</a></li>
 						</ul>
 					</li>	
-					<li><a href="actorPostViewForm.html">프로필 정보</a>
+					<li><a href="/member/actorPostViewForm">프로필 정보</a>
 						<ul>
 							<li><a href="actorPostViewForm.html">전체</a></li><br>
 							<li><a href="actorPostManViewForm.html">남자</a></li><br>
@@ -66,8 +66,18 @@
 					</li>
 				</ul>
 			<div>
-			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
-			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
+			<c:if test="${sessSeq eq null }">
+				<button type="button" class="btn" id="btnSignUp" disabled>회원가입</button>
+				<button type="button" class="btn" id="btnLogin">로그인</button>
+			</c:if>
+			<c:if test="${sessSeq ne null }">
+				<button type="button" class="btn">마이페이지</button>
+				<button type="button" class="btn" id="btnLogout">로그아웃</button>
+			</c:if>	
+				<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
+				sessName: <c:out value="${sessName }"/><br>
+				sessId: <c:out value="${sessId }"/><br> --%>
+			</div>
 			</div>
 		</nav>
 	</div>
@@ -198,7 +208,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="postPagination">
+	<!-- <div class="postPagination">
 		<ul style="position: absolute; top: 185%">
 			<li><a href="#"><</a></li>
 			<li><a href="#" class="active">1</a></li>
@@ -208,7 +218,7 @@
 			<li><a href="#">5</a></li>
 			<li><a href="#">></a></li>
 		</ul>
-	</div>
+	</div> -->
 	<!-- footer -->
 	<div class="footer"">
 		<div class="row">

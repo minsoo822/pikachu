@@ -28,43 +28,64 @@
 		
 			<!-- Header -->
 				<div id="header">
-				
-					<!-- Inner -->
-						<div class="inner">
-							<header class="indexHeader">
-								<h1 class="homepageline">
-									<a href="/member/mainViewForm" id="logo">Actor'<span style="color: #f9004d;">s</span></a>
-								</h1>
-								<hr class="indexhr">
-								<p>#</p>
-							</header>
-							<!-- <div class="baba"> -->
-							<footer class="indexFooter">
-								<a href="/member/signInForm" class="indexbtn" style="margin-right: 15px;">로그인</a>
-								<a href="/member/mainHome" class="indexbtn" style="margin-right: 15px; background-color: gray;">둘러보기</a>
-								<a href="/member/signUpForm" class="indexbtn">회원가입</a>
-							</footer>	
-							<!-- </div> -->
-						</div>
-				
+				<!-- Inner -->
+					<div class="inner">
+						<header class="indexHeader">
+							<h1 class="homepageline">
+								<a href="#" onclick="goHome()" id="logo">Actor'<span style="color: #f9004d;">s</span></a>
+							</h1>
+							<hr class="indexhr">
+							<p></p>
+						</header>
+						<!-- <div class="baba"> -->
+						<footer class="indexFooter">
+							<a onclick="goSignup()" href="#" class="indexbtn" style="margin-right: 15px;">로그인</a>
+							<a  class="indexbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</a>
+						</footer>	
+						<!-- </div> -->
+						<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+					</div>
 				</div>
-			
-			
 			</div>
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		<script type="text/javascript">
-		</script>
+		function goHome() {
+			location.href="/member/mainHome";
+		}
 		
+		function goSignup() {
+			location.href="/member/loginForm";
+		}
+		
+		</script>
+		<!-- 부트스트랩 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<!-- 폰트어썸 -->
+<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
+<!-- jquery ui CSS -->    
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 		<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

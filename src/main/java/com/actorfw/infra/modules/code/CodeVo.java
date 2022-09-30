@@ -14,6 +14,7 @@ public class CodeVo {
 //	delNy
 	private Integer shDelOption;
 	private String shDateOption;
+	private String shDelNy;
 	
 //	paging
 	private int thisPage = 1;									// 현재 페이지
@@ -120,6 +121,14 @@ public class CodeVo {
 	public void setShDelOption(Integer shDelOption) {
 		this.shDelOption = shDelOption;
 	}
+	public String getShDelNy() {
+		return shDelNy;
+	}
+
+	public void setShDelNy(String shDelNy) {
+		this.shDelNy = shDelNy;
+	}
+
 	public String getShDateOption() {
 		return shDateOption;
 	}

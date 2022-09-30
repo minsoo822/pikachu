@@ -28,8 +28,16 @@
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/member/mainHome" />
 			<exclude-mapping path="/member/loginForm" />
 			<exclude-mapping path="/member/loginCheck" />
+			<exclude-mapping path="/member/signUpForm" />
+			<exclude-mapping path="/member/signUpInst" />
+			<exclude-mapping path="/member/signUpActorForm" />
+			
+			<exclude-mapping path="/member/signUpDirectorForm" />
+			
+			<exclude-mapping path="/member/mainIndex" />
 			<beans:bean id="checkLoginSessionInterception" class="com.actorfw.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	

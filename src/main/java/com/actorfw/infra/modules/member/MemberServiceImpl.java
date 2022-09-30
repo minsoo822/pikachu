@@ -19,6 +19,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	public int insertCd(Member dto) throws Exception {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		int signUpDirectorInst = dao.insertCd(dto);
+		System.out.println("signUpDirectorInst :" + signUpDirectorInst);
 		return dao.insertCd(dto);
 	}
 	public int updateCd(Member dto) throws Exception { return dao.updateCd(dto); }
