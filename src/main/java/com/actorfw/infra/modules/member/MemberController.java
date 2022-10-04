@@ -129,24 +129,33 @@ public class MemberController {
 		return "infra/member/user/mainViewForm";
 	}
 //	유저 회원가입 공통페이지
-	@RequestMapping(value = "signUpForm")
-	public String signUp() throws Exception {
-		
-		  return "infra/member/user/signUpForm";
-	}
-	@RequestMapping(value = "signUpInst")
-	public String signUpInst(Member dto) throws Exception {
-		
-		int signUpInst = service.insertCd(dto);
-		
-		return "infra/member/user/signUpActor";
-	}	
+//	@RequestMapping(value = "signUpForm")
+//	public String signUp() throws Exception {
+//		
+//		  return "infra/member/user/signUpForm";
+//	}
+//	@RequestMapping(value = "signUpInst")
+//	public String signUpInst(Member dto) throws Exception {
+//		
+//		int signUpInst = service.insertCd(dto);
+//		
+//		return "infra/member/user/signUpActor";
+//	}	
 	
 	
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorForm")
 	public String signUpActor() throws Exception {
 		return "infra/member/user/signUpActor";
+	}
+	
+//	유저회원가입 배우페이지
+	@RequestMapping(value = "signUpActorInst")
+	public String signUpActorInst(Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		int signUpActorInst = service.insertCd(dto);
+		System.out.println("signUpActorInst Control : " + signUpActorInst);
+		
+		return "redirect:/member/mainHome";
 	}
 	
 //	유저회원가입 감독페이지
@@ -170,7 +179,7 @@ public class MemberController {
 //		httpSession.setAttribute("sessName", signUpDirectorInst1.getName());
 //		httpSession.setAttribute("sessAdmin", signUpDirectorInst1.getAdminNy());
 //		
-		return "infra/member/user/mainViewForm";
+		return "redirect:/member/mainHome";
 	}
 	
 //------------------------------------------------------------------------------------- 화면구현

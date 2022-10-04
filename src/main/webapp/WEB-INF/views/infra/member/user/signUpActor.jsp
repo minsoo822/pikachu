@@ -22,9 +22,6 @@
 
 <body style="background-color: black;">
 <form method="post" id="mainForm">
-	<!-- pagination s -->
-	<%@include file="../user/include/integratSignUp.jsp"%>
-	<!-- pagination e -->	
 	<div class="container" style="width: 35%">
 		<div class="row">
 			<div class="col">
@@ -33,6 +30,119 @@
 						<h1 style="color: white; font-size: 70px; letter-spacing: 1px;	cursor: pointer; text-align: center; margin-bottom: 50px;">
 						Actor'<span style="color: #f9004d;">s</span></h1>
 					</div>	
+				</div>
+				<div class="row mb-1">
+					<div class="col">
+						<div class="row">
+							<div class="col" style="color: white;">아이디</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="text" class="form-control" name="id" placeholder="ID">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col">
+						<div class="row">
+							<div class="col" style="color: white;">비밀번호</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="password" class="form-control" name="password" placeholder="PASSWORD">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col">
+						<div class="row">
+							<div class="col" style="color: white;">비밀번호 재확인</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="text" class="form-control" name="password" placeholder="PASSWORD">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col">
+						<div class="row">
+							<div class="col" style="color: white;">이름</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="text" class="form-control" name="name">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col">
+						<div class="row gx-1">
+							<div class="col" style="color: white;">생년월일</div>
+							<div class="col" style="color: white;">성별</div>
+						</div>
+						<div class="row gx-1">
+							<div class="col">
+								<input type="date" class="form-control" name="dob" placeholder="ex)19920622">
+							</div>
+							<div class="col">
+								<select class="form-select" name="gender">
+									<option value="">선택</option>
+									<option value="28">남자</option>
+									<option value="29">여자</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col">
+						<div class="row">
+							<div class="col" style="color: white;">메일</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="col input-group">
+									<input type="text" class="form-control" name="email">
+									<span class="input-group-text">@</span>
+									<select class="form-select"  name="email_domain">
+										<option value="">선택</option>
+										<option value="4">naver.com</option>
+										<option value="5">gamil.com</option>
+										<option value="6">daum.net</option>
+										<option value="7">nate.com</option>
+										<option value="8">dreamwiz.com</option>
+										<option value="9">freechal.com</option>
+										<option value="10">직접입력</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-5">
+					<div class="col">
+						<div class="row">
+							<div class="col" style="color: white;">휴대전화</div>
+						</div>
+						<div class="row mb-1 gx-1">
+							<div class="col-4">
+								<select class="form-select" name="telecom">
+									<option hidden value="">통신사</option>
+									<option value="1">SKT</option>
+									<option value="2">KT</option>
+									<option value="3">LGU+</option>
+								</select>
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" name="phone_number">
+							</div>
+						</div>	
+					</div>
 				</div>
 				<div class="row">
 					<div class="col">
@@ -52,30 +162,30 @@
 								<div class="row pb-1">
 									<div class="col pt-2 regText">키</div>
 									<div class="col">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="actor_height">
 									</div>
 									<div class="col pt-2 regText">몸무게</div>
 									<div class="col">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="actor_weight">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col pt-2 regText">쌍꺼풀유무</div>
 									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>겉쌍꺼풀</option>
-											<option>속쌍꺼풀</option>
-											<option>무쌍꺼풀</option>
+										<select class="form-select" name="actor_eyelid">
+											<option vlaue="">선택</option>
+											<option vlaue="37">겉쌍꺼풀</option>
+											<option vlaue="38">속쌍꺼풀</option>
+											<option vlaue="39">무쌍꺼풀</option>
 										</select>
 									</div>
 									<div class="col pt-2 regText">목소리톤</div>
 									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>고음</option>
-											<option>중음</option>
-											<option>저음</option>
+										<select class="form-select" name="actor_voice">
+											<option vlaue="">선택</option>
+											<option vlaue="40">고음</option>
+											<option vlaue="41">중음</option>
+											<option vlaue="42">저음</option>
 										</select>
 									</div>
 								</div>
@@ -123,10 +233,10 @@
 				<div class=row>
 					<div class="col-3"><h4><b>소속사</b></h4></div>
 					<div class="col-3">
-						<select class="form-select">
+						<select class="form-select" name="company_useNy">
 							<option>선택</option>
-							<option>Y</option>
-							<option>N</option>
+							<option vlaue="0">Y</option>
+							<option vlaue="1">N</option>
 						</select>
 					</div>
 					<div class="col-6"></div>
@@ -141,7 +251,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="actor_specialty">
 							</div>
 						</div>
 					</div>
@@ -328,14 +438,14 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<textarea class="form-control" rows="" cols=""></textarea>
+								<textarea class="form-control" rows="" cols="" name="aboutMe"></textarea>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row mb-5">
 					<div class="col d-grid">
-						<button type="button" class="regFrombutton">가입하기</button>
+						<button type="button" class="regFrombutton" id="actorSignUp">가입하기</button>
 					</div>
 				</div>
 			</div>
@@ -348,11 +458,58 @@
 	
 	<script type="text/javascript">
 	
-			var count_filmo = 0;	
+	
+	
+	form = $("mainForm")
+	
+	$("#actorSignUp").on("click", function(){
+		form.attr("action", "/member/signUpActorInst").submit();
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		var count_filmo = 0;	
 	
 		function addFilmo() {
 		
-			var tmp = "";
+		var tmp = "";
 			
 			tmp += '<div class="row" id="filmoDelete' + count_filmo + '">';
 			tmp += '<div class="col-4">';

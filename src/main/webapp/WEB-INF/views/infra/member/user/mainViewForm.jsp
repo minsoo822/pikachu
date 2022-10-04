@@ -19,13 +19,15 @@
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	
 	<style type="text/css">
 	
-	
-	.modal {
-	  overflow-y:auto;
-	}
-	
+	  .modal-backdrop {
+
+        z-index: -1;
+
+    }
+    
 	</style>
 	
 </head>
@@ -75,7 +77,7 @@
 			</ul>
 			<div>
 			<c:if test="${sessSeq eq null }">
-				<button type="button" class="btn" id="btnSignUp" disabled>회원가입</button>
+				<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
 				<button type="button" class="btn" id="btnLogin">로그인</button>
 			</c:if>
 			<c:if test="${sessSeq ne null }">
@@ -87,24 +89,23 @@
 				sessId: <c:out value="${sessId }"/><br> --%>
 			</div>
 			<!-- Modal -->
-			<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div  class="modal-dialog">
+			    <div style="background: #393939;" class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+			        <h1 class="modal-title fs-5 homepageline" id="staticBackdropLabel"style="color: white;">Actor'<span style="color: #f9004d;">s</span></h1>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
-			      <div class="modal-body">
-			        ...
+			      <div class="modal-body" style="color: white; text-align: center; font-size: 20px;">
+			        가입 분류를 선택해주세요!!~
 			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Understood</button>
+			      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
+			        <button type="button" class="indexbtn" id="goActorSignup" style="cursor: pointer;">배우로 가입하기</button>
+			        <button type="button" class="indexbtn" id="goDerectorSignup" style="cursor: pointer;">디렉터로 가입하기</button>
 			      </div>
 			    </div>
 			  </div>
-			  data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-			</div> -->
+			</div>
 		</nav>
 	</div>
 	<!-- odition post summary -->
@@ -456,7 +457,6 @@
 	
 	var goUrlLogout = "/member/logoutForm";
 	var goUrlLogin = "/member/loginForm";
-	var goUrlSignUp = "/member/signUpForm";
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
 	var goUrlMain = "/member/mainHome";
 	
@@ -464,6 +464,20 @@
 	
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
+	
+	
+	
+	$("#goActorSignup").on("click", function(){
+		alert("배우로")
+		form.attr("action", "/member/mainHome")
+	});
+	$("#goDerectorSignup").on("click", function(){
+		alert("감독으로")
+		form.attr("action", "/member/mainHome")
+	});
+	
+	
+	
 	
 	$("#btnLogin").on("click", function() {
 		form.attr("action", goUrlLogin).submit();
