@@ -53,11 +53,11 @@
 	<select id="selectOne" resultMap="resultMapObj">
 	
 		SELECT
-			a.*
+			*
 		FROM 
-			cc a
+			cc 
 		WHERE 1=1
-		AND a.seq = #{seq}
+		AND seq = #{seq}
 		
 	</select> 
 	
@@ -87,7 +87,7 @@
 		UPDATE cc
 		SET
 			seq = #{seq}
-			ccg_seq = #{ccg_seq}
+			,ccg_seq = #{ccg_seq}
 			,name = #{name}
 			,oder = #{oder}
 			,useNy = #{useNy}
@@ -100,7 +100,8 @@
 	<!-- 코드그룹이름 자동로드 -->
 	<select id="addCodeName" resultMap="resultMapObj">
 		 SELECT
-			name
+			 seq
+			,name
 		FROM ccg
 		WHERE
 		1=1

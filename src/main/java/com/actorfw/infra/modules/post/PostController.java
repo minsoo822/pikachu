@@ -30,7 +30,7 @@ public class PostController {
 		List<Post> list = service.tourList(vo);
 		model.addAttribute("list", list);
 		
-		return "infra/member/user/tourPostViewForm";
+		return "infra/member/user/tourPostList";
 	}
 
 	@RequestMapping(value = "oditionPostViewList")
@@ -41,5 +41,31 @@ public class PostController {
 		
 		return "infra/member/user/oditionPostViewForm";
 	}
+
+	
+//--------------------------------------------------------------------------------
+	
+	
+	
+	@RequestMapping(value = "tourPostForm")
+	public String tourPost() throws Exception {
+		
+		
+		return "infra/member/user/tourPostForm";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

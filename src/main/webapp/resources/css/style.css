@@ -816,8 +816,16 @@ body.homepage.is-preload #header::after {
 }
 
 
-
-
+.tourpost .base {
+	width: 1400px;
+	height: 800px;
+	margin-top: 35px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: #393939;
+	border-radius: 15px;
+}
 
 
 

@@ -62,10 +62,10 @@ public class CodeServiceImpl implements CodeService {
 		
 	}
 
-	public static List<Code> selectListCachedCode(int ifcgSeq) throws Exception {
+	public static List<Code> selectListCachedCode(String ifcgSeq) throws Exception {
 		List<Code> rt = new ArrayList<Code>();
 		for(Code codeRow : Code.cachedCodeArrayList) {
-			if (codeRow.getCcg_seq() == ifcgSeq) {
+			if (codeRow.getCcg_seq().equals(ifcgSeq)) {
 				rt.add(codeRow);
 			} else {
 				// by pass

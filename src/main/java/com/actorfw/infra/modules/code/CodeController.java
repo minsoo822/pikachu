@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/code/")
@@ -49,21 +50,26 @@ public class CodeController {
 	
 	
 	@RequestMapping(value = "CodeInst")
-	public String CodeInst(Code dto) throws Exception {
+	public String CodeInst(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int insertCd = service.insertCd(dto);
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
 		System.out.println("Controller insertCd" + insertCd);
 		
-		return "redirect:/code/codeList";
+		return "redirect:/code/CodeList";
 	}
 	
 	@RequestMapping(value = "CodeUpdt")
-	public String CodeUpdt(Code dto) throws Exception {
+	public String CodeUpdt(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int updateCd = service.updateCd(dto);
+		Code result = service.selectOne(vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("Controller updateCd" + updateCd);
 		
-		return "redirect:/code/codeList";
+		return "redirect:/code/CodeList";
 	}
 	
 	

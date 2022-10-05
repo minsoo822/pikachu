@@ -11,7 +11,7 @@ public class Code {
 	private Integer oder;
 	private Integer useNy;
 	private Integer delNy;
-	private Integer ccg_seq;
+	private String ccg_seq;
 	private String creDate;
 	private String modDate;
 	
@@ -44,10 +44,10 @@ public class Code {
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
 	}
-	public Integer getCcg_seq() {
+	public String getCcg_seq() {
 		return ccg_seq;
 	}
-	public void setCcg_seq(Integer ccg_seq) {
+	public void setCcg_seq(String ccg_seq) {
 		this.ccg_seq = ccg_seq;
 	}
 	public String getCreDate() {

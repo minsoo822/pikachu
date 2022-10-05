@@ -29,12 +29,12 @@
 			<%-- <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>"> --%>
 			<%-- <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> --%>
 			<!-- <input type="hidden" name="checkboxSeqArray" > -->
-			<c:set var="listCodeDomain" value="${CodeServiceImpl.selectListCachedCode(2)}"/>
-			<c:set var="listCodeUser_type" value="${CodeServiceImpl.selectListCachedCode(6)}"/>
-			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode(7)}"/>
-			<c:set var="listCodeDirector_type" value="${CodeServiceImpl.selectListCachedCode(8)}"/>
-			<c:set var="listCodeEyelid" value="${CodeServiceImpl.selectListCachedCode(9)}"/>
-			<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode(10)}"/>
+			<c:set var="listCodeDomain" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+			<c:set var="listCodeUser_type" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
+			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
+			<c:set var="listCodeDirector_type" value="${CodeServiceImpl.selectListCachedCode('8')}"/>
+			<c:set var="listCodeEyelid" value="${CodeServiceImpl.selectListCachedCode('9')}"/>
+			<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode('10')}"/>
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
