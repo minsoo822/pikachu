@@ -28,10 +28,10 @@
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="mainViewForm.html">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="/member/tourPostViewForm">프로필 투어</a></li>
-					<li><a href="/member/oditionPostViewForm">오디션 공고</a>
+					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">상업영화</a></li>
@@ -85,19 +85,44 @@
 				<li><a href="#">(바이럴)CF광고</a></li>
 			</ul>
 		</div>
-			<table class="table oditiontable" style="width: 1200px; margin-right: ; margin-left:380px ; margin-top: 20px;">
+			<table class="oditiontable table">
 			<thead>
 				<tr>
 					<th>순번</th>
 					<th>분류</th>
 					<th>작품제목 (제작사)</th>
-					<th>위치</th>
-					<th>생성일</th>
-					<th>비고</th>
+					<th>성별</th>
+					<th>역활</th>
+					<th>페이</th>
+					<th>작성자</th>
+					<th>이메일</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="choise" onclick="oneLine('oditionPostModForm.html')">
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td style="text-align: center;" colspan="9"> no Data!</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list}" var="list" varStatus="status">
+							<tr>
+								<td>
+								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
+								</td>
+								<td><c:out value="${list.oditionType }"/></td>
+								<td><c:out value="${list.oditionName }"/></td>
+								<td><c:out value="${list.oditionGender }"/></td>
+								<td><c:out value="${list.oditionCasting }"/></td>
+								<td><c:out value="${list.oditionPay }"/></td>
+								<td><c:out value="${list.oditionMember_seq }"/></td>
+								<td><c:out value="${list.oditionEmail }"/></td>
+							</tr>	
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+				<!-- <tr class="choise" onclick="oneLine('oditionPostModForm.html')">
 					<td>1</td>
 					<td>드라마</td>
 					<td>한강 (W캐스팅)</td>
@@ -112,67 +137,12 @@
 					<td>마포구 성암로 330</td>
 					<td>2022-06-11. 20:13</td>
 					<td></td>
-				</tr>
-				<tr class="choise" onclick="threeLine('#')">
-					<td>3</td>
-					<td>상업영화</td>
-					<td>한국이 싫어서</td>
-					<td>DCM첨단산업센터 A동5층</td>
-					<td>2022-06-20. 10:07</td>
-					<td></td>
-				</tr>
-				<tr class="choise" onclick="fourLine('#')">
-					<td>4</td>
-					<td>상업영화</td>
-					<td>미남 (리필름)</td>
-					<td>압구정로 10길9 지하2층</td>
-					<td>2022-06-20. 10:54</td>
-					<td></td>
-				</tr>
-				<tr class="choise">
-					<td>5</td>
-					<td>상업영화</td>
-					<td>oo대첩</td>
-					<td>효령로 349-5</td>
-					<td>2022-06-27. 11:37</td>
-					<td></td>
-				</tr>
-				<tr class="choise">
-					<td>6</td>
-					<td>상업영화</td>
-					<td>베테랑2 (외유내강)</td>
-					<td>암사동 460-15</td>
-					<td>2022-06-27. 12:10</td>
-					<td></td>
-				</tr>
-				<tr class="choise">
-					<td>7</td>
-					<td>상업영화</td>
-					<td>파일럿 (무비락)</td>
-					<td>담원동 23-4 3층</td>
-					<td>2022-07-113 10:39</td>
-					<td></td>
-				</tr>
-				<tr class="choise">
-					<td>8</td>
-					<td>상업영화</td>
-					<td>오후4시</td>
-					<td>영등포구 여의방대로 65길24</td>
-					<td>2022-07-11. 10:46</td>
-					<td>day4pmdream@gmail.com</td>
-				</tr>
-				<tr class="choise">
-					<td>9</td>
-					<td>상업영화</td>
-					<td>세기말의 사랑</td>
-					<td>성암로 330 5층</td>
-					<td>2022-07-11. 10:51</td>
-					<td></td>
-				</tr>
+				</tr> -->
+				
 			</tbody>	
 		</table>
 	</div>
-	<div class="postPagination">
+	<!-- <div class="postPagination">
 		<ul style="position: absolute; top: 133%">
 			<li><a href="#"><</a></li>
 			<li><a href="#" class="active">1</a></li>
@@ -182,6 +152,17 @@
 			<li><a href="#">5</a></li>
 			<li><a href="#">></a></li>
 		</ul>
+	</div> -->
+	<div class="Pagingdp">
+		<div class="pagination">
+			<a href="#">Prev</a>
+			<a href="#" class="active">1</a>
+			<a href="#" class="active">2</a>
+			<a href="#" class="active">3</a>
+			<a href="#" class="active">4</a>
+			<a href="#" class="active">5</a>
+			<a href="#">Next</a>
+		</div>
 	</div>
 	<!-- footer -->
 	<div class="footer"">
@@ -189,21 +170,21 @@
 			<div class="col">
 				<div class="row footerlogo">
 					<div class="col">
-						<a href="https://www.jype.com/"><img src="./image/companyImage/jyp.jpg" alt="#"></a>
+						<a href="https://www.jype.com/"><img src="/resources/image/companyImage/jyp.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://kakaoent.com/"><img src="./image/companyImage/kakao.jpg" alt="#"></a>
+						<a href="https://kakaoent.com/"><img src="/resources/image/companyImage/kakao.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://www.ygfamily.com/"><img src="./image/companyImage/yg.jpg" alt="#"></a>
+						<a href="https://www.ygfamily.com/"><img src="/resources/image/companyImage/yg.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://www.sbs.co.kr/"><img src="./image/companyImage/sbs.png" alt="#"></a>
+						<a href="https://www.sbs.co.kr/"><img src="/resources/image/companyImage/sbs.png" alt="#"></a>
 					</div>
 				</div>
 				<div class="row footermain">
 					<div class="col-3">
-						<a href="mainViewForm.html"><img src="./image/companyImage/Actor.png"></a>
+						<a href="mainViewForm.html"><img src="/resources/image/companyImage/Actor.png"></a>
 					</div>
 					<div class="col-9 mt-3" style="text-align: left;">
 					 	<h6>Copyrightⓒ 2022. Ator's All pictures cannot be copied without permission.</h6>

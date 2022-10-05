@@ -198,7 +198,7 @@ public class MemberController {
 	}
 
 	//메인페이지
-		@RequestMapping(value = "/member/tourPostViewForm")
+		@RequestMapping(value = "tourPostViewForm")
 		public String tourPostViewForm() throws Exception {
 			
 		return "infra/member/user/tourPostViewForm";

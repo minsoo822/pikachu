@@ -40,8 +40,8 @@
 		<nav class="top-fixed">
 			<h2 class="logo"><a class="logolink" href="/member/mainViewForm">Actor'<span>s</span></a></h2>
 			<ul>
-				<li><a href="/member/tourPostViewForm">프로필 투어</a></li>
-				<li><a href="/member/oditionPostViewForm">오디션 공고</a>
+				<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+				<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 					<ul>
 						<li><a href="#">전체</a></li>
 						<li><a href="#">상업영화</a></li>
@@ -342,78 +342,27 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>드라마</td>
-					<td>한강 (W캐스팅)</td>
-					<td>논현로 86길 29</td>
-					<td>2022-04-25. 19:35</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>상업영화</td>
-					<td>미스매치 (노시스 컴퍼니)</td>
-					<td>마포구 성암로 330</td>
-					<td>2022-06-11. 20:13</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>상업영화</td>
-					<td>한국이 싫어서</td>
-					<td>DCM첨단산업센터 A동5층</td>
-					<td>2022-06-20. 10:07</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>상업영화</td>
-					<td>미남 (리필름)</td>
-					<td>압구정로 10길9 지하2층</td>
-					<td>2022-06-20. 10:54</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>상업영화</td>
-					<td>oo대첩</td>
-					<td>효령로 349-5</td>
-					<td>2022-06-27. 11:37</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>상업영화</td>
-					<td>베테랑2 (외유내강)</td>
-					<td>암사동 460-15</td>
-					<td>2022-06-27. 12:10</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>상업영화</td>
-					<td>파일럿 (무비락)</td>
-					<td>담원동 23-4 3층</td>
-					<td>2022-07-113 10:39</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>상업영화</td>
-					<td>오후4시</td>
-					<td>영등포구 여의방대로 65길24</td>
-					<td>2022-07-11. 10:46</td>
-					<td>day4pmdream@gmail.com</td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>상업영화</td>
-					<td>세기말의 사랑</td>
-					<td>성암로 330 5층</td>
-					<td>2022-07-11. 10:51</td>
-					<td></td>
-				</tr>
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td style="text-align: center;" colspan="9"> no Data!</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list}" var="list" varStatus="status">
+							<tr>
+								<td>
+								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
+								</td>
+								<td><c:out value="${list.type }"/></td>
+								<td><c:out value="${list.name }"/></td>
+								<td><c:out value="${list.address }"/></td>
+								<td><c:out value="${list.date }"/></td>
+								<td><c:out value="${list.note }"/></td>
+							</tr>	
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</tbody>	
 		</table>
 	</div>
@@ -468,12 +417,10 @@
 	
 	
 	$("#goActorSignup").on("click", function(){
-		alert("배우로")
-		form.attr("action", "/member/mainHome")
+		form.attr("action", "/member/signUpActorForm").submit();
 	});
 	$("#goDerectorSignup").on("click", function(){
-		alert("감독으로")
-		form.attr("action", "/member/mainHome")
+		form.attr("action", "/member/signUpDirectorForm").submit();
 	});
 	
 	

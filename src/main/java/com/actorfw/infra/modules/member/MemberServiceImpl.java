@@ -13,7 +13,9 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDao dao;
 	
-	public List<Member> selectList(MemberVo vo) throws Exception { return dao.selectList(vo); }
+	public List<Member> selectList(MemberVo vo) throws Exception { 
+		return dao.selectList(vo); 
+	}
 	
 	public Member selectOne(MemberVo vo) throws Exception  { return dao.selectOne(vo); }
 	

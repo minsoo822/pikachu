@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.actorfw.infra.modules.post.PostMapper">
+
+<resultMap type="com.actorfw.infra.modules.post.Post" id="resultObj"></resultMap>
+	
+	<select id="tourList" resultMap="resultObj">
+		SELECT
+			seq			AS tourSeq		
+			,type		AS tourType
+			,name		AS tourName
+			,address	AS tourAddress
+			,date		AS tourDate
+			,note		AS tourNote
+		FROM post_tour
+		WHERE 1=1
+			<!-- ORDER BY seq DESC -->
+	</select>
+	<select id="oditionList" resultMap="resultObj">
+		SELECT
+			seq			AS oditionSeq
+			,member_seq	AS oditionMember_seq
+			,type		AS oditionType
+			,name		AS oditionName
+			,age		AS oditionAge
+			,gender		AS oditionGender
+			,casting	AS oditionCasting
+			,producer	AS oditionProducer
+			,director	AS oditionDirector
+			,location	AS oditionLocation
+			,manager	AS oditionManager
+			,pay		AS oditionPay
+			,email		AS oditionEmail
+			,contents	AS oditionContents
+		FROM post_odition
+		WHERE 1=1
+			<!-- ORDER BY seq DESC -->
+	</select>
+
+</mapper>	

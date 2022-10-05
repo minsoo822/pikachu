@@ -20,16 +20,21 @@
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
+	
+	<style type="text/css">
+	
+	</style>
 </head>
 	
 <body>
+<form method="post" id="mainForm">
 	<!-- start -->
  	<div class="tourpostbanner">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="mainViewForm.html">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="tourpostViewForm.html">프로필 투어</a></li>
-					<li><a href="oditionPostViewForm.html">오디션 공고</a>
+					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">상업영화</a></li>
@@ -64,8 +69,32 @@
 					</li>
 				</ul>
 			<div>
-			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
-			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
+				<c:if test="${sessSeq eq null }">
+					<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+					<button type="button" class="btn" id="btnLogin">로그인</button>
+				</c:if>
+				<c:if test="${sessSeq ne null }">
+					<button type="button" class="btn">마이페이지</button>
+					<button type="button" class="btn" id="btnLogout">로그아웃</button>
+				</c:if>	
+			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div  class="modal-dialog">
+			    <div style="background: #393939;" class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5 homepageline" id="staticBackdropLabel"style="color: white;">Actor'<span style="color: #f9004d;">s</span></h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body" style="color: white; text-align: center; font-size: 20px;">
+			        가입 분류를 선택해주세요!!~
+			      </div>
+			      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
+			        <button type="button" class="indexbtn" id="goActorSignup" style="cursor: pointer;">배우로 가입하기</button>
+			        <button type="button" class="indexbtn" id="goDerectorSignup" style="cursor: pointer;">디렉터로 가입하기</button>
+			      </div>
+			    </div>
+			  </div>
 			</div>
 		</nav>
 	</div>
@@ -86,91 +115,51 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>드라마</td>
-					<td>한강 (W캐스팅)</td>
-					<td>논현로 86길 29</td>
-					<td>2022-04-25. 19:35</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>상업영화</td>
-					<td>미스매치 (노시스 컴퍼니)</td>
-					<td>마포구 성암로 330</td>
-					<td>2022-06-11. 20:13</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>상업영화</td>
-					<td>한국이 싫어서</td>
-					<td>DCM첨단산업센터 A동5층</td>
-					<td>2022-06-20. 10:07</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>상업영화</td>
-					<td>미남 (리필름)</td>
-					<td>압구정로 10길9 지하2층</td>
-					<td>2022-06-20. 10:54</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>상업영화</td>
-					<td>oo대첩</td>
-					<td>효령로 349-5</td>
-					<td>2022-06-27. 11:37</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>상업영화</td>
-					<td>베테랑2 (외유내강)</td>
-					<td>암사동 460-15</td>
-					<td>2022-06-27. 12:10</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>상업영화</td>
-					<td>파일럿 (무비락)</td>
-					<td>담원동 23-4 3층</td>
-					<td>2022-07-113 10:39</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>상업영화</td>
-					<td>오후4시</td>
-					<td>영등포구 여의방대로 65길24</td>
-					<td>2022-07-11. 10:46</td>
-					<td>day4pmdream@gmail.com</td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>상업영화</td>
-					<td>세기말의 사랑</td>
-					<td>성암로 330 5층</td>
-					<td>2022-07-11. 10:51</td>
-					<td></td>
-				</tr>
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td style="text-align: center;" colspan="9"> no Data!</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list}" var="list" varStatus="status">
+							<tr>
+								<td>
+								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
+								</td>
+								<td><c:out value="${list.tourType }"/></td>
+								<td><c:out value="${list.tourName }"/></td>
+								<td><c:out value="${list.tourAddress }"/></td>
+								<td><c:out value="${list.tourDate }"/></td>
+								<td><c:out value="${list.tourNote }"/></td>
+							</tr>	
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</tbody>	
 		</table>>
 	</div>
-	<div class="postPagination">
+<!-- 	<div class="postPagination">
 		<ul>
 			<li><a href="#"><</a></li>
-			<li><a href="./tourpostViewForm.html" class="active">1</a></li>
-			<li><a href="./tourpostTwopageViewForm.html">2</a></li>
-			<li><a href="./tourpostThreepageViewForm.html">3</a></li>
-			<li><a href="./tourpostFourpageViewForm.html">4</a></li>
-			<li><a href="./tourpostFivepageViewForm.html">5</a></li>
-			<li><a href="./tourpostTwopageViewForm.html">></a></li>
+			<li><a href="#" class="active">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">></a></li>
 		</ul>
+	</div> -->
+	<div class="Pagingdp">
+		<div class="pagination">
+			<a href="#">Prev</a>
+			<a href="#" class="active">1</a>
+			<a href="#" class="active">2</a>
+			<a href="#" class="active">3</a>
+			<a href="#" class="active">4</a>
+			<a href="#" class="active">5</a>
+			<a href="#">Next</a>
+		</div>
 	</div>
 	<!-- footer -->
 	<div class="footer"">
@@ -202,7 +191,44 @@
 			</div>
 		</div>
 	</div>	
+</form>	
 	<script type="text/javascript">
+
+	var goUrlLogout = "/member/logoutForm";
+	var goUrlLogin = "/member/loginForm";
+	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
+	var goUrlMain = "/member/mainHome";
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("#mainForm");
+	var formVo = $("form[name=formVo]");
+	
+	
+
+	$("#btnLogin").on("click", function() {
+		form.attr("action", goUrlLogin).submit();
+	});
+	
+	$("#btnLogout").on("click", function() {
+		form.attr("action", goUrlLogout).submit();
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
 	
