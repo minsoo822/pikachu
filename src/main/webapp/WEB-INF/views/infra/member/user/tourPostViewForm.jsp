@@ -26,7 +26,7 @@
 	</style>
 </head>
 	
-<body>
+<body style="background-color: #101010;">
 <form method="post" id="mainForm">
 	<!-- start -->
  	<div class="tourpostbanner">
@@ -102,6 +102,10 @@
 	<div class="tourpost">
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">프로필투어 정보</h2>
+				<br>sessSeq: <c:out value="${sessSeq }"/><br>
+				sessName: <c:out value="${sessName }"/><br>
+				sessId: <c:out value="${sessId }"/><br>
+				sessAdmin <c:out value="${sessAdmin }"></c:out>
 		</div>
 		<table class="tourtable">
 			<thead>
@@ -137,7 +141,24 @@
 					</c:otherwise>
 				</c:choose>
 			</tbody>	
-		</table>>
+		</table>
+	</div>
+	<div style="padding-top: 60px;">
+		<c:if test="${sessAdmin eq 1 }">
+			<div class="groupbutton">
+				<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
+					<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
+					<a class="btn btn-danger" type="button"><i class="fa-solid fa-trash-can"></i></a>
+				</div>
+				<div class="d-grid gap-2 d-md-flex btn2">
+					<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
+					<button class="btn btn-primary" type="button" id="btnForm"><i class="fa-solid fa-plus"></i></button>
+				</div>
+			</div>
+		</c:if>
+		<c:if test="${sessAdmin ne 1 }">
+			
+		</c:if>	
 	</div>
 <!-- 	<div class="postPagination">
 		<ul>

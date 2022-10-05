@@ -224,7 +224,6 @@
 	                <th>회원 코드</th>
 	                <th>회원 타입</th>
 	                <th>아이디</th>
-	                <th>비밀번호</th>
 	                <th>이름</th>
 	                <th>생일</th>
 	                <th>성별</th>
@@ -261,7 +260,6 @@
 						</c:forEach>
 					</td>
 					<td><c:out value="${list.id }"/></td>
-					<td><c:out value="${list.password }"/></td>
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.dob }"/></td>
 					<td>

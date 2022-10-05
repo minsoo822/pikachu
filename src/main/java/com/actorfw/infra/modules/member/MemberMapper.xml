@@ -141,6 +141,7 @@
 			,id
 			,password
 			,name
+			,adminNy
 		FROM 
 			member
 		WHERE 1=1

@@ -24,7 +24,8 @@
 	
 </head>
 	
-<body>
+<body style="background-color: #101010;">
+<form method="post" id="mainForm">
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
@@ -66,8 +67,14 @@
 					</li>
 				</ul>
 			<div>
-			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
-			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
+				<c:if test="${sessSeq eq null }">
+					<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+					<button type="button" class="btn" id="btnLogin">로그인</button>
+				</c:if>
+				<c:if test="${sessSeq ne null }">
+					<button type="button" class="btn">마이페이지</button>
+					<button type="button" class="btn" id="btnLogout">로그아웃</button>
+				</c:if>	
 			</div>
 		</nav>
 	</div>
@@ -142,6 +149,24 @@
 			</tbody>	
 		</table>
 	</div>
+	<div>
+		<c:if test="${sessAdmin eq 1 }">
+		<div class="groupbutton">
+			<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
+				<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
+				<a class="btn btn-danger" type="button"><i class="fa-solid fa-trash-can"></i></a>
+			</div>
+			<div class="d-grid gap-2 d-md-flex btn2">
+				<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
+				<button class="btn btn-primary" type="button" id="btnForm"><i class="fa-solid fa-plus"></i></button>
+			</div>
+		</div>
+	</c:if>
+	<c:if test="${sessAdmin ne 1 }">
+		
+	</c:if>	
+	</div>
+	</div>
 	<!-- <div class="postPagination">
 		<ul style="position: absolute; top: 133%">
 			<li><a href="#"><</a></li>
@@ -193,7 +218,45 @@
 			</div>
 		</div>
 	</div>
+	</form>
 	<script type="text/javascript">
+	
+
+	var goUrlLogout = "/member/logoutForm";
+	var goUrlLogin = "/member/loginForm";
+	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
+	var goUrlMain = "/member/mainHome";
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("#mainForm");
+	var formVo = $("form[name=formVo]");
+	
+	
+
+	$("#btnLogin").on("click", function() {
+		form.attr("action", goUrlLogin).submit();
+	});
+	
+	$("#btnLogout").on("click", function() {
+		form.attr("action", goUrlLogout).submit();
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		document.querySelector(".disableLink").removeAttribute('href');
 		
 		function oneLine(url)

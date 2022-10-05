@@ -28,7 +28,7 @@
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="/member/mainViewForm">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
 				<ul>
 					<li><a href="/member/tourPostViewForm">프로필 투어</a></li>
 					<li><a href="/member/oditionPostViewForm">오디션 공고</a>

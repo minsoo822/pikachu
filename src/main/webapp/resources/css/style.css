@@ -283,7 +283,7 @@ td {
 	margin-bottom: 20px;
 }
 .oditiontable.table{
-	width: 1600px;
+	width: 1400px;
 	margin-top: 35px;
 	margin-left: auto;
 	margin-right: auto;
@@ -805,7 +805,15 @@ body.homepage.is-preload #header::after {
   color: #11101d;
 }
 
-
+.groupbutton {
+  width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #101010;
+}
 
 
 

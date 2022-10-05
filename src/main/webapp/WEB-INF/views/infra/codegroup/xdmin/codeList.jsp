@@ -163,22 +163,22 @@
 	        <div class="two">
 	          <div class="three">
 	            <select name="shUseOption" id="shUseOption">
-					<option value="" hidden selected>사용여부</option>
+					<option value="" selected>사용여부</option>
 					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N<option>
 					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
 	            <select name="shDateOption" id="shDateOption">
-	              <option hidden selected>날짜</option>
-	              <option value="" <c:if test="${empty vo.shDateOption}">selected</c:if>>생일</option>
-	              <option value="1" <c:if test="${vo.shDateOption eq 1 }">selected</c:if>>수정일<option>
-	              <option value="2" <c:if test="${vo.shDateOption eq 2 }">selected</c:if>>등록일</option>
+	              <option selected <c:if test="${empty vo.shDateOption}">selected</c:if>>날짜</option>
+	              <option value="1" <c:if test="${vo.shDateOption eq 1 }">selected</c:if>>생일</option>
+	              <option value="2" <c:if test="${vo.shDateOption eq 2 }">selected</c:if>>수정일<option>
+	              <option value="3" <c:if test="${vo.shDateOption eq 3 }">selected</c:if>>등록일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
 	             <select name="shDelOption" id="shDelOption">
 					<option value="" hidden selected>삭제여부</option>
-					<option value="0"value="0"<c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
-					<option value="1"value="0"<c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
+					<option value="0" <c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
 	            </select>	
 	            <select id="shOption" name="shOption">
 	              <option value="" hidden selected>검색구분</option>	
