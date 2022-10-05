@@ -151,7 +151,7 @@ public class MemberController {
 	
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorInst")
-	public String signUpActorInst(Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String signUpActorInst(Member dto) throws Exception {
 		int signUpActorInst = service.insertCd(dto);
 		System.out.println("signUpActorInst Control : " + signUpActorInst);
 		
@@ -179,7 +179,7 @@ public class MemberController {
 //		httpSession.setAttribute("sessName", signUpDirectorInst1.getName());
 //		httpSession.setAttribute("sessAdmin", signUpDirectorInst1.getAdminNy());
 //		
-		return "redirect:/member/mainHome";
+		return "redirect:/member/loginForm";
 	}
 	
 //------------------------------------------------------------------------------------- 화면구현
