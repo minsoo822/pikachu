@@ -20,11 +20,13 @@ public class MemberServiceImpl implements MemberService {
 	public Member selectOne(MemberVo vo) throws Exception  { return dao.selectOne(vo); }
 	
 	public int insertCd(Member dto) throws Exception {
-		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		/* dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword())); */
 		int signUpDirectorInst = dao.insertCd(dto);
 		System.out.println("signUpDirectorInst :" + signUpDirectorInst);
 		return dao.insertCd(dto);
 	}
+	
+	public int insertSnsCd(Member dto) throws Exception { return dao.insertSnsCd(dto); }
 	public int updateCd(Member dto) throws Exception { return dao.updateCd(dto); }
 	
 //	아이디 중복체크

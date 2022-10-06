@@ -32,6 +32,13 @@
 						Actor'<span style="color: #f9004d;">s</span></h1>
 					</div>	
 				</div>
+				<div class="row">
+					<div class="col-3 mb-4">
+						<select disabled class="form-control" name="user_type">
+							<option value="26" selected>Actor</option>
+						</select>
+					</div>
+				</div>
 				<div class="row mb-1">
 					<div class="col">
 						<div class="row">
@@ -84,11 +91,15 @@
 					<div class="col">
 						<div class="row gx-1">
 							<div class="col" style="color: white;">생년월일</div>
+							<div class="col" style="color: white;">나이</div>
 							<div class="col" style="color: white;">성별</div>
 						</div>
 						<div class="row gx-1">
 							<div class="col">
 								<input type="date" class="form-control" name="dob" placeholder="ex)19920622">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" name="age">
 							</div>
 							<div class="col">
 								<select class="form-select" name="gender">
@@ -128,7 +139,8 @@
 				<div class="row mb-5">
 					<div class="col">
 						<div class="row">
-							<div class="col" style="color: white;">휴대전화</div>
+							<div class="col-4" style="color: white;">통신사</div>
+							<div class="col" style="color: white;">전화번호</div>
 						</div>
 						<div class="row mb-1 gx-1">
 							<div class="col-4">
@@ -200,12 +212,12 @@
 						<div class="row">
 							<div class="col"><h4><b>SNS</b></h4></div>
 						</div>
-						<div class="row">
+						<div class="row" style="text-align: center;">
 							<div class="col">
 								<div class="row pb-1">
 									<div class="col-3 pt-2 regText">페이스북</div>
 									<div class="col">
-										<input type="text" class="form-control" placeholder="url">
+										<input type="text" class="form-control" placeholder="url" name="url">
 									</div>
 								</div>
 								<div class="row pb-1">
@@ -330,7 +342,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="file" class="form-control">
+								<input type="file" class="form-control" name="actor_picture">
 							</div>
 						</div>
 					</div>
@@ -460,52 +472,18 @@
 	<script type="text/javascript">
 	
 	
+	var goActSignUp = "/member/signUpActorInst";
 	
 	form = $("mainForm")
 	
 	$("#actorSignUp").on("click", function(){
-		form.attr("action", "/member/signUpActorInst").submit();
+		alert("안뇽");
+		form.attr("action", goActSignUp).submit();
 	});
 	
+	</script>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<script type="text/javascript">
 		var count_filmo = 0;	
 	
 		function addFilmo() {
@@ -574,8 +552,8 @@
 				
 				
 			}
-	</script>
 	
+		</script>
 	
 </body>
 </html>

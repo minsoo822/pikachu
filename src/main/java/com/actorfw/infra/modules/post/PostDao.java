@@ -25,5 +25,13 @@ public class PostDao {
 		return sqlSession.selectList(namespace + ".oditionList", vo);
 	}
 	
+//	투어정보Inst
+	public int insrtTour(Post dto) {
+		return sqlSession.insert(namespace +".insrtTour", dto);
+	}
+//	오디션정보Inst
+	public int insrtOdition(Post dto) {
+		return sqlSession.insert(namespace +".insrtOdition", dto);
+	}
 	
 }

@@ -151,9 +151,15 @@ public class MemberController {
 	
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorInst")
-	public String signUpActorInst(Member dto) throws Exception {
+	public String signUpActorInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		//기본정보
 		int signUpActorInst = service.insertCd(dto);
+		//sns
+		int signUpActorSnsInst = service.insertSnsCd(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("signUpActorInst Control : " + signUpActorInst);
+		System.out.println("signUpActorSnsInst Control : " + signUpActorSnsInst);
 		
 		return "redirect:/member/mainHome";
 	}
@@ -167,8 +173,10 @@ public class MemberController {
 	@RequestMapping(value = "signUpDirectorInst")
 	public String signUpDirectorInst(Member dto) throws Exception {
 		
-		int signUpDirectorInst = service.insertCd(dto);
-		System.out.println("signUpDirectorInst : " + signUpDirectorInst);
+		/*
+		 * int signUpDirectorInst = service.insertCd(dto);
+		 * System.out.println("signUpDirectorInst : " + signUpDirectorInst);
+		 */
 //		
 //		Member signUpDirectorInst1 = service.logInCd(dto);
 //		redirectAttributes.addFlashAttribute("vo", vo);
@@ -218,8 +226,12 @@ public class MemberController {
 	}
 	
 	
-	
-	
+	@RequestMapping(value = "firstView")
+	public String firstView() throws Exception {
+		
+		return "infra/member/xdmin/firstView";
+		
+	}
 	
 	
 	

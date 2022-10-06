@@ -9,6 +9,7 @@ public interface MemberService {
 	public Member selectOne(MemberVo vo) throws Exception;
 	
 	public int insertCd(Member dto) throws Exception;
+	public int insertSnsCd(Member dto) throws Exception;
 	
 //	아이디중복 체크
 	public int idCheck(Member dto) throws Exception;

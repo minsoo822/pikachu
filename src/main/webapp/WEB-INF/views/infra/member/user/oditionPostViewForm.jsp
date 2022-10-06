@@ -218,7 +218,7 @@
 			</div>
 		</div>
 	</div>
-	</form>
+</form>
 	<script type="text/javascript">
 	
 
@@ -226,6 +226,9 @@
 	var goUrlLogin = "/member/loginForm";
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
 	var goUrlMain = "/member/mainHome";
+
+	
+	var goUrlOditionForm = "/Post/oditionPostForm";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
@@ -242,6 +245,9 @@
 		form.attr("action", goUrlLogout).submit();
 	});
 	
+	$("#btnForm").on("click", function() {
+		form.attr("action", goUrlOditionForm).submit();
+	});
 	
 	
 	

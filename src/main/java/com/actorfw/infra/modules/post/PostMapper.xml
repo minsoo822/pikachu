@@ -10,12 +10,14 @@
 	
 	<select id="tourList" resultMap="resultObj">
 		SELECT
-			seq			AS tourSeq		
-			,type		AS tourType
-			,name		AS tourName
-			,address	AS tourAddress
-			,date		AS tourDate
-			,note		AS tourNote
+			seq				AS tourSeq		
+			,type			AS tourType
+			,name			AS tourName
+			,zip_code		AS tourZip_code
+			,address		AS tourAddress
+			,address_detail	AS tourAddress_detail
+			,date			AS tourDate
+			,note			AS tourNote
 		FROM post_tour
 		WHERE 1=1
 			<!-- ORDER BY seq DESC -->
@@ -32,6 +34,7 @@
 			,producer	AS oditionProducer
 			,director	AS oditionDirector
 			,location	AS oditionLocation
+			,deadline	AS oditionDeadline
 			,manager	AS oditionManager
 			,pay		AS oditionPay
 			,email		AS oditionEmail
@@ -40,5 +43,65 @@
 		WHERE 1=1
 			<!-- ORDER BY seq DESC -->
 	</select>
+	
+	<insert id="insrtTour">
+		INSERT INTO post_tour (
+			type			
+			,name			
+			,zip_code		
+			,address		
+			,address_detail
+			,date			
+			,note			
+		)
+		VALUE (
+			#{tourType}
+			,#{tourName}
+			,#{tourZip_code}
+			,#{tourAddress}
+			,#{tourAddress_detail}
+			,#{tourDate}
+			,#{tourNote}
+		)	
+			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+				SELECT last_insert_id()
+			</selectKey>
+	</insert>
+	
+	<insert id="insrtOdition">
+		INSERT INTO post_odition (
+			type	
+			,name		
+			,age	
+			,gender	 
+			,casting 
+			,producer	 
+			,director	 
+			,location	 
+			,deadline
+			,manager	 
+			,pay		 
+			,email		 
+			,contents	 	
+		)
+		VALUE (
+			#{oditionType}
+			,#{oditionName}
+			,#{oditionAge}
+			,#{oditionGender}
+			,#{oditionCasting}
+			,#{oditionProducer}
+			,#{oditionDirector}
+			,#{oditionLocation}
+			,#{oditionDeadline}
+			,#{oditionManager}
+			,#{oditionPay}
+			,#{oditionEmail}
+			,#{oditionContents}
+		)	
+			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+				SELECT last_insert_id()
+			</selectKey>
+	</insert>
 
 </mapper>	

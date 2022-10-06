@@ -28,12 +28,30 @@ public class Member {
 	private Integer address_Lat;
 	private Integer address_Lng;
 	private Integer delNy;
+	private String creDate;
+	private String modDate;
 	private Integer adminNy;
+	private String actor_specialty;
+	private String aboutMe;
+	
+//--------------------------------------------------------
+	
+	private String sns_seq;
+	private Integer sns_type;
+	private String url;
+	private Integer member_seq;
 	
 	
 //----------------------------------------------------------	
 	
 	
+	
+	public String getActor_specialty() {
+		return actor_specialty;
+	}
+	public void setActor_specialty(String actor_specialty) {
+		this.actor_specialty = actor_specialty;
+	}
 	public String getSeq() {
 		return seq;
 	}
@@ -189,6 +207,49 @@ public class Member {
 	}
 	public void setAdminNy(Integer adminNy) {
 		this.adminNy = adminNy;
+	}
+	public String getCreDate() {
+		return creDate;
+	}
+	public void setCreDate(String creDate) {
+		this.creDate = creDate;
+	}
+	public String getModDate() {
+		return modDate;
+	}
+	public void setModDate(String modDate) {
+		this.modDate = modDate;
+	}
+	public String getAboutMe() {
+		return aboutMe;
+	}
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
+//------------------------------------------------------
+	public String getSns_seq() {
+		return sns_seq;
+	}
+	public void setSns_seq(String sns_seq) {
+		this.sns_seq = sns_seq;
+	}
+	public Integer getSns_type() {
+		return sns_type;
+	}
+	public void setSns_type(Integer sns_type) {
+		this.sns_type = sns_type;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public Integer getMember_seq() {
+		return member_seq;
+	}
+	public void setMember_seq(Integer member_seq) {
+		this.member_seq = member_seq;
 	}
 	
 	

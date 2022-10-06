@@ -2,11 +2,15 @@ package com.actorfw.infra.modules.post;
 
 public class Post {
 	
+	
+	private String seq;
 //	tourPost
 	private String	tourSeq;
 	private Integer tourType;
-	private String	tourName;
-	private String	tourAddress;
+	private String tourName;
+	private String tourZip_code;
+	private String tourAddress;
+	private String tourAddress_detail;
 	private String	tourDate;
 	private String	tourNote;
 	
@@ -21,6 +25,7 @@ public class Post {
 	private String oditionProducer;
 	private String oditionDirector;
 	private String oditionLocation;
+	private String oditionDeadline;
 	private String oditionManager;
 	private String oditionPay;
 	private String oditionEmail;
@@ -28,9 +33,19 @@ public class Post {
 	
 	
 	//----------------------------------------	
+	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	
+	//---------------------------------------------------
 	public String getTourSeq() {
 		return tourSeq;
 	}
+	
 	public void setTourSeq(String tourSeq) {
 		this.tourSeq = tourSeq;
 	}
@@ -46,11 +61,24 @@ public class Post {
 	public void setTourName(String tourName) {
 		this.tourName = tourName;
 	}
+	
+	public String getTourZip_code() {
+		return tourZip_code;
+	}
+	public void setTourZip_code(String tourZip_code) {
+		this.tourZip_code = tourZip_code;
+	}
 	public String getTourAddress() {
 		return tourAddress;
 	}
 	public void setTourAddress(String tourAddress) {
 		this.tourAddress = tourAddress;
+	}
+	public String getTourAddress_detail() {
+		return tourAddress_detail;
+	}
+	public void setTourAddress_detail(String tourAddress_detail) {
+		this.tourAddress_detail = tourAddress_detail;
 	}
 	public String getTourDate() {
 		return tourDate;
@@ -131,6 +159,12 @@ public String getOditionSeq() {
 	}
 	public String getOditionManager() {
 		return oditionManager;
+	}
+	public String getOditionDeadline() {
+		return oditionDeadline;
+	}
+	public void setOditionDeadline(String oditionDeadline) {
+		this.oditionDeadline = oditionDeadline;
 	}
 	public void setOditionManager(String oditionManager) {
 		this.oditionManager = oditionManager;

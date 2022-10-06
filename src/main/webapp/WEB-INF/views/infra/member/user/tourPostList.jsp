@@ -219,6 +219,7 @@
 	var goUrlLogin = "/member/loginForm";
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
 	var goUrlMain = "/member/mainHome";
+	var goUrlTourForm = "/Post/tourPostForm";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
@@ -236,6 +237,9 @@
 	});
 	
 	
+	$("#btnForm").on("click", function() {
+		form.attr("action", goUrlTourForm).submit();
+	});
 	
 	
 	

@@ -38,7 +38,8 @@
 	
 	<insert id="insertCd">
 		INSERT INTO member (
-			user_type
+			seq
+			,user_type
 			,id
 			,password
 			,name
@@ -61,9 +62,16 @@
 			,address_detail
 			,address_Lat
 			,address_Lng
+			,delNy
+			,creDate
+			,modDate
+			,adminNy
+			,actor_specialty
+			,aboutMe
 		)
 		VALUES (
-			#{user_type}
+			#{seq}
+			,#{user_type}
 			,#{id}
 			,#{password}
 			,#{name}
@@ -86,40 +94,69 @@
 			,#{address_detail}
 			,#{address_Lat}
 			,#{address_Lng}
+			,#{delNy}
+			,#{creDate}
+			,#{modDate}
+			,#{adminNy}
+			,#{actor_specialty}
+			,#{aboutMe}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
 	
+	<!-- <insert id="insertSnsCd">
+		INSERT INTO actor_sns (
+			seq AS sns_seq
+			,type AS sns_type
+			,url
+			,member_seq
+		)
+		VALUES (
+			#{sns_seq}
+			,#{sns_type}
+			,#{url}
+			,#{member_seq}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert> -->
+	
 	<update id="updateCd">
 		UPDATE member
 		SET
-			user_type = #{user_type}
-			,id = #{id}
-			,password = #{password}
-			,name = #{name}
-			,dob = #{dob}
-			,gender = #{gender}
-			,email = #{email}
-			,email_domain = #{email_domain}
-			,telecom = #{telecom}
-			,phone_number = #{phone_number}
-			,director_type = #{director_type}
-			,actor_picture = #{actor_picture}
-			,actor_height = #{actor_height}
-			,actor_weight = #{actor_weight}
-			,actor_eyelid = #{actor_eyelid}
-			,actor_voice = #{actor_voice}
-			,age = #{age}
-			,company_useNy = #{company_useNy}
-			,zip_code = #{zip_code}
-			,address = #{address}
-			,address_detail = #{address_detail}
-			,address_Lat = #{address_Lat}
-			,address_Lng = #{address_Lng}
-			,sns_type = #{sns_type}
-			,sns_url = #{sns_url}
+			seq 				= #{seq}
+			,user_type 			= #{user_type}
+			,id 				= #{id}
+			,password 			= #{password}
+			,name 				= #{name}
+			,dob 				= #{dob}
+			,gender 			= #{gender}
+			,email 				= #{email}
+			,email_domain 		= #{email_domain}
+			,telecom 			= #{telecom}
+			,phone_number 		= #{phone_number}
+			,director_type 		= #{director_type}
+			,actor_picture 		= #{actor_picture}
+			,actor_height 		= #{actor_height}
+			,actor_weight 		= #{actor_weight}
+			,actor_eyelid 		= #{actor_eyelid}
+			,actor_voice 		= #{actor_voice}
+			,age 				= #{age}
+			,company_useNy 		= #{company_useNy}
+			,zip_code 			= #{zip_code}
+			,address 			= #{address}
+			,address_detail 	= #{address_detail}
+			,address_Lat 		= #{address_Lat}
+			,address_Lng 		= #{address_Lng}
+			,delNy 				= #{delNy}
+			,creDate 			= #{creDate}
+			,modDate 			= #{modDate}
+			,adminNy 			= #{adminNy}
+			,actor_specialty 	= #{actor_specialty}
+			,aboutMe 			= #{aboutMe}
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>

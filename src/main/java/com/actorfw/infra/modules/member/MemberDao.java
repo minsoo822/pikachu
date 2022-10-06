@@ -24,6 +24,7 @@ public class MemberDao {
 	}
 	
 	public int insertCd(Member dto) { return sqlSession.insert(namespace + ".insertCd", dto); }
+	public int insertSnsCd(Member dto) { return sqlSession.insert(namespace + ".insertSnsCd", dto); }
 	public int updateCd(Member dto) { return sqlSession.update(namespace + ".updateCd", dto); }
 	
 //	아이디 중복 체크

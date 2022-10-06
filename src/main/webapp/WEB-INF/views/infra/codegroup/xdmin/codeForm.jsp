@@ -214,6 +214,7 @@
 										<option value="" hidden selected>선택</option>
 									<c:forEach items="${add}" var="add" varStatus="status">
 										<option value="${add.seq }" <c:if test="${list.ccg_seq eq add.seq}">selected</c:if>><c:out value="${add.name}"/></option>
+										<option value="${add.seq }" <c:if test="${add.seq eq item.ccg_seq}">selected</c:if>><c:out value="${add.name}"/></option> add.seq eq item.ccg_seq
 									</c:forEach>
 								</select>
 							</div>

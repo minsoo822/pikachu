@@ -22,23 +22,13 @@
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
-	<!-- <style type="text/css">
-	
-	div {
-		border: 1px solid orange;
-	}
-	
-	</style> -->
-	
-	
 </head>
 	
 <body>
 	<!-- start -->
-<form method="post" id="mainForm">	
  	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="mainViewForm.html">Actor'<span>s</span></a></h2>
 				<ul>
 					<li><a href="tourpostViewForm.html">프로필 투어</a></li>
 					<li><a href="oditionPostViewForm.html">오디션 공고</a>
@@ -76,14 +66,8 @@
 					</li>
 				</ul>
 			<div>
-				<c:if test="${sessSeq eq null }">
-					<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
-					<button type="button" class="btn" id="btnLogin">로그인</button>
-				</c:if>
-				<c:if test="${sessSeq ne null }">
-					<button type="button" class="btn">마이페이지</button>
-					<button type="button" class="btn" id="btnLogout">로그아웃</button>
-				</c:if>	
+			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
+			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
 			</div>
 		</nav>
 	</div>
@@ -102,88 +86,76 @@
 			</ul>
 		</div>
 		<div class="oditiontable">
+			<h2 style="color: white; font-size: 50px; width: 1300px; margin: 20px auto;">한강</h2>
 			<table class="table oditionView">
 				<tr>
 					<th>제목</th>
-					<th>촬영분류</th>
 					<th>제작사</th>
 					<th>감독</th>
 					<th>촬영장소 / 기간</th>
 					<th>담당자</th>
 				</tr>
 				<tr style="background-color: #ADADAD;">
-					<td>
-						<input type="text" class="form-control" name="oditionName">
-					</td>
-					<td>
-						<select class="form-select" name="oditionType">
-							<option value="">선택</option>
-							<option value="15">상업영화</option>
-							<option value="16">단편(독립)영화</option>
-							<option value="17">드라마</option>
-							<option value="18">웹드라마</option>
-							<option value="19">광고(CF)</option>
-							<option value="20">바이럴광고</option>
-						</select>
-					</td>
-					<td>
-						<input type="text" class="form-control" name="oditionProducer">
-					</td>
-					<td>
-						<input type="text" class="form-control" name="oditionDirector">
-					</td>
-					<td>
-						<input type="text" class="form-control" name="oditionLocation">
-					</td>
-					<td>
-						<input type="text" class="form-control" name="oditionManager">
-					</td>
+					<td>한강</td>
+					<td>한강 (W캐스팅)</td>
+					<td></td>
+					<td>논현로 86길 29</td>
+					<td></td>
 				</tr>
 				<tr>
 					<th>극중배역</th>
-					<th>모집나이</th>
 					<th>성별</th>
 					<th>출연료</th>
 					<th>이메일</th>
 					<th>마감일</th>
 				</tr>
 				<tr style="background-color: #ADADAD;">
-					<td>
-						<input type="text" class="form-control" name="oditionCasting">
-					</td>
-					<td>
-						<input type="text" class="form-control" name="oditionAge">
-					</td>
-					<td>
-						<select class="form-select" name="oditionGender">
-							<option value="">선택</option>
-							<option value="28">남자</option>
-							<option value="29">여자</option>
-							<option value="50">남,여 모두</option>
-						</select>
-					</td>
-					<td>
-						<input type="text" class="form-control" name="oditionPay">
-					</td>
-					<td>
-						<input type="text" class="form-control" name="oditionEmail">
-					</td>
-					<td>
-						<input type="date" class="form-control" name="oditionDeadline">
-					</td>
+					<td>대위(이미지 단역)</td>
+					<td>남자</td>
+					<td></td>
+					<td>soopcompany_2@naver.com</td>
+					<td>2022-06-11. 20:13</td>
 				</tr>
 			</table>
-			<input hidden="" type="text" value="">
-			<textarea class="area" rows="" cols="" name="oditionContents">
+			<textarea class="area" rows="" cols="">
 			
+			
+				*비공개 상업영화
+				
+				-배역: 대위 (이미지 단역)
+				-성별: 남자
+				-촬영일: 7월 3일 예정
+				-연령: 30대 중반~ 40대 초반
+				-조건: 헤어 커트 가능하신 분 (너무 짧지않습니다)
+				-지원방법: 메일지원 soopcompany_2@naver.com
+				
+				
+				프로필,출연영상, 현재사진(정면,좌측,우측) 보내주시면 검토 후 개별연락드리겠습니다.
+				
+				
+				**메일제목 대위/oo년생/이름 으로 꼭 부탁드리겠습니다!!**
 			
 			</textarea>
 		</div>
-		<div class="row mt-5" style="width: 1400px; margin-left: auto; margin-right: auto;">
-			<div class="col d-grid justify-content-end" style="width: 1400px; margin-right: auto; margin-left: auto; margin-top: 15px;">
-				<div class="d-grid gap-4 d-md-flex justify-content-end">
-					<button type="button" class="regFrombutton" id="btnSave">등록</button>
-					<button type="button" class="regFrombutton" id="btnList">목록</button>
+		<div class="col d-grid justify-content-end" style="width: 1400px; margin-right: auto; margin-left: auto; margin-top: 15px;">
+			<a href="oditionPostViewForm.html">
+				<button type="button" class="regFrombutton">
+					목록으로
+				</button>
+			</a>
+		</div>
+		<hr class="comentLine">
+		<h6 class="coment">댓글 2</h6>
+		<hr class="comentLine">
+		<div class="row">
+			<div class="col">
+				<div class="row" style="width: 1400px; margin-right: auto; margin-left: auto;">
+					<div class="col-11">
+						<input type="text" class="form-control" placeholder="내용을 입력 해주세요.">
+					</div>
+					<div class="col-1">
+						<button type="button" class="regFrombutton">등록</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -206,21 +178,21 @@
 			<div class="col">
 				<div class="row footerlogo">
 					<div class="col">
-						<a href="https://www.jype.com/"><img src="/resources/image/companyImage/jyp.jpg" alt="#"></a>
+						<a href="https://www.jype.com/"><img src="./image/companyImage/jyp.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://kakaoent.com/"><img src="/resources/image/companyImage/kakao.jpg" alt="#"></a>
+						<a href="https://kakaoent.com/"><img src="./image/companyImage/kakao.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://www.ygfamily.com/"><img src="/resources/image/companyImage/yg.jpg" alt="#"></a>
+						<a href="https://www.ygfamily.com/"><img src="./image/companyImage/yg.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://www.sbs.co.kr/"><img src="/resources/image/companyImage/sbs.png" alt="#"></a>
+						<a href="https://www.sbs.co.kr/"><img src="./image/companyImage/sbs.png" alt="#"></a>
 					</div>
 				</div>
 				<div class="row footermain">
 					<div class="col-3">
-						<a href="mainViewForm.html"><img src="/resources/image/companyImage/Actor.png"></a>
+						<a href="mainViewForm.html"><img src="./image/companyImage/Actor.png"></a>
 					</div>
 					<div class="col-9 mt-3" style="text-align: left;">
 					 	<h6>Copyrightⓒ 2022. Ator's All pictures cannot be copied without permission.</h6>
@@ -229,67 +201,7 @@
 			</div>
 		</div>
 	</div>
-</form>	
 	<script type="text/javascript">
-	
-	
-	var goUrlLogout = "/member/logoutForm";
-	var goUrlLogin = "/member/loginForm";
-	var goUrlOditionForm = "/Post/oditionPostForm"; 			/* #-> */
-	var goUrlOditionList = "/Post/oditionPostViewList";
-	var goUrlOditionInst = "/Post/oditionInst";
-	
-	var seq = $("input:hidden[name=seq]");				/* #-> */
-	
-	var form = $("#mainForm");
-	var formVo = $("form[name=formVo]");
-	
-	
-
-	$("#btnLogin").on("click", function() {
-		form.attr("action", goUrlLogin).submit();
-	});
-	
-	$("#btnLogout").on("click", function() {
-		form.attr("action", goUrlLogout).submit();
-	});
-	
-	
-	$("#btnSave").on("click", function(){
-		form.attr("action", goUrlOditionInst).submit();
-	});
-	
-	$("#btnList").on("click", function(){
-		form.attr("action", goUrlOditionList).submit();
-	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
 	

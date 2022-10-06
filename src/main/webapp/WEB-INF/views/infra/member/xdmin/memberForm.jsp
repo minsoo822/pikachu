@@ -374,10 +374,10 @@
 									<div class="col">&nbsp;</div>
 									<div class="col">&nbsp;</div>
 	            				</div>
-	            				<div class="row mb-1">
+	            				<!-- <div class="row mb-1">
 	            					<div class="col-6">SNS</div>
 	            				</div>
-	            				<!-- <div class="row mb-3">
+	            				<div class="row mb-3">
 	            					<div class="col-2">
 										<select class="form-select" name="">
 											<option value="">선택</option>

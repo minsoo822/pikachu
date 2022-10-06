@@ -23,10 +23,14 @@
 	
 	<style type="text/css">
 	
-	div {
+	/*  div {
 		border: solid 1px orange;	
-	}
-	
+	} */
+	 
+	 .title {
+	 color: white;
+	 }
+	 
 	</style>
 </head>
 	
@@ -107,11 +111,73 @@
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">프로필투어 정보</h2>
 		</div>
-		<div class="base row">
-			<div class="col">
+		<div class="base row ps-5 pe-5">
+			<div class="col ps-5 pe-5">
 				<div class="row">
-					<div class="col"></div>
+					<div class="col p-5">
+						<h3 style="color: white;">투어정보 입력</h3>
+						<div class="row pt-5 mb-3">
+							<div class="col-4 title">분류</div>
+							<div class="col">
+								<select class="form-select" name="tourType">
+									<option value="">선택</option>
+									<option value="15">상업영화</option>
+									<option value="16">단편(독립)영화</option>
+									<option value="17">드라마</option>
+									<option value="18">웹드라마</option>
+									<option value="19">광고(CF)</option>
+									<option value="20">바이럴광고</option>
+								</select>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-4 title">제목</div>
+							<div class="col">
+								<input type="text" class="form-control" name="tourName">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col">
+								<div class="row">
+									<div class="col-4 title">주소</div>
+									<div class="col pb-1">
+										<div class="input-group">
+											<input readonly type="text" class="form-control" id="zip_code" name="tourZip_code" placeholder="우편번호">
+											<button type="button" class="input-group-text" onclick="sample4_execDaumPostcode()"><i class="fa-solid fa-magnifying-glass"></i></button>
+											<button type="button" class="input-group-text" id="address_reset"><i class="fa-solid fa-rotate-left"></i></button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-4">&nbsp;</div>
+									<div class="col pb-1">
+										<input readonly type="text" class="form-control" id="address" name="tourAddress" placeholder="도로명주소">
+									</div>
+		           				</div>
+		           				<div class="row">
+		           					<div class="col-4">&nbsp;</div>
+									<div class="col pb-1">
+										<input type="text" class="form-control" id="address_detail" name="tourAddress_detail" placeholder="상세주소"
+									</div>
+		           				</div>
+		           			</div>
+		           		</div>
+					</div>
+					<div class="row">
+	           			<div class="col-4 title">비고</div>
+	           			<div class="col">
+	           				<input type="text" class="form-control" name="tourNote">
+	           			</div>
+	           		</div>		
 				</div>
+				<div class="row">
+					<div class="col">
+						<div class="d-grid gap-4 d-md-flex justify-content-end">
+							<button type="button" class="btn btn-primary" id="btnSave">등록</button>
+							<button type="button" class="btn btn-primary" id="btnList">목록</button>
+						</div>
+					</div>
+				</div>		
 			</div>
 		</div>
 	</div>
@@ -176,7 +242,6 @@
 					<div class="col-3">
 						<a href="mainViewForm.html"><img src="/resources/image/companyImage/Actor.png"></a>
 					</div>
-				
 					<div class="col-9 mt-3" style="text-align: left;">
 					 	<h6>Copyrightⓒ 2022. Ator's All pictures cannot be copied without permission.</h6>
 					</div>
@@ -189,8 +254,9 @@
 
 	var goUrlLogout = "/member/logoutForm";
 	var goUrlLogin = "/member/loginForm";
-	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
-	var goUrlMain = "/member/mainHome";
+	var goUrlTourForm = "/Post/goUrlTourForm"; 			/* #-> */
+	var goUrlTourList = "/Post/tourPostViewList";
+	var goUrlTourInst = "/Post/tourPostInst";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
@@ -208,19 +274,57 @@
 	});
 	
 	
+	$("#btnSave").on("click", function(){
+		form.attr("action", goUrlTourInst).submit();
+	});
+	
+	$("#btnList").on("click", function(){
+		form.attr("action", goUrlTourList).submit();
+	});
 	
 	
 	
+	/* 카카오지도API */
+  	function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zip_code').value = data.zonecode;
+                document.getElementById("address").value = roadAddr;
+                // 커서를 상세주소로 이동한다
+                document.getElementById('address_detail').focus();
+                
+            }
+        }).open();
+    }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//주소 리셋
+	$("#address_reset").on("click", function() {
+		$("#zip_code").val('');
+		$("#address").val('');
+		$("#address_detail").val('');
+	})
 	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
@@ -228,7 +332,8 @@
 	</script>
 	
 	
-	
+	<!-- 지도API -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
