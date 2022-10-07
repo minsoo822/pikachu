@@ -4,9 +4,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.actorfw.infra.modules.post.PostMapper">
+<mapper namespace="com.actorfw.infra.modules.xtourpost.TourPostMapper">
 
-<resultMap type="com.actorfw.infra.modules.post.Post" id="resultObj"></resultMap>
+<resultMap type="com.actorfw.infra.modules.xtourpost.TourPost" id="resultObj"></resultMap>
 	
 	<select id="tourList" resultMap="resultObj">
 		SELECT
@@ -22,27 +22,7 @@
 		WHERE 1=1
 			<!-- ORDER BY seq DESC -->
 	</select>
-	<select id="oditionList" resultMap="resultObj">
-		SELECT
-			seq			AS oditionSeq
-			,member_seq	AS oditionMember_seq
-			,type		AS oditionType
-			,name		AS oditionName
-			,age		AS oditionAge
-			,gender		AS oditionGender
-			,casting	AS oditionCasting
-			,producer	AS oditionProducer
-			,director	AS oditionDirector
-			,location	AS oditionLocation
-			,deadline	AS oditionDeadline
-			,manager	AS oditionManager
-			,pay		AS oditionPay
-			,email		AS oditionEmail
-			,contents	AS oditionContents
-		FROM post_odition
-		WHERE 1=1
-			<!-- ORDER BY seq DESC -->
-	</select>
+
 	
 	<insert id="insrtTour">
 		INSERT INTO post_tour (
@@ -68,40 +48,6 @@
 			</selectKey>
 	</insert>
 	
-	<insert id="insrtOdition">
-		INSERT INTO post_odition (
-			type	
-			,name		
-			,age	
-			,gender	 
-			,casting 
-			,producer	 
-			,director	 
-			,location	 
-			,deadline
-			,manager	 
-			,pay		 
-			,email		 
-			,contents	 	
-		)
-		VALUE (
-			#{oditionType}
-			,#{oditionName}
-			,#{oditionAge}
-			,#{oditionGender}
-			,#{oditionCasting}
-			,#{oditionProducer}
-			,#{oditionDirector}
-			,#{oditionLocation}
-			,#{oditionDeadline}
-			,#{oditionManager}
-			,#{oditionPay}
-			,#{oditionEmail}
-			,#{oditionContents}
-		)	
-			<selectKey resultType="String" keyProperty="seq" order="AFTER">
-				SELECT last_insert_id()
-			</selectKey>
-	</insert>
+
 
 </mapper>	

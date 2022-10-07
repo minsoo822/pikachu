@@ -1,4 +1,4 @@
-package com.actorfw.infra.modules.post;
+package com.actorfw.infra.modules.xtourpost;
 
 import java.util.List;
 
@@ -10,53 +10,28 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/Post/")
-public class PostController {
+public class TourPostController {
 	
 	@Autowired
-	PostServiceImpl service;
+	TourPostServiceImpl service;
 	
 	//메인페이지
 	@RequestMapping(value = "mainHome")
-	public String mainPage(PostVo vo, Model model) throws Exception {
+	public String mainPage(TourPostVo vo, Model model) throws Exception {
 		
-		List<Post> list = service.tourList(vo);
+		List<TourPost> list = service.tourList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/member/user/mainViewForm";
 	}
 	
-//--------------------------------------------------------------------------------
-	
-	@RequestMapping(value = "oditionPostViewList")
-	public String oditionList(PostVo vo, Model model) throws Exception {
-		
-		List<Post> list = service.oditionList(vo);
-		model.addAttribute("list", list);
-		
-		return "infra/member/user/oditionPostViewForm";
-	}
-	
-	@RequestMapping(value = "oditionPostForm")
-	public String oditionList() throws Exception {
-		
-		return "infra/member/user/oditionPostModForm";
-	}
-	
-	@RequestMapping(value = "oditionInst")
-	public String insrtOdition(PostVo vo, Post dto, RedirectAttributes redirectAttributes) throws Exception {
-		int insrtOdition = service.insrtOdition(dto);
-		redirectAttributes.addFlashAttribute("vo", vo);
-		System.out.println("insrtTour Control : " + insrtOdition);
-		
-		return "redirect:/Post/oditionPostViewList";
-	}
-	
+
 //--------------------------------------------------------------------------------
 
 	@RequestMapping(value = "tourPostViewList")
-	public String tourList(PostVo vo, Model model) throws Exception {
+	public String tourList(TourPostVo vo, Model model) throws Exception {
 		
-		List<Post> list = service.tourList(vo);
+		List<TourPost> list = service.tourList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/member/user/tourPostList";
@@ -69,7 +44,7 @@ public class PostController {
 	}
 	
 	@RequestMapping(value = "tourPostInst")
-	public String insrtTour(PostVo vo, Post dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String insrtTour(TourPostVo vo, TourPost dto, RedirectAttributes redirectAttributes) throws Exception {
 		int insrtTour = service.insrtTour(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("insrtTour Control : " + insrtTour);

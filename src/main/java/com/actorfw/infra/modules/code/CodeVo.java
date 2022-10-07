@@ -4,17 +4,22 @@ import com.actorfw.infra.common.constants.Constants;
 
 public class CodeVo {
 
-	private String seq;
+	private String seq;				//시퀀스
 	private String ccg_seq;
 //	search
-	private Integer shOption;
-	private String shValue;
+	private String shValue;			//value값(내용)
+	private Integer shOption;		
+
 //	useNy
-	private Integer shUseOption;
+	private Integer shUseOption;	//useNY
 //	delNy
-	private Integer shDelOption;
+	private Integer shDelOption;	//delNy
 	private String shDateOption;
 	private String shDelNy;
+//	날짜
+//	private Integer shOptionDate;			//날짜선택 옵션
+//	private Integer shDateStart;			//시작날짜
+//	private Integer shDateEnd;				//끝날짜	
 	
 //	paging
 	private int thisPage = 1;									// 현재 페이지

@@ -95,14 +95,15 @@
 			<table class="oditiontable table">
 			<thead>
 				<tr>
+					<th><input class="form-check-input" type="checkbox" name="allCheck"></th>
 					<th>순번</th>
 					<th>분류</th>
 					<th>작품제목 (제작사)</th>
 					<th>성별</th>
 					<th>역활</th>
 					<th>페이</th>
-					<th>작성자</th>
-					<th>이메일</th>
+					<th>작성자</th>	
+					<th>조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -115,6 +116,7 @@
 					<c:otherwise>
 						<c:forEach items="${list}" var="list" varStatus="status">
 							<tr>
+								<th><input class="form-check-input" type="checkbox" name="allCheck"></th>
 								<td>
 								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
 								</td>
@@ -124,7 +126,7 @@
 								<td><c:out value="${list.oditionCasting }"/></td>
 								<td><c:out value="${list.oditionPay }"/></td>
 								<td><c:out value="${list.oditionMember_seq }"/></td>
-								<td><c:out value="${list.oditionEmail }"/></td>
+								<td></td>
 							</tr>	
 						</c:forEach>
 					</c:otherwise>

@@ -1,6 +1,6 @@
-package com.actorfw.infra.modules.post;
+package com.actorfw.infra.modules.xtourpost;
 
-public class Post {
+public class TourPost {
 	
 	
 	private String seq;
@@ -14,23 +14,7 @@ public class Post {
 	private String	tourDate;
 	private String	tourNote;
 	
-//	oditionPost
-	private String oditionSeq;
-	private String oditionMember_seq;
-	private Integer oditionType;
-	private String oditionName;
-	private Integer oditionAge;
-	private Integer oditionGender;
-	private String oditionCasting;
-	private String oditionProducer;
-	private String oditionDirector;
-	private String oditionLocation;
-	private String oditionDeadline;
-	private String oditionManager;
-	private String oditionPay;
-	private String oditionEmail;
-	private String oditionContents;
-	
+
 	
 	//----------------------------------------	
 	
@@ -93,101 +77,8 @@ public class Post {
 		this.tourNote = tourNote;
 	}
 	
-//----------------------------------------
-	
 
 	
-public String getOditionSeq() {
-		return oditionSeq;
-	}
-	public void setOditionSeq(String oditionSeq) {
-		this.oditionSeq = oditionSeq;
-	}
-	public String getOditionMember_seq() {
-		return oditionMember_seq;
-	}
-	public void setOditionMember_seq(String oditionMember_seq) {
-		this.oditionMember_seq = oditionMember_seq;
-	}
-	public Integer getOditionType() {
-		return oditionType;
-	}
-	public void setOditionType(Integer oditionType) {
-		this.oditionType = oditionType;
-	}
-	public String getOditionName() {
-		return oditionName;
-	}
-	public void setOditionName(String oditionName) {
-		this.oditionName = oditionName;
-	}
-	public Integer getOditionAge() {
-		return oditionAge;
-	}
-	public void setOditionAge(Integer oditionAge) {
-		this.oditionAge = oditionAge;
-	}
-	public Integer getOditionGender() {
-		return oditionGender;
-	}
-	public void setOditionGender(Integer oditionGender) {
-		this.oditionGender = oditionGender;
-	}
-	public String getOditionCasting() {
-		return oditionCasting;
-	}
-	public void setOditionCasting(String oditionCasting) {
-		this.oditionCasting = oditionCasting;
-	}
-	public String getOditionProducer() {
-		return oditionProducer;
-	}
-	public void setOditionProducer(String oditionProducer) {
-		this.oditionProducer = oditionProducer;
-	}
-	public String getOditionDirector() {
-		return oditionDirector;
-	}
-	public void setOditionDirector(String oditionDirector) {
-		this.oditionDirector = oditionDirector;
-	}
-	public String getOditionLocation() {
-		return oditionLocation;
-	}
-	public void setOditionLocation(String oditionLocation) {
-		this.oditionLocation = oditionLocation;
-	}
-	public String getOditionManager() {
-		return oditionManager;
-	}
-	public String getOditionDeadline() {
-		return oditionDeadline;
-	}
-	public void setOditionDeadline(String oditionDeadline) {
-		this.oditionDeadline = oditionDeadline;
-	}
-	public void setOditionManager(String oditionManager) {
-		this.oditionManager = oditionManager;
-	}
-	public String getOditionPay() {
-		return oditionPay;
-	}
-	public void setOditionPay(String oditionPay) {
-		this.oditionPay = oditionPay;
-	}
-	public String getOditionEmail() {
-		return oditionEmail;
-	}
-	public void setOditionEmail(String oditionEmail) {
-		this.oditionEmail = oditionEmail;
-	}
-	public String getOditionContents() {
-		return oditionContents;
-	}
-	public void setOditionContents(String oditionContents) {
-		this.oditionContents = oditionContents;
-	}
-	
-	
+
 	
 }

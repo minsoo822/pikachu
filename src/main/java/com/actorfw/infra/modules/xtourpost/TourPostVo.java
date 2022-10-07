@@ -1,5 +1,5 @@
-package com.actorfw.infra.modules.post;
+package com.actorfw.infra.modules.xtourpost;
 
-public class PostVo {
+public class TourPostVo {
 
 }

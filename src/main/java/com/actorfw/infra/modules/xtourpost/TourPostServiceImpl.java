@@ -1,4 +1,4 @@
-package com.actorfw.infra.modules.post;
+package com.actorfw.infra.modules.xtourpost;
 
 import java.util.List;
 
@@ -6,31 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PostServiceImpl implements PostService {
+public class TourPostServiceImpl implements TourPostService {
 
 	@Autowired
-	PostDao dao;
+	TourPostDao dao;
 	
 	@Override
-	public List<Post> tourList(PostVo vo) throws Exception {
+	public List<TourPost> tourList(TourPostVo vo) throws Exception {
 		return dao.tourList(vo);
 	}
 	
-	@Override
-	public List<Post> oditionList(PostVo vo) throws Exception {
-		return dao.oditionList(vo);
-	}
 
 //	투어정보Inst
 	@Override
-	public int insrtTour(Post dto) throws Exception {
+	public int insrtTour(TourPost dto) throws Exception {
 		return dao.insrtTour(dto);
 	}
-//	오디션정보Inst
-	@Override
-	public int insrtOdition(Post dto) throws Exception {
-		return dao.insrtOdition(dto);
-	}
-	
+
 	
 }
