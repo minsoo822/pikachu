@@ -478,7 +478,7 @@
 	
 	$("#actorSignUp").on("click", function(){
 		alert("안뇽");
-		form.attr("action", goActSignUp).submit();
+		form.attr("action", "/member/signUpActorInst").submit();
 	});
 	
 	</script>
@@ -514,6 +514,7 @@
 			tmp += '</div>';
 			
 			count_filmo += 1;
+			
 			
 	 	
 			$("#filmoPoint").append(tmp);

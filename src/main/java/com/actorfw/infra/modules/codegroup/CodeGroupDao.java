@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.actorfw.infra.modules.code.Code;
 
 @Repository
 public class CodeGroupDao {

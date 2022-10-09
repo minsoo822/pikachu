@@ -38,8 +38,7 @@
 	
 	<insert id="insertCd">
 		INSERT INTO member (
-			seq
-			,user_type
+			user_type
 			,id
 			,password
 			,name
@@ -70,8 +69,7 @@
 			,aboutMe
 		)
 		VALUES (
-			#{seq}
-			,#{user_type}
+			#{user_type}
 			,#{id}
 			,#{password}
 			,#{name}

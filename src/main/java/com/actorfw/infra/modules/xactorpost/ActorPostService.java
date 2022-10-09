@@ -1,10 +1,10 @@
 package com.actorfw.infra.modules.xactorpost;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
 public interface ActorPostService {
 
-	
+	public List<ActorPost> actorList(ActorPostVo vo) throws Exception;
+
 	
 }

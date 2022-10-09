@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class OditionPostDao {
 
-	public static String namespace = "com.actorfw.infra.modules.xoditionpost.OditionPostMapper";
-	
 	@Inject
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
+	
+	public static String namespace = "com.actorfw.infra.modules.xoditionpost.OditionPostMapper";
 	
 //	오디션리스트
 	public List<OditionPost> oditionList(OditionPostVo vo) {

@@ -92,45 +92,20 @@
 				<li><a href="#">남자</a></li>
 				<li><a href="#">여자</a></li>
 			</ul>
-		</div>	
-		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
-			<div class="cardactor col">
-				<img src="/resources/image/leejiun.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">이지은</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor col" >
-				<img src="/resources/image/jingiju.png" class="card-img-top" alt="..." href="">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">진기주</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor col">
-				<img src="/resources/image/chunwoohee.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">천우희</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor col">
-				<img src="/resources/image/yangsejong.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">양세종</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor col">
-				<img src="/resources/image/sunina.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">설인아</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
 		</div>
-		<div class="boxattor">
+	
+		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
+		<c:forEach items="${list}" var="list" varStatus="status">			
+			<div class="cardactor col-2">
+				<img src="/resources/image/leejiun.jpg" class="card-img-top" alt="...">
+				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
+				<div class="pra">
+					<p style="text-align: center;"><c:out value="${list.age }"></c:out></p>
+				</div>
+			</div>
+			</c:forEach>
+		</div>
+		<!-- <div class="boxattor">
 			<div class="cardactor">
 				<img src="/resources/image/kimyoujung.jpg" class="card-img-top" alt="...">
 				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">김유정</h5>
@@ -203,7 +178,7 @@
 					<p style="text-align: center;">37세</p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!-- <div class="postPagination">
 		<ul style="position: absolute; top: 185%">

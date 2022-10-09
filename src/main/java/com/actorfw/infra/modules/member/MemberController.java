@@ -156,10 +156,10 @@ public class MemberController {
 		//기본정보
 		int signUpActorInst = service.insertCd(dto);
 		//sns
-		int signUpActorSnsInst = service.insertSnsCd(dto);
+//		int signUpActorSnsInst = service.insertSnsCd(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("signUpActorInst Control : " + signUpActorInst);
-		System.out.println("signUpActorSnsInst Control : " + signUpActorSnsInst);
+//		System.out.println("signUpActorSnsInst Control : " + signUpActorSnsInst);
 		
 		return "redirect:/member/mainHome";
 	}
@@ -170,13 +170,13 @@ public class MemberController {
 		return "infra/member/user/signUpDirector";
 	}
 	
-	@RequestMapping(value = "signUpDirectorInst")
-	public String signUpDirectorInst(Member dto) throws Exception {
-		
-		/*
-		 * int signUpDirectorInst = service.insertCd(dto);
-		 * System.out.println("signUpDirectorInst : " + signUpDirectorInst);
-		 */
+//	@RequestMapping(value = "signUpDirectorInst")
+//	public String signUpDirectorInst(Member dto) throws Exception {
+//		
+//		
+//		int signUpDirectorInst = service.insertCd(dto);
+//		System.out.println("signUpDirectorInst : " + signUpDirectorInst);
+//		
 //		
 //		Member signUpDirectorInst1 = service.logInCd(dto);
 //		redirectAttributes.addFlashAttribute("vo", vo);
@@ -187,8 +187,8 @@ public class MemberController {
 //		httpSession.setAttribute("sessName", signUpDirectorInst1.getName());
 //		httpSession.setAttribute("sessAdmin", signUpDirectorInst1.getAdminNy());
 //		
-		return "redirect:/member/loginForm";
-	}
+//		return "redirect:/member/loginForm";
+//	}
 	
 //------------------------------------------------------------------------------------- 화면구현
 	
@@ -204,14 +204,6 @@ public class MemberController {
 		
 		return "infra/member/user/mainViewForm";
 	}
-
-	//메인페이지
-		@RequestMapping(value = "tourPostViewForm")
-		public String tourPostViewForm() throws Exception {
-			
-		return "infra/member/user/tourPostViewForm";
-	}
-	
 	//메인페이지
 	@RequestMapping(value = "oditionPostViewForm")
 	public String oditionMod() throws Exception {

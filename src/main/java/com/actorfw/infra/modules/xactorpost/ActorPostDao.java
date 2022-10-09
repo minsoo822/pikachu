@@ -1,5 +1,7 @@
 package com.actorfw.infra.modules.xactorpost;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
@@ -13,11 +15,10 @@ public class ActorPostDao {
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.actorfw.infra.modules.xactorpost.ActorPostMapper";
-	
-	
-	
-	
-	
+	public static String namespace = "com.actorfw.infra.modules.xactorpost.ActorPostMapper";
+
+	public List<ActorPost> actorList(ActorPostVo vo) {
+		return sqlSession.selectList(namespace + ".actorList", vo);
+	}
 	
 }
