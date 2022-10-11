@@ -201,7 +201,7 @@
 	            				</div>
 	            				<div class="row">
 	            					<div class="col">
-	            						<input type="file" name="file_path" id="mainPicture" class="form-control" style="width: 400px;" multiple>
+	            						<input type="file" name="" id="mainPicture" class="form-control" style="width: 400px;">
 	            					</div>
 	            				</div>
 	            			</div>
@@ -573,7 +573,7 @@
 	})
 	
 	//이미지 미리보기
-	$('input[name="file_path"]').change(function(){
+	$('#mainPicture').change(function(){
 	    setImageFromFile(this, '#preview');
 	});
 

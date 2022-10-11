@@ -19,6 +19,16 @@
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+	<style type="text/css">
+		span {
+			color: red;
+		}		
+	
+	</style>
+	
+
 </head>
 
 <body style="background-color: black;">
@@ -42,7 +52,7 @@
 				<div class="row mb-1">
 					<div class="col">
 						<div class="row">
-							<div class="col" style="color: white;">아이디</div>
+							<div class="col" style="color: white;">아이디<span>*</span></div>
 						</div>
 						<div class="row">
 							<div class="col">
@@ -54,7 +64,7 @@
 				<div class="row mb-1">
 					<div class="col">
 						<div class="row">
-							<div class="col" style="color: white;">비밀번호</div>
+							<div class="col" style="color: white;">비밀번호<span>*</span></div>
 						</div>
 						<div class="row">
 							<div class="col">
@@ -66,7 +76,7 @@
 				<div class="row mb-1">
 					<div class="col">
 						<div class="row">
-							<div class="col" style="color: white;">비밀번호 재확인</div>
+							<div class="col" style="color: white;">비밀번호 재확인<span>*</span></div>
 						</div>
 						<div class="row">
 							<div class="col">
@@ -78,7 +88,7 @@
 				<div class="row mb-1">
 					<div class="col">
 						<div class="row">
-							<div class="col" style="color: white;">이름</div>
+							<div class="col" style="color: white;">이름<span>*</span></div>
 						</div>
 						<div class="row">
 							<div class="col">
@@ -208,35 +218,31 @@
 				</div>
 				<hr style="color: gray;">
 				<div class="row">
-					<div class="col">
+					<div class="col" id="snsPoint">
 						<div class="row">
 							<div class="col"><h4><b>SNS</b></h4></div>
 						</div>
 						<div class="row" style="text-align: center;">
 							<div class="col">
 								<div class="row pb-1">
-									<div class="col-3 pt-2 regText">페이스북</div>
-									<div class="col">
+									<div class="col-3 gx-1">
+										<select class="form-select">
+											<option>선택</option>
+											<option>인스타</option>
+											<option>페이스북</option>
+											<option>유튜브</option>
+											<option>홈페이지</option>
+											
+										</select>
+									</div>
+									<div class="col gx-1">
 										<input type="text" class="form-control" placeholder="url" name="url">
 									</div>
-								</div>
-								<div class="row pb-1">
-									<div class="col-3 pt-2 regText">인스타</div>
-									<div class="col">
-										<input type="text" class="form-control" placeholder="url">
-									</div>
-								</div>
-								<div class="row pb-1">
-									<div class="col-3 pt-2 regText">유튜브</div>
-									<div class="col">
-										<input type="text" class="form-control" placeholder="url">
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-3 pt-2 regText">홈페이지</div>
-									<div class="col">
-										<input type="text" class="form-control" placeholder="url">
-									</div>
+									<div class="col-1 gx-1">
+								<button type="button" class="regFrombutton" onclick="addSns()">
+									<i class="fa-solid fa-plus"></i>
+								</button>
+							</div>
 								</div>
 							</div>
 						</div>
@@ -244,7 +250,7 @@
 				</div>
 				<hr style="color: gray;">
 				<div class=row>
-					<div class="col-3"><h4><b>소속사</b></h4></div>
+					<div class="col-3"><h4><b>소속사<span>*</span></b></h4></div>
 					<div class="col-3">
 						<select class="form-select" name="company_useNy">
 							<option>선택</option>
@@ -471,31 +477,85 @@
 	
 	<script type="text/javascript">
 	
-	
 	var goActSignUp = "/member/signUpActorInst";
 	
 	form = $("mainForm")
 	
-	$("#actorSignUp").on("click", function(){
-		alert("안뇽");
+	
+	$("#actorSignUp").on("click", function() {
+		alert("왜안돼");
 		form.attr("action", "/member/signUpActorInst").submit();
 	});
 	
 	</script>
 	
 	<script type="text/javascript">
+		
+		/* var count_sns = 0;	
+	
+		function addSns() {
+			
+		var tmp = "";
+		
+			tmp = '<div class="row" style="text-align: center;" id="snsDelete' + count_sns + '">';
+			tmp = '<div class="col">';
+			tmp = '<div class="row pb-1">';
+			tmp = '<div class="col-3 gx-1">';
+			tmp = '<select class="form-select">';
+			tmp = '<option>선택</option>';
+			tmp = '<option>인스타</option>';
+			tmp = '<option>페이스북</option>';
+			tmp = '<option>유튜브</option>';
+			tmp = '<option>홈페이지</option>';
+			tmp = '</select>';
+			tmp = '</div>';
+			tmp = '<div class="col gx-1">';
+			tmp = '<input type="text" class="form-control" placeholder="url" name="url">';
+			tmp = '</div>';
+			tmp = '<div class="col-1 gx-1">';
+			tmp = '<button type="button" class="regFrombutton" onclick="remove(snsDelete' + count_sns + ')">';
+			tmp = '<i class="fa-solid fa-minus"></i>';
+			tmp = '</button>';
+			tmp = '</div>';
+			tmp = '</div>';
+			tmp = '</div>';
+			tmp = '</div>';
+
+			count_sns += 1;
+			
+			
+	 	
+			$("#snsPoint").append(tmp);
+		}
+		
+			function remove(id) {
+				
+				$(id).remove();
+			}
+		}
+	 */
+	
+//		필모그래피추가
 		var count_filmo = 0;	
 	
 		function addFilmo() {
 		
 		var tmp = "";
 			
-			tmp += '<div class="row" id="filmoDelete' + count_filmo + '">';
+			tmp += '<div class="row gx-1" id="filmoDelete' + count_filmo + '">';
 			tmp += '<div class="col-4">';
 			tmp += '<input type="date" class="form-control">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<select class="form-select"></select>';
+			tmp += '<select class="form-select">';
+			tmp += '<option>선택</option>';
+			tmp += '<option>상업영화</option>';
+			tmp += '<option>단편(독립)영화</option>';
+			tmp += '<option>드라마</option>';
+			tmp += '<option>웹드라마</option>';
+			tmp += '<option>광고(CF)</option>';
+			tmp += '<option>바이럴광고</option>';
+			tmp += '</select>';
 			tmp += '</div>';
 			tmp += '<div class="col">';
 			tmp += '<input type="text" class="form-control">';

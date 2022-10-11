@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mysql.cj.Constants;
+import com.actorfw.infra.modules.xtourpost.TourPost;
+import com.actorfw.infra.modules.xtourpost.TourPostVo;
 
 @Controller
 @RequestMapping (value = "/member/")
@@ -49,6 +50,7 @@ public class MemberController {
 		int insertCd = service.insertCd(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("Controller Inst :" + insertCd);
+//		System.out.println("dto.getMultipartFile() : " + dto.getMultipartFile().length);
 		
 		return "redirect:/member/memberList";
 	}
@@ -200,7 +202,9 @@ public class MemberController {
 	}
 	//메인페이지
 	@RequestMapping(value = "mainHome")
-	public String mainPage() throws Exception {
+	public String mainPage(TourPostVo vo, Model model) throws Exception {
+//		List<TourPost> list = service.tourList(vo);
+//		model.addAttribute("list", list);
 		
 		return "infra/member/user/mainViewForm";
 	}

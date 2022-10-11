@@ -184,7 +184,42 @@
 			AND password = #{password}
 	</select>
 	
+	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
+		SELECT
+			seq
+		FROM member
+		ORDER BY seq DESC
+		LIMIT 1
+	</select>
 	
+	<insert id="insertMemberUpload">
+		INSERT INTO memberUploaded (
+			<!-- seq -->
+			type
+			,defaultNY
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy
+			,pSeq
+		)
+		VALUES (
+			<!-- #{seq} -->
+			#{type}
+			,#{defaultNY}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,#{pSeq}
+		)
+	</insert>
 
 
 

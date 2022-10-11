@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.actorfw.infra.common.util.UtilSecurity;
+import com.actorfw.infra.common.util.UtilUpload;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -24,14 +26,40 @@ public class MemberServiceImpl implements MemberService {
 //	멤버인서트
 	@Override
 	public int insertCd(Member dto) throws Exception {
-		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
-		return dao.insertCd(dto);
+//		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+
+		int insertCd =  dao.insertCd(dto);
+        int pseq = dao.selectLastSeq();
+
+        int j = 0;
+        for(MultipartFile myFile : dto.getMultipartFile()) {
+
+            if(!myFile.isEmpty()) {
+                // postServiceImpl
+                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                
+//                		MemberServiceImpl.java  ->	 MemberServiceImpl -> ""  ->	 memberserviceimpl -> 	member
+                 
+                UtilUpload.uploadPost(myFile, pathModule, dto);
+
+                dto.setType(2);
+                dto.setDefaultNy(j == 0 ? 1 : 0);
+                dto.setSort(j+1);
+                dto.setPseq(pseq);
+
+                dao.insertMemberUpload(dto);
+                j++;
+            }
+
+        }
+		
+		return insertCd;
 	}
 //	멤버sns인서트
-	@Override
-	public int insertSnsCd(Member dto) throws Exception {
-		return dao.insertSnsCd(dto);
-	}
+//	@Override
+//	public int insertSnsCd(Member dto) throws Exception {
+//		return dao.insertSnsCd(dto);
+//	}
 	@Override
 	public int updateCd(Member dto) throws Exception { return dao.updateCd(dto); }
 	
@@ -42,7 +70,6 @@ public class MemberServiceImpl implements MemberService {
 //	로그인
 	@Override
 	public Member logInCd(Member dto) throws Exception  { return dao.logInCd(dto); }
-	
 	
 	
 }

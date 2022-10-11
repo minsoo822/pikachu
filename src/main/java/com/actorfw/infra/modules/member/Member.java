@@ -1,6 +1,10 @@
 package com.actorfw.infra.modules.member;
 
-public class Member {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.actorfw.infra.common.base.Bass;
+
+public class Member extends Bass {
 	
 	
 	private String seq;
@@ -33,6 +37,15 @@ public class Member {
 	private Integer adminNy;
 	private String actor_specialty;
 	private String aboutMe;
+
+//-------------------------------------------------	
+//	private MultipartFile[] file0;		// memberForm.profileImage
+//	private MultipartFile[] file1;		// memberForm.image
+//	private MultipartFile[] file2;		// memberForm.file
+	
+//	private MultipartFile[] UploadedProfileImage;
+//	private MultipartFile[] UploadedImage;
+//	private MultipartFile[] UploadedFile;
 	
 //--------------------------------------------------------
 	
@@ -40,7 +53,6 @@ public class Member {
 	private Integer sns_type;
 	private String url;
 	private Integer member_seq;
-	
 	
 //----------------------------------------------------------	
 	
@@ -226,7 +238,32 @@ public class Member {
 	public void setAboutMe(String aboutMe) {
 		this.aboutMe = aboutMe;
 	}
+	
+	
+//----------------------------------------------------
+	
+//	public MultipartFile[] getIfmmUploadedProfileImage() {
+//		return UploadedProfileImage;
+//	}
+//	public void setIfmmUploadedProfileImage(MultipartFile[] UploadedProfileImage) {
+//		this.UploadedProfileImage = UploadedProfileImage;
+//	}
+//	public MultipartFile[] getIfmmUploadedImage() {
+//		return UploadedImage;
+//	}
+//	public void setIfmmUploadedImage(MultipartFile[] UploadedImage) {
+//		this.UploadedImage = UploadedImage;
+//	}
+//	public MultipartFile[] getIfmmUploadedFile() {
+//		return UploadedFile;
+//	}
+//	public void setIfmmUploadedFile(MultipartFile[] UploadedFile) {
+//		this.UploadedFile = UploadedFile;
+//	}
+	
+	
 //------------------------------------------------------
+	
 	public String getSns_seq() {
 		return sns_seq;
 	}
@@ -251,6 +288,7 @@ public class Member {
 	public void setMember_seq(Integer member_seq) {
 		this.member_seq = member_seq;
 	}
+
 	
 	
 	
