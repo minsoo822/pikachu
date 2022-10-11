@@ -41,9 +41,9 @@
 							<li><a href="#">(바이럴)광고</a></li>
 						</ul>
 					</li>	
-					<li><a href="/member/actorPostViewForm">프로필 정보</a>
+					<li><a href="/Post/ActorPostList">프로필 정보</a>
 						<ul>
-							<li><a href="/member/actorPostViewForm">전체</a></li><br>
+							<li><a href="/Post/ActorPostList">전체</a></li><br>
 							<li><a href="#">남자</a></li><br>
 							<li><a href="#">여자</a></li>
 						</ul>
