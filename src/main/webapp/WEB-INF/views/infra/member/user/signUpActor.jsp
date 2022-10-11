@@ -32,7 +32,7 @@
 </head>
 
 <body style="background-color: black;">
-<form method="post" id="mainForm">
+<form method="post" id="mainForm" action="/member/signUpActorInst" enctype="multipart/form-data">
 	<div class="container" style="width: 35%">
 		<div class="row">
 			<div class="col">
@@ -239,7 +239,7 @@
 										<input type="text" class="form-control" placeholder="url" name="url">
 									</div>
 									<div class="col-1 gx-1">
-								<button type="button" class="regFrombutton" onclick="addSns()">
+								<button type="button" class="regFrombutton" onclick="">
 									<i class="fa-solid fa-plus"></i>
 								</button>
 							</div>
@@ -270,7 +270,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="text" class="form-control" name="actor_specialty">
+								<input type="text" class="form-control" name="">
 							</div>
 						</div>
 					</div>
@@ -348,7 +348,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="file" class="form-control" name="actor_picture">
+								<input type="file" class="form-control" name="">
 							</div>
 						</div>
 					</div>
@@ -457,14 +457,14 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<textarea class="form-control" rows="" cols="" name="aboutMe"></textarea>
+								<textarea class="form-control" rows="" cols="" name=""></textarea>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row mb-5">
 					<div class="col d-grid">
-						<button type="button" class="regFrombutton" id="actorSignUp">가입하기</button>
+						<button type="submit" class="regFrombutton" >가입하기</button>
 					</div>
 				</div>
 			</div>
@@ -475,7 +475,7 @@
 <script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	
 	var goActSignUp = "/member/signUpActorInst";
 	
@@ -487,11 +487,11 @@
 		form.attr("action", "/member/signUpActorInst").submit();
 	});
 	
-	</script>
+	</script> -->
 	
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		
-		/* var count_sns = 0;	
+		var count_sns = 0;	
 	
 		function addSns() {
 			
@@ -533,7 +533,7 @@
 				$(id).remove();
 			}
 		}
-	 */
+	
 	
 //		필모그래피추가
 		var count_filmo = 0;	
@@ -614,7 +614,7 @@
 				
 			}
 	
-		</script>
+		</script> -->
 	
 </body>
 </html>

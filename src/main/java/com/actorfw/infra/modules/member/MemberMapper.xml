@@ -196,7 +196,7 @@
 		INSERT INTO memberUploaded (
 			<!-- seq -->
 			type
-			,defaultNY
+			,defaultNy
 			,sort
 			,path
 			,originalName
@@ -204,12 +204,12 @@
 			,ext
 			,size
 			,delNy
-			,pSeq
+			,pseq
 		)
 		VALUES (
 			<!-- #{seq} -->
 			#{type}
-			,#{defaultNY}
+			,#{defaultNy}
 			,#{sort}
 			,#{path}
 			,#{originalName}
@@ -217,7 +217,7 @@
 			,#{ext}
 			,#{size}
 			,0
-			,#{pSeq}
+			,#{pseq}
 		)
 	</insert>
 

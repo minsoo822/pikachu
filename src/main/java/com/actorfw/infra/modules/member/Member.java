@@ -2,9 +2,9 @@ package com.actorfw.infra.modules.member;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.actorfw.infra.common.base.Bass;
+import com.actorfw.infra.common.base.Base;
 
-public class Member extends Bass {
+public class Member extends Base {
 	
 	
 	private String seq;
@@ -46,6 +46,11 @@ public class Member extends Bass {
 //	private MultipartFile[] UploadedProfileImage;
 //	private MultipartFile[] UploadedImage;
 //	private MultipartFile[] UploadedFile;
+	
+
+	private MultipartFile[] plofil_image;
+	
+	
 	
 //--------------------------------------------------------
 	
@@ -260,7 +265,13 @@ public class Member extends Bass {
 //	public void setIfmmUploadedFile(MultipartFile[] UploadedFile) {
 //		this.UploadedFile = UploadedFile;
 //	}
-	
+
+	public MultipartFile[] getPlofil_image() {
+		return plofil_image;
+	}
+	public void setPlofil_image(MultipartFile[] plofil_image) {
+		this.plofil_image = plofil_image;
+	}
 	
 //------------------------------------------------------
 	

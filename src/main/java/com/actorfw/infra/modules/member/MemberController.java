@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.actorfw.infra.modules.xtourpost.TourPost;
-import com.actorfw.infra.modules.xtourpost.TourPostVo;
-
 @Controller
 @RequestMapping (value = "/member/")
 public class MemberController {
@@ -147,19 +144,18 @@ public class MemberController {
 	
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorForm")
-	public String signUpActor() throws Exception {
+	public String signUpActor(Model model) throws Exception {
 		return "infra/member/user/signUpActor";
 	}
 	
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorInst")
-	public String signUpActorInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String signUpActorInst(Member dto) throws Exception {
 		
 		//기본정보
 		int signUpActorInst = service.insertCd(dto);
 		//sns
 //		int signUpActorSnsInst = service.insertSnsCd(dto);
-		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("signUpActorInst Control : " + signUpActorInst);
 //		System.out.println("signUpActorSnsInst Control : " + signUpActorSnsInst);
 		
@@ -202,7 +198,7 @@ public class MemberController {
 	}
 	//메인페이지
 	@RequestMapping(value = "mainHome")
-	public String mainPage(TourPostVo vo, Model model) throws Exception {
+	public String mainPage(Model model) throws Exception {
 //		List<TourPost> list = service.tourList(vo);
 //		model.addAttribute("list", list);
 		

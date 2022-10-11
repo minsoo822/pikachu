@@ -26,13 +26,14 @@ public class MemberServiceImpl implements MemberService {
 //	멤버인서트
 	@Override
 	public int insertCd(Member dto) throws Exception {
-//		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 
 		int insertCd =  dao.insertCd(dto);
         int pseq = dao.selectLastSeq();
 
+        System.out.println("dto.getMultipartFile() : " + dto.getPlofil_image());
         int j = 0;
-        for(MultipartFile myFile : dto.getMultipartFile()) {
+        for(MultipartFile myFile : dto.getPlofil_image()) {
 
             if(!myFile.isEmpty()) {
                 // postServiceImpl

@@ -201,7 +201,7 @@
 	            				</div>
 	            				<div class="row">
 	            					<div class="col">
-	            						<input type="file" name="" id="mainPicture" class="form-control" style="width: 400px;">
+	            						<input type="file" name="getPlofil_image" id="mainPicture" class="form-control" style="width: 400px;">
 	            					</div>
 	            				</div>
 	            			</div>

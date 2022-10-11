@@ -1,15 +1,9 @@
 package com.actorfw.infra.common.base;
 
-import org.springframework.web.multipart.MultipartFile;
-
-public class Bass {
+public class Base {
 
 	
 //	uploaded
-	
-	private MultipartFile[] multipartFile;
-	
-	
 	private String seq;
 	private Integer type;
 	private Integer defaultNy;
@@ -23,13 +17,7 @@ public class Bass {
 	private Integer pseq;
 	
 	
-	public MultipartFile[] getMultipartFile() {
-		return multipartFile;
-	}
-	public void setMultipartFile(MultipartFile[] multipartFile) {
-		this.multipartFile = multipartFile;
-	}
-	
+//--------------------------------------------------------------------------------------	
 	public String getSeq() {
 		return seq;
 	}
