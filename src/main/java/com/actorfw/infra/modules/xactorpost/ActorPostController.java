@@ -25,5 +25,9 @@ public class ActorPostController {
 			return "infra/member/user/actorPostList";
 		}
 		
+		
+		
+		
+		
 	
 }
