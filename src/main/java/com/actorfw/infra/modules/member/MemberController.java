@@ -21,7 +21,8 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
-	
+//--------------------------------------------------------------
+//	관리자화면 회원리스트
 	@RequestMapping(value = "memberList")
 	public String selectList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
@@ -29,9 +30,8 @@ public class MemberController {
 		model.addAttribute("list", list);
 		System.out.println("Controll List :" + list);
 		return "infra/member/xdmin/memberList";
-		
 	}
-	
+//	관리자화면 회원폼
 	@RequestMapping(value = "memberForm")
 	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
@@ -40,7 +40,7 @@ public class MemberController {
 		System.out.println("Controll Form :" + item);
 		return "infra/member/xdmin/memberForm";
 	}
-	
+//	관리자화면 회원가입
 	@RequestMapping(value = "memberInst")
 	public String isertCd(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -48,31 +48,24 @@ public class MemberController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("Controller Inst :" + insertCd);
 //		System.out.println("dto.getMultipartFile() : " + dto.getMultipartFile().length);
-		
 		return "redirect:/member/memberList";
 	}
+//	관리자화면 회원수정
 	@RequestMapping(value = "memberUpdt")
 	public String updateCd(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		int updateCd = service.updateCd(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("주소나와라 : " + updateCd);
-		
-		
 		return "redirect:/member/memberList";
 	}
-	
-	
+//---------------------------------------------------------------------------------------------------------------	
 	
 //	아이디 중복확인
 	@ResponseBody
 	@RequestMapping(value = "idCheck")
 	public Map<String, Object> checkId(Member dto) throws Exception {
-
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		
 		int result = service.idCheck(dto);
-		
-		System.out.println("idCheck : " + result);
 
 		if (result > 0) {
 			returnMap.put("rt", "fail");
@@ -81,39 +74,29 @@ public class MemberController {
 		}
 		return returnMap;
 	}
-	
+//	로그인폼
 	@RequestMapping(value = "loginForm")
 	public String loginForm(Member dto) throws Exception {
-		
 		Member loginForm = service.logInCd(dto);
 		System.out.println("loginForm : " + loginForm);
-		
 		return "infra/member/user/loginForm";
 	}
-	
+//	아이디 비밀번호체크
 	@ResponseBody
 	@RequestMapping(value = "loginCheck")
 	public Map<String, Object> logInCd(Member dto, HttpSession httpSession) throws Exception {
-		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		
 		Member logInCd = service.logInCd(dto);
-		
 		System.out.println("logInCd: " + logInCd);
-		
 		if(logInCd != null) {
-			
 			returnMap.put("rt", "success");
-			
 			httpSession.setMaxInactiveInterval(60 * 30); // 60second * 30 = 30minute
 			httpSession.setAttribute("sessSeq", logInCd.getSeq());
 			httpSession.setAttribute("sessId", logInCd.getId());
 			httpSession.setAttribute("sessName", logInCd.getName());
 			httpSession.setAttribute("sessAdmin", logInCd.getAdminNy());
-			
 			returnMap.put("name", logInCd.getName());
 			returnMap.put("admin", logInCd.getAdminNy());
-			
 		} else {
 			returnMap.put("rt", "fail");
 		}
@@ -140,7 +123,7 @@ public class MemberController {
 //		
 //		return "infra/member/user/signUpActor";
 //	}	
-	
+//-------------------------------------------------------------------------------------------	
 	
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorForm")
@@ -204,20 +187,19 @@ public class MemberController {
 		
 		return "infra/member/user/mainViewForm";
 	}
-	//메인페이지
+	//오디션포스트 리스트
 	@RequestMapping(value = "oditionPostViewForm")
 	public String oditionMod() throws Exception {
 		
 		return "infra/member/user/oditionPostViewForm";
 	}	
-	//메인페이지
+	//배우포스트 리스트
 		@RequestMapping(value = "actorPostViewForm")
 		public String actorPostViewForm() throws Exception {
 			
 		return "infra/member/user/actorPostViewForm";
 	}
-	
-	
+		
 	@RequestMapping(value = "firstView")
 	public String firstView() throws Exception {
 		
