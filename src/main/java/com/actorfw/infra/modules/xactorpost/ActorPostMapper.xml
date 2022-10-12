@@ -16,9 +16,22 @@
 			<!-- ORDER BY seq DESC -->
 	</select>
 
-
+	<select id="imageList" resultMap="resultObj">
+		SELECT
+			*
+		FROM memberUploaded
+		WHERE 1=1
+			<!-- ORDER BY seq DESC -->
+	</select>
 	
-
+	<select id="imageViwe" resultMap="resultObj">
+		SELECT
+			*
+		FROM memberUploaded
+		WHERE 1=1
+		<!-- AND pseq = #{pseq} -->
+			<!-- ORDER BY seq DESC -->
+	</select>
 
 
 
