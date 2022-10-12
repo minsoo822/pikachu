@@ -5,8 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<!DOCTYPE html>
 
+
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="ko">
 <head>
 	<title>Home</title>
@@ -24,16 +26,15 @@
 	
 </head>
 <body>
-	<form action="" id="" name="form" method="post">
-		<input type="hidden" name="seq" value="${vo.seq}">
-
+	<form id="mainForm" name="">
+	<input type="hidden" name="seq" value="${item.seq }">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
 	      <span class="logo_name">Actor's</span>
 	    </div>
 	    <ul class="nav-links">
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-grid-alt' ></i>
 	          <span class="link_name">대시보드</span>
@@ -41,16 +42,16 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">Category</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <div class="iocn-link">
-	          <a href="#">
+	          <a href="/codeGroup/codeGroupList">
 	            <i class='bx bx-code-alt' ></i>
 	            <span class="link_name">코드그룹 리스트 관리</span>
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
-	     	 <ul class="sub-menu">
+	       <ul class="sub-menu">
 	          <li><a class="link_name" href="/codeGroup/codeGroupList">코드그룹 리스트 관리</a></li>
 	          <li><a href="/code/CodeList">코드 관리</a></li>
 	          <li><a href="/codeGroup/codeGroupList">코드그룹 관리</a></li>
@@ -58,19 +59,19 @@
 	      </li>
 	      <li>
 	        <div class="iocn-link">
-	          <a href="#">
+	          <a href="/member/memberList">
 	            <i class='bx bx-book-alt' ></i>
 	            <span class="link_name">회원관리</span>
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
 	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">회원관리</a></li>
-	          <li><a href="#">배우 관리</a></li>
-	          <li><a href="#">디렉터 관리</a></li>
+	          <li><a class="link_name" href="/member/memberList">회원관리</a></li>
+	          <li><a href="/member/actorList">배우 관리</a></li>
+	          <li><a href="/member/directorList">디렉터 관리</a></li>
 	        </ul>
 	      </li>
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-pie-chart-alt-2' ></i>
 	          <span class="link_name">Analytics</span>
@@ -129,7 +130,7 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">Setting</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <div class="profile-details">
 	          <div class="profile-content">
@@ -160,7 +161,7 @@
 	    <div class="main">    
 	      <div class="mainSearch">
 	        <div class="title">
-	          <h5>코드그룹 관리</h5>
+	          <h5>코드관리</h5>
 	        </div>
 	        <div class="two">
 	          <div class="three">
@@ -187,10 +188,10 @@
 	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
 	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
+	            <input type="text" id="shValue" name="shValue" value="${vo.shValue}"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="button" onclick="reSet();">리셋</button>
+	              <button  type="button" onclick="reSet()">리셋</button>
 	            </div>
 	          </div>
 	        </div>
@@ -206,41 +207,53 @@
 	            </div>
 	            <div class="row" style="margin: 25px; text-align: center;">
 	            	<div class="col">
+	            		<div class="row mb-2">
+	            			<div class="col">코드그룹 코드</div>
+							<div class="col">
+								<select class="form-select" name="ccg_seq" id="ccg_seq">
+										<option value="" hidden selected>선택</option>
+									<c:forEach items="${add}" var="add" varStatus="status">
+										<%-- <option value="${add.seq }" <c:if test="${list.ccg_seq eq add.seq}">selected</c:if>><c:out value="${add.name}"/></option> --%>
+										<option value="${add.seq }" <c:if test="${add.seq eq item.ccg_seq}">selected</c:if>><c:out value="${add.name}"/></option>
+									</c:forEach>
+								</select>
+							</div>
+            			</div>
 						<div class="row mb-2">
 							<div class="col">코드</div>
 							<div class="col">
-								<input type="text" class="form-control" placeholder="자동생성" disabled value="<c:out value="${item.seq}"/>">
+								<input type="text" class="form-control" placeholder="자동생성" disabled value="<c:out value="${item.seq }"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">코드이름</div>
 							<div class="col">
-								<input type="text" class="form-control" name="name" id="name" value="${item.name}">
+								<input type="text" class="form-control"name="name" id="" value="<c:out value="${item.name}"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">순서</div>
 							<div class="col">
-								<input type="text" class="form-control"name="oder" id="oder" value="<c:out value="${item.oder}"/>">
+								<input type="text" class="form-control" name="oder" id="" value="<c:out value="${item.oder}"/>">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">사용여부</div>
 							<div class="col">
-								<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
-									<option value="" <c:out value="${item.useNy }"/>" hidden selected>선택</option>
-									<option value="0" <c:if test="${item.useNy eq 0 }">selected</c:if>>N</option>
-									<option value="1" <c:if test="${item.useNy eq 1 }">selected</c:if>>Y</option>
+								<select class="form-select" name="useNy" id="">
+									<option value="" hidden selected>선택</option>
+									<option value="0" <c:if test="${vo.shUseOption eq 0}">selected</c:if>>N</option>
+									<option value="1" <c:if test="${vo.shUseOption eq 1}">selected</c:if>>Y</option>
 								</select>
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">삭제여부</div>
 							<div class="col">
-								<select class="form-select" id="delNy" name="delNy">
+								<select class="form-select" id="delNy" name="delNy" value="<c:out value="${item.delNy }"/>">
 									<option value="" hidden selected>선택</option>
-									<option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>>N<option>
-									<option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>>Y</option>
+									<option value="0">N</option>
+									<option value="1">Y</option>
 								</select>
 							</div>
 						</div>
@@ -252,8 +265,8 @@
 						</div>
 						<div class="row mt-5 d-grid justify-content-end">
 							<div class="col">
-								<button type="button" class="btn btn-primary" id="btnSave" onclick="reg()">등록</button>
-								<button type="button" class="btn btn-primary" id="btnList">목록</button>
+								<button type="button" id="btnSave" class="btn btn-primary">등록</button>
+								<a href="javascript:goFormList()" type="button" class="btn btn-primary">목록</a>
 							</div>
 						</div>
 	            	</div>
@@ -284,82 +297,8 @@
 	      </div>
 	    </div>
 		</section>
-	</form>
- 	
-	<form name="formVo" id="formVo" method="post">
-		<!-- *Vo.jsp s -->
-		<%@include file="../xdmin/includeV1/codeGroupVo.jsp"%>		<!-- #-> -->
-		<!-- *Vo.jsp e -->
-	</form>
-
+s	</form>
   <script>
-
-	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
-	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
-	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
-	
-	var seq = $("input:hidden[name=seq]");				/* #-> */
-	
-	var form = $("form[name=form]");
-	var formVo = $("form[name=formVo]");
-	
-	function reg() {
-		
-		  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
-			  alert("코드그룹 이름을 입력해주세요.");
-			  document.getElementById("name").value = "";
-			  document.getElementById("name").focus();
-			  return false;
-		  }
-		  
-		  if(document.getElementById("useNy").value == 2) {
-			  alert("코드그룹 사용유무를 선택해주세요.");
-			  document.getElementById("useNy").value = 2;
-			  document.getElementById("useNy").focus();
-			  return false;
-		  }
-		
-			  document.getElementById("FormInst").submit();
-	  }	  
-	
-	$("#btnSave").on("click", function(){ 
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   	//	if (validationInst() == false) return false;
-	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		/* keyName.val(atob(keyName.val())); */
-	   	//	if (validationUpdt() == false) return false;
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-	}); 
-
-	$("#btnList").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
-	});
-	
-  
-  
-  
-  
-//  alert("test");
-  
-//  alert(document.getElementById('name').value);			//input
-//  alert(document.getElementById('oder').value);	
-//  alert(document.getElementById('use').options[document.getElementById('use').selectedIndex].value);	//select
-//  alert(document.getElementById('use').value);															//select
-//  
-//  alert(document.getElementById('radio').value);
-//  alert(document.getElementById('check').value);
-
-  
-  
-  
-  
-  
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
     arrow[i].addEventListener("click", (e)=>{
@@ -373,6 +312,64 @@
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
   });
+  </script>
+  
+  <script type="text/javascript">
+  
+ 	var goUrlList = "/code/CodeList"; 			/* #-> */
+	var goUrlInst = "/code/CodeInst"; 			/* #-> */
+	var goUrlUpdt = "/code/CodeUpdt";				/* #-> */
+	var goUrlUele = "/code/CodeUele";				/* #-> */
+	var goUrlDele = "/code/CodeDele";				/* #-> */
+	var goUrlForm = "/code/codeForm";
+	
+	var form = $("#mainForm");
+	var seq = $("input:hidden[name=seq]");
+	
+	
+	goFormList = function() {
+		form.attr("action", goUrlList).submit();
+	}
+	
+	
+	$("#btnSave").on("click", function(){
+		if(seq.val() == "0" || seq.val() == ""){
+			//insert
+			/* if(validationInst() == false) return false; */
+			form.attr("action", goUrlInst).submit();
+			/* form action을 goUrlInst로 바꾸고 "/codeGroup/codeGroupInst"로 submit 하겠다. */
+			/* 바꿀수 있는 조건이 seq값이 들어왔느냐 안들어왔느냐로 구별한다. */ /* --> 판별하는 프로세스인 var seq = hidden */
+		} else {
+			//update
+			/* keyName.val(atob(keyName.val())); */
+			/* if(validationUpdt() == false) return false; */
+			form.attr("action", goUrlUpdt).submit();
+		}
+	});
+  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function reSet() {
+		location.href=("/code/CodeList");
+	}
+	
+	
+	
+	
+	
+	
   </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

@@ -5,9 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<!DOCTYPE html>
 
-<html lang="ko">
+<html lang="KO">
 <head>
 	<title>Home</title>
 	<!-- Boxiocns CDN Link -->
@@ -24,16 +23,15 @@
 	
 </head>
 <body>
-	<form action="" id="" name="form" method="post">
-		<input type="hidden" name="seq" value="${vo.seq}">
-
+	<form id="mainForm">
+	<input type="hidden" name="seq" id="seq" value="${dto.seq }">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
 	      <span class="logo_name">Actor's</span>
 	    </div>
 	    <ul class="nav-links">
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-grid-alt' ></i>
 	          <span class="link_name">대시보드</span>
@@ -41,16 +39,16 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">Category</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <div class="iocn-link">
-	          <a href="#">
+	          <a href="/codeGroup/codeGroupList">
 	            <i class='bx bx-code-alt' ></i>
 	            <span class="link_name">코드그룹 리스트 관리</span>
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
-	     	 <ul class="sub-menu">
+	      	 <ul class="sub-menu">
 	          <li><a class="link_name" href="/codeGroup/codeGroupList">코드그룹 리스트 관리</a></li>
 	          <li><a href="/code/CodeList">코드 관리</a></li>
 	          <li><a href="/codeGroup/codeGroupList">코드그룹 관리</a></li>
@@ -58,19 +56,19 @@
 	      </li>
 	      <li>
 	        <div class="iocn-link">
-	          <a href="#">
+	          <a href="/member/memberList">
 	            <i class='bx bx-book-alt' ></i>
 	            <span class="link_name">회원관리</span>
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
 	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">회원관리</a></li>
-	          <li><a href="#">배우 관리</a></li>
-	          <li><a href="#">디렉터 관리</a></li>
+	          <li><a class="link_name" href="/member/memberList">회원관리</a></li>
+	          <li><a href="/member/actorList">배우 관리</a></li>
+	          <li><a href="/member/directorList">디렉터 관리</a></li>
 	        </ul>
 	      </li>
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-pie-chart-alt-2' ></i>
 	          <span class="link_name">Analytics</span>
@@ -129,7 +127,7 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">Setting</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <div class="profile-details">
 	          <div class="profile-content">
@@ -160,34 +158,34 @@
 	    <div class="main">    
 	      <div class="mainSearch">
 	        <div class="title">
-	          <h5>코드그룹 관리</h5>
+	          <h5>코드 관리</h5>
 	        </div>
 	        <div class="two">
 	          <div class="three">
-	            <select name="shUseOption">
-					<option value="" hidden selected>사용여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
+	            <select name="shUseOption" id="shUseOption">
+					<option value="" selected>사용여부</option>
+					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N<option>
+					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <select>
-	              <option hidden selected>날짜</option>
-	              <option>수정일</option>
-	              <option>등록일</option>
-	              <option>생일</option>
+	            <select name="shDateOption" id="shDateOption">
+	              <option selected <c:if test="${empty vo.shDateOption}">selected</c:if>>날짜</option>
+	              <option value="1" <c:if test="${vo.shDateOption eq 1 }">selected</c:if>>생일</option>
+	              <option value="2" <c:if test="${vo.shDateOption eq 2 }">selected</c:if>>수정일<option>
+	              <option value="3" <c:if test="${vo.shDateOption eq 3 }">selected</c:if>>등록일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
-	             <select name="shDelOption">
+	             <select name="shDelOption" id="shDelOption">
 					<option value="" hidden selected>삭제여부</option>
-					<option value="0">N</option>
-					<option value="1">Y</option>
-	            </select>
+					<option value="0" <c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
+					<option value="1" <c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
+	            </select>	
 	            <select id="shOption" name="shOption">
-	              <option value="" hidden selected>검색구분</option>
-	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
-	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
+	              <option value="" hidden selected>검색구분</option>	
+	              <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+	              <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>"  placeholder="검색어">
+	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
 	              <button  type="button" onclick="reSet();">리셋</button>
@@ -197,69 +195,59 @@
 	        <div class="wow">
 	          <select>
 	            <option>10</option>
+	            <option>20</option>
+	            <option>30</option>
+	            <option>40</option>
+	            <option>50</option>
+	            
 	          </select>  
 	        </div>
 	        <div class="four">
 	          <div class="five">
 	            <div class="line">
-	              <!-- <h6>코드그룹 관리</h6> -->
+	            <!--   <h6>코드그룹 관리</h6> -->
 	            </div>
-	            <div class="row" style="margin: 25px; text-align: center;">
-	            	<div class="col">
-						<div class="row mb-2">
-							<div class="col">코드</div>
-							<div class="col">
-								<input type="text" class="form-control" placeholder="자동생성" disabled value="<c:out value="${item.seq}"/>">
-							</div>
-						</div>
-						<div class="row mb-2">
-							<div class="col">코드이름</div>
-							<div class="col">
-								<input type="text" class="form-control" name="name" id="name" value="${item.name}">
-							</div>
-						</div>
-						<div class="row mb-2">
-							<div class="col">순서</div>
-							<div class="col">
-								<input type="text" class="form-control"name="oder" id="oder" value="<c:out value="${item.oder}"/>">
-							</div>
-						</div>
-						<div class="row mb-2">
-							<div class="col">사용여부</div>
-							<div class="col">
-								<select class="form-select" id="useNy" name="useNy" value="<c:out value="${item.useNy }"/>">
-									<option value="" <c:out value="${item.useNy }"/>" hidden selected>선택</option>
-									<option value="0" <c:if test="${item.useNy eq 0 }">selected</c:if>>N</option>
-									<option value="1" <c:if test="${item.useNy eq 1 }">selected</c:if>>Y</option>
-								</select>
-							</div>
-						</div>
-						<div class="row mb-2">
-							<div class="col">삭제여부</div>
-							<div class="col">
-								<select class="form-select" id="delNy" name="delNy">
-									<option value="" hidden selected>선택</option>
-									<option value="0" <c:if test="${item.delNy eq 0}">selected</c:if>>N<option>
-									<option value="1" <c:if test="${item.delNy eq 1}">selected</c:if>>Y</option>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">설명</div>
-							<div class="col">
-								<textarea cols="40"></textarea>
-							</div>
-						</div>
-						<div class="row mt-5 d-grid justify-content-end">
-							<div class="col">
-								<button type="button" class="btn btn-primary" id="btnSave" onclick="reg()">등록</button>
-								<button type="button" class="btn btn-primary" id="btnList">목록</button>
-							</div>
-						</div>
-	            	</div>
-	            </div>
-				</div>
-				<div class="Pagingdp">
+	            <table class="table table-striped">
+	              <tr class="tableTr">
+	                <th><input class="form-check-input" type="checkbox"></th>
+	                <th>#</th>
+	                <th>코드 코드</th>
+	                <th>코드 이름</th>
+	                <th>코드그룹 코드</th>
+	                <th>코드 삭제여부 N:0 Y:1</th>
+	                <th>코드 사용여부 N:0 Y:1</th>
+	                <th>등록일</th>
+	                <th>수정일</th>
+	              </tr>
+	<c:choose>
+		<c:when test="${fn:length(list) eq 0}">
+			<tr>
+				<td style="text-align: center;" colspan="9"> no Data!</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${list}" var="list" varStatus="status">
+				<tr>
+					<td><input class="form-check-input" type="checkbox"></td>
+					<td></td>
+					<td>
+						<a href="javascript:goUpdtForm(${list.seq})" class="text-decoration-none">
+							<c:out value="${list.seq }"/>
+						</a>
+					</td>
+					<td><c:out value="${list.name }"/></td>
+					<td><c:out value="${list.ccg_seq }"></c:out></td>
+					<td><c:out value="${list.delNy }"/></td>
+					<td><c:out value="${list.useNy }"/></td>
+					<td><c:out value="${list.creDate }"/></td>
+					<td><c:out value="${list.modDate }"/></td>
+				</tr>	
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>	
+	            </table>
+	          </div>
+	          <div class="Pagingdp">
 					<div class="pagination">
 						<a href="#">Prev</a>
 						<a href="#" class="active">1</a>
@@ -277,7 +265,7 @@
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
 						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
-						<a href="#"><button class="btn btn-primary" type="submit"><i class="fa-solid fa-plus"></i></button></a>
+						<a href=javascript:goInstForm() class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></a>
 					</div>
 				</div>
 	        </div>
@@ -285,77 +273,21 @@
 	    </div>
 		</section>
 	</form>
- 	
-	<form name="formVo" id="formVo" method="post">
-		<!-- *Vo.jsp s -->
-		<%@include file="../xdmin/includeV1/codeGroupVo.jsp"%>		<!-- #-> -->
-		<!-- *Vo.jsp e -->
-	</form>
-
   <script>
-
-	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
-	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
-	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
-	
-	var seq = $("input:hidden[name=seq]");				/* #-> */
-	
-	var form = $("form[name=form]");
-	var formVo = $("form[name=formVo]");
-	
-	function reg() {
-		
-		  if(document.getElementById("name").value == '' || document.getElementById("name").value == null) {
-			  alert("코드그룹 이름을 입력해주세요.");
-			  document.getElementById("name").value = "";
-			  document.getElementById("name").focus();
-			  return false;
-		  }
-		  
-		  if(document.getElementById("useNy").value == 2) {
-			  alert("코드그룹 사용유무를 선택해주세요.");
-			  document.getElementById("useNy").value = 2;
-			  document.getElementById("useNy").focus();
-			  return false;
-		  }
-		
-			  document.getElementById("FormInst").submit();
-	  }	  
-	
-	$("#btnSave").on("click", function(){ 
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   	//	if (validationInst() == false) return false;
-	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		/* keyName.val(atob(keyName.val())); */
-	   	//	if (validationUpdt() == false) return false;
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-	}); 
-
-	$("#btnList").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
-	});
-	
   
+  var goUrlForm = "/code/codeForm";
   
-  
-  
-//  alert("test");
-  
-//  alert(document.getElementById('name').value);			//input
-//  alert(document.getElementById('oder').value);	
-//  alert(document.getElementById('use').options[document.getElementById('use').selectedIndex].value);	//select
-//  alert(document.getElementById('use').value);															//select
-//  
-//  alert(document.getElementById('radio').value);
-//  alert(document.getElementById('check').value);
-
-  
+  var form = $('#mainForm');
+  var seq = $("input:hidden[name=seq]");	
+  var editSeq = $('#seq')	
+  	
+	goUpdtForm = function(seq) {
+		editSeq.attr("Value",seq);
+		form.attr("action", goUrlForm).submit();
+	} 
+	goInstForm = function() {
+		form.attr("action", goUrlForm).submit();
+	}
   
   
   
@@ -373,7 +305,33 @@
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
   });
+  
+  $(function() {
+	  $( "#StDatePicker" ).datepicker({
+		  changeMonth: true,
+		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+	  });
+  });
+  $(function() {
+	  $( "#EnDatePicker" ).datepicker({
+		  changeMonth: true,
+		  dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+		  dayNameMin: ['월', '화', '수', '목', '금', '토', '일'],
+		  monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+		  minthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월', ]
+	  });
+  });
+  
+  function reSet() {
+	  location.href=("/code/CodeList")
+  }
+  
   </script>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
