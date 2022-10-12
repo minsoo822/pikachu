@@ -16,6 +16,12 @@ public class ActorPostServiceImpl implements ActorPostService {
 		return dao.actorList(vo);
 	}
 
+	@Override
+	public List<ActorPost> imageViwe(ActorPost dto) throws Exception {
+		
+		return dao.imageViwe(dto);
+	}
+
 	
 	
 	

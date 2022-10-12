@@ -18,52 +18,39 @@ public class CodeController {
 	
 	@RequestMapping(value ="CodeList")
 	public String CodeList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
-		
 		List<Code> list = service.selectList(vo);
-		
 		System.out.println("검색어 :" + vo.getShValue());
 		System.out.println("검색옵션 :" + vo.getShOption());
-		
 		model.addAttribute("list", list);
 //		model.addAttribute("vo", vo);
-		
-		return "infra/codegroup/xdmin/codeList";
-		
+		return "infra/code/xdmin/codeList";
 	}
 	
 	@RequestMapping(value = "codeForm")
 	public String CodaForm(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
-		
 //		정보를 하나씩 가져올때
 		Code result = service.selectOne(vo);
-		
 		System.out.println("검색어 :" + vo.getShValue());
 		System.out.println("검색옵션 :" + vo.getShOption());
-		
 		model.addAttribute("item", result);
 //		코드그룹이름을 가져올때
 		List<Code> add = service.addCodeName(vo);
 		model.addAttribute("add", add);
-		
-		return "infra/codegroup/xdmin/codeForm";
+		return "infra/code/xdmin/codeForm";
 	}
-	
 	
 	@RequestMapping(value = "CodeInst")
 	public String CodeInst(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
-		
 		int insertCd = service.insertCd(dto);
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
-		
 		System.out.println("Controller insertCd" + insertCd);
-		
 		return "redirect:/code/CodeList";
 	}
 	
 	@RequestMapping(value = "CodeUpdt")
 	public String CodeUpdt(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
-		
+		System.out.println("들어와");
 		int updateCd = service.updateCd(dto);
 		Code result = service.selectOne(vo);
 		redirectAttributes.addFlashAttribute("vo", vo);
