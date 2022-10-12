@@ -21,23 +21,49 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
-//--------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------	
+//	전체회원
 //	관리자화면 회원리스트
 	@RequestMapping(value = "memberList")
 	public String selectList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-		
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		System.out.println("Controll List :" + list);
 		return "infra/member/xdmin/memberList";
 	}
+//	배우회원
+//	관리자화면 배우리스트
+	@RequestMapping(value = "actorList")
+	public String actorList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		List<Member> list = service.actorList(vo);
+		model.addAttribute("list", list);
+		System.out.println("Controll List :" + list);
+		return "infra/member/xdmin/memberList";
+	}
+//	감독회원
+//	관리자화면 감독리스트
+	@RequestMapping(value = "directorList")
+	public String directorList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		List<Member> list = service.directorList(vo);
+		model.addAttribute("list", list);
+		System.out.println("Controll List :" + list);
+		return "infra/member/xdmin/memberList";
+	}
+
+//---------------------------------------------------------------------------------------------------------------	
+	
 //	관리자화면 회원폼
 	@RequestMapping(value = "memberForm")
-	public String memberForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+	public String memberForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
 		
 		Member item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		System.out.println("Controll Form :" + item);
+		
+		dto.setPseq(vo.getSeq());// 
+		Member imageView = service.imageView(dto);
+		model.addAttribute("imageView", imageView);
+		
 		return "infra/member/xdmin/memberForm";
 	}
 //	관리자화면 회원가입
@@ -53,6 +79,7 @@ public class MemberController {
 //	관리자화면 회원수정
 	@RequestMapping(value = "memberUpdt")
 	public String updateCd(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
 		int updateCd = service.updateCd(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("주소나와라 : " + updateCd);
@@ -134,7 +161,7 @@ public class MemberController {
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorInst")
 	public String signUpActorInst(Member dto) throws Exception {
-		
+		System.out.println("---------------------159");
 		//기본정보
 		int signUpActorInst = service.insertCd(dto);
 		//sns
@@ -184,6 +211,7 @@ public class MemberController {
 	public String mainPage(Model model) throws Exception {
 //		List<TourPost> list = service.tourList(vo);
 //		model.addAttribute("list", list);
+		
 		
 		return "infra/member/user/mainViewForm";
 	}

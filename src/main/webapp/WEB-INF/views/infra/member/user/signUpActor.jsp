@@ -45,7 +45,7 @@
 				<div class="row">
 					<div class="col-3 mb-4">
 						<select disabled class="form-control" name="user_type">
-							<option value="26" selected>Actor</option>
+							<option value="26">Actor</option>
 						</select>
 					</div>
 				</div>
@@ -196,19 +196,19 @@
 									<div class="col pt-2 regText">쌍꺼풀유무</div>
 									<div class="col">
 										<select class="form-select" name="actor_eyelid">
-											<option vlaue="">선택</option>
-											<option vlaue="37">겉쌍꺼풀</option>
-											<option vlaue="38">속쌍꺼풀</option>
-											<option vlaue="39">무쌍꺼풀</option>
+											<option value="">선택</option>
+											<option value="37">겉쌍꺼풀</option>
+											<option value="38">속쌍꺼풀</option>
+											<option value="39">무쌍꺼풀</option>
 										</select>
 									</div>
 									<div class="col pt-2 regText">목소리톤</div>
 									<div class="col">
 										<select class="form-select" name="actor_voice">
-											<option vlaue="">선택</option>
-											<option vlaue="40">고음</option>
-											<option vlaue="41">중음</option>
-											<option vlaue="42">저음</option>
+											<option value="">선택</option>
+											<option value="40">고음</option>
+											<option value="41">중음</option>
+											<option value="42">저음</option>
 										</select>
 									</div>
 								</div>
@@ -253,9 +253,9 @@
 					<div class="col-3"><h4><b>소속사<span>*</span></b></h4></div>
 					<div class="col-3">
 						<select class="form-select" name="company_useNy">
-							<option>선택</option>
-							<option vlaue="0">Y</option>
-							<option vlaue="1">N</option>
+							<option value="">선택</option>
+							<option value="0">N</option>
+							<option value="1">Y</option>
 						</select>
 					</div>
 					<div class="col-6"></div>

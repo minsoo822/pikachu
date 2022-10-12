@@ -14,12 +14,26 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberDao dao;
-	
+
+//-------------------------------------------------------------------
 //	멤버리스트
 	@Override
 	public List<Member> selectList(MemberVo vo) throws Exception { 
 		return dao.selectList(vo); 
 	}
+//	배우리스트
+	@Override
+	public List<Member> actorList(MemberVo vo) throws Exception {
+		return dao.actorList(vo); 
+	}
+//	감독리스트
+	@Override
+	public List<Member> directorList(MemberVo vo) throws Exception {
+		return dao.directorList(vo); 
+	}
+//-------------------------------------------------------------------
+
+
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception  { return dao.selectOne(vo); }
 	
@@ -31,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
 		int insertCd =  dao.insertCd(dto);
         int pseq = dao.selectLastSeq();
 
-        System.out.println("dto.getMultipartFile() : " + dto.getPlofil_image());
+        System.out.println("dto.getPlofil_image() : " + dto.getPlofil_image());
         int j = 0;
         for(MultipartFile myFile : dto.getPlofil_image()) {
 
@@ -56,13 +70,23 @@ public class MemberServiceImpl implements MemberService {
 		
 		return insertCd;
 	}
+//	멤버업데이트
+	@Override
+	public int updateCd(Member dto) throws Exception { 
+		int updateCd = dao.updateCd(dto);
+		return updateCd; 
+	}
+	
+//	이미지 불러오기
+	@Override
+	public Member imageView(Member dto) throws Exception {
+		return dao.imageView(dto);
+	}
 //	멤버sns인서트
 //	@Override
 //	public int insertSnsCd(Member dto) throws Exception {
 //		return dao.insertSnsCd(dto);
 //	}
-	@Override
-	public int updateCd(Member dto) throws Exception { return dao.updateCd(dto); }
 	
 //	아이디 중복체크
 	@Override

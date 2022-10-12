@@ -2,8 +2,8 @@ package com.actorfw.infra.modules.member;
 
 public class MemberVo {
 //	seq
-	private String seq;
-
+	private Integer seq;
+	
 //	search
 	private String shValue;					//value값(내용)
 	private Integer shOption;				//선택옵션
@@ -22,10 +22,10 @@ public class MemberVo {
 	public String getShValue() {
 		return shValue;
 	}
-	public String getSeq() {
+	public Integer getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
 	public void setShValue(String shValue) {

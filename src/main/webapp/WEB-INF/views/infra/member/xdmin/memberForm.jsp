@@ -19,9 +19,9 @@
 </head>
 
 <body>
-	<form name="" id="mainForm" method="post">
+	<form name="" id="mainForm" method="post" enctype="multipart/form-data"> 
 		<input hidden="hidden" name="seq" value="${vo.seq}">
-	  <div class="sidebar close">
+	  <div class="sidebar close"> 
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
 	      <span class="logo_name">Actor's</span>
@@ -196,14 +196,15 @@
 	            			<div class="col-4">
 	            				<div class="row">
 	            					<div class="col">
-	            						<img style="width: 400px; height: 600px;" src="" id="preview"/>
+	            						<img style="width: 400px; height: 600px;" src="${imageView.path}${imageView.uuidName}" id="preview">
 	            					</div>
 	            				</div>
 	            				<div class="row">
 	            					<div class="col">
-	            						<input type="file" name="getPlofil_image" id="mainPicture" class="form-control" style="width: 400px;">
-	            					</div>
-	            				</div>
+	            						<input type="file" name="plofil_image" id="mainPicture"  class="form-control" style="width: 400px;">
+	            						<!-- <input type="file" name ="plofil_image"  multiple="multiple" > -->
+	            					</div>  
+	            				</div>  
 	            			</div>
 	            			<div class="col-8">
 	            				<div class="row mb-2" style="text-align: center;">
@@ -418,8 +419,8 @@
 	        </div>
 	      </div>
 	    </div>
-	</section>
 </form>
+	</section>
 <!-- 지도API -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 부트스트랩 -->
@@ -447,7 +448,7 @@
 	
 	
 	$("#btnSave").on("click", function(){
-		
+		form.attr("action", goUrlInst).submit();
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 	   	//	if (validationInst() == false) return false;

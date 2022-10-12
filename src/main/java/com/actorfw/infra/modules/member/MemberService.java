@@ -5,8 +5,15 @@ import java.util.List;
 
 public interface MemberService {
 
-//	멤버리스트
+//---------------------------------------------------------------------	
+//	회원리스트
 	public List<Member> selectList(MemberVo vo) throws Exception;
+//	배우리스트
+	public List<Member> actorList(MemberVo vo) throws Exception;
+//	감독리스트
+	public List<Member> directorList(MemberVo vo) throws Exception;
+//---------------------------------------------------------------------
+	
 	
 	public Member selectOne(MemberVo vo) throws Exception;
 	
@@ -24,6 +31,7 @@ public interface MemberService {
 	public int updateCd(Member dto) throws Exception; 
 	
 	
+	public Member imageView(Member dto) throws Exception; 
 	
 	
 }
