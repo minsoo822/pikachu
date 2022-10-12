@@ -47,7 +47,7 @@ public class CodeServiceImpl implements CodeService {
 	@Override
 	public int updateCd(Code dto) throws Exception {
 		
-		int updateCd = dao.insertCd(dto);
+		int updateCd = dao.updateCd(dto);
 		System.out.println("updateCd result" + updateCd);
 		return updateCd;
 	}
