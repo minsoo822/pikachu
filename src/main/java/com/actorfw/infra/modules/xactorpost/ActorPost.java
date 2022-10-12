@@ -1,6 +1,8 @@
 package com.actorfw.infra.modules.xactorpost;
 
-public class ActorPost {
+import com.actorfw.infra.common.base.Base;
+
+public class ActorPost extends Base {
 
 	
 	private String seq;

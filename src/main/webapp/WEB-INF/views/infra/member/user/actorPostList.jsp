@@ -97,9 +97,10 @@
 		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
 		<c:forEach items="${list}" var="list" varStatus="status">			
 			<div class="cardactor col-2">
-				<img src="/resources/image/leejiun.jpg" class="card-img-top" alt="...">
+				<img src="${img.path}${img.uuidName}" class="card-img-top" alt="">
 				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
 				<div class="pra">
+					<input hidden type="text" value="${list.seq }">
 					<p style="text-align: center;"><c:out value="${list.age }"></c:out>세</p>
 				</div>
 			</div>
