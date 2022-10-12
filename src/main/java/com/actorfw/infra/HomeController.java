@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-
+	@RequestMapping(value = "")
+	public String firstView() throws Exception {
+		
+		return "infra/member/xdmin/firstView";
+		
+	}
 
 		
 		private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
