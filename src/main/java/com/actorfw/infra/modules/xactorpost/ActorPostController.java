@@ -16,15 +16,20 @@ public class ActorPostController {
 	
 //--------------------------------------------------------------------------------
 	
-		@RequestMapping(value = "ActorPostList")
-		public String oditionList(ActorPostVo vo, Model model) throws Exception {
-			
-			List<ActorPost> list = service.actorList(vo);
-			model.addAttribute("list", list);
-			
-			return "infra/member/user/actorPostList";
-		}
+	@RequestMapping(value = "ActorPostList")
+	public String oditionList(ActorPostVo vo, Model model, ActorPost dto) throws Exception {
+		System.out.println("---------List");
+		List<ActorPost> list = service.actorList(vo);
+		model.addAttribute("list", list);
+		System.out.println("----------------------picture");
+		dto.setPseq(vo.getSeq());
+		List<ActorPost> imageViwe = service.imageViwe(dto);
+		model.addAttribute("img", imageViwe);
 		
+		
+		return "infra/member/user/actorPostList";
+	}
+	
 		
 		
 		
