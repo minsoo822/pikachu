@@ -17,16 +17,22 @@
 			<!-- <when test="shOption == 0"></when> -->
 			<when test="shOption == 1">AND seq = #{shValue} </when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+		<choose>
 			<!-- useNy -->
 			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
+		</choose>
+		<choose>
 			<!-- delNy -->
 			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
-			<!-- Date -->
+		</choose>
+		<!-- <choose>
+			Date
 			<when test="shDateOption == 1"> And modDate LIKE CONCAT (1)</when>
 			<when test="shDateOption == 2"> And creDate LIKE CONCAT (2)</when>
-		</choose>
+		</choose> -->
 	</sql>
 		
 	<select id="selectList" resultMap="resultMapObj">

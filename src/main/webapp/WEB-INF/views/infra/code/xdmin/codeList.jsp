@@ -163,35 +163,36 @@
 	          <h5>코드 관리</h5>
 	        </div>
 	        <div class="two">
-	          <div class="three">
+	           <div class="three">
 	            <select name="shUseOption" id="shUseOption">
-					<option value="" selected>사용여부</option>
+					<option value="" <c:if test="${empty vo.shUseOption }">selected</c:if>>사용여부</option>
 					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N</option>
 					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
-	            <select name="shDateOption" id="shDateOption">
-	             <option value="" selected>날짜</option>
-	             <%--  <option selected <c:if test="${empty vo.shDateOption}">selected</c:if>>날짜</option> --%>
-	              <option value="1" <c:if test="${vo.shDateOption eq 1 }">selected</c:if>>생일</option>
-	              <option value="2" <c:if test="${vo.shDateOption eq 2 }">selected</c:if>>수정일</option>
-	              <option value="3" <c:if test="${vo.shDateOption eq 3 }">selected</c:if>>등록일</option>
+	            <select id="shOptionDate" name="shOptionDate">
+	              <option value="" <c:if test="${empty vo.shOptionDate }">selected</c:if>>날짜</option>
+	              <option value="1" <c:if test="${vo.shOptionDate eq 1 }">selected</c:if>>수정일</option>
+	              <option value="2" <c:if test="${vo.shOptionDate eq 2 }">selected</c:if>>등록일</option>
+	              <option value="3" <c:if test="${vo.shOptionDate eq 3 }">selected</c:if>>생일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
 	            <input type="text" id="EnDatePicker" placeholder="종료일">
 	             <select name="shDelOption" id="shDelOption">
-					<option value="" hidden selected>삭제여부</option>
+					<option value="" <c:if test="${empty vo.shDelOption }">selected</c:if>>삭제여부</option>
 					<option value="0" <c:if test="${vo.shDelOption eq 0 }">selected</c:if>>N</option>
 					<option value="1" <c:if test="${vo.shDelOption eq 1 }">selected</c:if>>Y</option>
-	            </select>	
-	            <select id="shOption" name="shOption">
-	              <option value="" hidden selected>검색구분</option>	
-	              <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
-	              <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
 	            </select>
-	            <input type="text" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어">
+	            <select id="shOption" name="shOption">
+	              <option value="" hidden selected>검색구분</option>
+	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
+	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
+	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>코드그룹 삭제여부</option>
+	              <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>코드그룹 사용여부</option>
+	            </select>
+	            <input type="text" id="shValue" name="shValue" value="${vo.shValue }"  placeholder="검색어">
 	            <div class="searchBtn">
 	              <button  type="submit">검색</button>
-	              <button  type="button" onclick="reSet();">리셋</button>
+	              <button  type="button" onclick="reSet()">리셋</button>
 	            </div>
 	          </div>
 	        </div>

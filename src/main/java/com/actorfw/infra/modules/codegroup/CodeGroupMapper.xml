@@ -12,20 +12,22 @@
 	<sql id ="selectCommon">
 		FROM ccg a
 		WHERE 1=1
-			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
-			<choose>
-				<when test="shOption == 0"></when>
-				<when test="shOption == 1">AND seq = #{shValue}</when>
-				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-			</choose>
-			<choose>
-				<when test="shUseOption == 0">AND useNy LIKE CONCAT('%',0,'%') </when>
-				<when test="shUseOption == 1">AND useNy LIKE CONCAT('%',1,'%') </when>
-			</choose>
-			<choose>
-				<when test="shDelOption == 0">AND delNy LIKE CONCAT('%',0,'%') </when>
-				<when test="shDelOption == 1">AND delNy LIKE CONCAT('%',1,'%') </when>
-			</choose>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
+		<choose>
+			<!-- <when test="shOption == 0"></when> -->
+			<when test="shOption == 1">AND seq = #{shValue} </when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+		<choose>
+			<!-- useNy -->
+			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
+		</choose>
+		<!-- <choose>
+			delNy
+			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
+		</choose> -->
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">

@@ -27,7 +27,7 @@
 	      <span class="logo_name">Actor's</span>
 	    </div>
 	    <ul class="nav-links">
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-grid-alt' ></i>
 	          <span class="link_name">대시보드</span>
@@ -35,7 +35,7 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">Category</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <div class="iocn-link">
 	          <a href="#">

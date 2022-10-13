@@ -52,7 +52,7 @@
 	      </li> -->
 	      <li>
 	        <div class="iocn-link">
-	          <a href="#">
+	          <a href="/codeGroup/codeGroupList">
 	            <i class='bx bx-code-alt' ></i>
 	            <span class="link_name">코드그룹 리스트 관리</span>
 	          </a>
@@ -66,19 +66,19 @@
 	      </li>
 	      <li>
 	        <div class="iocn-link">
-	          <a href="#">
+	          <a href="/member/memberList">
 	            <i class='bx bx-book-alt' ></i>
 	            <span class="link_name">회원관리</span>
 	          </a>
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
 	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">회원관리</a></li>
-	          <li><a href="#">배우 관리</a></li>
-	          <li><a href="#">디렉터 관리</a></li>
+	          <li><a class="link_name" href="/member/memberList">회원관리</a></li>
+	          <li><a href="/member/actorList">배우 관리</a></li>
+	          <li><a href="/member/directorList">디렉터 관리</a></li>
 	        </ul>
 	      </li>
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-pie-chart-alt-2' ></i>
 	          <span class="link_name">Analytics</span>
@@ -137,7 +137,7 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">Setting</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <div class="profile-details">
 	          <div class="profile-content">
@@ -241,7 +241,7 @@
 	<c:choose>
 		<c:when test="${fn:length(list) eq 0}">
 			<tr>
-				<td style="text-align: center;" colspan="9"> no Data!</td>
+				<td style="text-align: center;" colspan="18"> no Data!</td>
 			</tr>
 		</c:when>
 		<c:otherwise>

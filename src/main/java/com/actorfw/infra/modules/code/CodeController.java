@@ -39,6 +39,7 @@ public class CodeController {
 		List<Code> list = service.selectList(vo);
 		System.out.println("검색어 :" + vo.getShValue());
 		System.out.println("검색옵션 :" + vo.getShOption());
+		System.out.println("useNy : " + vo.getShUseOption());
 		model.addAttribute("list", list);
 //		model.addAttribute("vo", vo);
 		return "infra/code/xdmin/codeList";
