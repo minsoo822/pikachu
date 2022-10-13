@@ -382,10 +382,6 @@
 		});
 	});
 	
-	
-  
-  
-  
   
 	 $(function() {
 		  $( "#StDatePicker" ).datepicker({
