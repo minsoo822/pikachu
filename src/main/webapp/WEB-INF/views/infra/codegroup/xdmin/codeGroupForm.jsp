@@ -259,7 +259,7 @@
 	            	</div>
 	            </div>
 				</div>
-				<div class="Pagingdp">
+				<!-- <div class="Pagingdp">
 					<div class="pagination">
 						<a href="#">Prev</a>
 						<a href="#" class="active">1</a>
@@ -269,7 +269,7 @@
 						<a href="#" class="active">5</a>
 						<a href="#">Next</a>
 					</div>
-				</div>
+				</div> -->
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
 						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
@@ -288,7 +288,7 @@
  	
 	<form name="formVo" id="formVo" method="post">
 		<!-- *Vo.jsp s -->
-		<%@include file="../xdmin/includeV1/codeGroupVo.jsp"%>		<!-- #-> -->
+		<%@include file="../xdmin/includeCodeGroup/codeGroupVo.jsp"%>		<!-- #-> -->
 		<!-- *Vo.jsp e -->
 	</form>
 
