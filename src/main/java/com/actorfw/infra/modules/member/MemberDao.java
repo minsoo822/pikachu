@@ -57,6 +57,9 @@ public class MemberDao {
 	public Member imageView(Member dto) {
 		return sqlSession.selectOne(namespace + ".imageView" , dto);
 	}
-	
+//	페이징
+	public int selectOneCount(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
 	
 }

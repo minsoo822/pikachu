@@ -19,6 +19,8 @@ public interface MemberService {
 	
 //	멤버인서트
 	public int insertCd(Member dto) throws Exception;
+//	멤버업데이트
+	public int updateCd(Member dto) throws Exception; 
 //	멤버sns인서트
 //	public int insertSnsCd(Member dto) throws Exception;
 	
@@ -27,11 +29,8 @@ public interface MemberService {
 	
 //	로그인
 	public Member logInCd(Member dto) throws Exception;
-
-	public int updateCd(Member dto) throws Exception; 
-	
 	
 	public Member imageView(Member dto) throws Exception; 
-	
-	
+//	페이징
+	public int selectOneCount(MemberVo vo) throws Exception;
 }

@@ -8,64 +8,88 @@
 
 	<resultMap type="com.actorfw.infra.modules.member.Member" id="resultObj"></resultMap>
 
-	<select id="selectList" resultMap="resultObj">
-		SELECT 
-			*
-		FROM member
+	<sql id ="selectCommon">
+		FROM member a
 		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1"> AND seq = #{shValue} </when>
-			<when test="shOption == 2"> AND name LIKE CONCAT ('%',#{shValue},'%') </when>
+			<!-- <when test="shOption == 0"></when> -->
+			<when test="shOption == 1">AND seq = #{shValue} </when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<!-- useNy -->
+			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
+			<!-- delNy -->
+			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
+			<!-- Date -->
+			<when test="shDateOption == 1"> And modDate LIKE CONCAT (1)</when>
+			<when test="shDateOption == 2"> And creDate LIKE CONCAT (2)</when>
 		</choose>
-		<choose>	
-			<when test="shUseOption == 0"> AND useNy LIKE CONCAT (0)</when>
-			<when test="shUseOption == 1"> AND useNy LIKE CONCAT (1)</when>
-		</choose>
-		<choose>	
-			<when test="shDelOption == 0"> AND useNy LIKE CONCAT (0)</when>
-			<when test="shDelOption == 1"> AND useNy LIKE CONCAT (1)</when>
-		</choose>
-		ORDER BY seq DESC
+	</sql>
+	<!-- 페이징 -->
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+
+	<select id="selectList" resultMap="resultObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT 
+			a.*
+		<include refid="selectCommon" />
+		ORDER BY a.seq DESC
+		<include refid="Base.selectListLowerForMysql"/>
 	</select>
 	
 	<select id="actorList" resultMap="resultObj">
+		<include refid="Base.selectListUpperForMysql" />
 		SELECT 
-			*
-		FROM member
+			a.*
+		FROM member a
 		WHERE user_type = 26
+		<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1"> AND seq = #{shValue} </when>
-			<when test="shOption == 2"> AND name LIKE CONCAT ('%',#{shValue},'%') </when>
+			<!-- <when test="shOption == 0"></when> -->
+			<when test="shOption == 1">AND seq = #{shValue} </when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<!-- useNy -->
+			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
+			<!-- delNy -->
+			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
+			<!-- Date -->
+			<when test="shDateOption == 1"> And modDate LIKE CONCAT (1)</when>
+			<when test="shDateOption == 2"> And creDate LIKE CONCAT (2)</when>
 		</choose>
-		<choose>	
-			<when test="shUseOption == 0"> AND useNy LIKE CONCAT (0)</when>
-			<when test="shUseOption == 1"> AND useNy LIKE CONCAT (1)</when>
-		</choose>
-		<choose>	
-			<when test="shDelOption == 0"> AND useNy LIKE CONCAT (0)</when>
-			<when test="shDelOption == 1"> AND useNy LIKE CONCAT (1)</when>
-		</choose>
-		ORDER BY seq DESC
+		ORDER BY a.seq DESC
+		<include refid="Base.selectListLowerForMysql"/>
 	</select>
 	
 	<select id="directorList" resultMap="resultObj">
+		<include refid="Base.selectListUpperForMysql" />
 		SELECT 
-			*
-		FROM member
+			a.*
+		FROM member a
 		WHERE user_type = 27
+		<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1"> AND seq = #{shValue} </when>
-			<when test="shOption == 2"> AND name LIKE CONCAT ('%',#{shValue},'%') </when>
+			<!-- <when test="shOption == 0"></when> -->
+			<when test="shOption == 1">AND seq = #{shValue} </when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<!-- useNy -->
+			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
+			<!-- delNy -->
+			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
+			<!-- Date -->
+			<when test="shDateOption == 1"> And modDate LIKE CONCAT (1)</when>
+			<when test="shDateOption == 2"> And creDate LIKE CONCAT (2)</when>
 		</choose>
-		<choose>	
-			<when test="shUseOption == 0"> AND useNy LIKE CONCAT (0)</when>
-			<when test="shUseOption == 1"> AND useNy LIKE CONCAT (1)</when>
-		</choose>
-		<choose>	
-			<when test="shDelOption == 0"> AND useNy LIKE CONCAT (0)</when>
-			<when test="shDelOption == 1"> AND useNy LIKE CONCAT (1)</when>
-		</choose>
-		ORDER BY seq DESC
+		ORDER BY a.seq DESC
+		<include refid="Base.selectListLowerForMysql"/>
 	</select>
 	
 	<select id="selectOne" resultMap="resultObj">

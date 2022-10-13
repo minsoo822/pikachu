@@ -51,7 +51,7 @@
 				<b style="color: white;">cookie.seq:</b>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
-				<button type="button" class="btn" style="background-color: yellow">Kakao</button>
+				<a type="button" class="btn" style="background-color: yellow" onclick="kakaoLogin()">Kakao</a>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
 				<button type="button" class="btn" style="background-color: #19CE60; color: white;">Naver</button>
@@ -64,8 +64,47 @@
 			</div>
 		</div>
 	</form>
-	
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
+	Kakao.init('4a832cceac8c9100e4ed44c4163d468a'); //발급받은 키 중 javascript키를 사용해준다.
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	//카카오로그인
+	function kakaoLogin() {
+	    Kakao.Auth.login({
+	      success: function (response) {
+	        Kakao.API.request({
+	          url: '/v2/user/me',
+	          success: function (response) {
+	        	  console.log(response)
+	          },
+	          fail: function (error) {
+	            console.log(error)
+	          },
+	        })
+	      },
+	      fail: function (error) {
+	        console.log(error)
+	      },
+	    })
+	  }
+	//카카오로그아웃  
+	function kakaoLogout() {
+	    if (Kakao.Auth.getAccessToken()) {
+	      Kakao.API.request({
+	        url: '/v1/user/unlink',
+	        success: function (response) {
+	        	console.log(response)
+	        },
+	        fail: function (error) {
+	          console.log(error)
+	        },
+	      })
+	      Kakao.Auth.setAccessToken(undefined)
+	    }
+	  }  
 	
 	/* === loginCheck === */
 	function logIn() {
@@ -90,7 +129,6 @@
 				}
 			}
 			,error : function(){
-				alert("에러 왜떠");
 			}
 		});
 	}
@@ -99,8 +137,6 @@
 	
 	
 	</script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
+	
 </body>
 </html>

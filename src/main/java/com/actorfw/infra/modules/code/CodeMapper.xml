@@ -12,8 +12,8 @@
 	<sql id ="selectCommon">
 		FROM cc a
 		WHERE 1=1
-			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
-			<choose>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
+		<choose>
 			<!-- <when test="shOption == 0"></when> -->
 			<when test="shOption == 1">AND seq = #{shValue} </when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>

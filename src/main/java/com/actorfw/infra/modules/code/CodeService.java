@@ -16,5 +16,5 @@ public interface CodeService {
 	
 	public void selectListCachedCodeArrayList() throws Exception;
 	
-		
+	public int selectOneCount(CodeVo vo) throws Exception;	
 }

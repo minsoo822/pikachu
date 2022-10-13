@@ -73,6 +73,14 @@ public class CodeServiceImpl implements CodeService {
 		}
 		return rt;
 	}
+
+//	페이징
+	@Override
+	public int selectOneCount(CodeVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
+	
+	
 	
 	
 	

@@ -2,7 +2,7 @@ package com.actorfw.infra.modules.codegroup;
 
 import com.actorfw.infra.common.constants.Constants;
 
-public class CodeGroupVo {
+public class CodeGroupVo{
 
 	private String seq;						//시퀀스
 	private String mainKey;					

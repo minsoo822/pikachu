@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.actorfw.infra.modules.code.CodeVo;
+
 @Controller
 @RequestMapping (value = "/member/")
 public class MemberController {
@@ -21,11 +23,24 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	public void setParamsPaging(MemberVo vo) throws Exception {
+		
+//		검색 초기값 설정
+//		vo.setShUseOption(vo.getShUseOption() == null ? 0 : vo.getShUseOption());
+//		vo.setShDelOption(vo.getShDelOption() == null ? 0 : vo.getShDelOption());
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+//		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));
+//		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
+		
+//		페이징
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
 //---------------------------------------------------------------------------------------------------------------	
 //	전체회원
 //	관리자화면 회원리스트
 	@RequestMapping(value = "memberList")
 	public String selectList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		setParamsPaging(vo);
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		System.out.println("Controll List :" + list);
@@ -35,6 +50,7 @@ public class MemberController {
 //	관리자화면 배우리스트
 	@RequestMapping(value = "actorList")
 	public String actorList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		setParamsPaging(vo);
 		List<Member> list = service.actorList(vo);
 		model.addAttribute("list", list);
 		System.out.println("Controll List :" + list);
@@ -44,6 +60,7 @@ public class MemberController {
 //	관리자화면 감독리스트
 	@RequestMapping(value = "directorList")
 	public String directorList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		setParamsPaging(vo);
 		List<Member> list = service.directorList(vo);
 		model.addAttribute("list", list);
 		System.out.println("Controll List :" + list);

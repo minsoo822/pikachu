@@ -26,8 +26,8 @@
 <body>
 	<form name="mainForm" id="mainForm" method="post">
 			<input type="hidden" name="seq" value="${dto.seq}">
-			<%-- <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>"> --%>
-			<%-- <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> --%>
+			<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+			<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 			<!-- <input type="hidden" name="checkboxSeqArray" > -->
 			<c:set var="listCodeDomain" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 			<c:set var="listCodeUser_type" value="${CodeServiceImpl.selectListCachedCode('6')}"/>
@@ -297,19 +297,11 @@
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>	
-	            </table>
-	          </div>
-	          <div class="Pagingdp">
-					<div class="pagination">
-						<a href="#">Prev</a>
-						<a href="#" class="active">1</a>
-						<a href="#" class="active">2</a>
-						<a href="#" class="active">3</a>
-						<a href="#" class="active">4</a>
-						<a href="#" class="active">5</a>
-						<a href="#">Next</a>
-					</div>
+			</table>
 				</div>
+				<!-- pagination s -->
+				<%@include file="../xdmin/includeMember/pagination.jsp"%>
+				<!-- pagination e -->
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
 						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
@@ -340,7 +332,7 @@
 	var formVo = $("form[name=formVo]");
 	
 	$("#searchReset").on("click", function() {
-		form.attr("action", "/member/memberList").submit();
+		location.href= "/member/memberList";
 	});
 	
 	$("#btnSave").on("click", function(){
@@ -357,16 +349,19 @@
 	   	}
 	}); 
   
+	$('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+	
 	goForm = function(key) {
     	/* if(keyValue != 0) seq.val(btoa(keyValue)); */ 
     	seq.attr("value",key);
 		form.attr("action", goUrlForm).submit();
 	}
-
-	$('#btnForm').on("click", function() {
-		goForm(0);                
-	});
-	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action",goUrlList).submit();
+	}
 //	체크박스
 	$(function() {
 		var chkObj = document.getElementsByName("rowCheck");

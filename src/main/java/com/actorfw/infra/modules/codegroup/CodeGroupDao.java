@@ -43,7 +43,7 @@ public class CodeGroupDao {
 	public int delete(CodeGroupVo vo) { return sqlSession.delete(namespace + ".delelte" , vo); }
 	
 //------------------------------------------------------------------------------------------------------------------
-	
+//	페이징
 	public int selectOneCount(CodeGroupVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	
 	

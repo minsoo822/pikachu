@@ -25,6 +25,8 @@
 <body>
 	<form id="mainForm">
 	<input type="hidden" name="seq" id="seq" value="${dto.seq }">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+			<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	  <div class="sidebar close">
 	    <div class="logo-details">
 	      <i class='bx bxl-c-plus-plus'></i>
@@ -164,13 +166,14 @@
 	          <div class="three">
 	            <select name="shUseOption" id="shUseOption">
 					<option value="" selected>사용여부</option>
-					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N<option>
+					<option value="0" <c:if test="${vo.shUseOption eq 0 }">selected</c:if>>N</option>
 					<option value="1" <c:if test="${vo.shUseOption eq 1 }">selected</c:if>>Y</option>
 	            </select>
 	            <select name="shDateOption" id="shDateOption">
-	              <option selected <c:if test="${empty vo.shDateOption}">selected</c:if>>날짜</option>
+	             <option value="" selected>날짜</option>
+	             <%--  <option selected <c:if test="${empty vo.shDateOption}">selected</c:if>>날짜</option> --%>
 	              <option value="1" <c:if test="${vo.shDateOption eq 1 }">selected</c:if>>생일</option>
-	              <option value="2" <c:if test="${vo.shDateOption eq 2 }">selected</c:if>>수정일<option>
+	              <option value="2" <c:if test="${vo.shDateOption eq 2 }">selected</c:if>>수정일</option>
 	              <option value="3" <c:if test="${vo.shDateOption eq 3 }">selected</c:if>>등록일</option>
 	            </select>
 	            <input type="text" id="StDatePicker" placeholder="시작일">
@@ -229,7 +232,9 @@
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
 					<td><input class="form-check-input" type="checkbox"></td>
-					<td></td>
+					<td>
+						<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>       <%--  순서 카운트  --%>
+					</td>
 					<td>
 						<a href="javascript:goUpdtForm(${list.seq})" class="text-decoration-none">
 							<c:out value="${list.seq }"/>
@@ -245,19 +250,11 @@
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>	
-	            </table>
-	          </div>
-	          <div class="Pagingdp">
-					<div class="pagination">
-						<a href="#">Prev</a>
-						<a href="#" class="active">1</a>
-						<a href="#" class="active">2</a>
-						<a href="#" class="active">3</a>
-						<a href="#" class="active">4</a>
-						<a href="#" class="active">5</a>
-						<a href="#">Next</a>
-					</div>
+			</table>
 				</div>
+				<!-- pagination s -->
+				<%@include file="../xdmin/includeCode/pagination.jsp"%>
+				<!-- pagination e -->
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
 						<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
@@ -275,6 +272,7 @@
 	</form>
   <script>
   
+  var goUrlList = "/code/CodeList"; 			/* #-> */
   var goUrlForm = "/code/codeForm";
   
   var form = $('#mainForm');
@@ -289,7 +287,10 @@
 		form.attr("action", goUrlForm).submit();
 	}
   
-  
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action",goUrlList).submit();
+	}
   
   
   let arrow = document.querySelectorAll(".arrow");

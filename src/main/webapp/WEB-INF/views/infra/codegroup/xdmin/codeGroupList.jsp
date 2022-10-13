@@ -39,7 +39,7 @@
 	      <span class="logo_name">Actor's</span>
 	    </div>
 	    <ul class="nav-links">
-	      <li>
+	   <!--  <li>
 	        <a href="#">
 	          <i class='bx bx-grid-alt' ></i>
 	          <span class="link_name">대시보드</span>
@@ -47,7 +47,7 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">Category</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <div class="iocn-link">
 	          <a href="#">
@@ -72,11 +72,11 @@
 	        </div>
 	        <ul class="sub-menu">
 	          <li><a class="link_name" href="#">회원관리</a></li>
-	          <li><a href="#">배우 관리</a></li>
-	          <li><a href="#">디렉터 관리</a></li>
+	          <li><a href="/member/actorList">배우 관리</a></li>
+	          <li><a href="/member/directorList">디렉터 관리</a></li>
 	        </ul>
 	      </li>
-	      <li>
+	      <!-- <li>
 	        <a href="#">
 	          <i class='bx bx-pie-chart-alt-2' ></i>
 	          <span class="link_name">Analytics</span>
@@ -126,7 +126,7 @@
 	        <ul class="sub-menu blank">
 	          <li><a class="link_name" href="#">History</a></li>
 	        </ul>
-	      </li>
+	      </li> -->
 	      <li>
 	        <a href="#">
 	          <i class='bx bx-cog' ></i>
@@ -262,7 +262,7 @@
 	            </table>
 	          </div>
 				<!-- pagination s -->
-				<%@include file="../xdmin/includeV1/pagination1.jsp"%>
+				<%@include file="../xdmin/includeCodeGroup/pagination.jsp"%>
 				<!-- pagination e -->
 				<div class="groupbutton">
 					<div class="d-grid gap-2 d-md-block btn1" style="float: left;">

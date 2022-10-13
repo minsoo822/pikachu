@@ -45,7 +45,10 @@ public class CodeDao {
 		return sqlsession.selectList(namespace + ".selectListCachedCodeArrayList", null); 
 	}
 	
-	
+//	페이징
+	public int selectOneCount(CodeVo vo) {
+		return sqlsession.selectOne(namespace + ".selectOneCount" , vo);
+	}
 	
 	
 	

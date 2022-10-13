@@ -95,6 +95,10 @@ public class MemberServiceImpl implements MemberService {
 //	로그인
 	@Override
 	public Member logInCd(Member dto) throws Exception  { return dao.logInCd(dto); }
+//	페이징
+	@Override
+	public int selectOneCount(MemberVo vo) throws Exception { return dao.selectOneCount(vo);
+	}
 	
 	
 }
