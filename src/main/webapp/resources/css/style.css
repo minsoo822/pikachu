@@ -260,7 +260,7 @@ nav ul > li:hover > ul {
 
 .tourpost .tourtable {
 	width: 1400px;
-	margin-top: 35px;
+	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
@@ -828,7 +828,14 @@ body.homepage.is-preload #header::after {
 }
 
 
-
+.search {
+	width: 1400px;
+	display: flex;
+	justify-content: flex-end;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
 
 
 

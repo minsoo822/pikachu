@@ -15,6 +15,19 @@ public class TourPostController {
 	@Autowired
 	TourPostServiceImpl service;
 	
+	public void setParamsPaging(TourPostVo vo) throws Exception {
+		
+//		검색 초기값 설정
+//		vo.setShUseOption(vo.getShUseOption() == null ? 0 : vo.getShUseOption());
+//		vo.setShDelOption(vo.getShDelOption() == null ? 0 : vo.getShDelOption());
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+//		vo.setShDateStart(vo.getShDateStart() == null || vo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(vo.getShDateStart()));
+//		vo.setShDateEnd(vo.getShDateEnd() == null || vo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(vo.getShDateEnd()));
+		
+//		페이징
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	//메인페이지
 	@RequestMapping(value = "mainHome")
 	public String mainPage(TourPostVo vo, Model model) throws Exception {
@@ -24,22 +37,21 @@ public class TourPostController {
 		
 		return "infra/member/user/mainViewForm";
 	}
-	
 
 //--------------------------------------------------------------------------------
 
 	@RequestMapping(value = "tourPostViewList")
 	public String tourList(TourPostVo vo, Model model) throws Exception {
+
+		setParamsPaging(vo);
 		
 		List<TourPost> list = service.tourList(vo);
 		model.addAttribute("list", list);
-		
 		return "infra/member/user/tourPostList";
 	}
+	
 	@RequestMapping(value = "tourPostForm")
 	public String tourPost() throws Exception {
-		
-		
 		return "infra/member/user/tourPostForm";
 	}
 	
