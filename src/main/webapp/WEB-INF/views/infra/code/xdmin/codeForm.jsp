@@ -244,18 +244,18 @@
 							<div class="col">
 								<select class="form-select" name="useNy" id="">
 									<option value="" hidden selected>선택</option>
-									<option value="0" <c:if test="${vo.shUseOption eq 0}">selected</c:if>>N</option>
-									<option value="1" <c:if test="${vo.shUseOption eq 1}">selected</c:if>>Y</option>
+									<option value="0" <c:if test="${item.useNy eq 0}">selected</c:if>>N</option>
+									<option value="1" <c:if test="${item.useNy eq 1}">selected</c:if>>Y</option>
 								</select>
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col">삭제여부</div>
 							<div class="col">
-								<select class="form-select" id="delNy" name="delNy" value="<c:out value="${item.delNy }"/>">
+								<select class="form-select" id="delNy" name="delNy">
 									<option value="" hidden selected>선택</option>
-									<option value="0">N</option>
-									<option value="1">Y</option>
+									<option value="0" <c:if test="${item.delNy eq 0 }">selected</c:if>>N</option>
+									<option value="1" <c:if test="${item.delNy eq 1 }">selected</c:if>>Y</option>
 								</select>
 							</div>
 						</div>

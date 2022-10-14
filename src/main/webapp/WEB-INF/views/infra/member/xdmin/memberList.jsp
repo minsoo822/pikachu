@@ -336,7 +336,6 @@
 	});
 	
 	$("#btnSave").on("click", function(){
-		
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 	   	//	if (validationInst() == false) return false;
