@@ -22,12 +22,17 @@
 	
 	
 	<style type="text/css">
-	
+	/* div {
+		border: 1px solid orange;
+	} */
 	</style>
 </head>
 	
 <body style="background-color: #101010;">
 <form method="post" id="mainForm">
+	<input type="hidden" name="seq" value="">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
  	<div class="tourpostbanner">
 		<nav class="top-fixed">
@@ -98,15 +103,32 @@
 			</div>
 		</nav>
 	</div>
-
+	
 	<div class="tourpost">
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">프로필투어 정보</h2>
-				<br>sessSeq: <c:out value="${sessSeq }"/><br>
+				<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
 				sessName: <c:out value="${sessName }"/><br>
 				sessId: <c:out value="${sessId }"/><br>
-				sessAdmin <c:out value="${sessAdmin }"></c:out>
+				sessAdmin <c:out value="${sessAdmin }"></c:out> --%>
 		</div>
+		<%-- <div class="search">
+			<div>
+				<select class="form-select" name="shOption">
+					<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
+					<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>작품분류</option>
+					<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>작품제목</option>
+					<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>위치</option>
+				</select>
+			</div>
+			<div style="padding: 0px 5px;">
+				<input type="text" class="form-control" name="shValue" value="${vo.shValue }">
+			</div>
+			<div class="d-grid d-md-block">
+				<button type="submit" class="btn btn-primary">검색</button>
+				<button type="button" class="btn btn-primary" id="searchReset">리셋</button>
+			</div>
+		</div> --%>
 		<table class="tourtable">
 			<thead>
 				<tr>
@@ -143,7 +165,7 @@
 			</tbody>	
 		</table>
 	</div>
-	<div style="padding-top: 60px;">
+	<div style="padding-top: 50px;">
 		<c:if test="${sessAdmin eq 1 }">
 			<div class="groupbutton">
 				<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
@@ -160,30 +182,11 @@
 			
 		</c:if>	
 	</div>
-<!-- 	<div class="postPagination">
-		<ul>
-			<li><a href="#"><</a></li>
-			<li><a href="#" class="active">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">></a></li>
-		</ul>
-	</div> -->
-	<div class="Pagingdp">
-		<div class="pagination">
-			<a href="#">Prev</a>
-			<a href="#" class="active">1</a>
-			<a href="#" class="active">2</a>
-			<a href="#" class="active">3</a>
-			<a href="#" class="active">4</a>
-			<a href="#" class="active">5</a>
-			<a href="#">Next</a>
-		</div>
-	</div>
+	<!-- pagination s -->
+	<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
+	<!-- pagination e -->
 	<!-- footer -->
-	<div class="footer"">
+	<div class="footer">
 		<div class="row">
 			<div class="col">
 				<div class="row footerlogo">
@@ -220,6 +223,7 @@
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
 	var goUrlMain = "/member/mainHome";
 	var goUrlTourForm = "/Post/tourPostForm";
+	var goUrlTourList = "/Post/tourPostViewList";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
@@ -241,9 +245,14 @@
 		form.attr("action", goUrlTourForm).submit();
 	});
 	
+	$("#searchReset").on("click", function() {
+		form.attr("action", goUrlTourList).submit();
+	});
 	
-	
-	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action",goUrlTourList).submit();
+	}
 	
 	
 	
