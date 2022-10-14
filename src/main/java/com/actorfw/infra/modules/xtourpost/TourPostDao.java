@@ -25,5 +25,16 @@ public class TourPostDao {
 	public int insrtTour(TourPost dto) {
 		return sqlSession.insert(namespace +".insrtTour", dto);
 	}
+	
+	public TourPost selectOne(TourPostVo vo) {
+	    TourPost result = sqlSession.selectOne(namespace + ".selectOne", vo);
+        System.out.println("dao result: " + result);
+        return result;   
+	}
 
+	public int selectOneCount(TourPostVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	
+	
 }

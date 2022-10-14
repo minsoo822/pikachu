@@ -8,21 +8,47 @@
 
 <resultMap type="com.actorfw.infra.modules.xtourpost.TourPost" id="resultObj"></resultMap>
 	
-	<select id="tourList" resultMap="resultObj">
-		SELECT
-			seq				AS tourSeq		
-			,type			AS tourType
-			,name			AS tourName
-			,zip_code		AS tourZip_code
-			,address		AS tourAddress
-			,address_detail	AS tourAddress_detail
-			,date			AS tourDate
-			,note			AS tourNote
-		FROM post_tour
+	<sql id ="selectCommon">
+		FROM post_tour a
 		WHERE 1=1
-			<!-- ORDER BY seq DESC -->
+		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if> -->
+		<choose>
+			<!-- <when test="shOption == 0"></when> -->
+			<when test="shOption == 1">AND type LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND address LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
+	
+	<select id="tourList" resultMap="resultObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+			a.seq				AS tourSeq		
+			,a.type				AS tourType
+			,a.name				AS tourName
+			,a.zip_code			AS tourZip_code
+			,a.address			AS tourAddress
+			,a.address_detail	AS tourAddress_detail
+			,a.date				AS tourDate
+			,a.note				AS tourNote
+		<include refid="selectCommon" />
+			ORDER BY a.seq DESC
+		<include refid="Base.selectListLowerForMysql"/>	
 	</select>
 
+	<!-- 페이징 -->
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOne" resultMap ="resultObj">
+		SELECT 
+			a.*
+		FROM post_tour a
+		WHERE 1=1
+			AND a.seq = #{seq}
+	</select>
 	
 	<insert id="insrtTour">
 		INSERT INTO post_tour (
