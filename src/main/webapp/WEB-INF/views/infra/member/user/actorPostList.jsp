@@ -25,6 +25,7 @@
 </head>
 	
 <body>
+	<form name="mainForm" id="mainForm" method="post" enctype="multipart/form-data">
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
@@ -97,7 +98,7 @@
 		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
 		<c:forEach items="${list}" var="list" varStatus="status">			
 			<div class="cardactor col-2">
-				<img src="${img.path}${img.uuidName}" class="card-img-top" alt="">
+				<img src="${list.path}${list.uuidName}" class="card-img-top" alt="">
 				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
 				<div class="pra">
 					<input hidden type="text" value="${list.seq }">
@@ -106,92 +107,9 @@
 			</div>
 			</c:forEach>
 		</div>
-		<!-- <div class="boxattor">
-			<div class="cardactor">
-				<img src="/resources/image/kimyoujung.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">김유정</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/jisoo.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">지수</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/leejoomung.png" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">이주명</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/goyunjung.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">고윤정</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/parkminyoung.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">박민영</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-		</div>
-		<div class="boxattor"">
-			<div class="cardactor">
-				<img src="/resources/image/goasung.png" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">고아성</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="http://studiosantaent.com/ent/wp-content/uploads/2015/09/okvin_720x1080v2.jpg" class="card-img-top" alt="..." height="225px">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">김옥빈</h5>
-				<div class="pra">
-					<p style="text-align: center;">35세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/kimsulgi.png" class="card-img-top" alt="..." height="225px">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">김슬기</h5>
-				<div class="pra">
-					<p style="text-align: center;">30세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/kimdami.png" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">김다미</h5>
-				<div class="pra">
-					<p style="text-align: center;">27세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/suhunjin.png" class="card-img-top" alt="..." height="225px">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">서현진</h5>
-				<div class="pra">
-					<p style="text-align: center;">37세</p>
-				</div>
-			</div>
-		</div> -->
+		
 	</div>
-	<!-- <div class="postPagination">
-		<ul style="position: absolute; top: 185%">
-			<li><a href="#"><</a></li>
-			<li><a href="#" class="active">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">></a></li>
-		</ul>
-	</div> -->
+	
 	<!-- footer -->
 	<div class="footer"">
 		<div class="row">
@@ -221,6 +139,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 	<script type="text/javascript">
 		document.querySelector(".disableLink").removeAttribute('href');
 	

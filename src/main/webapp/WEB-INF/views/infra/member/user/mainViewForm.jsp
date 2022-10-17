@@ -35,6 +35,7 @@
 	
 <body>
 <form method="post" name="mainForm" id="mainForm">
+	<input type="hidden" name="seq" value="${dto.seq }">
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -349,16 +350,16 @@
 						</tr>
 					</c:when>
 					<c:otherwise>
-						<c:forEach items="${list}" var="list" varStatus="status">
+						<c:forEach items="${tourList}" var="tourList" varStatus="status">
 							<tr>
 								<td>
 								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
 								</td>
-								<td><c:out value="${list.type }"/></td>
-								<td><c:out value="${list.name }"/></td>
-								<td><c:out value="${list.address }"/></td>
-								<td><c:out value="${list.date }"/></td>
-								<td><c:out value="${list.note }"/></td>
+								<td><c:out value="${tourList.tourType }"/></td>
+								<td><c:out value="${tourList.tourName }"/></td>
+								<td><c:out value="${tourList.tourAddress }"/></td>
+								<td><c:out value="${tourList.tourDate }"/></td>
+								<td><c:out value="${tourList.tourNote }"/></td>
 							</tr>	
 						</c:forEach>
 					</c:otherwise>

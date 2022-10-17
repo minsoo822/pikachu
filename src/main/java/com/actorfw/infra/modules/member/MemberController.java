@@ -14,14 +14,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.actorfw.infra.modules.code.CodeVo;
+import com.actorfw.infra.modules.xactorpost.ActorPost;
+import com.actorfw.infra.modules.xactorpost.ActorPostServiceImpl;
+import com.actorfw.infra.modules.xtourpost.TourPost;
+import com.actorfw.infra.modules.xtourpost.TourPostServiceImpl;
+import com.actorfw.infra.modules.xtourpost.TourPostVo;
 
 @Controller
 @RequestMapping (value = "/member/")
 public class MemberController {
 	
-	@Autowired
-	MemberServiceImpl service;
+    @Autowired
+    MemberServiceImpl service;
+    	
+    @Autowired
+    TourPostServiceImpl Tourservice;
+    	
+    @Autowired
+    ActorPostServiceImpl Actorservice;
+	
 	
 	public void setParamsPaging(MemberVo vo) throws Exception {
 		
@@ -98,6 +109,8 @@ public class MemberController {
 	public String updateCd(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int updateCd = service.updateCd(dto);
+		
+		System.out.println();
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("주소나와라 : " + updateCd);
 		return "redirect:/member/memberList";
@@ -225,10 +238,15 @@ public class MemberController {
 	}
 	//메인페이지
 	@RequestMapping(value = "mainHome")
-	public String mainPage(Model model) throws Exception {
-//		List<TourPost> list = service.tourList(vo);
-//		model.addAttribute("list", list);
-		
+	public String mainPage(Model model, TourPostVo vo) throws Exception {
+//		
+	   
+	    List<TourPost> tourList = Tourservice.tourList(vo);
+        model.addAttribute("tourList", tourList);
+	    System.out.println("tourList : " + tourList);
+//	    List<ActorPost> actorList = Actorservice.actorList(vo);
+
+//		List<ActorPost> actorlist = Actorservice.actorList(vo);
 		
 		return "infra/member/user/mainViewForm";
 	}
@@ -251,15 +269,6 @@ public class MemberController {
 		return "infra/member/xdmin/firstView";
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

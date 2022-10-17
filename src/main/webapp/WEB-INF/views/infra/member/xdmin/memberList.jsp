@@ -192,8 +192,9 @@
 	            </select>
 	            <select id="shOption" name="shOption">
 	              <option value="" hidden selected>검색구분</option>
-	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>코드그룹 번호</option>
-	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>코드그룹 이름</option>
+	              <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>회원 번호</option>
+	              <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>회원 이름</option>
+	              <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>회원 타입</option>
 	            </select>
 	            <input type="text" id="shValue" name="shValue" value="${vo.shValue }"  placeholder="검색어">
 	            <div class="searchBtn">
@@ -248,7 +249,9 @@
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<tr>
 					<td><input class="form-check-input" type="checkbox" name="rowCheck" value="${list.seq }"></td>
-					<td></td>
+					<td>
+						<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>
+					</td>
 					<td>	
 						<a href="javascript:goForm(${list.seq })" class="text-decoration-none">
 							<c:out value="${list.seq }"/>

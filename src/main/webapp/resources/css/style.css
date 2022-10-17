@@ -201,7 +201,7 @@ nav ul > li:hover > ul {
 	min-height: 200px;
 }
 .cardactor {
-	height: 300px;
+	height: 330px;
 	width: 200px;
 	padding: 10px 10px;
 	background-color: #393939;
@@ -215,11 +215,19 @@ nav ul > li:hover > ul {
 	overflow:hidden;
 	cursor: pointer;
 	transition: .3s;
+	background: black;
 }
 .cardactor h5 {
 	color: white;
 	font-size: 23px;
 	margin-bottom: 15px;
+}
+.cardactor img {
+	height: 255px;
+	width: 175px;
+	object-fit: cover;
+	border-radius: 15px;
+	
 }
 
 .card-img-top{
@@ -467,6 +475,24 @@ b {
 	text-align: center;
 }
 .regFrombutton:hover {
+	background-color: transparent;
+	border: 2px solid #f9004d;
+	cursor: pointer;
+}
+
+.regFrombutton1 {
+	background-color: #f9004d;
+	color: white;
+	text-decoration: none;
+	border: 2px solid transparent;
+	font-weight: bold;
+	padding: 5px 15px;
+	border-radius: 10px;
+	transition: .4s;
+	text-align: center;
+	height: 38px;
+}
+.regFrombutton1:hover {
 	background-color: transparent;
 	border: 2px solid #f9004d;
 	cursor: pointer;
@@ -837,7 +863,14 @@ body.homepage.is-preload #header::after {
 	
 }
 
-
+.oditionsearch {
+	width: 1500px;
+	display: flex;
+	justify-content: flex-end;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
 
 
 

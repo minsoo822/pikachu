@@ -1,6 +1,8 @@
 package com.actorfw.infra.modules.xactorpost;
 
-public class ActorPostVo {
+import com.actorfw.infra.common.base.BaseVo;
+
+public class ActorPostVo extends BaseVo{
 
 	//	seq
 	private Integer seq;

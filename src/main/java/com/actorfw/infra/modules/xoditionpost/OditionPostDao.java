@@ -27,6 +27,9 @@ public class OditionPostDao {
 		return sqlSession.insert(namespace +".insrtOdition", dto);
 	}
 	
+	public int selectOneCount(OditionPostVo vo) {
+	    return sqlSession.selectOne(namespace + ".selectOneCount" , vo);
+	}
 	
 	
 	

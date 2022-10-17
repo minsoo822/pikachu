@@ -21,6 +21,11 @@ public class OditionPostServiceImpl implements OditionPostService {
 		return dao.insrtOdition(dto);
 	}
 
+    @Override
+    public int selectOneCount(OditionPostVo vo) throws Exception {
+        return dao.selectOneCount(vo);
+    }
+
 	
 	
 	

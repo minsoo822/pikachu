@@ -21,10 +21,11 @@ public class ActorPostController {
 		System.out.println("---------List");
 		List<ActorPost> list = service.actorList(vo);
 		model.addAttribute("list", list);
-		System.out.println("----------------------picture");
-		dto.setPseq(vo.getSeq());
-		List<ActorPost> imageViwe = service.imageViwe(dto);
-		model.addAttribute("img", imageViwe);
+		
+//		System.out.println("----------------------picture");
+//		dto.setPseq(vo.getSeq());
+//		List<ActorPost> imageViwe = service.imageViwe(dto);
+//		model.addAttribute("img", imageViwe);
 		
 		
 		return "infra/member/user/actorPostList";

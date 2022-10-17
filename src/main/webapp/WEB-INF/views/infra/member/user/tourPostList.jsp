@@ -30,7 +30,7 @@
 	
 <body style="background-color: #101010;">
 <form method="post" id="mainForm">
-	<input type="hidden" name="seq" value="">
+	<input type="hidden" name="seq" value="${dto.seq }">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
@@ -41,7 +41,7 @@
 					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
 					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
-							<li><a href="#">전체</a></li>
+							<li><a href="/Post/oditionPostViewList">전체</a></li>
 							<li><a href="#">상업영화</a></li>
 							<li><a href="#">독립(단편)영화</a></li>
 							<li><a href="#">(웹)드라마</a></li>
@@ -112,7 +112,7 @@
 				sessId: <c:out value="${sessId }"/><br>
 				sessAdmin <c:out value="${sessAdmin }"></c:out> --%>
 		</div>
-		<%-- <div class="search">
+		<div class="search">
 			<div>
 				<select class="form-select" name="shOption">
 					<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
@@ -128,7 +128,7 @@
 				<button type="submit" class="btn btn-primary">검색</button>
 				<button type="button" class="btn btn-primary" id="searchReset">리셋</button>
 			</div>
-		</div> --%>
+		</div>
 		<table class="tourtable">
 			<thead>
 				<tr>

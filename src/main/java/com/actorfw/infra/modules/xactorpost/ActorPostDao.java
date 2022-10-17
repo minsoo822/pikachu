@@ -22,8 +22,8 @@ public class ActorPostDao {
 	}
 	
 	
-	public List<ActorPost> imageViwe(ActorPost dto) {
-		return sqlSession.selectList(namespace + ".imageViwe",  dto);
-	}
+//	public List<ActorPost> imageViwe(ActorPost dto) {
+//		return sqlSession.selectList(namespace + ".imageViwe",  dto);
+//	}
 	
 }

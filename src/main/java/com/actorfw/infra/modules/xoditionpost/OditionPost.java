@@ -1,25 +1,24 @@
 package com.actorfw.infra.modules.xoditionpost;
 
-public class OditionPost {
+public class OditionPost  {
 
 	private String seq;
 	
 //	oditionPost
-	private String oditionSeq;
-	private String oditionMember_seq;
-	private Integer oditionType;
-	private String oditionName;
-	private Integer oditionAge;
-	private Integer oditionGender;
-	private String oditionCasting;
-	private String oditionProducer;
-	private String oditionDirector;
-	private String oditionLocation;
-	private String oditionDeadline;
-	private String oditionManager;
-	private String oditionPay;
-	private String oditionEmail;
-	private String oditionContents;
+	private String member_seq;
+	private Integer type;
+	private String name;
+	private Integer age;
+	private Integer gender;
+	private String casting;
+	private String producer;
+	private String director;
+	private String location;
+	private String deadline;
+	private String manager;
+	private String pay;
+	private String email;
+	private String contents;
 
 //----------------------------------------	
 	
@@ -29,98 +28,93 @@ public class OditionPost {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	
+  
 //----------------------------------------	
-	public String getOditionSeq() {
-		return oditionSeq;
-	}
-	public void setOditionSeq(String oditionSeq) {
-		this.oditionSeq = oditionSeq;
-	}
-	public String getOditionMember_seq() {
-		return oditionMember_seq;
-	}
-	public void setOditionMember_seq(String oditionMember_seq) {
-		this.oditionMember_seq = oditionMember_seq;
-	}
-	public Integer getOditionType() {
-		return oditionType;
-	}
-	public void setOditionType(Integer oditionType) {
-		this.oditionType = oditionType;
-	}
-	public String getOditionName() {
-		return oditionName;
-	}
-	public void setOditionName(String oditionName) {
-		this.oditionName = oditionName;
-	}
-	public Integer getOditionAge() {
-		return oditionAge;
-	}
-	public void setOditionAge(Integer oditionAge) {
-		this.oditionAge = oditionAge;
-	}
-	public Integer getOditionGender() {
-		return oditionGender;
-	}
-	public void setOditionGender(Integer oditionGender) {
-		this.oditionGender = oditionGender;
-	}
-	public String getOditionCasting() {
-		return oditionCasting;
-	}
-	public void setOditionCasting(String oditionCasting) {
-		this.oditionCasting = oditionCasting;
-	}
-	public String getOditionProducer() {
-		return oditionProducer;
-	}
-	public void setOditionProducer(String oditionProducer) {
-		this.oditionProducer = oditionProducer;
-	}
-	public String getOditionDirector() {
-		return oditionDirector;
-	}
-	public void setOditionDirector(String oditionDirector) {
-		this.oditionDirector = oditionDirector;
-	}
-	public String getOditionLocation() {
-		return oditionLocation;
-	}
-	public void setOditionLocation(String oditionLocation) {
-		this.oditionLocation = oditionLocation;
-	}
-	public String getOditionDeadline() {
-		return oditionDeadline;
-	}
-	public void setOditionDeadline(String oditionDeadline) {
-		this.oditionDeadline = oditionDeadline;
-	}
-	public String getOditionManager() {
-		return oditionManager;
-	}
-	public void setOditionManager(String oditionManager) {
-		this.oditionManager = oditionManager;
-	}
-	public String getOditionPay() {
-		return oditionPay;
-	}
-	public void setOditionPay(String oditionPay) {
-		this.oditionPay = oditionPay;
-	}
-	public String getOditionEmail() {
-		return oditionEmail;
-	}
-	public void setOditionEmail(String oditionEmail) {
-		this.oditionEmail = oditionEmail;
-	}
-	public String getOditionContents() {
-		return oditionContents;
-	}
-	public void setOditionContents(String oditionContents) {
-		this.oditionContents = oditionContents;
-	}
+	  public String getMember_seq() {
+	        return member_seq;
+	    }
+	    public void setMember_seq(String member_seq) {
+	        this.member_seq = member_seq;
+	    }
+	    public Integer getType() {
+	        return type;
+	    }
+	    public void setType(Integer type) {
+	        this.type = type;
+	    }
+	    public String getName() {
+	        return name;
+	    }
+	    public void setName(String name) {
+	        this.name = name;
+	    }
+	    public Integer getAge() {
+	        return age;
+	    }
+	    public void setAge(Integer age) {
+	        this.age = age;
+	    }
+	    public Integer getGender() {
+	        return gender;
+	    }
+	    public void setGender(Integer gender) {
+	        this.gender = gender;
+	    }
+	    public String getCasting() {
+	        return casting;
+	    }
+	    public void setCasting(String casting) {
+	        this.casting = casting;
+	    }
+	    public String getProducer() {
+	        return producer;
+	    }
+	    public void setProducer(String producer) {
+	        this.producer = producer;
+	    }
+	    public String getDirector() {
+	        return director;
+	    }
+	    public void setDirector(String director) {
+	        this.director = director;
+	    }
+	    public String getLocation() {
+	        return location;
+	    }
+	    public void setLocation(String location) {
+	        this.location = location;
+	    }
+	    public String getDeadline() {
+	        return deadline;
+	    }
+	    public void setDeadline(String deadline) {
+	        this.deadline = deadline;
+	    }
+	    public String getManager() {
+	        return manager;
+	    }
+	    public void setManager(String manager) {
+	        this.manager = manager;
+	    }
+	    public String getPay() {
+	        return pay;
+	    }
+	    public void setPay(String pay) {
+	        this.pay = pay;
+	    }
+	    public String getEmail() {
+	        return email;
+	    }
+	    public void setEmail(String email) {
+	        this.email = email;
+	    }
+	    public String getContents() {
+	        return contents;
+	    }
+	    public void setContents(String contents) {
+	        this.contents = contents;
+	    }
+	    
 	
 //----------------------------------------
 	

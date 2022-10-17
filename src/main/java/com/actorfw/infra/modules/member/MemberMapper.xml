@@ -16,6 +16,7 @@
 			<!-- <when test="shOption == 0"></when> -->
 			<when test="shOption == 1">AND seq = #{shValue} </when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND user_type LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 		<choose>
 			<!-- useNy -->
@@ -101,7 +102,7 @@
 	<select id="selectOne" resultMap="resultObj">
 		SELECT
 			*
-		FROM member 
+		FROM member
 		WHERE 1=1
 		AND seq = #{seq}
 	</select>
@@ -195,8 +196,7 @@
 	<update id="updateCd">
 		UPDATE member
 		SET
-			seq 				= #{seq}
-			,user_type 			= #{user_type}
+			user_type 			= #{user_type}
 			,id 				= #{id}
 			,password 			= #{password}
 			,name 				= #{name}
@@ -260,6 +260,14 @@
 		FROM member
 		ORDER BY seq DESC
 		LIMIT 1
+	</select>
+	
+	<select id="selectSeq" resultType="Integer"> 
+		SELECT
+			seq
+		FROM member
+		WHERE 1=1
+		AND seq = #{seq}
 	</select>
 	
 	<insert id="insertMemberUpload">

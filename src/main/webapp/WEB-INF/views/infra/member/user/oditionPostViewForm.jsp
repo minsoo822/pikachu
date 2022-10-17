@@ -26,6 +26,9 @@
 	
 <body style="background-color: #101010;">
 <form method="post" id="mainForm">
+	<input type="hidden" name="seq" value="${dto.seq}">
+		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
@@ -76,6 +79,24 @@
 					<button type="button" class="btn" id="btnLogout">로그아웃</button>
 				</c:if>	
 			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div  class="modal-dialog">
+			    <div style="background: #393939;" class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5 homepageline" id="staticBackdropLabel"style="color: white;">Actor'<span style="color: #f9004d;">s</span></h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body" style="color: white; text-align: center; font-size: 20px;">
+			        가입 분류를 선택해주세요!!~
+			      </div>
+			      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
+			        <button type="button" class="indexbtn" id="goActorSignup" style="cursor: pointer;">배우로 가입하기</button>
+			        <button type="button" class="indexbtn" id="goDerectorSignup" style="cursor: pointer;">디렉터로 가입하기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		</nav>
 	</div>
 
@@ -91,6 +112,24 @@
 				<li><a href="#">(웹)드라마</a></li>
 				<li><a href="#">(바이럴)CF광고</a></li>
 			</ul>
+		</div>
+		<div class="oditionsearch">
+			<div>
+				<select class="form-select" name="shOption">
+					<option value="0">선택</option>
+					<option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>작품분류</option>
+					<option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>작품제목</option>
+					<option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>성별</option>
+					<option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>작성자</option>
+				</select>
+			</div>
+			<div style="padding: 0px 5px;">
+				<input type="text" class="form-control" name="shValue" value="${vo.shValue }">
+			</div>
+			<div class="d-grid d-md-block">
+				<button type="submit" class="btn btn-primary">검색</button>
+				<button type="button" class="btn btn-primary" id="searchReset">리셋</button>
+			</div>
 		</div>
 			<table class="oditiontable table">
 			<thead>
@@ -120,12 +159,12 @@
 								<td>
 								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
 								</td>
-								<td><c:out value="${list.oditionType }"/></td>
-								<td><c:out value="${list.oditionName }"/></td>
-								<td><c:out value="${list.oditionGender }"/></td>
-								<td><c:out value="${list.oditionCasting }"/></td>
-								<td><c:out value="${list.oditionPay }"/></td>
-								<td><c:out value="${list.oditionMember_seq }"/></td>
+								<td><c:out value="${list.type }"/></td>
+								<td><c:out value="${list.name }"/></td>
+								<td><c:out value="${list.gender }"/></td>
+								<td><c:out value="${list.casting }"/></td>
+								<td><c:out value="${list.pay }"/></td>
+								<td><c:out value="${list.member_seq }"/></td>
 								<td></td>
 							</tr>	
 						</c:forEach>
@@ -169,28 +208,9 @@
 	</c:if>	
 	</div>
 	</div>
-	<!-- <div class="postPagination">
-		<ul style="position: absolute; top: 133%">
-			<li><a href="#"><</a></li>
-			<li><a href="#" class="active">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">></a></li>
-		</ul>
-	</div> -->
-	<div class="Pagingdp">
-		<div class="pagination">
-			<a href="#">Prev</a>
-			<a href="#" class="active">1</a>
-			<a href="#" class="active">2</a>
-			<a href="#" class="active">3</a>
-			<a href="#" class="active">4</a>
-			<a href="#" class="active">5</a>
-			<a href="#">Next</a>
-		</div>
-	</div>
+	<!-- pagination s -->
+	<%@include file="../user/include/pagination.jsp"%>
+	<!-- pagination e -->
 	<!-- footer -->
 	<div class="footer"">
 		<div class="row">
@@ -237,6 +257,10 @@
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", "/Post/oditionPostViewList").submit();
+	}
 	
 
 	$("#btnLogin").on("click", function() {

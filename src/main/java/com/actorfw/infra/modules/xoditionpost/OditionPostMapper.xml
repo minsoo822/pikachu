@@ -8,28 +8,58 @@
 
 <resultMap type="com.actorfw.infra.modules.xoditionpost.OditionPost" id="resultObj"></resultMap>
 
-	<select id="oditionList" resultMap="resultObj">
-		SELECT
-			seq			AS oditionSeq
-			,member_seq	AS oditionMember_seq
-			,type		AS oditionType
-			,name		AS oditionName
-			,age		AS oditionAge
-			,gender		AS oditionGender
-			,casting	AS oditionCasting
-			,producer	AS oditionProducer
-			,director	AS oditionDirector
-			,location	AS oditionLocation
-			,deadline	AS oditionDeadline
-			,manager	AS oditionManager
-			,pay		AS oditionPay
-			,email		AS oditionEmail
-			,contents	AS oditionContents
-		FROM post_odition
+	<!-- paging -->
+	<sql id ="selectCommon">
+		FROM post_odition a
 		WHERE 1=1
-			<!-- ORDER BY seq DESC -->
-	</select>
+		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if> -->
+		<choose>
+			<!-- <when test="shOption == 0"></when> -->
+			<when test="shOption == 1">AND type LIKE CONCAT ('%',#{shValue},'%') </when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND gender LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND member_seq LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+		<!-- <choose>
+			useNy
+			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
+		</choose>
+		<choose>
+			delNy
+			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
+			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
+		</choose> -->
+	</sql>
 
+	<select id="oditionList" resultMap="resultObj">
+		<include refid="Base.selectListUpperForMysql" />
+		SELECT
+			a.seq			
+			,a.member_seq
+			,a.type		
+			,a.name	
+			,a.age	
+			,a.gender	
+			,a.casting	
+			,a.producer
+			,a.director	
+			,a.location	
+			,a.deadline	
+			,a.manager	
+			,a.pay		
+			,a.email		
+			,a.contents
+		<include refid="selectCommon" />
+				ORDER BY a.seq DESC	<!-- DESC내림차순 정렬  ASC오름차순 정렬 -->
+		<include refid="Base.selectListLowerForMysql"/>
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
 	<insert id="insrtOdition">
 		INSERT INTO post_odition (
 			type	
@@ -44,22 +74,24 @@
 			,manager	 
 			,pay		 
 			,email		 
-			,contents	 	
+			,contents	
+			,member_seq 	
 		)
 		VALUE (
-			#{oditionType}
-			,#{oditionName}
-			,#{oditionAge}
-			,#{oditionGender}
-			,#{oditionCasting}
-			,#{oditionProducer}
-			,#{oditionDirector}
-			,#{oditionLocation}
-			,#{oditionDeadline}
-			,#{oditionManager}
-			,#{oditionPay}
-			,#{oditionEmail}
-			,#{oditionContents}
+			#{type}
+			,#{name}
+			,#{age}
+			,#{gender}
+			,#{casting}
+			,#{producer}
+			,#{director}
+			,#{location}
+			,#{deadline}
+			,#{manager}
+			,#{pay}
+			,#{email}
+			,#{contents}
+			,#{member_seq}
 		)	
 			<selectKey resultType="String" keyProperty="seq" order="AFTER">
 				SELECT last_insert_id()

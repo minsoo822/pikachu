@@ -10,4 +10,6 @@ public interface OditionPostService {
 	//오디션정보Inst
 	public int insrtOdition(OditionPost dto) throws Exception;
 	
+	public int selectOneCount(OditionPostVo vo)  throws Exception;
+	
 }

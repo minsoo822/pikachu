@@ -40,19 +40,19 @@
 		<nav class="top-fixed">
 			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="tourpostViewForm.html">프로필 투어</a></li>
-					<li><a href="oditionPostViewForm.html">오디션 공고</a>
+					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
-							<li><a href="#">전체</a></li>
+							<li><a href="/Post/oditionPostViewList">전체</a></li>
 							<li><a href="#">상업영화</a></li>
 							<li><a href="#">독립(단편)영화</a></li>
 							<li><a href="#">(웹)드라마</a></li>
 							<li><a href="#">(바이럴)광고</a></li>
 						</ul>
 					</li>	
-					<li><a href="actorPostViewForm.html">프로필 정보</a>
+					<li><a href="/Post/ActorPostList">프로필 정보</a>
 						<ul>
-							<li><a href="actorPostViewForm.html">전체</a></li><br>
+							<li><a href="/Post/ActorPostList">전체</a></li><br>
 							<li><a href="actorPostManViewForm.html">남자</a></li><br>
 							<li><a href="actorPostWomanViewForm.html">여자</a></li>
 						</ul>
@@ -113,10 +113,10 @@
 				</tr>
 				<tr style="background-color: #ADADAD;">
 					<td>
-						<input type="text" class="form-control" name="oditionName">
+						<input type="text" class="form-control" name="name">
 					</td>
 					<td>
-						<select class="form-select" name="oditionType">
+						<select class="form-select" name="type">
 							<option value="">선택</option>
 							<option value="15">상업영화</option>
 							<option value="16">단편(독립)영화</option>
@@ -127,16 +127,16 @@
 						</select>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="oditionProducer">
+						<input type="text" class="form-control" name="producer">
 					</td>
 					<td>
-						<input type="text" class="form-control" name="oditionDirector">
+						<input type="text" class="form-control" name="director">
 					</td>
 					<td>
-						<input type="text" class="form-control" name="oditionLocation">
+						<input type="text" class="form-control" name="location">
 					</td>
 					<td>
-						<input type="text" class="form-control" name="oditionManager">
+						<input type="text" class="form-control" name="manager">
 					</td>
 				</tr>
 				<tr>
@@ -149,13 +149,13 @@
 				</tr>
 				<tr style="background-color: #ADADAD;">
 					<td>
-						<input type="text" class="form-control" name="oditionCasting">
+						<input type="text" class="form-control" name="casting">
 					</td>
 					<td>
-						<input type="text" class="form-control" name="oditionAge">
+						<input type="text" class="form-control" name="age">
 					</td>
 					<td>
-						<select class="form-select" name="oditionGender">
+						<select class="form-select" name="gender">
 							<option value="">선택</option>
 							<option value="28">남자</option>
 							<option value="29">여자</option>
@@ -163,18 +163,18 @@
 						</select>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="oditionPay">
+						<input type="text" class="form-control" name="pay">
 					</td>
 					<td>
-						<input type="text" class="form-control" name="oditionEmail">
+						<input type="text" class="form-control" name="email">
 					</td>
 					<td>
-						<input type="date" class="form-control" name="oditionDeadline">
+						<input type="date" class="form-control" name="deadline">
 					</td>
 				</tr>
 			</table>
 			<input hidden="" type="text" value="">
-			<textarea class="area" rows="" cols="" name="oditionContents">
+			<textarea class="area" rows="" cols="" name="contents">
 			
 			
 			</textarea>

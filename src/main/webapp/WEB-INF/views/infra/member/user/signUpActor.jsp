@@ -44,8 +44,10 @@
 				</div>
 				<div class="row">
 					<div class="col-3 mb-4">
-						<select disabled class="form-control" name="user_type">
-							<option value="26">Actor</option>
+						<select class="form-select" name="user_type">
+							<option value="" hidden>선택</option>
+							<option value="26" selected>배우</option>
+							<option value="27" hidden>감독</option>
 						</select>
 					</div>
 				</div>
@@ -222,28 +224,23 @@
 						<div class="row">
 							<div class="col"><h4><b>SNS</b></h4></div>
 						</div>
-						<div class="row" style="text-align: center;">
-							<div class="col">
-								<div class="row pb-1">
-									<div class="col-3 gx-1">
-										<select class="form-select">
-											<option>선택</option>
-											<option>인스타</option>
-											<option>페이스북</option>
-											<option>유튜브</option>
-											<option>홈페이지</option>
-											
-										</select>
-									</div>
-									<div class="col gx-1">
-										<input type="text" class="form-control" placeholder="url" name="url">
-									</div>
-									<div class="col-1 gx-1">
-								<button type="button" class="regFrombutton" onclick="">
+						<div class="row pb-1 text-center">
+							<div class="col-3 gx-1">
+								<select class="form-select">
+									<option>선택</option>
+									<option>인스타</option>
+									<option>페이스북</option>
+									<option>유튜브</option>
+									<option>홈페이지</option>
+								</select>
+							</div>
+							<div class="col gx-1">
+								<input type="text" class="form-control" placeholder="url" name="url">
+							</div>
+							<div class="col-1 gx-1">
+								<button type="button" class="regFrombutton1" onclick="addSns()">
 									<i class="fa-solid fa-plus"></i>
 								</button>
-							</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -316,7 +313,7 @@
 								<input type="text" class="form-control">
 							</div>
 							<div class="col-1">
-								<button type="button" class="regFrombutton" onclick="addFilmo()">
+								<button type="button" class="regFrombutton1" onclick="addFilmo()">
 									<i class="fa-solid fa-plus"></i>
 								</button>
 							</div>
@@ -348,7 +345,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="file" class="form-control" name="">
+								<input type="file" class="form-control" name="plofil_image">
 							</div>
 						</div>
 					</div>
@@ -379,10 +376,17 @@
 								<input type="text" class="form-control">
 							</div>
 							<div class="col">
-								<select class="form-select"></select>
+								<select class="form-select">
+									<option>선택</option>
+									<option>졸업</option>
+									<option>재학</option>
+									<option>휴학</option>
+									<option>중퇴</option>
+									<option>퇴학</option>
+								</select>
 							</div>
 							<div class="col-1">
-								<button type="button" class="regFrombutton" onclick="addEdu()">
+								<button type="button" class="regFrombutton1" onclick="addEdu()">
 									<i class="fa-solid fa-plus"></i>
 								</button>
 							</div>
@@ -416,7 +420,7 @@
 										<input type="text" class="form-control">
 									</div>
 									<div class="col-1">
-										<button type="button" class="regFrombutton">
+										<button type="button" class="regFrombutton1">
 											<i class="fa-solid fa-plus"></i>
 										</button>
 									</div>
@@ -438,7 +442,7 @@
 										<input type="text" class="form-control">
 									</div>
 									<div class="col-1">
-										<button type="button" class="regFrombutton">
+										<button type="button" class="regFrombutton1">
 											<i class="fa-solid fa-plus"></i>
 										</button>
 									</div>
@@ -475,7 +479,7 @@
 <script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
-	<!-- <script type="text/javascript">
+	<script type="text/javascript">
 	
 	var goActSignUp = "/member/signUpActorInst";
 	
@@ -487,53 +491,9 @@
 		form.attr("action", "/member/signUpActorInst").submit();
 	});
 	
-	</script> -->
+	</script>
 	
-<!-- 	<script type="text/javascript">
-		
-		var count_sns = 0;	
-	
-		function addSns() {
-			
-		var tmp = "";
-		
-			tmp = '<div class="row" style="text-align: center;" id="snsDelete' + count_sns + '">';
-			tmp = '<div class="col">';
-			tmp = '<div class="row pb-1">';
-			tmp = '<div class="col-3 gx-1">';
-			tmp = '<select class="form-select">';
-			tmp = '<option>선택</option>';
-			tmp = '<option>인스타</option>';
-			tmp = '<option>페이스북</option>';
-			tmp = '<option>유튜브</option>';
-			tmp = '<option>홈페이지</option>';
-			tmp = '</select>';
-			tmp = '</div>';
-			tmp = '<div class="col gx-1">';
-			tmp = '<input type="text" class="form-control" placeholder="url" name="url">';
-			tmp = '</div>';
-			tmp = '<div class="col-1 gx-1">';
-			tmp = '<button type="button" class="regFrombutton" onclick="remove(snsDelete' + count_sns + ')">';
-			tmp = '<i class="fa-solid fa-minus"></i>';
-			tmp = '</button>';
-			tmp = '</div>';
-			tmp = '</div>';
-			tmp = '</div>';
-			tmp = '</div>';
-
-			count_sns += 1;
-			
-			
-	 	
-			$("#snsPoint").append(tmp);
-		}
-		
-			function remove(id) {
-				
-				$(id).remove();
-			}
-		}
-	
+	<script type="text/javascript">
 	
 //		필모그래피추가
 		var count_filmo = 0;	
@@ -542,7 +502,7 @@
 		
 		var tmp = "";
 			
-			tmp += '<div class="row gx-1" id="filmoDelete' + count_filmo + '">';
+			tmp += '<div class="row gx-1 text-center" id="filmoDelete' + count_filmo + '">';
 			tmp += '<div class="col-4">';
 			tmp += '<input type="date" class="form-control">';
 			tmp += '</div>';
@@ -567,54 +527,92 @@
 			tmp += '<input type="text" class="form-control">';
 			tmp += '</div>';
 			tmp += '<div class="col-1">';
-			tmp += '<button type="button" class="btn btn-danger" onclick="remove(filmoDelete' + count_filmo + ')">';
+			tmp += '<button type="button" class="regFrombutton1" onclick="remove(filmoDelete' + count_filmo + ')">';
 			tmp += '<i class="fa-solid fa-minus"></i>';
 			tmp += '</button>';
 			tmp += '</div>';
 			tmp += '</div>';
 			
 			count_filmo += 1;
-			
-			
 	 	
 			$("#filmoPoint").append(tmp);
 		}
-		
 			function remove(id) {
 				
 				$(id).remove();
 			}
 			
-			function addEdu() {
-				
-				var tmp = "";
-				
-				tmp += '<div class="row">';
-				tmp += '<div class="col-4">';
-				tmp += '<input type="date" class="form-control">';
-				tmp += '</div>';
-				tmp += '<div class="col">';
-				tmp += '<input type="text" class="form-control">';
-				tmp += '</div>';
-				tmp += '<div class="col">';
-				tmp += '<input type="text" class="form-control">';
-				tmp += '</div>';
-				tmp += '<div class="col">';
-				tmp += '<select class="form-select"></select>';
-				tmp += '</div>';
-				tmp += '<div class="col-1">';
-				tmp += '<button type="button" class="btn btn-danger" onclick="addEdu()">';
-				tmp += '<i class="fa-solid fa-minus"></i>';
-				tmp += '</button>';
-				tmp += '</div>';
-				tmp += '</div>';
-				
-				$("#eduPoint").append(tmp);
-				
-				
-			}
+		var count_edu = 0;	
+			
+		function addEdu() {
+			
+			var tmp = "";
+			
+			tmp += '<div class="row gx-1 text-center" id="eduDelete' + count_edu + '">';
+			tmp += '<div class="col-4">';
+			tmp += '<input type="date" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col">';
+			tmp += '<input type="text" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col">';
+			tmp += '<input type="text" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col">';
+			tmp += '<select class="form-select">';
+			tmp += '<option>선택</option>';
+			tmp += '<option>졸업</option>';
+			tmp += '<option>재학</option>';
+			tmp += '<option>휴학</option>';
+			tmp += '<option>중퇴</option>';
+			tmp += '<option>퇴학</option>';
+			tmp += '</select>';
+			tmp += '</div>';
+			tmp += '<div class="col-1">';
+			tmp += '<button type="button" class="regFrombutton1" onclick="remove(eduDelete' + count_edu + ')">';
+			tmp += '<i class="fa-solid fa-minus"></i>';
+			tmp += '</button>';
+			tmp += '</div>';
+			tmp += '</div>';
+			tmp += '';
+			
+			count_edu += 1;
+			
+			$("#eduPoint").append(tmp);
+		}
+		
+		
+		function addSns() {
+			
+		var tmp = "";	
+			
+			tmp = '<div class="row pb-1 text-center">';
+			tmp = '<div class="col-3 gx-1">';
+			tmp = '<select class="form-select">';
+			tmp = '<option>선택</option>';
+			tmp = '<option>인스타</option>';
+			tmp = '<option>페이스북</option>';
+			tmp = '<option>유튜브</option>';
+			tmp = '<option>홈페이지</option>';
+			tmp = '</select>';
+			tmp = '</div>';
+			tmp = '<div class="col gx-1">';
+			tmp = '<input type="text" class="form-control" placeholder="url" name="url">';
+			tmp = '</div>';
+			tmp = '<div class="col-1 gx-1">';
+			tmp = '<button type="button" class="regFrombutton1">';
+			tmp = '<i class="fa-solid fa-minus"></i>';
+			tmp = '</button>';
+			tmp = '</div>';
+			tmp = '</div>';
+			
+			
+			$("#snsPoint").append(tmp);
+		}	
 	
-		</script> -->
+			
+	
+		</script>
 	
 </body>
 </html>

@@ -28,16 +28,6 @@ public class TourPostController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 	}
 	
-	//메인페이지
-	@RequestMapping(value = "mainHome")
-	public String mainPage(TourPostVo vo, Model model) throws Exception {
-		
-		List<TourPost> list = service.tourList(vo);
-		model.addAttribute("list", list);
-		
-		return "infra/member/user/mainViewForm";
-	}
-
 //--------------------------------------------------------------------------------
 
 	@RequestMapping(value = "tourPostViewList")

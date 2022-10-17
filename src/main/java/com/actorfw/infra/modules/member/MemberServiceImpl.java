@@ -41,11 +41,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insertCd(Member dto) throws Exception {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
-
 		int insertCd =  dao.insertCd(dto);
         int pseq = dao.selectLastSeq();
 
-        System.out.println("dto.getPlofil_image() : " + dto.getPlofil_image());
         int j = 0;
         for(MultipartFile myFile : dto.getPlofil_image()) {
 
@@ -65,15 +63,34 @@ public class MemberServiceImpl implements MemberService {
                 dao.insertMemberUpload(dto);
                 j++;
             }
-
         }
-		
 		return insertCd;
 	}
 //	멤버업데이트
 	@Override
 	public int updateCd(Member dto) throws Exception { 
 		int updateCd = dao.updateCd(dto);
+  
+        int j = 0;
+        for(MultipartFile myFile : dto.getPlofil_image()) {
+
+            if(!myFile.isEmpty()) {
+                // postServiceImpl
+                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                
+//                      MemberServiceImpl.java  ->   MemberServiceImpl -> ""  ->     memberserviceimpl ->   member
+                 
+                UtilUpload.uploadPost(myFile, pathModule, dto);
+
+                dto.setType(2);
+                dto.setDefaultNy(j == 0 ? 1 : 0);
+                dto.setSort(j+1);
+                dto.setPseq(Integer.parseInt(dto.getSeq()));
+
+                dao.insertMemberUpload(dto);
+                j++;
+            }
+        }
 		return updateCd; 
 	}
 	

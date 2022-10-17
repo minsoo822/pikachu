@@ -49,6 +49,9 @@ public class MemberDao {
 	public int selectLastSeq() {
 		return sqlSession.selectOne(namespace + ".selectLastSeq" , "");
 	}
+	public int selectSeq() {
+	    return sqlSession.selectOne(namespace + ".selectSeq", "");
+	}
 //	파일업로드
 	public int insertMemberUpload(Member dto) {
 		return sqlSession.insert(namespace + ".insertMemberUpload" , dto);

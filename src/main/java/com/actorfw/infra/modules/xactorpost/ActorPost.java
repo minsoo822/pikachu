@@ -1,5 +1,7 @@
 package com.actorfw.infra.modules.xactorpost;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.actorfw.infra.common.base.Base;
 
 public class ActorPost extends Base {
@@ -37,7 +39,8 @@ public class ActorPost extends Base {
 	private String aboutMe;
 	
 //--------------------------------------------------------
-	
+	   private MultipartFile[] plofil_image;
+//--------------------------------------------------------	   
 	private String sns_seq;
 	private Integer sns_type;
 	private String url;
@@ -229,10 +232,18 @@ public class ActorPost extends Base {
 		this.aboutMe = aboutMe;
 	}
 //------------------------------------------------------
+	public MultipartFile[] getPlofil_image() {
+        return plofil_image;
+    }
+    public void setPlofil_image(MultipartFile[] plofil_image) {
+        this.plofil_image = plofil_image;
+    }
+//------------------------------------------------------	
 	public String getSns_seq() {
 		return sns_seq;
 	}
-	public void setSns_seq(String sns_seq) {
+	
+    public void setSns_seq(String sns_seq) {
 		this.sns_seq = sns_seq;
 	}
 	public Integer getSns_type() {

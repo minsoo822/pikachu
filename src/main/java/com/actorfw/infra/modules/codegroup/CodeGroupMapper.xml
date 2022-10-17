@@ -23,11 +23,11 @@
 			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
 		</choose>
-		<!-- <choose>
-			delNy
+		<choose>
+			<!-- delNy -->
 			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
-		</choose> -->
+		</choose>
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">

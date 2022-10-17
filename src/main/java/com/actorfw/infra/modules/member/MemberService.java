@@ -16,6 +16,7 @@ public interface MemberService {
 	
 	
 	public Member selectOne(MemberVo vo) throws Exception;
+    /* public int selectSeq() throws Exception; */
 	
 //	멤버인서트
 	public int insertCd(Member dto) throws Exception;
