@@ -100,10 +100,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.imageView(dto);
 	}
 //	멤버sns인서트
-//	@Override
-//	public int insertSnsCd(Member dto) throws Exception {
-//		return dao.insertSnsCd(dto);
-//	}
+	@Override
+	public int insertSnsCd(Member dto) throws Exception {
+//	    dto.setMember_SnsSeq(Integer.parseInt(dto.getSeq()));
+	    return dao.insertSnsCd(dto);
+	}
 	
 //	아이디 중복체크
 	@Override

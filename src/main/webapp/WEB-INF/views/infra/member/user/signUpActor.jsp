@@ -226,12 +226,12 @@
 						</div>
 						<div class="row pb-1 text-center">
 							<div class="col-3 gx-1">
-								<select class="form-select">
-									<option>선택</option>
-									<option>인스타</option>
-									<option>페이스북</option>
-									<option>유튜브</option>
-									<option>홈페이지</option>
+								<select class="form-select" name="sns_type">
+									<option value="">선택</option>
+									<option value="11">인스타</option>
+									<option value="12">페이스북</option>
+									<option value="13">유튜브</option>
+									<option value="14">홈페이지</option>
 								</select>
 							</div>
 							<div class="col gx-1">
@@ -288,9 +288,9 @@
 							<div class="col regText">역활</div>
 							<div class="col-1 regText"></div>
 						</div>
-						<div class="row gx-1 text-center">
+						<div class="row gx-1 text-center pb-1">
 							<div class="col-4">
-								<input type="date" class="form-control">
+								<input type="date" class="form-control" name="filmo_period">
 							</div>
 							<div class="col">
 								<select class="form-select">
@@ -365,7 +365,7 @@
 							<div class="col regText">구분</div>
 							<div class="col-1 regText"></div>
 						</div>
-						<div class="row gx-1 text-center">
+						<div class="row gx-1 text-center pb-1">
 							<div class="col-4">
 								<input type="date" class="form-control">
 							</div>
@@ -411,7 +411,7 @@
 											<div class="col regText">발급내용</div>
 											<div class="col-1 regText"></div>
 										</div>
-										<div class="row gx-1 text-center">
+										<div class="row gx-1 text-center pb-1">
 											<div class="col-4">
 												<input type="date" class="form-control">
 											</div>
@@ -437,7 +437,7 @@
 											<div class="col regText">직책</div>
 											<div class="col-1"></div>
 										</div>
-										<div class="row gx-1 text-center">
+										<div class="row gx-1 text-center pb-1">
 											<div class="col-4">
 												<input type="date" class="form-control">
 											</div>
@@ -511,12 +511,12 @@
 			
 			tmp += '<div class="row pb-1 text-center" id="snsDelete' + count_sns + '">';
 			tmp += '<div class="col-3 gx-1">';
-			tmp += '<select class="form-select">';
-			tmp += '<option>선택</option>';
-			tmp += '<option>인스타</option>';
-			tmp += '<option>페이스북</option>';
-			tmp += '<option>유튜브</option>';
-			tmp += '<option>홈페이지</option>';
+			tmp += '<select class="form-select" name="sns_type">';
+			tmp += '<option value="">선택</option>';
+			tmp += '<option value="11">인스타</option>';
+			tmp += '<option value="12">페이스북</option>';
+			tmp += '<option value="13">유튜브</option>';
+			tmp += '<option value="14">홈페이지</option>';
 			tmp += '</select>';
 			tmp += '</div>';
 			tmp += '<div class="col gx-1">';
@@ -533,7 +533,6 @@
 			
 			$("#snsPoint").append(tmp);
 		}	
-	
 //		필모그래피추가
 		var count_filmo = 0;	
 		
@@ -541,7 +540,7 @@
 		
 		var tmp = "";
 			
-			tmp += '<div class="row gx-1 text-center" id="filmoDelete' + count_filmo + '">';
+			tmp += '<div class="row gx-1 text-center pb-1" id="filmoDelete' + count_filmo + '">';
 			tmp += '<div class="col-4">';
 			tmp += '<input type="date" class="form-control">';
 			tmp += '</div>';
@@ -576,14 +575,14 @@
 	 	
 			$("#filmoPoint").append(tmp);
 		}
-			
+//		학력사항	
 		var count_edu = 0;	
 	
 		function addEdu() {
 		
 		var tmp = "";
 			
-			tmp += '<div class="row gx-1 text-center" id="eduDelete' + count_edu + '">';
+			tmp += '<div class="row gx-1 text-center pb-1" id="eduDelete' + count_edu + '">';
 			tmp += '<div class="col-4">';
 			tmp += '<input type="date" class="form-control">';
 			tmp += '</div>';
@@ -614,14 +613,14 @@
 			
 			$("#eduPoint").append(tmp);
 		}
-		
+//		수상
 		var count_award = 0;	
 		
 		function addAward() {
 	
 		var tmp = "";	
 		
-			tmp += '<div class="row gx-1 text-center" id="awardDelete' + count_award + '">';
+			tmp += '<div class="row gx-1 text-center pb-1" id="awardDelete' + count_award + '">';
 			tmp += '<div class="col-4">';
 			tmp += '<input type="date" class="form-control">';
 			tmp += '</div>';
@@ -642,14 +641,14 @@
 			
 			$("#awardPoint").append(tmp);
 		}
-		
+//		경력사항
 		var count_carrer = 0;
 		
 		function addCareer(){
 			
 		var tmp = "";
 		
-			tmp += '<div class="row gx-1 text-center" id="carrerDelete' + count_carrer + '">';
+			tmp += '<div class="row gx-1 text-center pb-1" id="carrerDelete' + count_carrer + '">';
 			tmp += '<div class="col-4">';
 			tmp += '<input type="date" class="form-control">';
 			tmp += '</div>';
