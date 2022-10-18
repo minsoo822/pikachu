@@ -197,6 +197,7 @@ public class MemberController {
 		int signUpActorInst = service.insertCd(dto);
 		System.out.println("signUpActorInst : " + signUpActorInst);
 		//sns
+		
 	    int insertSnsCd = service.insertSnsCd(dto);
 	    System.out.println("insertSnsCd : " + insertSnsCd);
         
