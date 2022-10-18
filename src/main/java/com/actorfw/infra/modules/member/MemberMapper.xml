@@ -175,23 +175,42 @@
 		</selectKey>
 	</insert>
 	
-	<!-- <insert id="insertSnsCd">
+	<insert id="insertSnsCd">
 		INSERT INTO actor_sns (
-			seq AS sns_seq
-			,type AS sns_type
+			type
 			,url
 			,member_seq
 		)
 		VALUES (
-			#{sns_seq}
-			,#{sns_type}
+			#{sns_type}
 			,#{url}
-			,#{member_seq}
+			,#{member_SnsSeq}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-	</insert> -->
+	</insert>
+	<insert id="insertFilmoCd">
+		INSERT INTO actor_filmography (
+			period
+			type
+			producer
+			name
+			role
+			member_seq
+		)
+		VALUES (
+			#{filmo_period}
+			,#{filmo_type}
+			,#{filmo_producer}
+			,#{filmo_name}
+			,#{filmo_role}
+			,#{member_FilmoSns}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	
 	<update id="updateCd">
 		UPDATE member
