@@ -23,7 +23,7 @@ public interface MemberService {
 //	멤버업데이트
 	public int updateCd(Member dto) throws Exception; 
 //	멤버sns인서트
-//	public int insertSnsCd(Member dto) throws Exception;
+	public int insertSnsCd(Member dto) throws Exception;
 	
 //	아이디중복 체크
 	public int idCheck(Member dto) throws Exception;
