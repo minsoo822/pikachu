@@ -99,8 +99,9 @@ public class MemberController {
 	public String isertCd(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		int insertCd = service.insertCd(dto);
-		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("Controller Inst :" + insertCd);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
 //		System.out.println("dto.getMultipartFile() : " + dto.getMultipartFile().length);
 		return "redirect:/member/memberList";
 	}
@@ -191,11 +192,14 @@ public class MemberController {
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorInst")
 	public String signUpActorInst(Member dto) throws Exception {
-		System.out.println("---------------------159");
+		
 		//기본정보
 		int signUpActorInst = service.insertCd(dto);
+		System.out.println("signUpActorInst : " + signUpActorInst);
 		//sns
-//		int signUpActorSnsInst = service.insertSnsCd(dto);
+	    int insertSnsCd = service.insertSnsCd(dto);
+	    System.out.println("insertSnsCd : " + insertSnsCd);
+        
 		System.out.println("signUpActorInst Control : " + signUpActorInst);
 //		System.out.println("signUpActorSnsInst Control : " + signUpActorSnsInst);
 		

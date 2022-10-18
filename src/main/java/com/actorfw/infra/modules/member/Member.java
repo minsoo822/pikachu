@@ -55,14 +55,21 @@ public class Member extends Base {
 	
 //--------------------------------------------------------
 	
-	private String sns_seq;
-	private Integer sns_type;
-	private String url;
-	private Integer member_seq;
+	private Integer[] sns_type;
+	private String[] url;
+	private Integer[] member_SnsSeq;
 	
 //----------------------------------------------------------	
 	
-	
+	private String filmo_period;
+	private Integer filmo_type;
+	private String filmo_producer;
+	private String filmo_name;
+	private String filmo_role;
+	private String member_FilmoSeq;
+
+//--------------------------------------------------------
+
 	
 	public String getActor_specialty() {
 		return actor_specialty;
@@ -276,32 +283,64 @@ public class Member extends Base {
 	
 //------------------------------------------------------
 	
-	public String getSns_seq() {
-		return sns_seq;
-	}
-	public void setSns_seq(String sns_seq) {
-		this.sns_seq = sns_seq;
-	}
-	public Integer getSns_type() {
-		return sns_type;
-	}
-	public void setSns_type(Integer sns_type) {
-		this.sns_type = sns_type;
-	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	public Integer getMember_seq() {
-		return member_seq;
-	}
-	public void setMember_seq(Integer member_seq) {
-		this.member_seq = member_seq;
-	}
-
+	public Integer[] getSns_type() {
+        return sns_type;
+    }
+    public void setSns_type(Integer[] sns_type) {
+        this.sns_type = sns_type;
+    }
+    public String[] getUrl() {
+        return url;
+    }
+    public void setUrl(String[] url) {
+        this.url = url;
+    }
+    public Integer[] getMember_SnsSeq() {
+        return member_SnsSeq;
+    }
+    public void setMember_SnsSeq(Integer[] member_SnsSeq) {
+        this.member_SnsSeq = member_SnsSeq;
+    }
 	
+//------------------------------------------------------
+    public String getFilmo_period() {
+        return filmo_period;
+    }
+    public void setFilmo_period(String filmo_period) {
+        this.filmo_period = filmo_period;
+    }
+    public Integer getFilmo_type() {
+        return filmo_type;
+    }
+    public void setFilmo_type(Integer filmo_type) {
+        this.filmo_type = filmo_type;
+    }
+    public String getFilmo_producer() {
+        return filmo_producer;
+    }
+    public void setFilmo_producer(String filmo_producer) {
+        this.filmo_producer = filmo_producer;
+    }
+    public String getFilmo_name() {
+        return filmo_name;
+    }
+    public void setFilmo_name(String filmo_name) {
+        this.filmo_name = filmo_name;
+    }
+    public String getFilmo_role() {
+        return filmo_role;
+    }
+    public void setFilmo_role(String filmo_role) {
+        this.filmo_role = filmo_role;
+    }
+    public String getMember_FilmoSeq() {
+        return member_FilmoSeq;
+    }
+    public void setMember_FilmoSeq(String member_FilmoSeq) {
+        this.member_FilmoSeq = member_FilmoSeq;
+    }
+
+    
 	
 	
 
