@@ -403,50 +403,58 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<div class="row text-center gx-1">
-									<div class="col-4 regText">시기</div>
-									<div class="col regText">발급기관</div>
-									<div class="col regText">발급내용</div>
-									<div class="col-1 regText"></div>
-								</div>
-								<div class="row gx-1 text-center">
-									<div class="col-4">
-										<input type="date" class="form-control">
+								<div class="row">
+									<div class="col" id="awardPoint">
+										<div class="row text-center gx-1">
+											<div class="col-4 regText">시기</div>
+											<div class="col regText">발급기관</div>
+											<div class="col regText">발급내용</div>
+											<div class="col-1 regText"></div>
+										</div>
+										<div class="row gx-1 text-center">
+											<div class="col-4">
+												<input type="date" class="form-control">
+											</div>
+											<div class="col">
+												<input type="text" class="form-control">
+											</div>
+											<div class="col">
+												<input type="text" class="form-control">
+											</div>
+											<div class="col-1">
+												<button type="button" class="regFrombutton1" onclick="addAward()">
+													<i class="fa-solid fa-plus"></i>
+												</button>
+											</div>
+										</div>
 									</div>
-									<div class="col">
-										<input type="text" class="form-control">
+								</div>		
+								<div class="row">
+									<div class="col" id="careerdPoint">
+										<div class="row text-center gx-1">
+											<div class="col-4 regText">시기</div>
+											<div class="col regText">회사명</div>
+											<div class="col regText">직책</div>
+											<div class="col-1"></div>
+										</div>
+										<div class="row gx-1 text-center">
+											<div class="col-4">
+												<input type="date" class="form-control">
+											</div>
+											<div class="col">
+												<input type="text" class="form-control">
+											</div>
+											<div class="col">
+												<input type="text" class="form-control">
+											</div>
+											<div class="col-1">
+												<button type="button" class="regFrombutton1" onclick="addCareer()">
+													<i class="fa-solid fa-plus"></i>
+												</button>
+											</div>
+										</div>
 									</div>
-									<div class="col">
-										<input type="text" class="form-control">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton1">
-											<i class="fa-solid fa-plus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row text-center gx-1">
-									<div class="col-4 regText">시기</div>
-									<div class="col regText">회사명</div>
-									<div class="col regText">직책</div>
-									<div class="col-1"></div>
-								</div>
-								<div class="row gx-1 text-center">
-									<div class="col-4">
-										<input type="date" class="form-control">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton1">
-											<i class="fa-solid fa-plus"></i>
-										</button>
-									</div>
-								</div>
+								</div>		
 							</div>
 						</div>
 					</div>
@@ -494,10 +502,41 @@
 	</script>
 	
 	<script type="text/javascript">
+//		Sns추가
+		var count_sns = 0;	
+		
+		function addSns() {
+		
+		var tmp = "";	
+			
+			tmp += '<div class="row pb-1 text-center" id="snsDelete' + count_sns + '">';
+			tmp += '<div class="col-3 gx-1">';
+			tmp += '<select class="form-select">';
+			tmp += '<option>선택</option>';
+			tmp += '<option>인스타</option>';
+			tmp += '<option>페이스북</option>';
+			tmp += '<option>유튜브</option>';
+			tmp += '<option>홈페이지</option>';
+			tmp += '</select>';
+			tmp += '</div>';
+			tmp += '<div class="col gx-1">';
+			tmp += '<input type="text" class="form-control" placeholder="url" name="url">';
+			tmp += '</div>';
+			tmp += '<div class="col-1 gx-1">';
+			tmp += '<button type="button" class="regFrombutton1" onclick="remove(snsDelete' + count_sns + ')">';
+			tmp += '<i class="fa-solid fa-minus"></i>';
+			tmp += '</button>';
+			tmp += '</div>';
+			tmp += '</div>';
+			
+			count_sns += 1;
+			
+			$("#snsPoint").append(tmp);
+		}	
 	
 //		필모그래피추가
 		var count_filmo = 0;	
-	
+		
 		function addFilmo() {
 		
 		var tmp = "";
@@ -537,16 +576,12 @@
 	 	
 			$("#filmoPoint").append(tmp);
 		}
-			function remove(id) {
-				
-				$(id).remove();
-			}
 			
 		var count_edu = 0;	
-			
+	
 		function addEdu() {
-			
-			var tmp = "";
+		
+		var tmp = "";
 			
 			tmp += '<div class="row gx-1 text-center" id="eduDelete' + count_edu + '">';
 			tmp += '<div class="col-4">';
@@ -574,42 +609,73 @@
 			tmp += '</button>';
 			tmp += '</div>';
 			tmp += '</div>';
-			tmp += '';
 			
 			count_edu += 1;
 			
 			$("#eduPoint").append(tmp);
 		}
 		
+		var count_award = 0;	
 		
-		function addSns() {
-			
-		var tmp = "";	
-			
-			tmp = '<div class="row pb-1 text-center">';
-			tmp = '<div class="col-3 gx-1">';
-			tmp = '<select class="form-select">';
-			tmp = '<option>선택</option>';
-			tmp = '<option>인스타</option>';
-			tmp = '<option>페이스북</option>';
-			tmp = '<option>유튜브</option>';
-			tmp = '<option>홈페이지</option>';
-			tmp = '</select>';
-			tmp = '</div>';
-			tmp = '<div class="col gx-1">';
-			tmp = '<input type="text" class="form-control" placeholder="url" name="url">';
-			tmp = '</div>';
-			tmp = '<div class="col-1 gx-1">';
-			tmp = '<button type="button" class="regFrombutton1">';
-			tmp = '<i class="fa-solid fa-minus"></i>';
-			tmp = '</button>';
-			tmp = '</div>';
-			tmp = '</div>';
-			
-			
-			$("#snsPoint").append(tmp);
-		}	
+		function addAward() {
 	
+		var tmp = "";	
+		
+			tmp += '<div class="row gx-1 text-center" id="awardDelete' + count_award + '">';
+			tmp += '<div class="col-4">';
+			tmp += '<input type="date" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col">';
+			tmp += '<input type="text" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col">';
+			tmp += '<input type="text" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col-1">';
+			tmp += '<button type="button" class="regFrombutton1" onclick="remove(awardDelete' + count_award + ')">';
+			tmp += '<i class="fa-solid fa-minus"></i>';
+			tmp += '</button>';
+			tmp += '</div>';
+			tmp += '</div>';
+			
+			count_award += 1;
+			
+			$("#awardPoint").append(tmp);
+		}
+		
+		var count_carrer = 0;
+		
+		function addCareer(){
+			
+		var tmp = "";
+		
+			tmp += '<div class="row gx-1 text-center" id="carrerDelete' + count_carrer + '">';
+			tmp += '<div class="col-4">';
+			tmp += '<input type="date" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col">';
+			tmp += '<input type="text" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col">';
+			tmp += '<input type="text" class="form-control">';
+			tmp += '</div>';
+			tmp += '<div class="col-1">';
+			tmp += '<button type="button" class="regFrombutton1" onclick="remove(carrerDelete' + count_carrer + ')">';
+			tmp += '<i class="fa-solid fa-minus"></i>';
+			tmp += '</button>';
+			tmp += '</div>';
+			tmp += '</div>';
+			
+			count_carrer += 1;
+			
+			$("#careerdPoint").append(tmp);
+		}
+		
+		
+		function remove(id) {
+			
+			$(id).remove();
+		}
 			
 	
 		</script>
