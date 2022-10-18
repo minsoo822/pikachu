@@ -20,14 +20,23 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body style="background-color: black;">
-<form method="post" name="mainForm">
-	<div class="container" style="width: 30%">
+<form method="post" name="mainForm" action="/member/signUpDirectorInst">
+	<div class="container" style="width: 35%">
 		<div class="row">
 			<div class="col">
 				<div class="row text-center pt-5">
 					<div class="col">
 						<h1 style="color: white; font-size: 70px; letter-spacing: 1px;	cursor: pointer; text-align: center; margin-bottom: 50px;">
 						Actor'<span style="color: #f9004d;">s</span></h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3 mb-4">
+						<select class="form-select" name="user_type">
+							<option value="" hidden>선택</option>
+							<option value="26" hidden>배우</option>
+							<option value="27" selected>감독</option>
+						</select>
 					</div>
 				</div>
 				<div class="row mb-1">
@@ -61,7 +70,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="text" class="form-control" name="password" placeholder="PASSWORD">
+								<input type="text" class="form-control" name="" placeholder="PASSWORD">
 							</div>
 						</div>
 					</div>
@@ -154,14 +163,14 @@
 						<h4><b>director 구분</b></h4>
 					</div>
 					<div class="col">
-						<select class="form-select" name="director_type">
+						<select class="form-select" name="">
 							<option value="">선택</option>
-							<option value="31">개인</option>
-							<option value="32">학생</option>
-							<option value="33">감독&조감독</option>
-							<option value="34">제작사</option>
-							<option value="35">캐스팅디렉터</option>
-							<option value="36">에이전시</option>
+							<option value="">개인</option>
+							<option value="">학생</option>
+							<option value="">감독&조감독</option>
+							<option value="">제작사</option>
+							<option value="">캐스팅디렉터</option>
+							<option value="">에이전시</option>
 						</select>
 					</div>
 				</div>
@@ -176,7 +185,7 @@
 						<div class="row">
 							<div class="col">
 								<div class="row pb-1">
-									<div class="col-2 pt-2 regText">이름</div>
+									<div class="col-2 pt-2 regText">회사이름</div>
 									<div class="col">
 										<select class="form-select">
 											<option></option>
@@ -254,7 +263,7 @@
 						</div>
 						<div class="row">
 							<div class="col-6 d-grid mx-auto mt-3">
-								<button type="button" class="regFrombutton" id="btnDrectorJoin">가입하기</button>
+								<button type="submit" class="regFrombutton" id="btnDrectorJoin">가입하기</button>
 							</div>
 						</div>
 					</div>
@@ -268,21 +277,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<script type="text/javascript">
-		
-	var goSignupDirec = "/member/signUpDirectorInst";
-	
-	var form = $("#mainForm");
-	
-	$("#btnDrectorJoin").on("click", function(){
-		alert("ㅇㅇ");
-		location.href="/member/signUpDirectorInst";
-	});
-	
-	
-	
-	
-	
-	
 	
 		var count_career = 0;
 	
@@ -330,8 +324,6 @@
 				$(id).remove();
 			}
 		
-			
-	
 	</script>
 	
 </body>

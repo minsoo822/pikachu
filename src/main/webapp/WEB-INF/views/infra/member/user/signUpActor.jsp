@@ -281,7 +281,7 @@
 							</div>
 						</div>
 						<div class="row text-center gx-1">
-							<div class="col-4 regText">시기</div>
+							<div class="col-3 regText">시기</div>
 							<div class="col regText">구분</div>
 							<div class="col regText">제작사</div>
 							<div class="col regText">제목</div>
@@ -289,28 +289,28 @@
 							<div class="col-1 regText"></div>
 						</div>
 						<div class="row gx-1 text-center pb-1">
-							<div class="col-4">
+							<div class="col-3">
 								<input type="date" class="form-control" name="filmo_period">
 							</div>
 							<div class="col">
-								<select class="form-select">
-									<option>선택</option>
-									<option>상업영화</option>
-									<option>단편(독립)영화</option>
-									<option>드라마</option>
-									<option>웹드라마</option>
-									<option>광고(CF)</option>
-									<option>바이럴광고</option>
+								<select class="form-select" name="filmo_type">
+									<option value="">선택</option>
+									<option value="15">상업영화</option>
+									<option value="16">단편(독립)영화</option>
+									<option value="17">드라마</option>
+									<option value="18">웹드라마</option>
+									<option value="19">광고(CF)</option>
+									<option value="20">바이럴광고</option>
 								</select>
 							</div>
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="filmo_producer">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="filmo_name">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="filmo_role">
 							</div>
 							<div class="col-1">
 								<button type="button" class="regFrombutton1" onclick="addFilmo()">
@@ -367,22 +367,22 @@
 						</div>
 						<div class="row gx-1 text-center pb-1">
 							<div class="col-4">
-								<input type="date" class="form-control">
+								<input type="date" class="form-control" name="edu_period">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="school_name">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="edu_major">
 							</div>
 							<div class="col">
-								<select class="form-select">
-									<option>선택</option>
-									<option>졸업</option>
-									<option>재학</option>
-									<option>휴학</option>
-									<option>중퇴</option>
-									<option>퇴학</option>
+								<select class="form-select" name="edu_type">
+									<option value="">선택</option>
+									<option value="21">졸업</option>
+									<option value="22">재학</option>
+									<option value="23">휴학</option>
+									<option value="24">중퇴</option>
+									<option value="25">퇴학</option>
 								</select>
 							</div>
 							<div class="col-1">
@@ -413,13 +413,13 @@
 										</div>
 										<div class="row gx-1 text-center pb-1">
 											<div class="col-4">
-												<input type="date" class="form-control">
+												<input type="date" class="form-control" name="award_period">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" name="award_name">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" name="award_issuer">
 											</div>
 											<div class="col-1">
 												<button type="button" class="regFrombutton1" onclick="addAward()">
@@ -439,13 +439,13 @@
 										</div>
 										<div class="row gx-1 text-center pb-1">
 											<div class="col-4">
-												<input type="date" class="form-control">
+												<input type="date" class="form-control" name="career_period">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" name="career_company_name">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" name="career_position">
 											</div>
 											<div class="col-1">
 												<button type="button" class="regFrombutton1" onclick="addCareer()">
@@ -541,7 +541,7 @@
 		var tmp = "";
 			
 			tmp += '<div class="row gx-1 text-center pb-1" id="filmoDelete' + count_filmo + '">';
-			tmp += '<div class="col-4">';
+			tmp += '<div class="col-3">';
 			tmp += '<input type="date" class="form-control">';
 			tmp += '</div>';
 			tmp += '<div class="col">';

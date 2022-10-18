@@ -29,10 +29,16 @@ public class MemberDao {
 	public Member selectOne (MemberVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
+//-------------------------------------------------------------------------------------------  
 //	인서트
 	public int insertCd(Member dto) { return sqlSession.insert(namespace + ".insertCd", dto); }
 	public int insertSnsCd(Member dto) { return sqlSession.insert(namespace + ".insertSnsCd", dto); }
-
+	public int insertFilmoCd(Member dto) { return sqlSession.insert(namespace + ".insertFilmoCd", dto); }
+	public int insertEduCd(Member dto) { return sqlSession.insert(namespace + ".insertEduCd", dto); }
+	public int insertAwardCd(Member dto) { return sqlSession.insert(namespace + ".insertAwardCd", dto); }
+	public int insertCareerCd(Member dto) { return sqlSession.insert(namespace + ".insertCareerCd", dto); }
+	
+//-------------------------------------------------------------------------------------------   
 	//	업데이트
 	public int updateCd(Member dto) { return sqlSession.update(namespace + ".updateCd", dto); }
 	

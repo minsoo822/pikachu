@@ -174,7 +174,7 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
-	
+	<!-- Actor Inst s -->	
 	<insert id="insertSnsCd">
 		INSERT INTO actor_sns (
 			type
@@ -186,18 +186,15 @@
 			,#{url}
 			,#{member_SnsSeq}
 		)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
 	</insert>
 	<insert id="insertFilmoCd">
 		INSERT INTO actor_filmography (
 			period
-			type
-			producer
-			name
-			role
-			member_seq
+			,type
+			,producer
+			,name
+			,role
+			,member_seq
 		)
 		VALUES (
 			#{filmo_period}
@@ -205,12 +202,54 @@
 			,#{filmo_producer}
 			,#{filmo_name}
 			,#{filmo_role}
-			,#{member_FilmoSns}
+			,#{member_FilmoSeq}
 		)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
 	</insert>
+	<insert id="insertEduCd">
+		INSERT INTO actor_education (
+			period
+			,school_name
+			,major
+			,type
+			,member_seq
+		)
+		VALUES (
+			#{edu_period}
+			,#{school_name}
+			,#{edu_major}
+			,#{edu_type}
+			,#{member_EduSeq}
+		)
+	</insert>
+	<insert id="insertAwardCd">
+		INSERT INTO actor_award (
+			period
+			,name
+			,issuer
+			,member_seq
+		)
+		VALUES (
+			#{award_period}
+			,#{award_name}
+			,#{award_issuer}
+			,#{member_AwardSeq}
+		)
+	</insert>
+	<insert id="insertCareerCd">
+		INSERT INTO actor_career (
+			period
+			,company_name
+			,position
+			,member_seq
+		)
+		VALUES (
+			#{career_period}
+			,#{career_company_name}
+			,#{career_position}
+			,#{member_CareerSeq}
+		)
+	</insert>
+	<!-- Actor Inst e -->
 	
 	<update id="updateCd">
 		UPDATE member

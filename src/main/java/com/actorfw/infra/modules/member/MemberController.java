@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.actorfw.infra.modules.xactorpost.ActorPost;
 import com.actorfw.infra.modules.xactorpost.ActorPostServiceImpl;
 import com.actorfw.infra.modules.xtourpost.TourPost;
 import com.actorfw.infra.modules.xtourpost.TourPostServiceImpl;
@@ -197,41 +196,40 @@ public class MemberController {
 		int signUpActorInst = service.insertCd(dto);
 		System.out.println("signUpActorInst : " + signUpActorInst);
 		//sns
-		
 	    int insertSnsCd = service.insertSnsCd(dto);
 	    System.out.println("insertSnsCd : " + insertSnsCd);
+	    //filmo
+	    int insertFilmoCd = service.insertFilmoCd(dto);
+	    System.out.println("insertFilmoCd : " + insertFilmoCd);
+	  //filmo
+        int insertEduCd = service.insertEduCd(dto);
+        System.out.println("insertEduCd : " + insertEduCd);
+      //filmo
+        int insertAwardCd = service.insertAwardCd(dto);
+        System.out.println("insertAwardCd : " + insertAwardCd);
+      //filmo
+        int insertCareerCd = service.insertCareerCd(dto);
+        System.out.println("insertCareerCd : " + insertCareerCd);
         
-		System.out.println("signUpActorInst Control : " + signUpActorInst);
-//		System.out.println("signUpActorSnsInst Control : " + signUpActorSnsInst);
 		
 		return "redirect:/member/mainHome";
 	}
 	
 //	유저회원가입 감독페이지
 	@RequestMapping(value = "signUpDirectorForm")
-	public String signUpDirector() throws Exception {
+	public String signUpDirector(Model model) throws Exception {
 		return "infra/member/user/signUpDirector";
 	}
 	
-//	@RequestMapping(value = "signUpDirectorInst")
-//	public String signUpDirectorInst(Member dto) throws Exception {
-//		
-//		
-//		int signUpDirectorInst = service.insertCd(dto);
-//		System.out.println("signUpDirectorInst : " + signUpDirectorInst);
-//		
-//		
-//		Member signUpDirectorInst1 = service.logInCd(dto);
-//		redirectAttributes.addFlashAttribute("vo", vo);
-//		
-//		httpSession.setMaxInactiveInterval(60 * 30); // 60second * 30 = 30minute
-//		httpSession.setAttribute("sessSeq", signUpDirectorInst1.getSeq());
-//		httpSession.setAttribute("sessId", signUpDirectorInst1.getId());
-//		httpSession.setAttribute("sessName", signUpDirectorInst1.getName());
-//		httpSession.setAttribute("sessAdmin", signUpDirectorInst1.getAdminNy());
-//		
-//		return "redirect:/member/loginForm";
-//	}
+	@RequestMapping(value = "signUpDirectorInst")
+	public String signUpDirectorInst(Member dto) throws Exception {
+		System.out.println("dto : " + dto);
+		int signUpDirectorInst = service.insertCd(dto);
+		System.out.println("signUpDirectorInst : " + signUpDirectorInst);
+		
+		
+		return "redirect:/member/mainHome";
+	}
 	
 //------------------------------------------------------------------------------------- 화면구현
 	

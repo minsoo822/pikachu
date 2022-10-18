@@ -18,12 +18,21 @@ public interface MemberService {
 	public Member selectOne(MemberVo vo) throws Exception;
     /* public int selectSeq() throws Exception; */
 	
+//---------------------------------------------------------------------	
 //	멤버인서트
 	public int insertCd(Member dto) throws Exception;
+//  멤버sns인서트
+    public int insertSnsCd(Member dto) throws Exception;
+    public int insertFilmoCd(Member dto) throws Exception;
+    public int insertEduCd(Member dto) throws Exception;
+    public int insertAwardCd(Member dto) throws Exception;
+    public int insertCareerCd(Member dto) throws Exception;
+	
+//---------------------------------------------------------------------
+	
 //	멤버업데이트
 	public int updateCd(Member dto) throws Exception; 
-//	멤버sns인서트
-	public int insertSnsCd(Member dto) throws Exception;
+
 	
 //	아이디중복 체크
 	public int idCheck(Member dto) throws Exception;
