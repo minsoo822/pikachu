@@ -101,8 +101,32 @@
 	
 	<select id="selectOne" resultMap="resultObj">
 		SELECT
-			*
-		FROM member
+			a.*
+			,b.*
+			,c.*
+			,d.*
+			,e.*
+			,f.*
+			,g.*
+		FROM member a
+		LEFT JOIN actor_sns b
+		ON a.seq = b.member_seq
+		
+		LEFT JOIN actor_filmography c
+		ON a.seq = c.member_seq
+		
+		LEFT JOIN actor_education d
+		ON a.seq = d.member_seq
+		
+		LEFT JOIN actor_award e
+		ON a.seq = e.member_seq
+		
+		LEFT JOIN actor_career f
+		ON a.seq = f.member_seq
+		
+		LEFT JOIN company g
+		ON a.seq = g.member_seq 
+		
 		WHERE 1=1
 		AND seq = #{seq}
 	</select>

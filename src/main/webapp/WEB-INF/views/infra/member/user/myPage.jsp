@@ -22,6 +22,17 @@
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
+	<style type="text/css">
+	.textstyle {
+		background: transparent;
+		border: none;
+		color: white;
+	}
+	div {
+		border: 1px solid orange;
+	}
+	
+	</style>
 </head>
 <body>
 	<form action="">
@@ -71,10 +82,11 @@
 			</div>
 		</nav>
 	</div>
+	<br>sessSeq: <c:out value="${sessSeq }"/><br>
+	sessName: <c:out value="${sessName }"/><br>
+	sessId: <c:out value="${sessId }"/><br>
 	<!-- odition post summary -->
-
 	<div class="actoraaaa">
-		
 		<div class="row">
 			<div class="col">
 				<div class="row">
@@ -101,7 +113,7 @@
 										<div class="row">
 											<div class="col-2">이름</div>
 											<div class="col-5">
-												<input type="text" class="form-control" value="이지은">
+												<input type="text" class="form-control" value="">
 											</div>
 										</div>
 										<div class="row">
@@ -590,26 +602,26 @@
 	</div>
 	
 	<!-- footer -->
-		<div class="footer"">
+		<div class="footer">
 		<div class="row">
 			<div class="col">
 				<div class="row footerlogo">
 					<div class="col">
-						<a href="https://www.jype.com/"><img src="../main/image/companyImage/jyp.jpg" alt="#"></a>
+						<a href="https://www.jype.com/"><img src="/resources/image/companyImage/jyp.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://kakaoent.com/"><img src="../main/image/companyImage/kakao.jpg" alt="#"></a>
+						<a href="https://kakaoent.com/"><img src="/resources/image/companyImage/kakao.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://www.ygfamily.com/"><img src="../main/image/companyImage/yg.jpg" alt="#"></a>
+						<a href="https://www.ygfamily.com/"><img src="/resources/image/companyImage/yg.jpg" alt="#"></a>
 					</div>
 					<div class="col">
-						<a href="https://www.sbs.co.kr/"><img src="../main/image/companyImage/sbs.png" alt="#"></a>
+						<a href="https://www.sbs.co.kr/"><img src="/resources/image/companyImage/sbs.png" alt="#"></a>
 					</div>
 				</div>
 				<div class="row footermain">
 					<div class="col-3">
-						<a href="mainViewForm.html"><img src="../main/image/companyImage/Actor.png"></a>
+						<a href="mainViewForm.html"><img src="/resources/image/companyImage/Actor.png"></a>
 					</div>
 				
 					<div class="col-9 mt-3" style="text-align: left;">

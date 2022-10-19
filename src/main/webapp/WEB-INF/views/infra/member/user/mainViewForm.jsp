@@ -82,7 +82,7 @@
 				<button type="button" class="btn" id="btnLogin">로그인</button>
 			</c:if>
 			<c:if test="${sessSeq ne null }">
-				<button type="button" class="btn" id="btnMypage">마이페이지</button>
+				<button type="button" class="btn" id="btnMypage" value="${sessSeq }">마이페이지</button>
 				<button type="button" class="btn" id="btnLogout">로그아웃</button>
 			</c:if>	
 				<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
@@ -368,7 +368,7 @@
 		</table>
 	</div>
 	<!-- footer -->
-		<div class="footer"">
+		<div class="footer">
 		<div class="row">
 			<div class="col">
 				<div class="row footerlogo">
@@ -409,7 +409,7 @@
 	var goUrlLogin = "/member/loginForm";
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
 	var goUrlMain = "/member/mainHome";
-	var goUrlMypage = "/member/ActorPostForm";
+	var goUrlMypage = "/member/Mypage";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	

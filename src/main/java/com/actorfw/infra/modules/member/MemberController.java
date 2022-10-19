@@ -33,6 +33,7 @@ public class MemberController {
     	
     @Autowired
     ActorPostServiceImpl Actorservice;
+
 	
 	
 	public void setParamsPaging(MemberVo vo) throws Exception {
@@ -89,7 +90,7 @@ public class MemberController {
 		model.addAttribute("item", item);
 		System.out.println("Controll Form :" + item);
 		
-		dto.setPseq(vo.getSeq());// 
+		dto.setPseq(Integer.parseInt(vo.getSeq()));// 
 		Member imageView = service.imageView(dto);
 		model.addAttribute("imageView", imageView);
 		
@@ -241,20 +242,23 @@ public class MemberController {
 	
 //---------------------------------------------------------------------------------------------------------------	
 	// 마이페이지
-	@RequestMapping(value = "ActorPostForm")
-    public String myPage(HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "Mypage")
+    public String myPage(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
         
-//	    httpSession.getAttribute("sessSeq",)
+//	    vo.setSeq((String)httpSession.getAttribute("sessSeq"));
 //	    
-//	    int sessSeq = httpSession.get
+//	    
+//	    Member item = service.selectOne(vo);
+//	    model.addAttribute("item", item);
+//	    System.out.println("item : " +  item);
+	    
+
 	    
 	    
 	    
 	    
 	    
-	    
-	    
-        return "infra/member/user/actorPostForm";
+        return "infra/member/user/myPage";
     }
     
 //---------------------------------------------------------------------------------------------------------------   
