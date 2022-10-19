@@ -215,7 +215,7 @@ nav ul > li:hover > ul {
 	overflow:hidden;
 	cursor: pointer;
 	transition: .3s;
-	background: black;
+	background: #101010;
 }
 .cardactor h5 {
 	color: white;
@@ -253,7 +253,7 @@ nav ul > li:hover > ul {
 .actorpost {
 	background: #101010;
 	width: 100%;
-	padding: 50px 0px 120px 0px;
+	padding: 50px 0px 50px 0px;
 }
 .tour .table {
 	width: 1400px;

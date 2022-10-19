@@ -40,32 +40,33 @@ public class MemberServiceImpl implements MemberService {
 //	멤버인서트
 	@Override
 	public int insertCd(Member dto) throws Exception {
-//		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		int insertCd =  dao.insertCd(dto);
-//        int pseq = dao.selectLastSeq();
-//
-//        int j = 0;
-//        for(MultipartFile myFile : dto.getPlofil_image()) {
-//
-//            if(!myFile.isEmpty()) {
-//                // postServiceImpl
-//                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//                
-////                		MemberServiceImpl.java  ->	 MemberServiceImpl -> ""  ->	 memberserviceimpl -> 	member
-//                 
-//                UtilUpload.uploadPost(myFile, pathModule, dto);
-//
-//                dto.setType(2);
-//                dto.setDefaultNy(j == 0 ? 1 : 0);
-//                dto.setSort(j+1);
-//                dto.setPseq(pseq);
-//
-//                dao.insertMemberUpload(dto);
-//                j++;
-//            }
-//        }
+        int pseq = dao.selectLastSeq();
+
+        int j = 0;
+        for(MultipartFile myFile : dto.getPlofil_image()) {
+
+            if(!myFile.isEmpty()) {
+                // postServiceImpl
+                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                
+//                		MemberServiceImpl.java  ->	 MemberServiceImpl -> ""  ->	 memberserviceimpl -> 	member
+                 
+                UtilUpload.uploadPost(myFile, pathModule, dto);
+
+                dto.setType(2);
+                dto.setDefaultNy(j == 0 ? 1 : 0);
+                dto.setSort(j+1);
+                dto.setPseq(pseq);
+
+                dao.insertMemberUpload(dto);
+                j++;
+            }
+        }
 		return insertCd;
 	}
+//------------------------------------------------------------ 배우상세	
 // 멤버sns인서트
     @Override
     public int insertSnsCd(Member dto) throws Exception {
@@ -96,9 +97,19 @@ public class MemberServiceImpl implements MemberService {
         dto.setMember_CareerSeq(dto.getSeq());
         return dao.insertCareerCd(dto);
     }
+//----------------------------------------------------------------감독상세   
     
-    
-    
+    @Override
+    public int insertCompanyCd(Member dto) throws Exception {
+        dto.setMember_CompanySeq(dto.getSeq());
+        return dao.insertCompanyCd(dto);
+    }
+    @Override
+    public int insertCompanyWorkCd(Member dto) throws Exception {
+        int company_WorkSeq = dao.selectLastcompanySeq();
+        dto.setCompany_WorkSeq(company_WorkSeq);
+        return dao.insertCompanyWorkCd(dto);
+    }
     
     
     
@@ -132,8 +143,7 @@ public class MemberServiceImpl implements MemberService {
         }
 		return updateCd; 
 	}
-	
-//	이미지 불러오기
+    //	이미지 불러오기
 	@Override
 	public Member imageView(Member dto) throws Exception {
 		return dao.imageView(dto);
