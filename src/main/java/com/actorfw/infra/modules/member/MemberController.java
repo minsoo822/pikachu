@@ -244,9 +244,9 @@ public class MemberController {
 	@RequestMapping(value = "ActorPostForm")
     public String myPage(HttpSession httpSession) throws Exception {
         
-	    httpSession.getAttribute("sessSeq",)
-	    
-	    int sessSeq = httpSession.get
+//	    httpSession.getAttribute("sessSeq",)
+//	    
+//	    int sessSeq = httpSession.get
 	    
 	    
 	    
