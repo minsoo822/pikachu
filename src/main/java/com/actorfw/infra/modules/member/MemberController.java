@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.actorfw.infra.modules.xactorpost.ActorPost;
 import com.actorfw.infra.modules.xactorpost.ActorPostServiceImpl;
+import com.actorfw.infra.modules.xactorpost.ActorPostVo;
 import com.actorfw.infra.modules.xtourpost.TourPost;
 import com.actorfw.infra.modules.xtourpost.TourPostServiceImpl;
 import com.actorfw.infra.modules.xtourpost.TourPostVo;
@@ -78,7 +80,7 @@ public class MemberController {
 	}
 
 //---------------------------------------------------------------------------------------------------------------	
-	
+
 //	관리자화면 회원폼
 	@RequestMapping(value = "memberForm")
 	public String memberForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model) throws Exception {
@@ -223,14 +225,40 @@ public class MemberController {
 	
 	@RequestMapping(value = "signUpDirectorInst")
 	public String signUpDirectorInst(Member dto) throws Exception {
-		System.out.println("dto : " + dto);
-		int signUpDirectorInst = service.insertCd(dto);
+//		기본정보
+	    int signUpDirectorInst = service.insertCd(dto);
 		System.out.println("signUpDirectorInst : " + signUpDirectorInst);
+//		회사정보
+		int insertCompanyCd = service.insertCompanyCd(dto);
+		System.out.println("insertCompanyCd : " + insertCompanyCd);
+//		회사작품정보
+		int insertCompanyWorkCd = service.insertCompanyWorkCd(dto);
+		System.out.println("insertCompanyWorkCd : " + insertCompanyWorkCd);
 		
 		
 		return "redirect:/member/mainHome";
 	}
 	
+//---------------------------------------------------------------------------------------------------------------	
+	// 마이페이지
+	@RequestMapping(value = "ActorPostForm")
+    public String myPage(HttpSession httpSession) throws Exception {
+        
+	    httpSession.getAttribute("sessSeq",)
+	    
+	    int sessSeq = httpSession.get
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+        return "infra/member/user/actorPostForm";
+    }
+    
+//---------------------------------------------------------------------------------------------------------------   
+    
 //------------------------------------------------------------------------------------- 화면구현
 	
 	//초기페이지
@@ -241,10 +269,11 @@ public class MemberController {
 	}
 	//메인페이지
 	@RequestMapping(value = "mainHome")
-	public String mainPage(Model model, TourPostVo vo) throws Exception {
+	public String mainPage(Model model, TourPostVo vo1, ActorPostVo vo) throws Exception {
 //		
+	    List<ActorPost> List = Actorservice.actorList(vo);
 	   
-	    List<TourPost> tourList = Tourservice.tourList(vo);
+	    List<TourPost> tourList = Tourservice.tourList(vo1);
         model.addAttribute("tourList", tourList);
 	    System.out.println("tourList : " + tourList);
 //	    List<ActorPost> actorList = Actorservice.actorList(vo);

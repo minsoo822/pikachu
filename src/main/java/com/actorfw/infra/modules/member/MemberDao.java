@@ -32,6 +32,8 @@ public class MemberDao {
 //-------------------------------------------------------------------------------------------  
 //	인서트
 	public int insertCd(Member dto) { return sqlSession.insert(namespace + ".insertCd", dto); }
+//-------------------------------------------------------------------------------------------  
+	//배우인서트
 	public int insertSnsCd(Member dto) { return sqlSession.insert(namespace + ".insertSnsCd", dto); }
 	public int insertFilmoCd(Member dto) { return sqlSession.insert(namespace + ".insertFilmoCd", dto); }
 	public int insertEduCd(Member dto) { return sqlSession.insert(namespace + ".insertEduCd", dto); }
@@ -39,6 +41,16 @@ public class MemberDao {
 	public int insertCareerCd(Member dto) { return sqlSession.insert(namespace + ".insertCareerCd", dto); }
 	
 //-------------------------------------------------------------------------------------------   
+    //감독인서트
+	public int insertCompanyCd(Member dto) { return sqlSession.insert(namespace + ".insertCompanyCd", dto); }
+	public int insertCompanyWorkCd(Member dto) { return sqlSession.insert(namespace + ".insertCompanyWorkCd", dto);}
+//-------------------------------------------------------------------------------------------   
+
+	
+	
+	
+	
+	
 	//	업데이트
 	public int updateCd(Member dto) { return sqlSession.update(namespace + ".updateCd", dto); }
 	
@@ -55,6 +67,9 @@ public class MemberDao {
 	
 	public int selectLastSeq() {
 		return sqlSession.selectOne(namespace + ".selectLastSeq" , "");
+	}
+	public int selectLastcompanySeq() {
+	    return sqlSession.selectOne(namespace + ".selectLastcompanySeq", "");
 	}
 	public int selectSeq() {
 	    return sqlSession.selectOne(namespace + ".selectSeq", "");
