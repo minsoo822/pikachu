@@ -39,7 +39,7 @@
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="/member/mainViewForm">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
 			<ul>
 				<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
 				<li><a href="/Post/oditionPostViewList">오디션 공고</a>
@@ -82,7 +82,7 @@
 				<button type="button" class="btn" id="btnLogin">로그인</button>
 			</c:if>
 			<c:if test="${sessSeq ne null }">
-				<button type="button" class="btn">마이페이지</button>
+				<button type="button" class="btn" id="btnMypage">마이페이지</button>
 				<button type="button" class="btn" id="btnLogout">로그아웃</button>
 			</c:if>	
 				<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
@@ -409,6 +409,7 @@
 	var goUrlLogin = "/member/loginForm";
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
 	var goUrlMain = "/member/mainHome";
+	var goUrlMypage = "/member/ActorPostForm";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
@@ -425,7 +426,9 @@
 	});
 	
 	
-	
+	$("#btnMypage").on("click", function() {
+		form.attr("action", goUrlMypage).submit();
+	});
 	
 	$("#btnLogin").on("click", function() {
 		form.attr("action", goUrlLogin).submit();

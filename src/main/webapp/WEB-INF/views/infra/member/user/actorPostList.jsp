@@ -26,6 +26,9 @@
 	
 <body>
 	<form name="mainForm" id="mainForm" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="seq" value="${dto.seq}">
+		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
@@ -94,22 +97,38 @@
 				<li><a href="#">여자</a></li>
 			</ul>
 		</div>
-	
-		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
-		<c:forEach items="${list}" var="list" varStatus="status">			
-			<div class="cardactor col-2">
-				<img src="${list.path}${list.uuidName}" class="card-img-top" alt="">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
-				<div class="pra">
-					<input hidden type="text" value="${list.seq }">
-					<p style="text-align: center;"><c:out value="${list.age }"></c:out>세</p>
-				</div>
+		<a href="#" class="text-decoration-none">
+			<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
+				<c:forEach items="${list}" var="list" varStatus="status">			
+					<div class="cardactor col-2">
+						<img src="${list.path}${list.uuidName}" class="card-img-top" alt="">
+						<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
+						<div class="pra">
+							<input hidden type="text" value="${list.seq }">
+							<p style="text-align: center;"><c:out value="${list.age }"></c:out>세</p>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
-			</c:forEach>
-		</div>
-		
+		</a>
 	</div>
-	
+	<div style="background-color: #101010;;">
+		<c:if test="${sessAdmin eq 1 }">
+		<div class="groupbutton">
+			<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
+				<button class="btn btn-danger" type="submit"><i class="fa-solid fa-minus"></i></button>
+				<a class="btn btn-danger" type="button"><i class="fa-solid fa-trash-can"></i></a>
+			</div>
+			<div class="d-grid gap-2 d-md-flex btn2">
+				<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
+				<button class="btn btn-primary" type="button" id="btnForm"><i class="fa-solid fa-plus"></i></button>
+			</div>
+		</div>
+	</c:if>
+	<c:if test="${sessAdmin ne 1 }">
+		
+	</c:if>	
+	</div>
 	<!-- footer -->
 	<div class="footer"">
 		<div class="row">
