@@ -127,11 +127,6 @@
 			,actor_voice
 			,age
 			,company_useNy
-			,zip_code
-			,address
-			,address_detail
-			,address_Lat
-			,address_Lng
 			,delNy
 			,creDate
 			,modDate
@@ -158,11 +153,6 @@
 			,#{actor_voice}
 			,#{age}
 			,#{company_useNy}
-			,#{zip_code}
-			,#{address}
-			,#{address_detail}
-			,#{address_Lat}
-			,#{address_Lng}
 			,#{delNy}
 			,#{creDate}
 			,#{modDate}
@@ -250,6 +240,49 @@
 		)
 	</insert>
 	<!-- Actor Inst e -->
+	<!-- Director Inst s -->
+	<insert id="insertCompanyCd">
+		INSERT INTO company (
+			name_type
+			,tel
+			,zip_code
+			,address
+			,address_detail
+			,address_Lat
+			,address_Lng
+			,member_seq
+		)
+		VALUES (
+			#{company_name_type}
+			,#{company_tel}
+			,#{company_zip_code}
+			,#{company_address}
+			,#{company_address_detail}
+			,#{company_Lat}
+			,#{company_Lng}
+			,#{member_CompanySeq}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<insert id="insertCompanyWorkCd">
+		INSERT INTO company_work (
+			period_s
+			,period_e
+			,type
+			,name
+			,company_seq
+		)
+		VALUES (
+			#{companyWork_period_s}
+			,#{companyWork_period_e}
+			,#{companyWork_type}
+			,#{companyWork_name}
+			,#{company_WorkSeq}
+		)
+	</insert>
+	<!-- Director Inst e -->
 	
 	<update id="updateCd">
 		UPDATE member
@@ -316,6 +349,13 @@
 		SELECT
 			seq
 		FROM member
+		ORDER BY seq DESC
+		LIMIT 1
+	</select>
+	<select id="selectLastcompanySeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
+		SELECT
+			seq
+		FROM company
 		ORDER BY seq DESC
 		LIMIT 1
 	</select>

@@ -19,9 +19,10 @@ public interface MemberService {
     /* public int selectSeq() throws Exception; */
 	
 //---------------------------------------------------------------------	
-//	멤버인서트
+//	멤버 공통부분 인서트
 	public int insertCd(Member dto) throws Exception;
-//  멤버sns인서트
+//--------------------------------------------------------------------- 	
+//  배우인서트
     public int insertSnsCd(Member dto) throws Exception;
     public int insertFilmoCd(Member dto) throws Exception;
     public int insertEduCd(Member dto) throws Exception;
@@ -29,7 +30,11 @@ public interface MemberService {
     public int insertCareerCd(Member dto) throws Exception;
 	
 //---------------------------------------------------------------------
-	
+//  감독인서트
+    public int insertCompanyCd(Member dto) throws Exception;
+    public int insertCompanyWorkCd(Member dto) throws Exception;
+    
+//---------------------------------------------------------------------    
 //	멤버업데이트
 	public int updateCd(Member dto) throws Exception; 
 
