@@ -20,7 +20,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body style="background-color: black;">
-<form method="post" name="mainForm" action="/member/signUpDirectorInst">
+<form method="post" name="mainForm" action="/member/signUpDirectorInst" enctype="multipart/form-data">
 	<div class="container" style="width: 35%">
 		<div class="row">
 			<div class="col">
@@ -37,6 +37,7 @@
 							<option value="26" hidden>배우</option>
 							<option value="27" selected>감독</option>
 						</select>
+						<input type="file" name="Plofil_image" hidden>
 					</div>
 				</div>
 				<div class="row mb-1">
@@ -163,14 +164,14 @@
 						<h4><b>director 구분</b></h4>
 					</div>
 					<div class="col">
-						<select class="form-select" name="">
+						<select class="form-select" name="director_type">
 							<option value="">선택</option>
-							<option value="">개인</option>
-							<option value="">학생</option>
-							<option value="">감독&조감독</option>
-							<option value="">제작사</option>
-							<option value="">캐스팅디렉터</option>
-							<option value="">에이전시</option>
+							<option value="31">개인</option>
+							<option value="32">학생</option>
+							<option value="33">감독&조감독</option>
+							<option value="34">제작사</option>
+							<option value="35">캐스팅디렉터</option>
+							<option value="36">에이전시</option>
 						</select>
 					</div>
 				</div>
@@ -187,31 +188,56 @@
 								<div class="row pb-1">
 									<div class="col-2 pt-2 regText">회사이름</div>
 									<div class="col">
-										<select class="form-select">
-											<option></option>
-											<option></option>
-											<option></option>
-											<option></option>
-											<option></option>
-											<option></option>
-											<option></option>
-											<option></option>
-											<option></option>
+										<select class="form-select" name="company_name_type">
+											<option value="">선택</option>
+											<option value="43">매니지먼트 숲</option>
+											<option value="44">나무엑터스</option>
+											<option value="45">매니지먼트 오름</option>
+											<option value="46">블라썸엔터테인먼트</option>
+											<option value="47">사람엔터테인먼트</option>
+											<option value="48">호두엔터테인먼트</option>
+											<option value="49">기타</option>
 										</select>
 									</div>
 								</div>
 								<div class="row pb-1">
 									<div class="col-2 pt-2 regText">전화번호</div>
 									<div class="col">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="company_tel">
 									</div>
 								</div>
-								<div class="row pb-3">
-									<div class="col-2 pt-2 mb-4 regText">주소</div>
+								<div class="row pb-1">
+									<div class="col-2 pt-2 regText">주소</div>
 									<div class="col">
-										<input type="text" class="form-control">
+										<div class="input-group">
+											<input readonly type="text" class="form-control" id="zip_code" name="company_zip_code" placeholder="우편번호">
+											<button type="button" class="input-group-text" onclick="sample4_execDaumPostcode()"><i class="fa-solid fa-magnifying-glass"></i></button>
+											<button type="button" class="input-group-text" id="address_reset"><i class="fa-solid fa-rotate-left"></i></button>
+										</div>
 									</div>
 								</div>
+								<div class="row pb-1">
+									<div class="col-2 pt-2 regText">&nbsp;</div>
+									<div class="col">
+										<input readonly type="text" class="form-control" id="address" name="company_address" placeholder="도로명주소">
+									</div>
+								</div>
+								<div class="row pb-1 mb-4">
+									<div class="col-2 regText">&nbsp;</div>
+									<div class="col">
+										<input type="text" class="form-control" id="address_detail" name="company_address_detail" placeholder="상세주소">
+									</div>
+								</div>
+								<div class="row pb-3" hidden="">
+									<div class="col-2 mb-4  regText">위도</div>
+									<div class="col">
+										<input readonly type="text" class="form-control" id="address_Lat" name="company_Lat" placeholder="위도">
+									</div>
+									<div class="col-2 mb-4  regText">경도</div>
+									<div class="col">
+										<input readonly type="text" class="form-control" id="address_Lng" name="company_Lng" placeholder="경도">
+									</div>
+	            				</div>
 							</div>
 						</div>	
 					</div>
@@ -234,27 +260,27 @@
 								<div class="row gx-1">
 									<div class="col">
 										<div class="input-group">
-											<input type="date" class="form-control">
+											<input type="date" class="form-control" name="companyWork_period_s">
 											<span class="input-group-text">~</span>
-											<input type="date" class="form-control">
+											<input type="date" class="form-control" name="companyWork_period_e">
 										</div>
 									</div>
 									<div class="col-2">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option>드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
+										<select class="form-select" name="companyWork_type">
+											<option value="">선택</option>
+											<option value="15">상업영화</option>
+											<option value="16">단편(독립)영화</option>
+											<option value="17">드라마</option>
+											<option value="18">웹드라마</option>
+											<option value="19">광고(CF)</option>
+											<option value="20">바이럴광고</option>
 										</select>
 									</div>
 									<div class="col">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" name="companyWork_name">
 									</div>
 									<div class="col-1">
-										<button type="button" class="regFrombutton" onclick="addWork()">
+										<button type="button" class="regFrombutton1" onclick="addWork()">
 											<i class="fa-solid fa-plus"></i>
 										</button>
 									</div>
@@ -272,11 +298,55 @@
 		</div>
 	</div>
 </form>	
+<!-- 지도API -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<script type="text/javascript">
+	
+	/* 카카오지도API */
+  	function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zip_code').value = data.zonecode;
+                document.getElementById("address").value = roadAddr;
+                // 커서를 상세주소로 이동한다
+                document.getElementById('address_detail').focus();
+                
+            }
+        }).open();
+    }
+	
+  	//주소 리셋
+	$("#address_reset").on("click", function() {
+		$("#zip_code").val('');
+		$("#address").val('');
+		$("#address_detail").val('');
+	})
 	
 		var count_career = 0;
 	
@@ -284,9 +354,7 @@
 			
 			var tmp = "";
 			
-			tmp += '<div class="row gx-1" id="mainusCareer'; 
-			tmp += count_career;
-			tmp += '">';
+			tmp += '<div class="row gx-1" id="careerDelete' + count_career + '">';
 			tmp += '<div class="col">';
 			tmp += '<div class="input-group">';
 			tmp += '<input type="date" class="form-control">';
@@ -310,7 +378,7 @@
 			tmp += '<input type="text" class="form-control">';
 			tmp += '</div>';
 			tmp += '<div class="col-1">';
-			tmp += '<button type="button" class="btn btn-danger" onclick="remov(mainusCareer' + count_career + ')">';
+			tmp += '<button type="button" class="regFrombutton1" onclick="remove(careerDelete' + count_career + ')">';
 			tmp += '<i class="fa-solid fa-minus"></i>';
 			tmp += '</button>';
 			tmp += '</div>';
@@ -321,8 +389,9 @@
 			$("#workPoint").append(tmp);
 		}
 			function remove(id) {
-				$(id).remove();
-			}
+			
+			$(id).remove();
+		}
 		
 	</script>
 	

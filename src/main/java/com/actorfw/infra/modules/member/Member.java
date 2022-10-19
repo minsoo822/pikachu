@@ -27,11 +27,6 @@ public class Member extends Base {
 	private Integer actor_voice;
 	private Integer age;
 	private Integer company_useNy;
-	private String zip_code;
-	private String address;
-	private String address_detail;
-	private Integer address_Lat;
-	private Integer address_Lng;
 	private Integer delNy;
 	private String creDate;
 	private String modDate;
@@ -107,8 +102,25 @@ public class Member extends Base {
   
 //----------------------------------------------------------    
   
-
+  private String company_seq;
+  private Integer company_name_type;
+  private Integer company_tel;
+  private String company_zip_code;
+  private String company_address;
+  private String company_address_detail;
+  private Integer company_Lat;
+  private Integer company_Lng;
+  private String member_CompanySeq;
+  
+//----------------------------------------------------------    
+  
+  private String companyWork_period_s;
+  private String companyWork_period_e;
+  private Integer companyWork_type;
+  private String companyWork_name;
+  private Integer company_WorkSeq;
 	
+//----------------------------------------------------------      
 	public String getActor_specialty() {
 		return actor_specialty;
 	}
@@ -222,36 +234,6 @@ public class Member extends Base {
 	}
 	public void setActor_picture(Integer actor_picture) {
 		this.actor_picture = actor_picture;
-	}
-	public String getZip_code() {
-		return zip_code;
-	}
-	public void setZip_code(String zip_code) {
-		this.zip_code = zip_code;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getAddress_detail() {
-		return address_detail;
-	}
-	public void setAddress_detail(String address_detail) {
-		this.address_detail = address_detail;
-	}
-	public Integer getAddress_Lat() {
-		return address_Lat;
-	}
-	public void setAddress_Lat(Integer address_Lat) {
-		this.address_Lat = address_Lat;
-	}
-	public Integer getAddress_Lng() {
-		return address_Lng;
-	}
-	public void setAddress_Lng(Integer address_Lng) {
-		this.address_Lng = address_Lng;
 	}
 	public Integer getTelecom() {
 		return telecom;
@@ -496,6 +478,96 @@ public class Member extends Base {
     }
     public void setMember_CareerSeq(String member_CareerSeq) {
         this.member_CareerSeq = member_CareerSeq;
+    }
+    public String getSchool_name() {
+        return school_name;
+    }
+    public void setSchool_name(String school_name) {
+        this.school_name = school_name;
+    }
+    public Integer getCompany_name_type() {
+        return company_name_type;
+    }
+    public void setCompany_name_type(Integer company_name_type) {
+        this.company_name_type = company_name_type;
+    }
+    public Integer getCompany_tel() {
+        return company_tel;
+    }
+    public void setCompany_tel(Integer company_tel) {
+        this.company_tel = company_tel;
+    }
+    public String getCompany_zip_code() {
+        return company_zip_code;
+    }
+    public void setCompany_zip_code(String company_zip_code) {
+        this.company_zip_code = company_zip_code;
+    }
+    public String getCompany_address() {
+        return company_address;
+    }
+    public void setCompany_address(String company_address) {
+        this.company_address = company_address;
+    }
+    public String getCompany_address_deatil() {
+        return company_address_detail;
+    }
+    public void setCompany_address_deatil(String company_address_deatil) {
+        this.company_address_detail = company_address_deatil;
+    }
+    public Integer getCompany_Lat() {
+        return company_Lat;
+    }
+    public void setCompany_Lat(Integer company_Lat) {
+        this.company_Lat = company_Lat;
+    }
+    public Integer getCompany_Lng() {
+        return company_Lng;
+    }
+    public void setCompany_Lng(Integer company_Lng) {
+        this.company_Lng = company_Lng;
+    }
+    public String getMember_CompanySeq() {
+        return member_CompanySeq;
+    }
+    public void setMember_CompanySeq(String member_CompanySeq) {
+        this.member_CompanySeq = member_CompanySeq;
+    }
+    public String getCompanyWork_period_s() {
+        return companyWork_period_s;
+    }
+    public void setCompanyWork_period_s(String companyWork_period_s) {
+        this.companyWork_period_s = companyWork_period_s;
+    }
+    public String getCompanyWork_period_e() {
+        return companyWork_period_e;
+    }
+    public void setCompanyWork_period_e(String companyWork_period_e) {
+        this.companyWork_period_e = companyWork_period_e;
+    }
+    public Integer getCompanyWork_type() {
+        return companyWork_type;
+    }
+    public void setCompanyWork_type(Integer companyWork_type) {
+        this.companyWork_type = companyWork_type;
+    }
+    public String getCompanyWork_name() {
+        return companyWork_name;
+    }
+    public void setCompanyWork_name(String companyWork_name) {
+        this.companyWork_name = companyWork_name;
+    }
+    public Integer getCompany_WorkSeq() {
+        return company_WorkSeq;
+    }
+    public void setCompany_WorkSeq(Integer company_WorkSeq) {
+        this.company_WorkSeq = company_WorkSeq;
+    }
+    public String getCompany_seq() {
+        return company_seq;
+    }
+    public void setCompany_seq(String company_seq) {
+        this.company_seq = company_seq;
     }
     
 	
