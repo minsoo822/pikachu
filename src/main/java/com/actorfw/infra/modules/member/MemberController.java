@@ -26,7 +26,7 @@ import com.actorfw.infra.modules.xtourpost.TourPostVo;
 public class MemberController {
 	
     @Autowired
-    MemberServiceImpl service; 
+    MemberServiceImpl service;
     	
     @Autowired
     TourPostServiceImpl Tourservice;
@@ -36,7 +36,7 @@ public class MemberController {
 
 	
 	
-	public void setParamsPaging(MemberVo vo) throws Exception {
+	public void setParamsPaging(MemberVo vo) throws Exception { 
 		
 //		검색 초기값 설정
 //		vo.setShUseOption(vo.getShUseOption() == null ? 0 : vo.getShUseOption());

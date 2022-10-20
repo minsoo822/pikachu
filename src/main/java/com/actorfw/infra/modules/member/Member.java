@@ -1,4 +1,4 @@
-package com.actorfw.infra.modules.member;
+package com.actorfw.infra.modules.member; 
 
 
 import org.springframework.web.multipart.MultipartFile;
@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.actorfw.infra.common.base.Base;
 
 public class Member extends Base {
-	 
+	
 	
 	private String seq;
 	private Integer user_type;
