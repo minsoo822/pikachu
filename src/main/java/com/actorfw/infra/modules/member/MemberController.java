@@ -26,7 +26,7 @@ import com.actorfw.infra.modules.xtourpost.TourPostVo;
 public class MemberController {
 	
     @Autowired
-    MemberServiceImpl service;
+    MemberServiceImpl service; 
     	
     @Autowired
     TourPostServiceImpl Tourservice;
