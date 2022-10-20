@@ -334,47 +334,7 @@
 										</select>
 									</div>
 	            				</div>
-	            				<div class="row mb-1">
-	            					<div class="col">주소</div>
-	            					<div class="col">&nbsp;</div>
-	            				</div>
-	            				<div class="row mb-1">
-									<div class="col-6">
-										<div class="input-group">
-											<input readonly type="text" class="form-control" id="zip_code" name="zip_code" placeholder="우편번호" value="${item.zip_code }">
-											<button type="button" class="input-group-text" onclick="sample4_execDaumPostcode()"><i class="fa-solid fa-magnifying-glass"></i></button>
-											<button type="button" class="input-group-text" id="address_reset"><i class="fa-solid fa-rotate-left"></i></button>
-										</div>
-									</div>
-									<div class="col-2">
-										&nbsp;
-									</div>
-									<div class="col">
-										&nbsp;
-									</div>
-	            				</div>
-	            				<div class="row mb-1">
-									<div class="col">
-										<input readonly type="text" class="form-control" id="address" name="address" placeholder="도로명주소" value="${item.address }">
-									</div>
-									<div class="col">&nbsp;</div>
-	            				</div>
-	            				<div class="row mb-1">
-									<div class="col">
-										<input type="text" class="form-control" id="address_detail" name="address_detail" placeholder="상세주소" value="${item.address_detail }">
-									</div>
-									<div class="col">&nbsp;</div>
-	            				</div>
-	            				<div hidden class="row mb-3">
-									<div class="col">
-										<input readonly type="text" class="form-control" id="address_Lat" name="address_Lat" placeholder="위도" value="${item.address_Lat }">
-									</div>
-									<div class="col">
-										<input readonly type="text" class="form-control" id="address_Lng" name="address_Lng" placeholder="경도" value="${item.address_Lng }">
-									</div>
-									<div class="col">&nbsp;</div>
-									<div class="col">&nbsp;</div>
-	            				</div>
+	            				
 	            				<!-- <div class="row mb-1">
 	            					<div class="col-6">SNS</div>
 	            				</div>
@@ -529,50 +489,6 @@
 			}
 		});
 	});
-	
-	
-	/* 카카오지도API */
-  	function sample4_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var roadAddr = data.roadAddress; // 도로명 주소 변수
-                var extraRoadAddr = ''; // 참고 항목 변수
-
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraRoadAddr += data.bname;
-                }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraRoadAddr !== ''){
-                    extraRoadAddr = ' (' + extraRoadAddr + ')';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('zip_code').value = data.zonecode;
-                document.getElementById("address").value = roadAddr;
-                // 커서를 상세주소로 이동한다
-                document.getElementById('address_detail').focus();
-                
-            }
-        }).open();
-    }
-	
-	//주소 리셋
-	$("#address_reset").on("click", function() {
-		$("#zip_code").val('');
-		$("#address").val('');
-		$("#address_detail").val('');
-	})
-	
 	//이미지 미리보기
 	$('#mainPicture').change(function(){
 	    setImageFromFile(this, '#preview');

@@ -18,25 +18,26 @@ public class MemberServiceImpl implements MemberService {
 //-------------------------------------------------------------------
 //	멤버리스트
 	@Override
-	public List<Member> selectList(MemberVo vo) throws Exception { 
-		return dao.selectList(vo); 
-	}
+	public List<Member> selectList(MemberVo vo) throws Exception { return dao.selectList(vo); }
 //	배우리스트
 	@Override
-	public List<Member> actorList(MemberVo vo) throws Exception {
-		return dao.actorList(vo); 
-	}
+	public List<Member> actorList(MemberVo vo) throws Exception { return dao.actorList(vo); }
 //	감독리스트
 	@Override
-	public List<Member> directorList(MemberVo vo) throws Exception {
-		return dao.directorList(vo); 
-	}
-//-------------------------------------------------------------------
+	public List<Member> directorList(MemberVo vo) throws Exception { return dao.directorList(vo); }
 
+	//  마이페이지 리스트에 올것듯 ------------------------------------------------	
+//	sns정보
+	@Override
+    public List<Member> selectSnsList(MemberVo vo) throws Exception { return dao.selectSnsList(vo); }
+	
+	
+//-------------------------------------------------------------------
 
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception  { return dao.selectOne(vo); }
-//--------------------------------------------------------------------------------------------------	
+
+    //--------------------------------------------------------------------------------------------------	
 //	멤버인서트
 	@Override
 	public int insertCd(Member dto) throws Exception {
@@ -143,7 +144,7 @@ public class MemberServiceImpl implements MemberService {
         }
 		return updateCd; 
 	}
-    //	이미지 불러오기
+//  프로필사진 미리보기
 	@Override
 	public Member imageView(Member dto) throws Exception {
 		return dao.imageView(dto);

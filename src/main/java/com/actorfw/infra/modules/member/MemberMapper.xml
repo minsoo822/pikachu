@@ -49,6 +49,30 @@
 		<include refid="Base.selectListLowerForMysql"/>
 	</select>
 	
+	<select id="selectSnsList" resultMap="resultObj">
+		SELECT
+			type
+		    ,url
+		    ,member_seq
+		FROM actor_sns
+		WHERE 1=1
+		AND member_seq = #{seq}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<select id="actorList" resultMap="resultObj">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT 
@@ -101,32 +125,8 @@
 	
 	<select id="selectOne" resultMap="resultObj">
 		SELECT
-			a.*
-			,b.*
-			,c.*
-			,d.*
-			,e.*
-			,f.*
-			,g.*
-		FROM member a
-		LEFT JOIN actor_sns b
-		ON a.seq = b.member_seq
-		
-		LEFT JOIN actor_filmography c
-		ON a.seq = c.member_seq
-		
-		LEFT JOIN actor_education d
-		ON a.seq = d.member_seq
-		
-		LEFT JOIN actor_award e
-		ON a.seq = e.member_seq
-		
-		LEFT JOIN actor_career f
-		ON a.seq = f.member_seq
-		
-		LEFT JOIN company g
-		ON a.seq = g.member_seq 
-		
+			*
+		FROM member
 		WHERE 1=1
 		AND seq = #{seq}
 	</select>
@@ -329,11 +329,6 @@
 			,actor_voice 		= #{actor_voice}
 			,age 				= #{age}
 			,company_useNy 		= #{company_useNy}
-			,zip_code 			= #{zip_code}
-			,address 			= #{address}
-			,address_detail 	= #{address_detail}
-			,address_Lat 		= #{address_Lat}
-			,address_Lng 		= #{address_Lng}
 			,delNy 				= #{delNy}
 			,creDate 			= #{creDate}
 			,modDate 			= #{modDate}

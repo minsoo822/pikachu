@@ -245,20 +245,30 @@ public class MemberController {
 	@RequestMapping(value = "Mypage")
     public String myPage(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
         
-//	    vo.setSeq((String)httpSession.getAttribute("sessSeq"));
-//	    
-//	    
-//	    Member item = service.selectOne(vo);
-//	    model.addAttribute("item", item);
-//	    System.out.println("item : " +  item);
+	    vo.setSeq((String)httpSession.getAttribute("sessSeq"));
 	    
+	    //멤버정보 가져오는거 
+	    Member item = service.selectOne(vo);
+	    model.addAttribute("item", item);
+	    //필모그라피 정보
+	    
+	    //sns정보 
+	    List<Member> snsList = service.selectSnsList(vo);
+	    model.addAttribute("snsList", snsList);
+	    System.out.println("snsList : " + snsList);
+//	    List<Member> mypageList = service.selectMypage(vo);  //적절하지 못함
+//	    System.out.println("seq : " + vo.getSeq());          //적절하지 못함
+//	    
+//	    model.addAttribute("mypageList", mypageList);        //적절하지 못함
+//	    System.out.println("mypageList : " +  mypageList);   //적절하지 못함
 
+        dto.setPseq(Integer.parseInt(vo.getSeq()));// 
+        Member imageView = service.imageView(dto);
+        model.addAttribute("imageView", imageView);
+        System.out.println("pseq : " + dto.getPseq());
+        
 	    
-	    
-	    
-	    
-	    
-        return "infra/member/user/myPage";
+        return "infra/member/user/myPageView";
     }
     
 //---------------------------------------------------------------------------------------------------------------   

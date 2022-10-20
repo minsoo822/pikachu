@@ -85,14 +85,38 @@
 					</li>
 				</ul>
 			<div>
-			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
-			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
+				<c:if test="${sessSeq eq null }">
+					<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+					<button type="button" class="btn" id="btnLogin">로그인</button>
+				</c:if>
+				<c:if test="${sessSeq ne null }">
+					<button type="button" class="btn">마이페이지</button>
+					<button type="button" class="btn" id="btnLogout">로그아웃</button>
+				</c:if>	
+			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div  class="modal-dialog">
+			    <div style="background: #393939;" class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5 homepageline" id="staticBackdropLabel"style="color: white;">Actor'<span style="color: #f9004d;">s</span></h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body" style="color: white; text-align: center; font-size: 20px;">
+			        가입 분류를 선택해주세요!!~
+			      </div>
+			      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
+			        <button type="button" class="indexbtn" id="goActorSignup" style="cursor: pointer;">배우로 가입하기</button>
+			        <button type="button" class="indexbtn" id="goDerectorSignup" style="cursor: pointer;">디렉터로 가입하기</button>
+			      </div>
+			    </div>
+			  </div>
 			</div>
 		</nav>
 	</div>
-	<br>sessSeq: <c:out value="${sessSeq }"/><br>
+	<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
-	sessId: <c:out value="${sessId }"/><br>
+	sessId: <c:out value="${sessId }"/><br> --%>
 	<!-- odition post summary -->
 	<div class="actoraaaa">
 		<div class="row">
@@ -101,7 +125,7 @@
 					<div class="col-4">
 						<div class="row">
 							<div class="col" style="text-align: center;">
-								<img alt="" src="../main/image/actor/iu.png">
+								<img alt="" src="${imageView.path}${imageView.uuidName}">
 							</div>
 						</div>
 						<div class="row">
@@ -121,47 +145,43 @@
 										<div class="row">
 											<div class="col-2">이름</div>
 											<div class="col-5">
-												<input type="text" class="form-control" value="">
+												<c:out value="${item.name }"></c:out>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">출생</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="1993년 5월 16일 (29세)">
+												<c:out value="${item.dob }"></c:out>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-2 gy-1">나이</div>
+											<div class="col-5 gy-1">
+												<c:out value="${item.age }"></c:out>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="161.8cm">
+												<c:out value="${item.actor_weight }"></c:out>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">몸무게</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="44.9kg">
+												<c:out value="${item.actor_weight }"></c:out>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">이메일</div>
 											<div class="col-5 gy-1">
-												<div class="input-group">
-													<input type="text" class="form-control" value="iuAndi">
-													<span class="input-group-text">@</span>
-													<select class="form-select">
-														<option>선택</option>
-														<option selected>naver.com</option>
-														<option>gamil.com</option>
-														<option>daum.net</option>
-														<option>hotmail.co.kr</option>
-													</select>
-												</div>
+												<c:out value="${item.email}"></c:out>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">연락처</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="01012349876">
+												<c:out value="${item.phone_number }"></c:out>
 											</div>
 										</div>
 										<div class="row">
@@ -175,7 +195,7 @@
 											<div class="col-5 gy-1">
 												<select class="form-select">
 													<option>선택</option>
-													<option selected>겉쌍꺼풀</option>
+													<option >겉쌍꺼풀</option>
 													<option>속쌍꺼풀</option>
 													<option>무쌍꺼풀</option>
 												</select>
@@ -186,7 +206,7 @@
 											<div class="col-5 gy-1">
 												<select class="form-select">
 													<option>선택</option>
-													<option selected>고음</option>
+													<option >고음</option>
 													<option>중음</option>
 													<option>저음</option>
 												</select>
@@ -201,30 +221,16 @@
 								</div>
 								<div class="row">
 									<div class="col txwhite">
+									<c:forEach items="${snsList}" var="snsList" varStatus="status">
 										<div class="row">
-											<div class="col-2 gy-1">인스타</div>
+											<div class="col-2 gy-1">
+												<c:out value="${snsList.type }"/>
+											</div>
 											<div class="col-7 gy-1">
-												<input type="url" class="form-control" value="https://instagram.com/dlwlrma/">
+												<c:out value="${snsList.url }"/>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-2 gy-1">페이스북</div>
-											<div class="col-7 gy-1">
-												<input type="text" class="form-control" value="https://www.facebook.com/iu.loen">
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">홈페이지</div>
-											<div class="col-7 gy-1">
-												<input type="text" class="form-control" value="http://edam-ent.com/html/sub03/sub03_0301_view">
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">유튜브</div>
-											<div class="col-7 gy-1">
-												<input type="text" class="form-control" value="https://www.youtube.com/channel/UC3SyT4_WLHzN7JmHQwKQZww">
-											</div>
-										</div>
+									</c:forEach>	
 									</div>
 								</div>
 								<div class="row">
@@ -233,15 +239,14 @@
 									</div>
 								</div>
 								<div class="row text-center gx-1 mb-1">
-									<div class="col-2 regText">시기</div>
+									<div class="col-3 regText">시기</div>
 									<div class="col regText">구분</div>
 									<div class="col regText">제작사</div>
 									<div class="col regText">제목</div>
 									<div class="col regText">역활</div>
-									<div class="col-1 regText"></div>
 								</div>
 								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
+									<div class="col-3">
 										<input type="date" class="form-control" value="2011-01-03">
 									</div>
 									<div class="col">
@@ -249,7 +254,7 @@
 											<option>선택</option>
 											<option>상업영화</option>
 											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
+											<option >드라마</option>
 											<option>웹드라마</option>
 											<option>광고(CF)</option>
 											<option>바이럴광고</option>
@@ -263,191 +268,6 @@
 									</div>
 									<div class="col">
 										<input type="text" class="form-control" value="김필숙">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-plus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2013-03-09">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="에이스토리">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="최고다 이순신">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="이순신">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2015-05-15">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="KBS드라마제작국">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="프로듀사">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="신디">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2018-03-21">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="초록뱀 미디어">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="나의 아저씨">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="이지안">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2019-07-13">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="스튜디오 드래곤">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="호텔 데루나">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="장만월">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2022-06-08">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option selected="selected">상업영화</option>
-											<option>단편(독립)영화</option>
-											<option>드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="영화사 집">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="브로커">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="소영">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2020-01-01">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option>드라마</option>
-											<option>웹드라마</option>
-											<option selected="selected">광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="GUCCI코리아">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="GUCCI">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="글로벌 앰버서더">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
 									</div>
 								</div>
 								<div class="row">
@@ -518,7 +338,6 @@
 											<div class="col regText">학교명</div>
 											<div class="col regText">전공</div>
 											<div class="col regText">구분</div>
-											<div class="col-1 regText"></div>
 										</div>
 										<div class="row gx-1 text-center">
 											<div class="col-4">
@@ -544,11 +363,6 @@
 													<option>퇴학</option>
 												</select>
 											</div>
-											<div class="col-1">
-												<button type="button" class="regFrombutton" onclick="addEdu()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -563,7 +377,6 @@
 											<div class="col-4 regText">시기</div>
 											<div class="col regText">발급기관</div>
 											<div class="col regText">발급명</div>
-											<div class="col-1 regText"></div>
 										</div>
 										<div class="row gx-1 text-center">
 											<div class="col-4">
@@ -578,11 +391,6 @@
 											</div>
 											<div class="col">
 												<input type="text" class="form-control">
-											</div>
-											<div class="col-1">
-												<button type="button" class="regFrombutton" onclick="addEdu()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
 											</div>
 										</div>
 									</div>

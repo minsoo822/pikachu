@@ -24,7 +24,12 @@ public class MemberDao {
 	public List<Member> actorList (MemberVo vo) { return sqlSession.selectList(namespace + ".actorList", vo);}
 //	감독리스트
 	public List<Member> directorList (MemberVo vo) { return sqlSession.selectList(namespace + ".directorList", vo);}
-	//-------------------------------------------------------------------------------------------	
+//  마이페이지 리스트에 올것듯 -----------------------------------------------------------  
+//  sns정보
+	public List<Member> selectSnsList(MemberVo vo) { return sqlSession.selectList(namespace + ".selectSnsList", vo); }
+    
+	
+//-------------------------------------------------------------------------------------------	
 	
 	public Member selectOne (MemberVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
@@ -45,19 +50,11 @@ public class MemberDao {
 	public int insertCompanyCd(Member dto) { return sqlSession.insert(namespace + ".insertCompanyCd", dto); }
 	public int insertCompanyWorkCd(Member dto) { return sqlSession.insert(namespace + ".insertCompanyWorkCd", dto);}
 //-------------------------------------------------------------------------------------------   
-
-	
-	
-	
-	
-	
 	//	업데이트
 	public int updateCd(Member dto) { return sqlSession.update(namespace + ".updateCd", dto); }
 	
 //	아이디 중복 체크
-	public int idCheck(Member dto) {
-		return sqlSession.selectOne(namespace + ".idCheck", dto);
-	}
+	public int idCheck(Member dto) { return sqlSession.selectOne(namespace + ".idCheck", dto); }
 	
 //	로그인
 	public Member logInCd(Member dto) { return sqlSession.selectOne(namespace + ".logInCd", dto);
@@ -65,26 +62,19 @@ public class MemberDao {
 	
 //	메인페이지 리스트에 올것듯 -----------------------------------------------------------
 	
-	public int selectLastSeq() {
-		return sqlSession.selectOne(namespace + ".selectLastSeq" , "");
-	}
-	public int selectLastcompanySeq() {
-	    return sqlSession.selectOne(namespace + ".selectLastcompanySeq", "");
-	}
-	public int selectSeq() {
-	    return sqlSession.selectOne(namespace + ".selectSeq", "");
-	}
+	public int selectLastSeq() { return sqlSession.selectOne(namespace + ".selectLastSeq" , "");}
+	public int selectLastcompanySeq() { return sqlSession.selectOne(namespace + ".selectLastcompanySeq", "");}
+	public int selectSeq() { return sqlSession.selectOne(namespace + ".selectSeq", "");}
 //	파일업로드
-	public int insertMemberUpload(Member dto) {
-		return sqlSession.insert(namespace + ".insertMemberUpload" , dto);
-	}
-	
-	public Member imageView(Member dto) {
-		return sqlSession.selectOne(namespace + ".imageView" , dto);
-	}
+	public int insertMemberUpload(Member dto) { return sqlSession.insert(namespace + ".insertMemberUpload" , dto);}
+//	프로필사진 미리보기
+	public Member imageView(Member dto) { return sqlSession.selectOne(namespace + ".imageView" , dto);}
 //	페이징
-	public int selectOneCount(MemberVo vo) {
-		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
-	}
+	public int selectOneCount(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	
+
+	
+	
+	
 	
 }

@@ -12,12 +12,14 @@ public interface MemberService {
 	public List<Member> actorList(MemberVo vo) throws Exception;
 //	감독리스트
 	public List<Member> directorList(MemberVo vo) throws Exception;
-//---------------------------------------------------------------------
-	
-	
+
+//  마이페이지 리스트에 올것듯 ------------------------------------------------
+//	sns정보
+	public List<Member> selectSnsList(MemberVo vo) throws Exception;
+
+//--------------------------------------------------------------------- 	
 	public Member selectOne(MemberVo vo) throws Exception;
     /* public int selectSeq() throws Exception; */
-	
 //---------------------------------------------------------------------	
 //	멤버 공통부분 인서트
 	public int insertCd(Member dto) throws Exception;
