@@ -198,7 +198,7 @@
 		VALUES (
 			#{sns_type}
 			,#{url}
-			,#{member_SnsSeq}
+			,#{seq}
 		)
 	</insert>
 	<insert id="insertFilmoCd">
@@ -216,7 +216,7 @@
 			,#{filmo_producer}
 			,#{filmo_name}
 			,#{filmo_role}
-			,#{member_FilmoSeq}
+			,#{seq}
 		)
 	</insert>
 	<insert id="insertEduCd">
@@ -232,7 +232,7 @@
 			,#{school_name}
 			,#{edu_major}
 			,#{edu_type}
-			,#{member_EduSeq}
+			,#{seq}
 		)
 	</insert>
 	<insert id="insertAwardCd">
@@ -246,7 +246,7 @@
 			#{award_period}
 			,#{award_name}
 			,#{award_issuer}
-			,#{member_AwardSeq}
+			,#{seq}
 		)
 	</insert>
 	<insert id="insertCareerCd">
@@ -260,7 +260,7 @@
 			#{career_period}
 			,#{career_company_name}
 			,#{career_position}
-			,#{member_CareerSeq}
+			,#{seq}
 		)
 	</insert>
 	<!-- Actor Inst e -->
@@ -284,7 +284,7 @@
 			,#{company_address_detail}
 			,#{company_Lat}
 			,#{company_Lng}
-			,#{member_CompanySeq}
+			,#{seq}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -303,7 +303,7 @@
 			,#{companyWork_period_e}
 			,#{companyWork_type}
 			,#{companyWork_name}
-			,#{company_WorkSeq}
+			,#{seq}
 		)
 	</insert>
 	<!-- Director Inst e -->

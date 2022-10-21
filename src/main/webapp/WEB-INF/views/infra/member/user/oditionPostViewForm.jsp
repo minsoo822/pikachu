@@ -99,7 +99,11 @@
 			</div>
 		</nav>
 	</div>
-
+	<br>sessSeq: <c:out value="${sessSeq }"/><br>
+	sessName: <c:out value="${sessName }"/><br>
+	sessId: <c:out value="${sessId }"/><br>
+	sessAmin <c:out value="${sessAdmin }"/>
+	</div>
 	<div class="oditionpost">
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">오디션 공고</h2>
@@ -206,7 +210,6 @@
 	<c:if test="${sessAdmin ne 1 }">
 		
 	</c:if>	
-	</div>
 	</div>
 	<!-- pagination s -->
 	<%@include file="../user/include/pagination.jsp"%>

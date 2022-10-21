@@ -9,6 +9,10 @@ public class Member extends Base {
 	
 	
 	private String seq;
+	private String member_seq;
+	
+	
+	
 	private Integer user_type;
 	private String id;
 	private String password;
@@ -64,41 +68,52 @@ public class Member extends Base {
 //	private String[] member_FilmoSeq;
 
 //--------------------------------------------------------
-	
 	private Integer sns_type;
+	private Integer[] sns_types;
 	private String url;
-	private String member_SnsSeq;
+	private String[] urls;
     
 //----------------------------------------------------------    
     
   private String filmo_period;
+  private String[] filmo_periods;
   private Integer filmo_type;
+  private Integer[] filmo_types;
   private String filmo_producer;
+  private String[] filmo_producers;
   private String filmo_name;
+  private String[] filmo_names;
   private String filmo_role;
-  private String member_FilmoSeq;
+  private String[] filmo_roles;
 
 //--------------------------------------------------------
   
   private String edu_period;
+  private String[] edu_periods;
   private String school_name;
+  private String[] school_names;
   private String edu_major;
+  private String[] edu_majors;
   private Integer edu_type;
-  private String member_EduSeq;
+  private Integer[] edu_types;
   
 //----------------------------------------------------------    
   
   private String award_period;
+  private String[] award_periods;
   private String award_name;
+  private String[] award_names;
   private String award_issuer;
-  private String member_AwardSeq;
+  private String[] award_issuers;
   
 //----------------------------------------------------------    
   
   private String career_period;
+  private String[] career_periods;
   private String career_company_name;
+  private String[] career_company_names;
   private String career_position;
-  private String member_CareerSeq;
+  private String[] career_positions;
   
 //----------------------------------------------------------    
   
@@ -133,7 +148,13 @@ public class Member extends Base {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public Integer getUser_type() {
+	public String getMember_seq() {
+        return member_seq;
+    }
+    public void setMember_seq(String member_seq) {
+        this.member_seq = member_seq;
+    }
+    public Integer getUser_type() {
 		return user_type;
 	}
 	public void setUser_type(Integer user_type) {
@@ -347,11 +368,9 @@ public class Member extends Base {
 //    
 //------------------------------------------------------
 	
-    public Integer getSns_type() {
-        return sns_type;
-    }
-    public void setSns_type(Integer sns_type) {
-        this.sns_type = sns_type;
+	
+    public String getFilmo_period() {
+        return filmo_period;
     }
     public String getUrl() {
         return url;
@@ -359,14 +378,17 @@ public class Member extends Base {
     public void setUrl(String url) {
         this.url = url;
     }
-    public String getMember_SnsSeq() {
-        return member_SnsSeq;
+    public String[] getUrls() {
+        return urls;
     }
-    public void setMember_SnsSeq(String member_SnsSeq) {
-        this.member_SnsSeq = member_SnsSeq;
+    public void setUrls(String[] urls) {
+        this.urls = urls;
     }
-    public String getFilmo_period() {
-        return filmo_period;
+    public String getCompany_address_detail() {
+        return company_address_detail;
+    }
+    public void setCompany_address_detail(String company_address_detail) {
+        this.company_address_detail = company_address_detail;
     }
     public void setFilmo_period(String filmo_period) {
         this.filmo_period = filmo_period;
@@ -395,12 +417,6 @@ public class Member extends Base {
     public void setFilmo_role(String filmo_role) {
         this.filmo_role = filmo_role;
     }
-    public String getMember_FilmoSeq() {
-        return member_FilmoSeq;
-    }
-    public void setMember_FilmoSeq(String member_FilmoSeq) {
-        this.member_FilmoSeq = member_FilmoSeq;
-    }
     public String getEdu_period() {
         return edu_period;
     }
@@ -425,12 +441,6 @@ public class Member extends Base {
     public void setEdu_type(Integer edu_type) {
         this.edu_type = edu_type;
     }
-    public String getMember_EduSeq() {
-        return member_EduSeq;
-    }
-    public void setMember_EduSeq(String member_EduSeq) {
-        this.member_EduSeq = member_EduSeq;
-    }
     public String getAward_period() {
         return award_period;
     }
@@ -449,12 +459,6 @@ public class Member extends Base {
     public void setAward_issuer(String award_issuer) {
         this.award_issuer = award_issuer;
     }
-    public String getMember_AwardSeq() {
-        return member_AwardSeq;
-    }
-    public void setMember_AwardSeq(String member_AwardSeq) {
-        this.member_AwardSeq = member_AwardSeq;
-    }
     public String getCareer_period() {
         return career_period;
     }
@@ -472,12 +476,6 @@ public class Member extends Base {
     }
     public void setCareer_position(String career_position) {
         this.career_position = career_position;
-    }
-    public String getMember_CareerSeq() {
-        return member_CareerSeq;
-    }
-    public void setMember_CareerSeq(String member_CareerSeq) {
-        this.member_CareerSeq = member_CareerSeq;
     }
     public String getSchool_name() {
         return school_name;
@@ -568,6 +566,108 @@ public class Member extends Base {
     }
     public void setCompany_seq(String company_seq) {
         this.company_seq = company_seq;
+    }
+    public Integer getSns_type() {
+        return sns_type;
+    }
+    public void setSns_type(Integer sns_type) {
+        this.sns_type = sns_type;
+    }
+    public Integer[] getSns_types() {
+        return sns_types;
+    }
+    public void setSns_types(Integer[] sns_types) {
+        this.sns_types = sns_types;
+    }
+    public String[] getFilmo_periods() {
+        return filmo_periods;
+    }
+    public void setFilmo_periods(String[] filmo_periods) {
+        this.filmo_periods = filmo_periods;
+    }
+    public Integer[] getFilmo_types() {
+        return filmo_types;
+    }
+    public void setFilmo_types(Integer[] filmo_types) {
+        this.filmo_types = filmo_types;
+    }
+    public String[] getFilmo_producers() {
+        return filmo_producers;
+    }
+    public void setFilmo_producers(String[] filmo_producers) {
+        this.filmo_producers = filmo_producers;
+    }
+    public String[] getFilmo_names() {
+        return filmo_names;
+    }
+    public void setFilmo_names(String[] filmo_names) {
+        this.filmo_names = filmo_names;
+    }
+    public String[] getFilmo_roles() {
+        return filmo_roles;
+    }
+    public void setFilmo_roles(String[] filmo_roles) {
+        this.filmo_roles = filmo_roles;
+    }
+    public String[] getEdu_periods() {
+        return edu_periods;
+    }
+    public void setEdu_periods(String[] edu_periods) {
+        this.edu_periods = edu_periods;
+    }
+    public String[] getSchool_names() {
+        return school_names;
+    }
+    public void setSchool_names(String[] school_names) {
+        this.school_names = school_names;
+    }
+    public String[] getEdu_majors() {
+        return edu_majors;
+    }
+    public void setEdu_majors(String[] edu_majors) {
+        this.edu_majors = edu_majors;
+    }
+    public Integer[] getEdu_types() {
+        return edu_types;
+    }
+    public void setEdu_types(Integer[] edu_types) {
+        this.edu_types = edu_types;
+    }
+    public String[] getAward_periods() {
+        return award_periods;
+    }
+    public void setAward_periods(String[] award_periods) {
+        this.award_periods = award_periods;
+    }
+    public String[] getAward_names() {
+        return award_names;
+    }
+    public void setAward_names(String[] award_names) {
+        this.award_names = award_names;
+    }
+    public String[] getAward_issuers() {
+        return award_issuers;
+    }
+    public void setAward_issuers(String[] award_issuers) {
+        this.award_issuers = award_issuers;
+    }
+    public String[] getCareer_periods() {
+        return career_periods;
+    }
+    public void setCareer_periods(String[] career_periods) {
+        this.career_periods = career_periods;
+    }
+    public String[] getCareer_company_names() {
+        return career_company_names;
+    }
+    public void setCareer_company_names(String[] career_company_names) {
+        this.career_company_names = career_company_names;
+    }
+    public String[] getCareer_positions() {
+        return career_positions;
+    }
+    public void setCareer_positions(String[] career_positions) {
+        this.career_positions = career_positions;
     }
     
 	

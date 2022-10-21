@@ -226,7 +226,7 @@
 						</div>
 						<div class="row pb-1 text-center">
 							<div class="col-3 gx-1">
-								<select class="form-select" name="sns_type">
+								<select class="form-select" name="sns_types">
 									<option value="">선택</option>
 									<option value="11">인스타</option>
 									<option value="12">페이스북</option>
@@ -235,7 +235,7 @@
 								</select>
 							</div>
 							<div class="col gx-1">
-								<input type="text" class="form-control" placeholder="url" name="url">
+								<input type="text" class="form-control" placeholder="url" name="urls">
 							</div>
 							<div class="col-1 gx-1">
 								<button type="button" class="regFrombutton1" onclick="addSns()">
@@ -290,7 +290,7 @@
 						</div>
 						<div class="row gx-1 text-center pb-1">
 							<div class="col-3">
-								<input type="date" class="form-control" name="filmo_period">
+								<input type="date" class="form-control" name="filmo_periods">
 							</div>
 							<div class="col">
 								<select class="form-select" name="filmo_type">
@@ -304,13 +304,13 @@
 								</select>
 							</div>
 							<div class="col">
-								<input type="text" class="form-control" name="filmo_producer">
+								<input type="text" class="form-control" name="filmo_producers">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control" name="filmo_name">
+								<input type="text" class="form-control" name="filmo_names">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control" name="filmo_role">
+								<input type="text" class="form-control" name="filmo_roles">
 							</div>
 							<div class="col-1">
 								<button type="button" class="regFrombutton1" onclick="addFilmo()">
@@ -367,16 +367,16 @@
 						</div>
 						<div class="row gx-1 text-center pb-1">
 							<div class="col-4">
-								<input type="date" class="form-control" name="edu_period">
+								<input type="date" class="form-control" name="edu_periods">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control" name="school_name">
+								<input type="text" class="form-control" name="school_names">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control" name="edu_major">
+								<input type="text" class="form-control" name="edu_majors">
 							</div>
 							<div class="col">
-								<select class="form-select" name="edu_type">
+								<select class="form-select" name="edu_types">
 									<option value="">선택</option>
 									<option value="21">졸업</option>
 									<option value="22">재학</option>
@@ -413,13 +413,13 @@
 										</div>
 										<div class="row gx-1 text-center pb-1">
 											<div class="col-4">
-												<input type="date" class="form-control" name="award_period">
+												<input type="date" class="form-control" name="award_periods">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control" name="award_name">
+												<input type="text" class="form-control" name="award_names">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control" name="award_issuer">
+												<input type="text" class="form-control" name="award_issuers">
 											</div>
 											<div class="col-1">
 												<button type="button" class="regFrombutton1" onclick="addAward()">
@@ -439,13 +439,13 @@
 										</div>
 										<div class="row gx-1 text-center pb-1">
 											<div class="col-4">
-												<input type="date" class="form-control" name="career_period">
+												<input type="date" class="form-control" name="career_periods">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control" name="career_company_name">
+												<input type="text" class="form-control" name="career_company_names">
 											</div>
 											<div class="col">
-												<input type="text" class="form-control" name="career_position">
+												<input type="text" class="form-control" name="career_positions">
 											</div>
 											<div class="col-1">
 												<button type="button" class="regFrombutton1" onclick="addCareer()">

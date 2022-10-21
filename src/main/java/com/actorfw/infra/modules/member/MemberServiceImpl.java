@@ -71,31 +71,26 @@ public class MemberServiceImpl implements MemberService {
 // 멤버sns인서트
     @Override
     public int insertSnsCd(Member dto) throws Exception {
-      dto.setMember_SnsSeq(dto.getSeq());
         return dao.insertSnsCd(dto);
     }
  // 멤버filmo인서트
     @Override
     public int insertFilmoCd(Member dto) throws Exception {
-        dto.setMember_FilmoSeq(dto.getSeq());
         return dao.insertFilmoCd(dto);
     }
     
     @Override
     public int insertEduCd(Member dto) throws Exception {
-        dto.setMember_EduSeq(dto.getSeq());
         return dao.insertEduCd(dto);
     }
     
     @Override
     public int insertAwardCd(Member dto) throws Exception {
-        dto.setMember_AwardSeq(dto.getSeq());
         return dao.insertAwardCd(dto);
     }
     
     @Override
     public int insertCareerCd(Member dto) throws Exception {
-        dto.setMember_CareerSeq(dto.getSeq());
         return dao.insertCareerCd(dto);
     }
 //----------------------------------------------------------------감독상세   

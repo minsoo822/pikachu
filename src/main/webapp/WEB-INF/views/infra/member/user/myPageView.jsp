@@ -114,9 +114,10 @@
 			</div>
 		</nav>
 	</div>
-	<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
+	<br>sessSeq: <c:out value="${sessSeq }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
-	sessId: <c:out value="${sessId }"/><br> --%>
+	sessId: <c:out value="${sessId }"/><br>
+	sessAdmin: <c:out value="${sessAdmin }"/><br>
 	<!-- odition post summary -->
 	<div class="actoraaaa">
 		<div class="row">

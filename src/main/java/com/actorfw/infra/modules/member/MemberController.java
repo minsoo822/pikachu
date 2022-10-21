@@ -100,6 +100,8 @@ public class MemberController {
 	@RequestMapping(value = "memberInst")
 	public String isertCd(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
+	   
+	    
 		int insertCd = service.insertCd(dto);
 		System.out.println("Controller Inst :" + insertCd);
 		
@@ -195,26 +197,66 @@ public class MemberController {
 	@RequestMapping(value = "signUpActorInst")
 	public String signUpActorInst(Member dto) throws Exception {
 		
+	    System.out.println("sns 꺼내오기 !");
+	 
+	    
+//	    for(int i = 0; i< dto.getUrls().length ; i ++) {
+//	        dto.setUrl(dto.getUrls()[i]);
+//	        service.insertSnsCd(dto);
+//	    }
+	    
+	  
 		//기본정보
 		int signUpActorInst = service.insertCd(dto);
 		System.out.println("signUpActorInst : " + signUpActorInst);
 		//sns
-	    int insertSnsCd = service.insertSnsCd(dto);
-	    System.out.println("insertSnsCd : " + insertSnsCd);
+	    for(int i = 0; i< dto.getUrls().length ; i ++) {
+            
+	        dto.setUrl(dto.getUrls()[i]);
+            dto.setSns_type(dto.getSns_types()[i]);
+                      
+            service.insertSnsCd(dto);
+        }
 	    //filmo
-	    int insertFilmoCd = service.insertFilmoCd(dto);
-	    System.out.println("insertFilmoCd : " + insertFilmoCd);
-	  //filmo
-        int insertEduCd = service.insertEduCd(dto);
-        System.out.println("insertEduCd : " + insertEduCd);
-      //filmo
-        int insertAwardCd = service.insertAwardCd(dto);
-        System.out.println("insertAwardCd : " + insertAwardCd);
-      //filmo
-        int insertCareerCd = service.insertCareerCd(dto);
-        System.out.println("insertCareerCd : " + insertCareerCd);
+	    for(int i = 0; i < dto.getFilmo_names().length; i++) {
+	        
+	        dto.setFilmo_period(dto.getFilmo_periods()[i]);
+	        dto.setFilmo_type(dto.getFilmo_types()[i]);
+	        dto.setFilmo_producer(dto.getFilmo_producers()[i]);
+	        dto.setFilmo_name(dto.getFilmo_names()[i]);
+	        dto.setFilmo_role(dto.getFilmo_roles()[i]);
+	        
+	        service.insertFilmoCd(dto);
+	    }
+	    //edu
+        for(int i = 0; i < dto.getEdu_periods().length; i++) {
+            
+            dto.setEdu_period(dto.getEdu_periods()[i]);
+            dto.setSchool_name(dto.getSchool_names()[i]);
+            dto.setEdu_major(dto.getEdu_majors()[i]);
+            dto.setEdu_type(dto.getEdu_types()[i]);
         
-		
+            service.insertEduCd(dto);
+        }
+        //Award
+        for(int i = 0; i < dto.getAward_periods().length; i++) {
+            
+            dto.setAward_period(dto.getAward_periods()[i]);
+            dto.setAward_name(dto.getAward_names()[i]);
+            dto.setAward_issuer(dto.getAward_issuers()[i]);
+          
+            service.insertAwardCd(dto);
+        }
+        //career
+        for(int i = 0; i < dto.getCareer_periods().length; i++) {
+            
+            dto.setCareer_period(dto.getCareer_periods()[i]);
+            dto.setCareer_company_name(dto.getCareer_company_names()[i]);
+            dto.setCareer_position(dto.getCareer_positions()[i]);
+          
+            service.insertCareerCd(dto);
+        }
+
 		return "redirect:/member/mainHome";
 	}
 	
