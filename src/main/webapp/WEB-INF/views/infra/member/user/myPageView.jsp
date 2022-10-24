@@ -164,7 +164,7 @@
 										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_weight }"/>
+												<c:out value="${item.actor_height }"/>
 											</div>
 										</div>
 										<div class="row">
@@ -311,7 +311,7 @@
 										<c:choose>
 											<c:when test="${fn:length(list) eq 0}">
 												<div class="row">
-													<div class="col-12 pt-2 txwhite" style="">
+													<div class="col-12 pt-3 txwhite">
 														학력이 존재하지 않습니다.
 													</div>
 												</div>
