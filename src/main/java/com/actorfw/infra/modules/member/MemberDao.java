@@ -24,11 +24,16 @@ public class MemberDao {
 	public List<Member> actorList (MemberVo vo) { return sqlSession.selectList(namespace + ".actorList", vo);}
 //	감독리스트
 	public List<Member> directorList (MemberVo vo) { return sqlSession.selectList(namespace + ".directorList", vo);}
+
 //  마이페이지 리스트에 올것듯 -----------------------------------------------------------  
 //  sns정보
 	public List<Member> selectSnsList(MemberVo vo) { return sqlSession.selectList(namespace + ".selectSnsList", vo); }
-    
-	
+//  filmo정보
+	public List<Member> selectFilmoList(MemberVo vo) { return sqlSession.selectList(namespace + ".selectFilmoList", vo); }
+//  edu정보
+	public List<Member> selectEduList(MemberVo vo) { return sqlSession.selectList(namespace + ".selectEduList", vo); }
+//  award정보
+	public List<Member> selectAwardList(MemberVo vo) { return sqlSession.selectList(namespace + ".selectAwardList", vo); }
 //-------------------------------------------------------------------------------------------	
 	
 	public Member selectOne (MemberVo vo) {

@@ -367,7 +367,11 @@
 						</div>
 						<div class="row gx-1 text-center pb-1">
 							<div class="col-4">
-								<input type="date" class="form-control" name="edu_periods">
+								<div class="input-group">
+									<input type="date" class="form-control" name="edu_periods_s">
+									<span class="input-group-text">~</span>
+									<input type="date" class="form-control" name="edu_periods_e">
+								</div>
 							</div>
 							<div class="col">
 								<input type="text" class="form-control" name="school_names">

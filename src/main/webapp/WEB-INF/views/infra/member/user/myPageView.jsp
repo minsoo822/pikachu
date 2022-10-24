@@ -114,10 +114,10 @@
 			</div>
 		</nav>
 	</div>
-	<br>sessSeq: <c:out value="${sessSeq }"/><br>
+	<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
 	sessId: <c:out value="${sessId }"/><br>
-	sessAdmin: <c:out value="${sessAdmin }"/><br>
+	sessAdmin: <c:out value="${sessAdmin }"/><br> --%>
 	<!-- odition post summary -->
 	<div class="actoraaaa">
 		<div class="row">
@@ -146,71 +146,61 @@
 										<div class="row">
 											<div class="col-2">이름</div>
 											<div class="col-5">
-												<c:out value="${item.name }"></c:out>
+												<c:out value="${item.name }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">출생</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.dob }"></c:out>
+												<c:out value="${item.dob }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">나이</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.age }"></c:out>
+												<c:out value="${item.age }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_weight }"></c:out>
+												<c:out value="${item.actor_weight }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">몸무게</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_weight }"></c:out>
+												<c:out value="${item.actor_weight }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">이메일</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.email}"></c:out>
+												<c:out value="${item.email}"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">연락처</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.phone_number }"></c:out>
+												<c:out value="${item.phone_number }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">특기</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="노래">
+												<c:out value="${item.actor_specialty }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">쌍꺼풀 유무</div>
 											<div class="col-5 gy-1">
-												<select class="form-select">
-													<option>선택</option>
-													<option >겉쌍꺼풀</option>
-													<option>속쌍꺼풀</option>
-													<option>무쌍꺼풀</option>
-												</select>
+												<c:out value="${item.actor_eyelid }"/>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">목소리 톤</div>
 											<div class="col-5 gy-1">
-												<select class="form-select">
-													<option>선택</option>
-													<option >고음</option>
-													<option>중음</option>
-													<option>저음</option>
-												</select>
+												<c:out value="${item.actor_voice }"/>
 											</div>	
 										</div>
 									</div>
@@ -220,20 +210,20 @@
 										<h4><b>SNS</b></h4>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col txwhite">
-									<c:forEach items="${snsList}" var="snsList" varStatus="status">
-										<div class="row">
-											<div class="col-2 gy-1">
-												<c:out value="${snsList.type }"/>
-											</div>
-											<div class="col-7 gy-1">
-												<c:out value="${snsList.url }"/>
+								<c:forEach items="${snsList}" var="snsList" varStatus="statusSnsList">
+									<div class="row">
+										<div class="col txwhite">
+											<div class="row">
+												<div class="col-2 gy-1">
+													<c:out value="${snsList.type }"/>
+												</div>
+												<div class="col-7 gy-1">
+													<c:out value="${snsList.url }"/>
+												</div>
 											</div>
 										</div>
-									</c:forEach>	
 									</div>
-								</div>
+								</c:forEach>	
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>필모그래피</b></h4>
@@ -246,31 +236,25 @@
 									<div class="col regText">제목</div>
 									<div class="col regText">역활</div>
 								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-3">
-										<input type="date" class="form-control" value="2011-01-03">
+								<c:forEach items="${filmoList}" var="filmoList" varStatus="statusfilmoList">
+									<div class="row gx-1 text-center mb-1">
+										<div class="col-3 txwhite">
+											<c:out value="${filmoList.period }"/>
+										</div>
+										<div class="col txwhite">
+											<c:out value="${filmoList.type }"/>
+										</div>
+										<div class="col txwhite">
+											<c:out value="${filmoList.producer }"/>
+										</div>
+										<div class="col txwhite">
+											<c:out value="${filmoList.name }"/>
+										</div>
+										<div class="col txwhite">
+											<c:out value="${filmoList.role }"/>
+										</div>
 									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option >드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="CJ미디어">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="드림하이">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="김필숙">
-									</div>
-								</div>
+								</c:forEach>
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>프로필사진</b></h4>
@@ -292,14 +276,6 @@
 												<img alt="" src="https://blog.kakaocdn.net/dn/bAPdqx/btrFVi67cgg/jkHLXOn4nI4s0t9jWe0CFK/img.jpg" width="230px" height="345">
 											</div>
 										</div>
-										<div class="row mt-2">
-											<div class="col d-grid justify-content-end">
-												<input type="file" id="file" style="display: none;">
-												<button type="button" class="regFrombutton" onclick="onclick=document.all.file.click()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
-											</div>
-										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -317,14 +293,6 @@
 												<iframe src='https://www.youtube.com/embed//GLfKZlS3IbQ' frameborder='0' allowfullscreen width="450px" height="250px"></iframe>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col d-grid justify-content-end">
-												<input type="file" id="file2" style="display: none;">
-												<button type="button" class="regFrombutton" onclick="onclick=document.all.file2.click()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
-											</div>
-										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -340,31 +308,37 @@
 											<div class="col regText">전공</div>
 											<div class="col regText">구분</div>
 										</div>
-										<div class="row gx-1 text-center">
-											<div class="col-4">
-												<div class="input-group">
-													<input type="date" class="form-control">
-													<span class="input-group-text">~</span>
-													<input type="date" class="form-control">
+										<c:choose>
+											<c:when test="${fn:length(list) eq 0}">
+												<div class="row">
+													<div class="col-12 pt-2 txwhite" style="">
+														학력이 존재하지 않습니다.
+													</div>
 												</div>
-											</div>
-											<div class="col">
-												<input type="text" class="form-control" value="동덕여자고등학교">
-											</div>
-											<div class="col">
-												<input type="text" class="form-control" value="">
-											</div>
-											<div class="col">
-												<select class="form-select">
-													<option>선택</option>
-													<option selected="selected">졸업</option>
-													<option>재학</option>
-													<option>휴학</option>
-													<option>중퇴</option>
-													<option>퇴학</option>
-												</select>
-											</div>
-										</div>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="eduList" var="eduList" varStatus="statuseduList">
+													<div class="row gx-1 text-center">
+														<div class="col-4">
+															<div class="input-group">
+																<c:out value="${eduList.period_s }"></c:out>
+																<span class="input-group-text">~</span>
+																<c:out value="${eduList.period_e }"></c:out>
+															</div>
+														</div>
+														<div class="col">
+															<c:out value="${eduList.name }"></c:out>
+														</div>
+														<div class="col">
+															<c:out value="${eduList.major }"></c:out>
+														</div>
+														<div class="col">
+															<c:out value="${eduList.type }"></c:out>
+														</div>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 								<div class="row">

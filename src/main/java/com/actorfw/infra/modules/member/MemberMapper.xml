@@ -58,9 +58,37 @@
 		WHERE 1=1
 		AND member_seq = #{seq}
 	</select>
-	
-	
-	
+	<select id="selectFilmoList" resultMap="resultObj">
+		SELECT
+			period
+			,type
+			,producer
+			,name
+			,role
+		FROM actor_filmography
+		WHERE 1=1
+		AND member_seq = #{seq}	
+	</select>
+	<select id="selectEduList" resultMap="resultObj">
+		SELECT
+			period_s
+			period_e
+			,school_name
+			,major
+			,type
+		FROM actor_education
+		WHERE 1=1
+		AND member_seq = #{seq}	
+	</select>
+	<select id="selectAwardList" resultMap="resultObj">
+		SELECT
+			period
+			,name
+			,issuer
+		FROM actor_award
+		WHERE 1=1
+		AND member_seq = #{seq}	
+	</select>
 	
 	
 	
@@ -221,14 +249,16 @@
 	</insert>
 	<insert id="insertEduCd">
 		INSERT INTO actor_education (
-			period
+			period_s
+			,period_e
 			,school_name
 			,major
 			,type
 			,member_seq
 		)
 		VALUES (
-			#{edu_period}
+			#{edu_period_s}
+			,#{edu_period_e}
 			,#{school_name}
 			,#{edu_major}
 			,#{edu_type}

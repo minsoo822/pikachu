@@ -37,6 +37,15 @@ public class Member extends Base {
 	private Integer adminNy;
 	private String actor_specialty;
 	private String aboutMe;
+	
+//-------------------------------------------------
+	
+	private String period;
+	private String period_s;
+	private String period_e;
+	private String role;
+	private String producer;
+	private String major;
 
 //-------------------------------------------------	
 //	private MultipartFile[] file0;		// memberForm.profileImage
@@ -48,7 +57,13 @@ public class Member extends Base {
 //	private MultipartFile[] UploadedFile;
 	
 
-	private MultipartFile[] plofil_image;
+	public String getProducer() {
+        return producer;
+    }
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
+    private MultipartFile[] plofil_image;
 	
 	
 	
@@ -88,8 +103,10 @@ public class Member extends Base {
 
 //--------------------------------------------------------
   
-  private String edu_period;
-  private String[] edu_periods;
+  private String edu_period_s;
+  private String[] edu_periods_s;
+  private String edu_period_e;
+  private String[] edu_periods_e;
   private String school_name;
   private String[] school_names;
   private String edu_major;
@@ -422,12 +439,7 @@ public class Member extends Base {
     public void setFilmo_role(String filmo_role) {
         this.filmo_role = filmo_role;
     }
-    public String getEdu_period() {
-        return edu_period;
-    }
-    public void setEdu_period(String edu_period) {
-        this.edu_period = edu_period;
-    }
+    
     public String getShcool_name() {
         return school_name;
     }
@@ -596,12 +608,6 @@ public class Member extends Base {
     public void setFilmo_roles(String[] filmo_roles) {
         this.filmo_roles = filmo_roles;
     }
-    public String[] getEdu_periods() {
-        return edu_periods;
-    }
-    public void setEdu_periods(String[] edu_periods) {
-        this.edu_periods = edu_periods;
-    }
     public String[] getSchool_names() {
         return school_names;
     }
@@ -679,6 +685,60 @@ public class Member extends Base {
     }
     public void setCompanyWork_names(String[] companyWork_names) {
         this.companyWork_names = companyWork_names;
+    }
+    public String getPeriod() {
+        return period;
+    }
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
+    public String getMajor() {
+        return major;
+    }
+    public void setMajor(String major) {
+        this.major = major;
+    }
+    public String getEdu_period_s() {
+        return edu_period_s;
+    }
+    public void setEdu_period_s(String edu_period_s) {
+        this.edu_period_s = edu_period_s;
+    }
+    public String[] getEdu_periods_s() {
+        return edu_periods_s;
+    }
+    public void setEdu_periods_s(String[] edu_periods_s) {
+        this.edu_periods_s = edu_periods_s;
+    }
+    public String getEdu_period_e() {
+        return edu_period_e;
+    }
+    public void setEdu_period_e(String edu_period_e) {
+        this.edu_period_e = edu_period_e;
+    }
+    public String[] getEdu_periods_e() {
+        return edu_periods_e;
+    }
+    public void setEdu_periods_e(String[] edu_periods_e) {
+        this.edu_periods_e = edu_periods_e;
+    }
+    public String getPeriod_s() {
+        return period_s;
+    }
+    public void setPeriod_s(String period_s) {
+        this.period_s = period_s;
+    }
+    public String getPeriod_e() {
+        return period_e;
+    }
+    public void setPeriod_e(String period_e) {
+        this.period_e = period_e;
     }
     
 	

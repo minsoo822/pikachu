@@ -16,7 +16,12 @@ public interface MemberService {
 //  마이페이지 리스트에 올것듯 ------------------------------------------------
 //	sns정보
 	public List<Member> selectSnsList(MemberVo vo) throws Exception;
-
+//  filmo정보
+	public List<Member> selectFilmoList(MemberVo vo) throws Exception;
+//  edu정보
+    public List<Member> selectEduList(MemberVo vo) throws Exception;
+//  award정보
+    public List<Member> selectAwardList(MemberVo vo) throws Exception;
 //--------------------------------------------------------------------- 	
 	public Member selectOne(MemberVo vo) throws Exception;
     /* public int selectSeq() throws Exception; */

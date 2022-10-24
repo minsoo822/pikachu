@@ -30,13 +30,23 @@ public class MemberServiceImpl implements MemberService {
 //	sns정보
 	@Override
     public List<Member> selectSnsList(MemberVo vo) throws Exception { return dao.selectSnsList(vo); }
-	
-	
+//	filmo정보
+	@Override
+    public List<Member> selectFilmoList(MemberVo vo) throws Exception { return dao.selectFilmoList(vo); }
+//  edu정보
+	@Override
+    public List<Member> selectEduList(MemberVo vo) throws Exception { return dao.selectEduList(vo); }
+//  award정보
+	@Override
+    public List<Member> selectAwardList(MemberVo vo) throws Exception { return dao.selectAwardList(vo); }
 //-------------------------------------------------------------------
 
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception  { return dao.selectOne(vo); }
 
+    
+    
+    
     //--------------------------------------------------------------------------------------------------	
 //	멤버인서트
 	@Override

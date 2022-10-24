@@ -217,9 +217,10 @@ public class MemberController {
 	        service.insertFilmoCd(dto);
 	    }
 	    //edu
-        for(int i = 0; i < dto.getEdu_periods().length; i++) {
+        for(int i = 0; i < dto.getEdu_periods_s().length; i++) {
             
-            dto.setEdu_period(dto.getEdu_periods()[i]);
+            dto.setEdu_period_s(dto.getEdu_periods_s()[i]);
+            dto.setEdu_period_e(dto.getEdu_periods_e()[i]);
             dto.setSchool_name(dto.getSchool_names()[i]);
             dto.setEdu_major(dto.getEdu_majors()[i]);
             dto.setEdu_type(dto.getEdu_types()[i]);
@@ -247,12 +248,12 @@ public class MemberController {
 
 		return "redirect:/member/mainHome";
 	}
-//	유저회원가입 감독페이지
+//	유저회원가입 감독 폼 페이지
 	@RequestMapping(value = "signUpDirectorForm")
 	public String signUpDirector(Model model) throws Exception {
 		return "infra/member/user/signUpDirector";
 	}
-	
+	// 유저회원가입 감독 가입 페이지
 	@RequestMapping(value = "signUpDirectorInst")
 	public String signUpDirectorInst(Member dto) throws Exception {
 //		기본정보
@@ -279,28 +280,27 @@ public class MemberController {
 	@RequestMapping(value = "Mypage")
     public String myPage(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
         
+//	    mypage 시퀀스값을 가져오는 코드
 	    vo.setSeq((String)httpSession.getAttribute("sessSeq"));
-	    
 	    //멤버정보 가져오는거 
 	    Member item = service.selectOne(vo);
 	    model.addAttribute("item", item);
-	    //필모그라피 정보
-	    
+	    //프로필이미지정보
+	    dto.setPseq(Integer.parseInt(vo.getSeq())); 
+        Member imageView = service.imageView(dto);
+        model.addAttribute("imageView", imageView);
 	    //sns정보 
 	    List<Member> snsList = service.selectSnsList(vo);
 	    model.addAttribute("snsList", snsList);
-	    System.out.println("snsList : " + snsList);
-//	    List<Member> mypageList = service.selectMypage(vo);  //적절하지 못함
-//	    System.out.println("seq : " + vo.getSeq());          //적절하지 못함
-//	    
-//	    model.addAttribute("mypageList", mypageList);        //적절하지 못함
-//	    System.out.println("mypageList : " +  mypageList);   //적절하지 못함
-
-        dto.setPseq(Integer.parseInt(vo.getSeq()));// 
-        Member imageView = service.imageView(dto);
-        model.addAttribute("imageView", imageView);
-        System.out.println("pseq : " + dto.getPseq());
-        
+        //필모그라피 정보
+        List<Member> filmoList = service.selectFilmoList(vo);
+        model.addAttribute("filmoList", filmoList);
+        //edu정보
+        List<Member> eduList = service.selectEduList(vo);
+        model.addAttribute("eduList", eduList);
+        //award정보
+        List<Member> AwardList = service.selectAwardList(vo);
+        model.addAttribute("AwardList", AwardList);
 	    
         return "infra/member/user/myPageView";
     }
