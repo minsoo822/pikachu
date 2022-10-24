@@ -131,7 +131,7 @@
 						</div>
 						<div class="row">
 							<div class="col p-5" style="text-align: center; color: white;">
-								<h2><b>이지은</b></h2>
+								<h2><b><c:out value="${item.name }"/></b></h2>
 							</div>
 						</div>
 					</div>
@@ -164,7 +164,7 @@
 										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_height }"/>
+												<c:out value="${item.actor_weight }"/>
 											</div>
 										</div>
 										<div class="row">
@@ -302,43 +302,32 @@
 												<h4><b>학력</b></h4>
 											</div>
 										</div>
-										<div class="row text-center gx-1">
+										<div class="row text-center gx-1 mb-3">
 											<div class="col-4 regText">시기</div>
 											<div class="col regText">학교명</div>
 											<div class="col regText">전공</div>
 											<div class="col regText">구분</div>
 										</div>
-										<c:choose>
-											<c:when test="${fn:length(list) eq 0}">
-												<div class="row">
-													<div class="col-12 pt-3 txwhite">
-														학력이 존재하지 않습니다.
-													</div>
+										<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
+										<div class="row gx-1 text-center">
+											<div class="col-4  txwhite">
+												<div class="input-group">
+													<c:out value="${eduList.period_s }"/>
+													<span class="txwhite">~</span>
+													<c:out value="${eduList.period_e }"/>
 												</div>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="eduList" var="eduList" varStatus="statuseduList">
-													<div class="row gx-1 text-center">
-														<div class="col-4">
-															<div class="input-group">
-																<c:out value="${eduList.period_s }"></c:out>
-																<span class="input-group-text">~</span>
-																<c:out value="${eduList.period_e }"></c:out>
-															</div>
-														</div>
-														<div class="col">
-															<c:out value="${eduList.name }"></c:out>
-														</div>
-														<div class="col">
-															<c:out value="${eduList.major }"></c:out>
-														</div>
-														<div class="col">
-															<c:out value="${eduList.type }"></c:out>
-														</div>
-													</div>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
+											</div>
+											<div class="col txwhite">
+												<c:out value="${eduList.school_name }"/>
+											</div>
+											<div class="col txwhite">
+												<c:out value="${eduList.major }"/>
+											</div>
+											<div class="col txwhite">
+												<c:out value="${eduList.type }"/>
+											</div>
+										</div>
+										</c:forEach>
 									</div>
 								</div>
 								<div class="row">
@@ -379,7 +368,7 @@
 									<div class="col">
 										<div class="row">
 											<div class="col">
-												<textarea rows="10" cols="50"></textarea>
+												<textarea rows="10" cols="50"><c:out value="${item.aboutMe }"/></textarea>
 											</div>
 										</div>
 									</div>
