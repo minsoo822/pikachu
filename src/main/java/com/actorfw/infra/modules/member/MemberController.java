@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.actorfw.infra.modules.xactorpost.ActorPost;
 import com.actorfw.infra.modules.xactorpost.ActorPostServiceImpl;
 import com.actorfw.infra.modules.xactorpost.ActorPostVo;
-import com.actorfw.infra.modules.xtourpost.TourPost;
 import com.actorfw.infra.modules.xtourpost.TourPostServiceImpl;
 import com.actorfw.infra.modules.xtourpost.TourPostVo;
 
@@ -196,22 +194,12 @@ public class MemberController {
 //	유저회원가입 배우페이지
 	@RequestMapping(value = "signUpActorInst")
 	public String signUpActorInst(Member dto) throws Exception {
-		
-	    System.out.println("sns 꺼내오기 !");
-	 
-	    
-//	    for(int i = 0; i< dto.getUrls().length ; i ++) {
-//	        dto.setUrl(dto.getUrls()[i]);
-//	        service.insertSnsCd(dto);
-//	    }
-	    
-	  
 		//기본정보
 		int signUpActorInst = service.insertCd(dto);
-		System.out.println("signUpActorInst : " + signUpActorInst);
 		//sns
-	    for(int i = 0; i< dto.getUrls().length ; i ++) {
-            
+	    for(int i = 0; i< dto.getSns_types().length ; i ++) {
+	        System.out.println("sns1 : " + dto.getSns_types());
+	       
 	        dto.setUrl(dto.getUrls()[i]);
             dto.setSns_type(dto.getSns_types()[i]);
                       
@@ -259,7 +247,6 @@ public class MemberController {
 
 		return "redirect:/member/mainHome";
 	}
-	
 //	유저회원가입 감독페이지
 	@RequestMapping(value = "signUpDirectorForm")
 	public String signUpDirector(Model model) throws Exception {
@@ -275,10 +262,15 @@ public class MemberController {
 		int insertCompanyCd = service.insertCompanyCd(dto);
 		System.out.println("insertCompanyCd : " + insertCompanyCd);
 //		회사작품정보
-		int insertCompanyWorkCd = service.insertCompanyWorkCd(dto);
-		System.out.println("insertCompanyWorkCd : " + insertCompanyWorkCd);
-		
-		
+		for(int i = 0; i < dto.getCompanyWork_periods_s().length; i++) {
+		    
+		    dto.setCompanyWork_period_s(dto.getCompanyWork_periods_s()[i]);
+		    dto.setCompanyWork_period_e(dto.getCompanyWork_periods_e()[i]);
+		    dto.setCompanyWork_type(dto.getCompanyWork_types()[i]);
+		    dto.setCompanyWork_name(dto.getCompanyWork_names()[i]);
+		    
+		    service.insertCompanyWorkCd(dto);
+		}
 		return "redirect:/member/mainHome";
 	}
 	
@@ -327,11 +319,11 @@ public class MemberController {
 	@RequestMapping(value = "mainHome")
 	public String mainPage(Model model, TourPostVo vo1, ActorPostVo vo) throws Exception {
 //		
-	    List<ActorPost> List = Actorservice.actorList(vo);
-	   
-	    List<TourPost> tourList = Tourservice.tourList(vo1);
-        model.addAttribute("tourList", tourList);
-	    System.out.println("tourList : " + tourList);
+//	    List<ActorPost> List = Actorservice.actorList(vo);
+//	   
+//	    List<TourPost> tourList = Tourservice.tourList(vo1);
+//        model.addAttribute("tourList", tourList);
+//	    System.out.println("tourList : " + tourList);
 //	    List<ActorPost> actorList = Actorservice.actorList(vo);
 
 //		List<ActorPost> actorlist = Actorservice.actorList(vo);

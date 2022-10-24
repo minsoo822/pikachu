@@ -267,7 +267,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="text" class="form-control" name="">
+								<input type="text" class="form-control" name="actor_specialty">
 							</div>
 						</div>
 					</div>
@@ -293,7 +293,7 @@
 								<input type="date" class="form-control" name="filmo_periods">
 							</div>
 							<div class="col">
-								<select class="form-select" name="filmo_type">
+								<select class="form-select" name="filmo_types">
 									<option value="">선택</option>
 									<option value="15">상업영화</option>
 									<option value="16">단편(독립)영화</option>
@@ -469,7 +469,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<textarea class="form-control" rows="" cols="" name=""></textarea>
+								<textarea class="form-control" rows="" cols="" name="aboutMe"></textarea>
 							</div>
 						</div>
 					</div>
@@ -511,7 +511,7 @@
 			
 			tmp += '<div class="row pb-1 text-center" id="snsDelete' + count_sns + '">';
 			tmp += '<div class="col-3 gx-1">';
-			tmp += '<select class="form-select" name="sns_type">';
+			tmp += '<select class="form-select" name="sns_types">';
 			tmp += '<option value="">선택</option>';
 			tmp += '<option value="11">인스타</option>';
 			tmp += '<option value="12">페이스북</option>';
@@ -520,7 +520,7 @@
 			tmp += '</select>';
 			tmp += '</div>';
 			tmp += '<div class="col gx-1">';
-			tmp += '<input type="text" class="form-control" placeholder="url" name="url">';
+			tmp += '<input type="text" class="form-control" placeholder="url" name="urls">';
 			tmp += '</div>';
 			tmp += '<div class="col-1 gx-1">';
 			tmp += '<button type="button" class="regFrombutton1" onclick="remove(snsDelete' + count_sns + ')">';
@@ -542,27 +542,27 @@
 			
 			tmp += '<div class="row gx-1 text-center pb-1" id="filmoDelete' + count_filmo + '">';
 			tmp += '<div class="col-3">';
-			tmp += '<input type="date" class="form-control">';
+			tmp += '<input type="date" class="form-control" name="filmo_periods">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<select class="form-select">';
-			tmp += '<option>선택</option>';
-			tmp += '<option>상업영화</option>';
-			tmp += '<option>단편(독립)영화</option>';
-			tmp += '<option>드라마</option>';
-			tmp += '<option>웹드라마</option>';
-			tmp += '<option>광고(CF)</option>';
-			tmp += '<option>바이럴광고</option>';
+			tmp += '<select class="form-select" name="filmo_types">';
+			tmp += '<option value="">선택</option>';
+			tmp += '<option value="15">상업영화</option>';
+			tmp += '<option value="16">단편(독립)영화</option>';
+			tmp += '<option value="17">드라마</option>';
+			tmp += '<option value="18">웹드라마</option>';
+			tmp += '<option value="19">광고(CF)</option>';
+			tmp += '<option value="20">바이럴광고</option>';
 			tmp += '</select>';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="filmo_producers">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="filmo_names">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="filmo_roles">';
 			tmp += '</div>';
 			tmp += '<div class="col-1">';
 			tmp += '<button type="button" class="regFrombutton1" onclick="remove(filmoDelete' + count_filmo + ')">';
@@ -584,22 +584,22 @@
 			
 			tmp += '<div class="row gx-1 text-center pb-1" id="eduDelete' + count_edu + '">';
 			tmp += '<div class="col-4">';
-			tmp += '<input type="date" class="form-control">';
+			tmp += '<input type="date" class="form-control" name="edu_periods">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="school_names">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="edu_majors">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<select class="form-select">';
-			tmp += '<option>선택</option>';
-			tmp += '<option>졸업</option>';
-			tmp += '<option>재학</option>';
-			tmp += '<option>휴학</option>';
-			tmp += '<option>중퇴</option>';
-			tmp += '<option>퇴학</option>';
+			tmp += '<select class="form-select" name="edu_types">';
+			tmp += '<option value="">선택</option>';
+			tmp += '<option value="21">졸업</option>';
+			tmp += '<option value="22">재학</option>';
+			tmp += '<option value="23">휴학</option>';
+			tmp += '<option value="24">중퇴</option>';
+			tmp += '<option value="25">퇴학</option>';
 			tmp += '</select>';
 			tmp += '</div>';
 			tmp += '<div class="col-1">';
@@ -622,13 +622,13 @@
 		
 			tmp += '<div class="row gx-1 text-center pb-1" id="awardDelete' + count_award + '">';
 			tmp += '<div class="col-4">';
-			tmp += '<input type="date" class="form-control">';
+			tmp += '<input type="date" class="form-control" name="award_periods">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="award_names">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="award_issuers">';
 			tmp += '</div>';
 			tmp += '<div class="col-1">';
 			tmp += '<button type="button" class="regFrombutton1" onclick="remove(awardDelete' + count_award + ')">';
@@ -650,13 +650,13 @@
 		
 			tmp += '<div class="row gx-1 text-center pb-1" id="carrerDelete' + count_carrer + '">';
 			tmp += '<div class="col-4">';
-			tmp += '<input type="date" class="form-control">';
+			tmp += '<input type="date" class="form-control" name="career_periods">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="career_company_names">';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="career_positions">';
 			tmp += '</div>';
 			tmp += '<div class="col-1">';
 			tmp += '<button type="button" class="regFrombutton1" onclick="remove(carrerDelete' + count_carrer + ')">';

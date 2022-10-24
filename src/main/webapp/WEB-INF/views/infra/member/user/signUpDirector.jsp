@@ -260,13 +260,13 @@
 								<div class="row gx-1">
 									<div class="col">
 										<div class="input-group">
-											<input type="date" class="form-control" name="companyWork_period_s">
+											<input type="date" class="form-control" name="companyWork_periods_s">
 											<span class="input-group-text">~</span>
-											<input type="date" class="form-control" name="companyWork_period_e">
+											<input type="date" class="form-control" name="companyWork_periods_e">
 										</div>
 									</div>
 									<div class="col-2">
-										<select class="form-select" name="companyWork_type">
+										<select class="form-select" name="companyWork_types">
 											<option value="">선택</option>
 											<option value="15">상업영화</option>
 											<option value="16">단편(독립)영화</option>
@@ -277,7 +277,7 @@
 										</select>
 									</div>
 									<div class="col">
-										<input type="text" class="form-control" name="companyWork_name">
+										<input type="text" class="form-control" name="companyWork_names">
 									</div>
 									<div class="col-1">
 										<button type="button" class="regFrombutton1" onclick="addWork()">
@@ -357,25 +357,24 @@
 			tmp += '<div class="row gx-1" id="careerDelete' + count_career + '">';
 			tmp += '<div class="col">';
 			tmp += '<div class="input-group">';
-			tmp += '<input type="date" class="form-control">';
+			tmp += '<input type="date" class="form-control" name="companyWork_periods_s">';
 			tmp += '<span class="input-group-text">~</span>';
-			tmp += '<input type="date" class="form-control">';
+			tmp += '<input type="date" class="form-control" name="companyWork_periods_e">';
 			tmp += '</div>';
 			tmp += '</div>';
 			tmp += '<div class="col-2">';
-			tmp += '<select class="form-select">';
-			tmp += '<option>선택</option>';
-			tmp += '<option></option>';
-			tmp += '<option></option>';
-			tmp += '<option></option>';
-			tmp += '<option></option>';
-			tmp += '<option></option>';
-			tmp += '<option></option>';
-			tmp += '<option></option>';
+			tmp += '<select class="form-select" name="companyWork_types">';
+			tmp += '<option value="">선택</option>';
+			tmp += '<option value="15">상업영화</option>';
+			tmp += '<option value="16">단편(독립)영화</option>';
+			tmp += '<option value="17">드라마</option>';
+			tmp += '<option value="18">웹드라마</option>';
+			tmp += '<option value="19">광고(CF)</option>';
+			tmp += '<option value="20">바이럴광고</option>';
 			tmp += '</select>';
 			tmp += '</div>';
 			tmp += '<div class="col">';
-			tmp += '<input type="text" class="form-control">';
+			tmp += '<input type="text" class="form-control" name="companyWork_names">';
 			tmp += '</div>';
 			tmp += '<div class="col-1">';
 			tmp += '<button type="button" class="regFrombutton1" onclick="remove(careerDelete' + count_career + ')">';

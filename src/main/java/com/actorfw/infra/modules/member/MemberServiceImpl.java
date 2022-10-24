@@ -68,42 +68,42 @@ public class MemberServiceImpl implements MemberService {
 		return insertCd;
 	}
 //------------------------------------------------------------ 배우상세	
-// 멤버sns인서트
+//  배우sns인서트
     @Override
     public int insertSnsCd(Member dto) throws Exception {
         return dao.insertSnsCd(dto);
     }
- // 멤버filmo인서트
+//  배우filmo인서트
     @Override
     public int insertFilmoCd(Member dto) throws Exception {
         return dao.insertFilmoCd(dto);
     }
-    
+//  배우edu인서트
     @Override
     public int insertEduCd(Member dto) throws Exception {
         return dao.insertEduCd(dto);
     }
-    
+//  배우award인서트    
     @Override
     public int insertAwardCd(Member dto) throws Exception {
         return dao.insertAwardCd(dto);
     }
-    
+//  배우career인서트   
     @Override
     public int insertCareerCd(Member dto) throws Exception {
         return dao.insertCareerCd(dto);
     }
 //----------------------------------------------------------------감독상세   
-    
+//  감독company인서트 
     @Override
     public int insertCompanyCd(Member dto) throws Exception {
-        dto.setMember_CompanySeq(dto.getSeq());
         return dao.insertCompanyCd(dto);
     }
+//  감독companywork인서트 
     @Override
     public int insertCompanyWorkCd(Member dto) throws Exception {
-        int company_WorkSeq = dao.selectLastcompanySeq();
-        dto.setCompany_WorkSeq(company_WorkSeq);
+//      int company_WorkSeq = dao.selectLastcompanySeq();
+//      dto.setCompany_WorkSeq(company_WorkSeq);
         return dao.insertCompanyWorkCd(dto);
     }
     
