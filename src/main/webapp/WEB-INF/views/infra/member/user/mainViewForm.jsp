@@ -344,7 +344,7 @@
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${fn:length(list) eq 0}">
+					<c:when test="${fn:length(tourList) eq 0}">
 						<tr>
 							<td style="text-align: center;" colspan="9"> no Data!</td>
 						</tr>
