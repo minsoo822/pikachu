@@ -113,7 +113,6 @@ public class MemberController {
 		
 		int updateCd = service.updateCd(dto);
 		
-		System.out.println();
 		redirectAttributes.addFlashAttribute("vo", vo);
 		System.out.println("주소나와라 : " + updateCd);
 		return "redirect:/member/memberList";

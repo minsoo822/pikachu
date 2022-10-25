@@ -59,6 +59,13 @@
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
 	</select>
+	<select id="selectLastSeq" resultType="Integer">
+		SELECT
+			seq
+		FROM post_odition
+		ORDER BY seq DESC
+		LIMIT 1	
+	</select>
 	
 	<insert id="insrtOdition">
 		INSERT INTO post_odition (
@@ -97,6 +104,35 @@
 				SELECT last_insert_id()
 			</selectKey>
 	</insert>
+	
+	<insert id="insertOditionUpload">
+		INSERT INTO odition_PostUploaded (
+			type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy
+			,pseq
+		)
+		VALUE (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,#{delNy}
+			,#{pseq}
+		)
+	</insert>
+	
+	
 
 
 </mapper>

@@ -16,7 +16,6 @@ public class MemberDao {
 	private SqlSession sqlSession;
 	
 	public static String namespace = "com.actorfw.infra.modules.member.MemberMapper";
-//	public static String tournamespace = "com.actorfw.infra.modules.post.PostMapper";
 //-------------------------------------------------------------------------------------------	
 //	회원리스트
 	public List<Member> selectList (MemberVo vo) { return sqlSession.selectList(namespace + ".selectList", vo);}

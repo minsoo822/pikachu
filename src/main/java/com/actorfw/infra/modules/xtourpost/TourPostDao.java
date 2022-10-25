@@ -36,5 +36,15 @@ public class TourPostDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	public int insertTourUpload(TourPost dto) { 
+	    return sqlSession.insert(namespace + ".insertTourUpload", dto);
+	}
+	
+	public int selectLastSeq() {
+	    return sqlSession.selectOne(namespace + ".selectLastSeq", "");
+	}
+	
+	
+	
 	
 }

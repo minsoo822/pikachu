@@ -1,5 +1,9 @@
 package com.actorfw.infra.modules.xtourpost;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.actorfw.infra.common.base.Base;
+
 public class TourPost {
 	
 	
@@ -14,7 +18,6 @@ public class TourPost {
 	private String	tourDate;
 	private String	tourNote;
 	
-
 	
 	//----------------------------------------	
 	
@@ -76,7 +79,6 @@ public class TourPost {
 	public void setTourNote(String tourNote) {
 		this.tourNote = tourNote;
 	}
-	
 
 	
 

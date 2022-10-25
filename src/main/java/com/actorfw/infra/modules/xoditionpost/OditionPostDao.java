@@ -31,6 +31,11 @@ public class OditionPostDao {
 	    return sqlSession.selectOne(namespace + ".selectOneCount" , vo);
 	}
 	
-	
+	public int insertOditionUpload(OditionPost dto) {
+	    return sqlSession.insert(namespace + ".insertOditionUpload", dto);
+	}
+	public int selectLastSeq() {
+	    return sqlSession.selectOne(namespace + ".selectLastSeq", "");
+	}
 	
 }

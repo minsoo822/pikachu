@@ -19,8 +19,8 @@ public class TourPostServiceImpl implements TourPostService {
 
 //	투어정보Inst
 	@Override
-	public int insrtTour(TourPost dto) throws Exception {
-		return dao.insrtTour(dto);
+	public int insrtTour(TourPost dto) throws Exception { 
+	    return dao.insrtTour(dto);
 	}
 	
 	@Override

@@ -1,6 +1,10 @@
 package com.actorfw.infra.modules.xoditionpost;
 
-public class OditionPost  {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.actorfw.infra.common.base.Base;
+
+public class OditionPost extends Base {
 
 	private String seq;
 	
@@ -8,7 +12,7 @@ public class OditionPost  {
 	private String member_seq;
 	private Integer type;
 	private String name;
-	private Integer age;
+	private String age;
 	private Integer gender;
 	private String casting;
 	private String producer;
@@ -19,6 +23,8 @@ public class OditionPost  {
 	private String pay;
 	private String email;
 	private String contents;
+	
+	private MultipartFile[] post_image;
 
 //----------------------------------------	
 	
@@ -48,10 +54,10 @@ public class OditionPost  {
 	    public void setName(String name) {
 	        this.name = name;
 	    }
-	    public Integer getAge() {
+	    public String getAge() {
 	        return age;
 	    }
-	    public void setAge(Integer age) {
+	    public void setAge(String age) {
 	        this.age = age;
 	    }
 	    public Integer getGender() {
@@ -114,6 +120,12 @@ public class OditionPost  {
 	    public void setContents(String contents) {
 	        this.contents = contents;
 	    }
+        public MultipartFile[] getPost_image() {
+            return post_image;
+        }
+        public void setPost_image(MultipartFile[] post_image) {
+            this.post_image = post_image;
+        }
 	    
 	
 //----------------------------------------

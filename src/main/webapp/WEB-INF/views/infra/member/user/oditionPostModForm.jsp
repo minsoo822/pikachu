@@ -35,7 +35,7 @@
 	
 <body>
 	<!-- start -->
-<form method="post" id="mainForm">	
+<form method="post" id="mainForm" enctype="multipart/form-data">	
  	<div class="hero">
 		<nav class="top-fixed">
 			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
@@ -171,6 +171,12 @@
 					<td>
 						<input type="date" class="form-control" name="deadline">
 					</td>
+				</tr>
+				<tr>
+					<th>포스트사진</th>
+					<th>
+						<input type="file" class="form-control" name="post_image" style="width: 235px;">
+					</th>
 				</tr>
 			</table>
 			<input hidden="" type="text" value="">

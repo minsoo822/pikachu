@@ -116,134 +116,33 @@
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">오디션 공고</h2>
 		</div>
 		<div class="box">
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-5">
-						<img alt="" src="/resources/image/badcity.jpg">
-					</div>
-					<div class="col">
-					<h5>범죄도시2</h5>
-						<div class="pra">
-							<p>
-								제작 : B.A ent<br> 
-								배역 : 조,단역<br>
-								연령 : 20대초 ~ 50대후반<br>
-								성별 : 남자,여자
-							</p>
-							<p style="text-align: center; ">
-								<a class="mainoditionbutton" href="#">더보기</a>
-							</p>
+		<c:forEach items="${oditionList }" var="oditionList" varStatus="statusoditionList">
+			<div class="row">
+				<div class="col-4">
+					<div class="card">
+						<div class="row g-0">
+							<div class="col-5">
+								<img alt="" src="${oditionList.path }${oditionList.uuidName}">
+							</div>
+							<div class="col-7">
+								<h5><c:out value="${oditionList.name }"/></h5>
+								<div class="pra">
+									<p>
+										제작 : <c:out value="${oditionList.producer }"/><br> 
+										배역 : <c:out value="${oditionList.casting }"/><br>
+										연령 : 20대초 ~ 50대후반<br>
+										성별 : <c:out value="${oditionList.gender }"/>
+									</p>
+									<p style="text-align: center; ">
+										<a class="mainoditionbutton" href="#">더보기</a>
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-5">
-						<img alt="" src="/resources/image/1987.jpg">
-					</div>
-					<div class="col">
-					<h5>1987</h5>
-						<div class="pra">
-							<p>
-								제작 : 비공개<br> 
-								배역 : 주조연 어린시절<br>
-								연령 : 13세~15세<br>
-								성별 : 남자
-							</p>
-							<p style="text-align: center; ">
-								<a class="mainoditionbutton" href="#">더보기</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-5">
-						<img alt="" src="/resources/image/netplix2.png">
-					</div>
-					<div class="col">
-					<h5>넷플릭스-택ooo</h5>
-						<div class="pra">
-							<p>
-								제작 : 넷플릭스 드라마<br> 
-								배역 : 폭탄테러범 이미지단역<br>
-								연령 : 30대초 ~ 30대후반<br>
-								성별 : 남자
-							</p>
-							<p style="text-align: center; ">
-								<a class="mainoditionbutton" href="#">더보기</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="box">
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-5">
-						<img alt="" src="/resources/image/backmauntin.jpg">
-					</div>
-					<div class="col">
-					<h5>백두산</h5>
-						<div class="pra">
-							<p>
-								제작 : 넷플릭스 드라마<br> 
-								배역 : 폭탄테러범 이미지단역<br>
-								연령 : 30대초 ~ 30대후반<br>
-								성별 : 남자
-							</p>
-							<p style="text-align: center; ">
-								<a class="mainoditionbutton" href="#">더보기</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-5">
-						<img alt="" src="/resources/image/badcity.jpg">
-					</div>
-					<div class="col">
-					<h5>범죄도시2</h5>
-						<div class="pra">
-							<p>
-								제작 : 넷플릭스 드라마<br> 
-								배역 : 폭탄테러범 이미지단역<br>
-								연령 : 30대초 ~ 30대후반<br>
-								성별 : 남자
-							</p>
-							<p style="text-align: center; ">
-								<a class="mainoditionbutton" href="#">더보기</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="row">
-					<div class="col-5">
-						<img alt="" src="/resources/image/netplix2.png">
-					</div>
-					<div class="col">
-						<h5>넷플릭스-택ooo</h5>
-						<div class="pra">
-							<p>
-								제작 : 넷플릭스 드라마<br> 
-								배역 : 폭탄테러범 이미지단역<br>
-								연령 : 30대초 ~ 30대후반<br>
-								성별 : 남자
-							</p>
-							<p style="text-align: center; ">
-								<a class="mainoditionbutton" href="#">더보기</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+		</c:forEach>
 		</div>
 	</div>	
 	<!-- profil post summary -->
@@ -251,79 +150,16 @@
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">배우 프로필</h2>
 		</div>
-		<div class="boxattor"">
-			<div class="cardactor" >
-				<img src="/resources/image/jingiju.png" class="card-img-top" alt="..." href="">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">진기주</h5>
+		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
+		<c:forEach items="${memberList }" var="memberList" varStatus="statusmemberList">
+			<div class="cardactor col-2" >
+				<img src="${memberList.path}${memberList.uuidName}" class="card-img-top" alt="..." href="">
+				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${memberList.name }"/></h5>
 				<div class="pra">
-					<p style="text-align: center;">33세</p>
+					<p style="text-align: center;"><c:out value="${memberList.age }"/>세</p>
 				</div>
 			</div>
-			<div class="cardactor">
-				<img src="/resources/image/chunwoohee.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">천우희</h5>
-				<div class="pra">
-					<p style="text-align: center;">35세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/yangsejong.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">양세종</h5>
-				<div class="pra">
-					<p style="text-align: center;">29세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/leejiun.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">이지은</h5>
-				<div class="pra">
-					<p style="text-align: center;">29세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/sunina.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">설인아</h5>
-				<div class="pra">
-					<p style="text-align: center;">26세</p>
-				</div>
-			</div>
-		</div>
-		<div class="boxattor">
-			<div class="cardactor">
-				<img src="/resources/image/kimyoujung.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">김유정</h5>
-				<div class="pra">
-					<p style="text-align: center;">22세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/jisoo.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">지수</h5>
-				<div class="pra">
-					<p style="text-align: center;">27세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/leejoomung.png" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">이주명</h5>
-				<div class="pra">
-					<p style="text-align: center;">28세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/goyunjung.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">고윤정</h5>
-				<div class="pra">
-					<p style="text-align: center;">26세</p>
-				</div>
-			</div>
-			<div class="cardactor">
-				<img src="/resources/image/parkminyoung.jpg" class="card-img-top" alt="...">
-				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;">박민영</h5>
-				<div class="pra">
-					<p style="text-align: center;">36세</p>
-				</div>
-			</div>
+		</c:forEach>	
 		</div>
 	</div>
 	<!-- tour post summary -->
@@ -334,7 +170,6 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>순번</th>
 					<th>분류</th>
 					<th>작품제목 (제작사)</th>
 					<th>위치</th>
@@ -343,27 +178,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:choose>
-					<c:when test="${fn:length(tourList) eq 0}">
-						<tr>
-							<td style="text-align: center;" colspan="9"> no Data!</td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${tourList}" var="tourList" varStatus="status">
-							<tr>
-								<td>
-								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
-								</td>
-								<td><c:out value="${tourList.tourType }"/></td>
-								<td><c:out value="${tourList.tourName }"/></td>
-								<td><c:out value="${tourList.tourAddress }"/></td>
-								<td><c:out value="${tourList.tourDate }"/></td>
-								<td><c:out value="${tourList.tourNote }"/></td>
-							</tr>	
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
+				<c:forEach items="${tourList}" var="tourList" varStatus="statustourList">
+					<tr>
+						<td><c:out value="${tourList.type }"/></td>
+						<td><c:out value="${tourList.name }"/></td>
+						<td><c:out value="${tourList.address }"/></td>
+						<td><c:out value="${tourList.date }"/></td>
+						<td><c:out value="${tourList.note }"/></td>
+					</tr>	
+				</c:forEach>
 			</tbody>	
 		</table>
 	</div>
