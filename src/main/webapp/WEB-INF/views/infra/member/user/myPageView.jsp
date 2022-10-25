@@ -43,7 +43,8 @@
 	</style>
 </head>
 <body>
-	<form action="">
+	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="seq" value="${vo.seq }">
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -126,7 +127,7 @@
 					<div class="col-4">
 						<div class="row">
 							<div class="col" style="text-align: center;">
-								<img alt="" src="${imageView.path}${imageView.uuidName}">
+								<img src="${imageMainView.path}${imageMainView.uuidName}">
 							</div>
 						</div>
 						<div class="row">
@@ -263,18 +264,11 @@
 								<div class="row">
 									<div class="col">
 										<div class="row gx-0">
-											<div class="col-3">
-												<img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/IU_posing_for_Marie_Claire_Korea_March_2022_issue_03.jpg/800px-IU_posing_for_Marie_Claire_Korea_March_2022_issue_03.jpg" width="230px" height="345">
-											</div>
-											<div class="col-3">
-												<img alt="" src="https://image.cine21.com/resize/cine21/article/2022/0603/15_30_27__6299aa83cb210[H800-].jpg" width="230px" height="345">
-											</div>
-											<div class="col-3">
-												<img alt="" src="https://assets.repress.co.kr/photos/2009ea104d2c842fed5461308d9f92d7/original.jpg" width="230px" height="345">
-											</div>
-											<div class="col-3">
-												<img alt="" src="https://blog.kakaocdn.net/dn/bAPdqx/btrFVi67cgg/jkHLXOn4nI4s0t9jWe0CFK/img.jpg" width="230px" height="345">
-											</div>
+											<c:forEach items="${imageSubView}" var="imageSubView" varStatus="statusSubImg">
+												<div class="col-3">
+													<img alt="" class="subProfile" src="${imageSubView.path}${imageSubView.uuidName}">
+												</div>
+											</c:forEach>	
 										</div>
 									</div>
 								</div>
@@ -311,7 +305,7 @@
 										<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
 										<div class="row gx-1 text-center">
 											<div class="col-4  txwhite">
-												<div class="input-group">
+												<div class="input-group" style="display: flex; justify-content: center;">
 													<c:out value="${eduList.period_s }"/>
 													<span class="txwhite">~</span>
 													<c:out value="${eduList.period_e }"/>
@@ -373,6 +367,12 @@
 										</div>
 									</div>
 								</div>
+								<div class="row">
+									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
+										<button type="button" class="regFrombutton">목록으로</button>
+										<button type="button" class="regFrombutton" style="margin-left: 10px;" id="btnForm">수정하기</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -422,6 +422,65 @@
 	
 	
 	<script type="text/javascript">
+	
+	
+	
+	var goMypageForm = "/member/MypageForm";
+	
+	var seq = $("input:hidden[name=seq]");
+	
+	var form = $("#mainForm");
+	
+	
+	
+	$("#btnForm")on.("click", function() {
+		goForm(0);
+	});
+	
+	goForm = function(key) {
+		
+		seq.attr("value",key);
+		form.attr("action", goMypageForm).submit();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
 	

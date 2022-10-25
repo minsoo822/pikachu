@@ -27,7 +27,10 @@
         z-index: -1;
 
     }
+    /* div {
+    	border: solid 1px orange;
     
+    } */
 	</style>
 	
 </head>
@@ -116,8 +119,8 @@
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">오디션 공고</h2>
 		</div>
 		<div class="box">
-		<c:forEach items="${oditionList }" var="oditionList" varStatus="statusoditionList">
 			<div class="row">
+		<c:forEach items="${oditionList }" var="oditionList" varStatus="statusoditionList">
 				<div class="col-4">
 					<div class="card">
 						<div class="row g-0">
@@ -130,7 +133,7 @@
 									<p>
 										제작 : <c:out value="${oditionList.producer }"/><br> 
 										배역 : <c:out value="${oditionList.casting }"/><br>
-										연령 : 20대초 ~ 50대후반<br>
+										연령 : <c:out value="${oditionList.age }"/><br>
 										성별 : <c:out value="${oditionList.gender }"/>
 									</p>
 									<p style="text-align: center; ">
@@ -141,8 +144,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
 		</c:forEach>
+			</div>
 		</div>
 	</div>	
 	<!-- profil post summary -->

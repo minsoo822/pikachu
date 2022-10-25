@@ -71,8 +71,10 @@ public class MemberDao {
 	public int selectSeq() { return sqlSession.selectOne(namespace + ".selectSeq", "");}
 //	파일업로드
 	public int insertMemberUpload(Member dto) { return sqlSession.insert(namespace + ".insertMemberUpload" , dto);}
-//	프로필사진 미리보기
-	public Member imageView(Member dto) { return sqlSession.selectOne(namespace + ".imageView" , dto);}
+//	메인프로필사진 미리보기
+	public Member imageMainView(Member dto) { return sqlSession.selectOne(namespace + ".imageMainView" , dto);}
+//	서브프로필사진 불러오기
+	public List<Member> imageSubView(Member dto) {return sqlSession.selectList(namespace + ".imageSubView", dto); }
 //	페이징
 	public int selectOneCount(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	

@@ -21,7 +21,7 @@ public class UtilUpload {
 		String uuidFileName = uuid + "." + ext;
 //		uuid에 확장자를 붙여서 저장 디비에도 저장되고 폴더에도 이 이름으로 저장되고 불러올떄도 이 이름으로 불러온다
 		String pathModule = className;
-//		module name 나는 community
+//		module name 나는 member
 		String nowString = UtilDateTime.nowString();
 //		시분초 년월일
 		String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 

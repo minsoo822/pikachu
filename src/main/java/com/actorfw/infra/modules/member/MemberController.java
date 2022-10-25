@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.actorfw.infra.modules.xactorpost.ActorPostServiceImpl;
 import com.actorfw.infra.modules.xactorpost.ActorPostVo;
-import com.actorfw.infra.modules.xtourpost.TourPostServiceImpl;
 import com.actorfw.infra.modules.xtourpost.TourPostVo;
 
 @Controller
@@ -25,13 +23,6 @@ public class MemberController {
 	
     @Autowired
     MemberServiceImpl service;
-    	
-    @Autowired
-    TourPostServiceImpl Tourservice;
-    	
-    @Autowired
-    ActorPostServiceImpl Actorservice;
-
 	
 	
 	public void setParamsPaging(MemberVo vo) throws Exception { 
@@ -86,19 +77,16 @@ public class MemberController {
 		
 		Member item = service.selectOne(vo);
 		model.addAttribute("item", item);
-		System.out.println("Controll Form :" + item);
 		
 		dto.setPseq(Integer.parseInt(vo.getSeq()));// 
-		Member imageView = service.imageView(dto);
-		model.addAttribute("imageView", imageView);
+		Member imageMainView = service.imageMainView(dto);
+		model.addAttribute("imageMainView", imageMainView);
 		
 		return "infra/member/xdmin/memberForm";
 	}
 //	관리자화면 회원가입
 	@RequestMapping(value = "memberInst")
 	public String isertCd(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
-		
-	   
 	    
 		int insertCd = service.insertCd(dto);
 		System.out.println("Controller Inst :" + insertCd);
@@ -275,7 +263,7 @@ public class MemberController {
 	}
 	
 //---------------------------------------------------------------------------------------------------------------	
-	// 마이페이지
+	// 마이페이지 뷰
 	@RequestMapping(value = "Mypage")
     public String myPage(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
         
@@ -284,10 +272,13 @@ public class MemberController {
 	    //멤버정보 가져오는거 
 	    Member item = service.selectOne(vo);
 	    model.addAttribute("item", item);
-	    //프로필이미지정보
+	    //메인프로필이미지정보
 	    dto.setPseq(Integer.parseInt(vo.getSeq())); 
-        Member imageView = service.imageView(dto);
-        model.addAttribute("imageView", imageView);
+        Member imageMainView = service.imageMainView(dto);
+        model.addAttribute("imageMainView", imageMainView);
+        //서브프로필이미지정보
+        List<Member> imageSubView = service.imageSubView(dto);
+        model.addAttribute("imageSubView", imageSubView);
 	    //sns정보 
 	    List<Member> snsList = service.selectSnsList(vo);
 	    model.addAttribute("snsList", snsList);
@@ -303,6 +294,13 @@ public class MemberController {
 	    
         return "infra/member/user/myPageView";
     }
+	
+	@RequestMapping(value = "MypageForm")
+	public String mypageForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+	    Member item = service.selectOne(vo);
+	    model.addAttribute("item", item);
+	    return "infra/member/user/myPageForm";
+	}
     
 //---------------------------------------------------------------------------------------------------------------   
     

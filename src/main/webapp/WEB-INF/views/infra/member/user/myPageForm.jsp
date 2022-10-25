@@ -43,7 +43,8 @@
 	</style>
 </head>
 <body>
-	<form action="">
+	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
+	<input type="text" name="name" value="${vo.seq }">
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -90,10 +91,10 @@
 			</div>
 		</nav>
 	</div>
-	<br>sessSeq: <c:out value="${sessSeq }"/><br>
+	<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
 	sessId: <c:out value="${sessId }"/><br>
-	sessAdmin: <c:out value="${sessAdmin }"/><br>
+	sessAdmin: <c:out value="${sessAdmin }"/><br> --%>
 	<!-- odition post summary -->
 	<div class="actoraaaa">
 		<div class="row">
@@ -122,13 +123,13 @@
 										<div class="row">
 											<div class="col-2">이름</div>
 											<div class="col-5">
-												<input type="text" class="form-control" value="">
+												<input type="text" class="form-control" name="name" value="${item.name }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">출생</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="1993년 5월 16일 (29세)">
+												<input type="text" class="form-control" value="${item }">
 											</div>
 										</div>
 										<div class="row">

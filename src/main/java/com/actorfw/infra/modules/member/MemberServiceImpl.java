@@ -63,10 +63,14 @@ public class MemberServiceImpl implements MemberService {
                 String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
                 
 //                		MemberServiceImpl.java  ->	 MemberServiceImpl -> ""  ->	 memberserviceimpl -> 	member
-                 
                 UtilUpload.uploadPost(myFile, pathModule, dto);
-
-                dto.setType(2);
+                    
+                    System.out.println(myFile.getOriginalFilename());
+                if(myFile.getOriginalFilename().toUpperCase().contains(".MP4") == true ) {
+                    dto.setType(3);
+                } else {
+                    dto.setType(2);
+                }
                 dto.setDefaultNy(j == 0 ? 1 : 0);
                 dto.setSort(j+1);
                 dto.setPseq(pseq);
@@ -138,7 +142,11 @@ public class MemberServiceImpl implements MemberService {
                  
                 UtilUpload.uploadPost(myFile, pathModule, dto);
 
-                dto.setType(2);
+                if(myFile.getOriginalFilename().toUpperCase().contains(".MP4") == true ) {
+                    dto.setType(3);
+                } else {
+                    dto.setType(2);
+                }
                 dto.setDefaultNy(j == 0 ? 1 : 0);
                 dto.setSort(j+1);
                 dto.setPseq(Integer.parseInt(dto.getSeq()));
@@ -149,13 +157,17 @@ public class MemberServiceImpl implements MemberService {
         }
 		return updateCd; 
 	}
-//  프로필사진 미리보기
+//  메인프로필사진 불러오기
 	@Override
-	public Member imageView(Member dto) throws Exception {
-		return dao.imageView(dto);
+	public Member imageMainView(Member dto) throws Exception {
+		return dao.imageMainView(dto);
 	}
-	
-//	아이디 중복체크
+//  서브프로필사진 불러오기
+	@Override
+    public List<Member> imageSubView(Member dto) throws Exception {
+        return dao.imageSubView(dto);
+    }
+    //	아이디 중복체크
 	@Override
 	public int idCheck(Member dto) throws Exception  { return dao.idCheck(dto);}
 	

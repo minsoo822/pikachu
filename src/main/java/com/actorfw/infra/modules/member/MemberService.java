@@ -52,7 +52,8 @@ public interface MemberService {
 //	로그인
 	public Member logInCd(Member dto) throws Exception;
 	
-	public Member imageView(Member dto) throws Exception; 
+	public Member imageMainView(Member dto) throws Exception; 
+	public List<Member> imageSubView(Member dto) throws Exception;
 //	페이징
 	public int selectOneCount(MemberVo vo) throws Exception;
 }

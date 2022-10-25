@@ -196,12 +196,12 @@
 	            			<div class="col-4">
 	            				<div class="row">
 	            					<div class="col">
-	            						<img style="width: 400px; height: 600px;" src="${imageView.path}${imageView.uuidName}" id="preview">
+	            						<img style="width: 400px; height: 600px;" src="${imageMainView.path}${imageMainView.uuidName}" id="preview">
 	            					</div>
 	            				</div>
 	            				<div class="row">
 	            					<div class="col">
-	            						<input type="file" name="plofil_image" id="mainPicture"  class="form-control" style="width: 400px;">
+	            						<input type="file" name="plofil_image" id="mainPicture"  class="form-control" style="width: 400px;" multiple>
 	            						<!-- <input type="file" name ="plofil_image"  multiple="multiple" > -->
 	            					</div>  
 	            				</div>  

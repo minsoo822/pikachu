@@ -446,11 +446,18 @@
 		)
 	</insert>
 	
-	<select id="imageView" resultMap="resultObj">
+	<select id="imageMainView" resultMap="resultObj">
 		SELECT 
 			*
 		FROM memberUploaded
-		WHERE 1=1
+		WHERE defaultNy = 1
+		AND pseq = #{pseq}
+	</select>
+	<select id="imageSubView" resultMap="resultObj">
+		SELECT 
+			*
+		FROM memberUploaded
+		WHERE defaultNy = 0
 		AND pseq = #{pseq}
 	</select>
 
