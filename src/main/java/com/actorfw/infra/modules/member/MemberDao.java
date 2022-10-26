@@ -75,6 +75,8 @@ public class MemberDao {
 	public Member imageMainView(Member dto) { return sqlSession.selectOne(namespace + ".imageMainView" , dto);}
 //	서브프로필사진 불러오기
 	public List<Member> imageSubView(Member dto) {return sqlSession.selectList(namespace + ".imageSubView", dto); }
+//	연기영상
+	public List<Member> actorVideo(Member dto) { return sqlSession.selectList(namespace + ".actorVideo", dto);}
 //	페이징
 	public int selectOneCount(MemberVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	

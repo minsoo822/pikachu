@@ -147,7 +147,7 @@
 	<script type="text/javascript">
 	
 	$("#goHome").on("click", function(){
-		location.href = "/member/mainIndex";
+		location.href = "/home/Home";
 	});
 	$("#goXdmin").on("click", function(){
 		location.href = "/code/CodeList";

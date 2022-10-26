@@ -54,6 +54,7 @@ public interface MemberService {
 	
 	public Member imageMainView(Member dto) throws Exception; 
 	public List<Member> imageSubView(Member dto) throws Exception;
+	public List<Member> actorVideo(Member dto) throws Exception;
 //	페이징
 	public int selectOneCount(MemberVo vo) throws Exception;
 }

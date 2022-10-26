@@ -451,6 +451,7 @@
 			*
 		FROM memberUploaded
 		WHERE defaultNy = 1
+		AND   type = 2
 		AND pseq = #{pseq}
 	</select>
 	<select id="imageSubView" resultMap="resultObj">
@@ -458,9 +459,17 @@
 			*
 		FROM memberUploaded
 		WHERE defaultNy = 0
+		AND   type = 2
 		AND pseq = #{pseq}
 	</select>
-
+	<select id="actorVideo" resultMap="resultObj">
+		SELECT 
+			*
+		FROM memberUploaded
+		WHERE defaultNy = 0
+		AND   type = 3
+		AND pseq = #{pseq}
+	</select>
 
 
 

@@ -279,6 +279,9 @@ public class MemberController {
         //서브프로필이미지정보
         List<Member> imageSubView = service.imageSubView(dto);
         model.addAttribute("imageSubView", imageSubView);
+//      연기영상
+        List<Member> actorVideo = service.actorVideo(dto);
+        model.addAttribute("actorVideo", actorVideo);
 	    //sns정보 
 	    List<Member> snsList = service.selectSnsList(vo);
 	    model.addAttribute("snsList", snsList);

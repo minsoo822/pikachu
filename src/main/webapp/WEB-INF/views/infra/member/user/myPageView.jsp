@@ -280,6 +280,13 @@
 								<div class="row">
 									<div class="col">
 										<div class="row">
+											<c:forEach items="${actorVideo }" var="actorVideo" varStatus="statusactorVideoList">
+												<div class="col-6">
+													<video src="${actorVideo.path }${actorVideo.uuidName}" style="background: gray;"/>	
+												</div>
+											</c:forEach>
+										</div>
+										<div class="row">
 											<div class="col">
 												<iframe src='https://www.youtube.com/embed//x-TtMKkQ0eI' frameborder='0' allowfullscreen width="450px" height="250px"></iframe>
 											</div>
@@ -370,7 +377,7 @@
 								<div class="row">
 									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
 										<button type="button" class="regFrombutton">목록으로</button>
-										<button type="button" class="regFrombutton" style="margin-left: 10px;" id="btnForm">수정하기</button>
+										<a type="button" class="regFrombutton" style="margin-left: 10px;" id="btnForm">수정하기</a>
 									</div>
 								</div>
 							</div>

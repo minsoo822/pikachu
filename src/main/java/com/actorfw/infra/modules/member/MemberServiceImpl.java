@@ -167,13 +167,22 @@ public class MemberServiceImpl implements MemberService {
     public List<Member> imageSubView(Member dto) throws Exception {
         return dao.imageSubView(dto);
     }
+//	연기영상 불러오기
+    @Override
+    public List<Member> actorVideo(Member dto) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.actorVideo(dto);
+    }
     //	아이디 중복체크
 	@Override
 	public int idCheck(Member dto) throws Exception  { return dao.idCheck(dto);}
 	
 //	로그인
 	@Override
-	public Member logInCd(Member dto) throws Exception  { return dao.logInCd(dto); }
+	public Member logInCd(Member dto) throws Exception  { 
+	    
+	    return dao.logInCd(dto); 
+	    }
 //	페이징
 	@Override
 	public int selectOneCount(MemberVo vo) throws Exception { return dao.selectOneCount(vo);
