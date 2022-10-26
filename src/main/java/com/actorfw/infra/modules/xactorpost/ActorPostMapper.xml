@@ -7,35 +7,44 @@
 <mapper namespace="com.actorfw.infra.modules.xactorpost.ActorPostMapper">
 
 <resultMap type="com.actorfw.infra.modules.xactorpost.ActorPost" id="resultObj"></resultMap>
-
-	<select id="actorList" resultMap="resultObj">
-		SELECT
-			a.*
-			,b.path
-			,b.uuidName
+	
+	<sql id ="selectCommon">
 		FROM member a
 		INNER JOIN memberUploaded b
 		ON b.pseq = a.seq
 		WHERE a.user_type = 26
-		ORDER BY a.seq ASC
-	</select>
-
-<!-- 	<select id="imageList" resultMap="resultObj">
-		SELECT
-			*
-		FROM memberUploaded
-		WHERE 1=1
-			ORDER BY seq DESC
+		AND b.type = 2
+		AND b.defaultNy = 1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND ifcgSeq = #{shValue}</when>
+				<when test="shOption == 2">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</sql>
+	
+	<select id="actorList" resultMap="resultObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+			a.*
+			,b.path
+			,b.uuidName
+			<include refid="selectCommon" />
+			ORDER BY a.seq DESC
+		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
-	<select id="imageViwe" resultMap="resultObj">
-		SELECT
-			*
-		FROM memberUploaded
-		WHERE 1=1
-		AND pseq = #{pseq}
-			ORDER BY seq DESC
-	</select> -->
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+		
+		
+		
+	
+
+
 
 
 

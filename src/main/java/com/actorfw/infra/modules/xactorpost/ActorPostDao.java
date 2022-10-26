@@ -21,9 +21,8 @@ public class ActorPostDao {
 		return sqlSession.selectList(namespace + ".actorList", vo);
 	}
 	
+	public int selectOneCount(ActorPostVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	
-//	public List<ActorPost> imageViwe(ActorPost dto) {
-//		return sqlSession.selectList(namespace + ".imageViwe",  dto);
-//	}
+
 	
 }

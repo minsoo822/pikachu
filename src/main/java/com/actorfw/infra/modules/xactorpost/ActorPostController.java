@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,16 +17,20 @@ public class ActorPostController {
 	
 //--------------------------------------------------------------------------------
 	
+	public void setParamsPaging(ActorPostVo vo) throws Exception {
+	    
+	    
+	    vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	@RequestMapping(value = "ActorPostList")
-	public String oditionList(ActorPostVo vo, Model model, ActorPost dto) throws Exception {
-		System.out.println("---------List");
+	public String oditionList(@ModelAttribute("vo") ActorPostVo vo, Model model, ActorPost dto) throws Exception {
+		
+	    setParamsPaging(vo);
+	    
 		List<ActorPost> list = service.actorList(vo);
 		model.addAttribute("list", list);
 		
-//		System.out.println("----------------------picture");
-//		dto.setPseq(vo.getSeq());
-//		List<ActorPost> imageViwe = service.imageViwe(dto);
-//		model.addAttribute("img", imageViwe);
 		
 		
 		return "infra/member/user/actorPostList";

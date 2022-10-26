@@ -129,7 +129,7 @@
 										<div class="row">
 											<div class="col-2 gy-1">출생</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="${item }">
+												<input type="text" class="form-control" value="${item.dob }">
 											</div>
 										</div>
 										<div class="row">

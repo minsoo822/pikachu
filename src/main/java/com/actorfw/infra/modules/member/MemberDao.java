@@ -19,10 +19,8 @@ public class MemberDao {
 //-------------------------------------------------------------------------------------------	
 //	회원리스트
 	public List<Member> selectList (MemberVo vo) { return sqlSession.selectList(namespace + ".selectList", vo);}
-//	배우리스트
-	public List<Member> actorList (MemberVo vo) { return sqlSession.selectList(namespace + ".actorList", vo);}
-//	감독리스트
-	public List<Member> directorList (MemberVo vo) { return sqlSession.selectList(namespace + ".directorList", vo);}
+//	리스트
+	public List<Member> listFromCategory (int a) { return sqlSession.selectList(namespace + ".listFromCategory", a);}
 
 //  마이페이지 리스트에 올것듯 -----------------------------------------------------------  
 //  sns정보

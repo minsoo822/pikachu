@@ -101,12 +101,12 @@
 	
 	
 	
-	<select id="actorList" resultMap="resultObj">
+	<select id="listFromCategory" resultMap="resultObj">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT 
 			a.*
 		FROM member a
-		WHERE user_type = 26
+		WHERE user_type = #{a}
 		<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
 		<choose>
 			<!-- <when test="shOption == 0"></when> -->
@@ -126,30 +126,6 @@
 		<include refid="Base.selectListLowerForMysql"/>
 	</select>
 	
-	<select id="directorList" resultMap="resultObj">
-		<include refid="Base.selectListUpperForMysql" />
-		SELECT 
-			a.*
-		FROM member a
-		WHERE user_type = 27
-		<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
-		<choose>
-			<!-- <when test="shOption == 0"></when> -->
-			<when test="shOption == 1">AND seq = #{shValue} </when>
-			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-			<!-- useNy -->
-			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
-			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
-			<!-- delNy -->
-			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
-			<when test="shDelOption == 1"> AND delNy LIKE CONCAT ('%',1,'%')</when>
-			<!-- Date -->
-			<when test="shDateOption == 1"> And modDate LIKE CONCAT (1)</when>
-			<when test="shDateOption == 2"> And creDate LIKE CONCAT (2)</when>
-		</choose>
-		ORDER BY a.seq DESC
-		<include refid="Base.selectListLowerForMysql"/>
-	</select>
 	
 	<select id="selectOne" resultMap="resultObj">
 		SELECT

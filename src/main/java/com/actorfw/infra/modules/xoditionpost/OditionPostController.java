@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,7 +33,7 @@ public class OditionPostController {
 //--------------------------------------------------------------------------------
 	
 		@RequestMapping(value = "oditionPostViewList")
-		public String oditionList(OditionPost dto, OditionPostVo vo, Model model) throws Exception {
+		public String oditionList(OditionPost dto, @ModelAttribute("vo") OditionPostVo vo, Model model) throws Exception {
 			
 		    setParamsPaging(vo);
 //		    dto.setMember_seq(vo.getSeq());

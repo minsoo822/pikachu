@@ -8,10 +8,8 @@ public interface MemberService {
 //---------------------------------------------------------------------	
 //	회원리스트
 	public List<Member> selectList(MemberVo vo) throws Exception;
-//	배우리스트
-	public List<Member> actorList(MemberVo vo) throws Exception;
-//	감독리스트
-	public List<Member> directorList(MemberVo vo) throws Exception;
+//	리스트
+	public List<Member> listFromCategory(int a) throws Exception;
 
 //  마이페이지 리스트에 올것듯 ------------------------------------------------
 //	sns정보

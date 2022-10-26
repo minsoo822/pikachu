@@ -42,9 +42,17 @@ public class MemberController {
 //	관리자화면 회원리스트
 	@RequestMapping(value = "memberList")
 	public String selectList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-		setParamsPaging(vo);
+		
+	    
+	    setParamsPaging(vo);
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		
+		List<Member> actorList = service.listFromCategory(vo);
+        model.addAttribute("actorList", actorList);
+        
+        List<Member> directorList = service.listFromCategory(vo);
+        model.addAttribute("directorList", directorList);
 		System.out.println("Controll List :" + list);
 		return "infra/member/xdmin/memberList";
 	}
@@ -299,7 +307,9 @@ public class MemberController {
     }
 	
 	@RequestMapping(value = "MypageForm")
-	public String mypageForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+	public String mypageForm(@ModelAttribute("vo") MemberVo vo, Model model, HttpSession httpSession) throws Exception {
+	    vo.setSeq((String)httpSession.getAttribute("sessSeq"));
+	    
 	    Member item = service.selectOne(vo);
 	    model.addAttribute("item", item);
 	    return "infra/member/user/myPageForm";

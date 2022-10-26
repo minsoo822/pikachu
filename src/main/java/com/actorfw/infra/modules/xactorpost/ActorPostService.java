@@ -6,8 +6,7 @@ public interface ActorPostService {
 
 	public List<ActorPost> actorList(ActorPostVo vo) throws Exception;
 
-	
-//	public List<ActorPost> imageViwe(ActorPost dto) throws Exception;
+	public int selectOneCount(ActorPostVo vo) throws Exception;
 	
 	
 	

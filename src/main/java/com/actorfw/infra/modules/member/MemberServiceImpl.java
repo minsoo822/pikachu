@@ -19,18 +19,20 @@ public class MemberServiceImpl implements MemberService {
 //	멤버리스트
 	@Override
 	public List<Member> selectList(MemberVo vo) throws Exception { return dao.selectList(vo); }
-//	배우리스트
+//	리스트
 	@Override
-	public List<Member> actorList(MemberVo vo) throws Exception { return dao.actorList(vo); }
-//	감독리스트
-	@Override
-	public List<Member> directorList(MemberVo vo) throws Exception { return dao.directorList(vo); }
+    public List<Member> listFromCategory(int a) throws Exception {
+        return dao.listFromCategory(a);
+    }
 
 	//  마이페이지 리스트에 올것듯 ------------------------------------------------	
 //	sns정보
 	@Override
     public List<Member> selectSnsList(MemberVo vo) throws Exception { return dao.selectSnsList(vo); }
-//	filmo정보
+
+
+
+    //	filmo정보
 	@Override
     public List<Member> selectFilmoList(MemberVo vo) throws Exception { return dao.selectFilmoList(vo); }
 //  edu정보

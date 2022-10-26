@@ -112,6 +112,9 @@
 			</div>
 		</a>
 	</div>
+	<!-- pagination s -->
+	<%@include file="../user/include/pagination.jsp"%>
+	<!-- pagination e -->
 	<div style="background-color: #101010;;">
 		<c:if test="${sessAdmin eq 1 }">
 		<div class="groupbutton">
@@ -160,6 +163,34 @@
 	</div>
 	</form>
 	<script type="text/javascript">
+	
+	
+	var goUrlList = "/Post/ActorPostList"; 			/* #-> */
+	
+	
+  	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action",goUrlList).submit();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
 	

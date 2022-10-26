@@ -35,7 +35,7 @@
 		max-width: 100%;
 		max-height: 100%;
 	}
-	iframe {
+	video {
 		max-width: 100%;
 		max-height: 100%;
 	}
@@ -282,17 +282,9 @@
 										<div class="row">
 											<c:forEach items="${actorVideo }" var="actorVideo" varStatus="statusactorVideoList">
 												<div class="col-6">
-													<video src="${actorVideo.path }${actorVideo.uuidName}" style="background: gray;"/>	
+													<video id="postImg" src="${actorVideo.path }${actorVideo.uuidName}" controls="controls" muted="muted" loop="loop"></video>	
 												</div>
 											</c:forEach>
-										</div>
-										<div class="row">
-											<div class="col">
-												<iframe src='https://www.youtube.com/embed//x-TtMKkQ0eI' frameborder='0' allowfullscreen width="450px" height="250px"></iframe>
-											</div>
-											<div class="col">
-												<iframe src='https://www.youtube.com/embed//GLfKZlS3IbQ' frameborder='0' allowfullscreen width="450px" height="250px"></iframe>
-											</div>
 										</div>
 									</div>
 								</div>
