@@ -48,31 +48,11 @@ public class MemberController {
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
-		List<Member> actorList = service.listFromCategory(vo);
+		List<Member> actorList = service.listFromCategory(26);
         model.addAttribute("actorList", actorList);
         
-        List<Member> directorList = service.listFromCategory(vo);
+        List<Member> directorList = service.listFromCategory(27);
         model.addAttribute("directorList", directorList);
-		System.out.println("Controll List :" + list);
-		return "infra/member/xdmin/memberList";
-	}
-//	배우회원
-//	관리자화면 배우리스트
-	@RequestMapping(value = "actorList")
-	public String actorList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-		setParamsPaging(vo);
-		List<Member> list = service.actorList(vo);
-		model.addAttribute("list", list);
-		System.out.println("Controll List :" + list);
-		return "infra/member/xdmin/memberList";
-	}
-//	감독회원
-//	관리자화면 감독리스트
-	@RequestMapping(value = "directorList")
-	public String directorList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-		setParamsPaging(vo);
-		List<Member> list = service.directorList(vo);
-		model.addAttribute("list", list);
 		System.out.println("Controll List :" + list);
 		return "infra/member/xdmin/memberList";
 	}
@@ -110,7 +90,6 @@ public class MemberController {
 		int updateCd = service.updateCd(dto);
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		System.out.println("주소나와라 : " + updateCd);
 		return "redirect:/member/memberList";
 	}
 //---------------------------------------------------------------------------------------------------------------	
@@ -307,11 +286,35 @@ public class MemberController {
     }
 	
 	@RequestMapping(value = "MypageForm")
-	public String mypageForm(@ModelAttribute("vo") MemberVo vo, Model model, HttpSession httpSession) throws Exception {
-	    vo.setSeq((String)httpSession.getAttribute("sessSeq"));
-	    
-	    Member item = service.selectOne(vo);
-	    model.addAttribute("item", item);
+	public String mypageForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
+
+//	    mypage 시퀀스값을 가져오는 코드
+        vo.setSeq((String)httpSession.getAttribute("sessSeq"));
+        //멤버정보 가져오는거 
+        Member item = service.selectOne(vo);
+        model.addAttribute("item", item);
+        //메인프로필이미지정보
+        dto.setPseq(Integer.parseInt(vo.getSeq())); 
+        Member imageMainView = service.imageMainView(dto);
+        model.addAttribute("imageMainView", imageMainView);
+        //서브프로필이미지정보
+        List<Member> imageSubView = service.imageSubView(dto);
+        model.addAttribute("imageSubView", imageSubView);
+//      연기영상
+        List<Member> actorVideo = service.actorVideo(dto);
+        model.addAttribute("actorVideo", actorVideo);
+        //sns정보 
+        List<Member> snsList = service.selectSnsList(vo);
+        model.addAttribute("snsList", snsList);
+        //필모그라피 정보
+        List<Member> filmoList = service.selectFilmoList(vo);
+        model.addAttribute("filmoList", filmoList);
+        //edu정보
+        List<Member> eduList = service.selectEduList(vo);
+        model.addAttribute("eduList", eduList);
+        //award정보
+        List<Member> AwardList = service.selectAwardList(vo);
+        model.addAttribute("AwardList", AwardList);
 	    return "infra/member/user/myPageForm";
 	}
     

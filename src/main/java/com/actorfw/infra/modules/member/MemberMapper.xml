@@ -90,18 +90,7 @@
 		AND member_seq = #{seq}	
 	</select>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<select id="listFromCategory" resultMap="resultObj">
+	<select id="listFromCategory" resultMap="resultObj" parameterType="Integer">
 		<include refid="Base.selectListUpperForMysql" />
 		SELECT 
 			a.*
@@ -344,6 +333,17 @@
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
+<!-- 	<update id="updateSnsCd">
+		UPDATE actor_sns
+		SET
+			type		   = #{sns_type}
+			,url		   = #{url}
+		WHERE 1=1
+			AND member_seq = #{seq}
+	</update>
+	<update id="updateFilmoCd">
+	
+	</update> -->
 	
 	<!-- 아이디중복 체크 -->
 	<select id="idCheck" resultType="Integer">

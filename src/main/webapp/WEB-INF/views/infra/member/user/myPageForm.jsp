@@ -39,12 +39,17 @@
 		max-width: 100%;
 		max-height: 100%;
 	}
-	
+	.file {
+		border: 1px solid white;
+		margin-top: 5px;
+		max-width: 100%;
+		width: 500px;
+		color: white;
+	}
 	</style>
 </head>
 <body>
 	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
-	<input type="text" name="name" value="${vo.seq }">
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -102,13 +107,18 @@
 				<div class="row">
 					<div class="col-4">
 						<div class="row">
-							<div class="col" style="text-align: center;">
-								<img alt="" src="../main/image/actor/iu.png">
+							<div class="col" style="text-align: center; max-width: 100%; max-height: 100%;">
+								<img alt="" src="${imageMainView.path }${imageMainView.uuidName}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="file" multiple="multiple" id="" class="file">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col p-5" style="text-align: center; color: white;">
-								<h2><b>이지은</b></h2>
+								<h2><b><c:out value="${item.name }"></c:out></b></h2>
 							</div>
 						</div>
 					</div>
@@ -129,33 +139,35 @@
 										<div class="row">
 											<div class="col-2 gy-1">출생</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="${item.dob }">
+												<input type="text" class="form-control" name="dob" value="${item.dob }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="161.8cm">
+												<input type="text" class="form-control" name="" value="${item.actor_height }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">몸무게</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="44.9kg">
+												<input type="text" class="form-control" name="" value="${item.actor_weight }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">이메일</div>
 											<div class="col-5 gy-1">
 												<div class="input-group">
-													<input type="text" class="form-control" value="iuAndi">
+													<input type="text" class="form-control" name="email" value="${item.email }">
 													<span class="input-group-text">@</span>
-													<select class="form-select">
-														<option>선택</option>
-														<option selected>naver.com</option>
-														<option>gamil.com</option>
-														<option>daum.net</option>
-														<option>hotmail.co.kr</option>
+													<select class="form-select" name="email_domain">
+														<option valuw=""<c:if test="${empty item.email_domain}">selected</c:if>>선택</option>
+														<option valuw="4" <c:if test="${item.email_domain eq 4 }">selected</c:if>>naver.com</option>
+														<option valuw="5" <c:if test="${item.email_domain eq 5 }">selected</c:if>>gamil.com</option>
+														<option valuw="6" <c:if test="${item.email_domain eq 6 }">selected</c:if>>daum.net</option>
+														<option valuw="7" <c:if test="${item.email_domain eq 7 }">selected</c:if>>nate.com</option>
+														<option valuw="8" <c:if test="${item.email_domain eq 8 }">selected</c:if>>dreamwiz.com</option>
+														<option valuw="9" <c:if test="${item.email_domain eq 9 }">selected</c:if>>freechal.com</option>
 													</select>
 												</div>
 											</div>
@@ -163,34 +175,34 @@
 										<div class="row">
 											<div class="col-2 gy-1">연락처</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="01012349876">
+												<input type="text" class="form-control" name="phone_number" value="${item.phone_number }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">특기</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" value="노래">
+												<input type="text" class="form-control" name="actor_specialty" value="${item.actor_specialty }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">쌍꺼풀 유무</div>
 											<div class="col-5 gy-1">
-												<select class="form-select">
-													<option>선택</option>
-													<option selected>겉쌍꺼풀</option>
-													<option>속쌍꺼풀</option>
-													<option>무쌍꺼풀</option>
+												<select class="form-select" name="actor_eyelid">
+													<option valuw="" <c:if test="${empty item.actor_eyelid}">selected</c:if>>선택</option>
+													<option valuw="37" <c:if test="${item.actor_eyelid eq 37 }">selected</c:if>>겉쌍꺼풀</option>
+													<option valuw="38" <c:if test="${item.actor_eyelid eq 38 }">selected</c:if>>속쌍꺼풀</option>
+													<option valuw="39" <c:if test="${item.actor_eyelid eq 39 }">selected</c:if>>무쌍꺼풀</option>
 												</select>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">목소리 톤</div>
 											<div class="col-5 gy-1">
-												<select class="form-select">
-													<option>선택</option>
-													<option selected>고음</option>
-													<option>중음</option>
-													<option>저음</option>
+												<select class="form-select" name="actor_voice">
+													<option valuw="" <c:if test="${empty item.actor_voice}">selected</c:if>>선택</option>
+													<option valuw="40" <c:if test="${item.actor_voice eq 40}">selected</c:if>>고음</option>
+													<option valuw="41" <c:if test="${item.actor_voice eq 41}">selected</c:if>>중음</option>
+													<option valuw="42" <c:if test="${item.actor_voice eq 42}">selected</c:if>>저음</option>
 												</select>
 											</div>	
 										</div>
@@ -201,34 +213,31 @@
 										<h4><b>SNS</b></h4>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col txwhite">
+								<c:choose>
+									<c:when test="${fn:length(snsList) eq 0 }">
 										<div class="row">
-											<div class="col-2 gy-1">인스타</div>
-											<div class="col-7 gy-1">
-												<input type="url" class="form-control" value="https://instagram.com/dlwlrma/">
+											<div class="col txwhite">
+												<div class="row">
+													<div class="col-2 gy-1">SNS 정보가 없습니다.</div>
+												</div>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-2 gy-1">페이스북</div>
-											<div class="col-7 gy-1">
-												<input type="text" class="form-control" value="https://www.facebook.com/iu.loen">
+									</c:when>
+									<c:otherwise>
+											<div class="row">
+												<div class="col txwhite">
+												<c:forEach items="${snsList }" var="snsList" varStatus="statussnsList">
+													<div class="row">
+														<div class="col-2 gy-1"><c:out value="${snsList.type }"></c:out></div>
+														<div class="col-7 gy-1">
+															<input type="text" class="form-control" value="${snsList.url }">
+														</div>
+													</div>
+												</c:forEach>	
+												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">홈페이지</div>
-											<div class="col-7 gy-1">
-												<input type="text" class="form-control" value="http://edam-ent.com/html/sub03/sub03_0301_view">
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">유튜브</div>
-											<div class="col-7 gy-1">
-												<input type="text" class="form-control" value="https://www.youtube.com/channel/UC3SyT4_WLHzN7JmHQwKQZww">
-											</div>
-										</div>
-									</div>
-								</div>
+									</c:otherwise>
+								</c:choose>
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>필모그래피</b></h4>
@@ -240,237 +249,83 @@
 									<div class="col regText">제작사</div>
 									<div class="col regText">제목</div>
 									<div class="col regText">역활</div>
-									<div class="col-1 regText"></div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2011-01-03">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="CJ미디어">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="드림하이">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="김필숙">
-									</div>
 									<div class="col-1">
 										<button type="button" class="regFrombutton">
 											<i class="fa-solid fa-plus"></i>
 										</button>
 									</div>
 								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2013-03-09">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="에이스토리">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="최고다 이순신">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="이순신">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2015-05-15">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="KBS드라마제작국">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="프로듀사">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="신디">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2018-03-21">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="초록뱀 미디어">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="나의 아저씨">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="이지안">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2019-07-13">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option selected="selected">드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="스튜디오 드래곤">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="호텔 데루나">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="장만월">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2022-06-08">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option selected="selected">상업영화</option>
-											<option>단편(독립)영화</option>
-											<option>드라마</option>
-											<option>웹드라마</option>
-											<option>광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="영화사 집">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="브로커">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="소영">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="row gx-1 text-center mb-1">
-									<div class="col-2">
-										<input type="date" class="form-control" value="2020-01-01">
-									</div>
-									<div class="col">
-										<select class="form-select">
-											<option>선택</option>
-											<option>상업영화</option>
-											<option>단편(독립)영화</option>
-											<option>드라마</option>
-											<option>웹드라마</option>
-											<option selected="selected">광고(CF)</option>
-											<option>바이럴광고</option>
-										</select>
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="GUCCI코리아">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="GUCCI">
-									</div>
-									<div class="col">
-										<input type="text" class="form-control" value="글로벌 앰버서더">
-									</div>
-									<div class="col-1">
-										<button type="button" class="regFrombutton">
-											<i class="fa-solid fa-minus"></i>
-										</button>
-									</div>
-								</div>
+								<c:choose>
+									<c:when test="${fn:length(filmoList) eq 0 }">
+										<div class="row">
+											<div class="col">
+												<c:out value="${item.name }"/>님의 필모그래피가 존재하지 않습니다.
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${filmoList }" var="filmoList" varStatus="statusfilmoList">
+											<div class="row gx-1 text-center mb-1">
+												<div class="col-2">
+													<input type="date" class="form-control" value="${filmoList.period }">
+												</div>
+												<div class="col">
+													<select class="form-select">
+														<option value="" <c:if test="${empty filmoList.type }">selected</c:if>>선택</option>
+														<option value="15" <c:if test="${filmoList.type eq 15}">selected</c:if>>상업영화</option>
+														<option value="16" <c:if test="${filmoList.type eq 16}">selected</c:if>>단편(독립)영화</option>
+														<option value="17" <c:if test="${filmoList.type eq 17}">selected</c:if>>드라마</option>
+														<option value="18" <c:if test="${filmoList.type eq 18}">selected</c:if>>웹드라마</option>
+														<option value="19" <c:if test="${filmoList.type eq 19}">selected</c:if>>광고(CF)</option>
+														<option value="20" <c:if test="${filmoList.type eq 20}">selected</c:if>>바이럴광고</option>
+													</select>
+												</div>
+												<div class="col">
+													<input type="text" class="form-control" value="${filmoList.producer }">
+												</div>
+												<div class="col">
+													<input type="text" class="form-control" value="${filmoList.name }">
+												</div>
+												<div class="col">
+													<input type="text" class="form-control" value="${filmoList.role }">
+												</div>
+												<div class="col-1">
+													<button type="button" class="regFrombutton">
+														<i class="fa-solid fa-plus"></i>
+													</button>
+												</div>
+											</div>
+										</c:forEach>	
+									</c:otherwise>
+								</c:choose>
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>프로필사진</b></h4>
 									</div>
 								</div>
+								<c:choose>
+									<c:when test="${fn:length(imageSubView) eq 0 }">
+										
+									</c:when>
+									<c:otherwise>
+										<div class="row">
+											<div class="col">
+												<div class="row gx-0">
+													<c:forEach items="${imageSubView}" var="imageSubView" varStatus="statusSubImg">
+														<div class="col-3">
+															<img alt="" class="subProfile" src="${imageSubView.path}${imageSubView.uuidName}">
+														</div>
+													</c:forEach>	
+												</div>
+											</div>
+										</div>
+									</c:otherwise>
+								</c:choose>
 								<div class="row">
 									<div class="col">
 										<div class="row gx-0">
 											<div class="col-3">
-												<img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/IU_posing_for_Marie_Claire_Korea_March_2022_issue_03.jpg/800px-IU_posing_for_Marie_Claire_Korea_March_2022_issue_03.jpg" width="230px" height="345">
-											</div>
-											<div class="col-3">
-												<img alt="" src="https://image.cine21.com/resize/cine21/article/2022/0603/15_30_27__6299aa83cb210[H800-].jpg" width="230px" height="345">
-											</div>
-											<div class="col-3">
-												<img alt="" src="https://assets.repress.co.kr/photos/2009ea104d2c842fed5461308d9f92d7/original.jpg" width="230px" height="345">
-											</div>
-											<div class="col-3">
-												<img alt="" src="https://blog.kakaocdn.net/dn/bAPdqx/btrFVi67cgg/jkHLXOn4nI4s0t9jWe0CFK/img.jpg" width="230px" height="345">
+												<img alt="" src="" width="230px" height="345">
 											</div>
 										</div>
 										<div class="row mt-2">

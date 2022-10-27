@@ -431,16 +431,9 @@
 	var form = $("#mainForm");
 	
 	
-	
-	$("#btnForm")on.("click", function() {
-		goForm(0);
-	});
-	
-	goForm = function(key) {
-		
-		seq.attr("value",key);
+	$("#btnForm").on("click", function(){
 		form.attr("action", goMypageForm).submit();
-	}
+	});
 	
 	
 	
