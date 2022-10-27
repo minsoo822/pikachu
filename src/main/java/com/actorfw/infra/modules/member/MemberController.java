@@ -328,21 +328,6 @@ public class MemberController {
 		
 		return "infra/member/user/mainIndex";
 	}
-	//메인페이지
-	@RequestMapping(value = "mainHome")
-	public String mainPage(Model model, TourPostVo vo1, ActorPostVo vo) throws Exception {
-//		
-//	    List<ActorPost> List = Actorservice.actorList(vo);
-//	   
-//	    List<TourPost> tourList = Tourservice.tourList(vo1);
-//        model.addAttribute("tourList", tourList);
-//	    System.out.println("tourList : " + tourList);
-//	    List<ActorPost> actorList = Actorservice.actorList(vo);
-
-//		List<ActorPost> actorlist = Actorservice.actorList(vo);
-		
-		return "infra/member/user/mainViewForm";
-	}
 	//오디션포스트 리스트
 	@RequestMapping(value = "oditionPostViewForm")
 	public String oditionMod() throws Exception {

@@ -211,20 +211,31 @@
 										<h4><b>SNS</b></h4>
 									</div>
 								</div>
-								<c:forEach items="${snsList}" var="snsList" varStatus="statusSnsList">
-									<div class="row">
-										<div class="col txwhite">
-											<div class="row">
-												<div class="col-2 gy-1">
-													<c:out value="${snsList.type }"/>
-												</div>
-												<div class="col-7 gy-1">
-													<c:out value="${snsList.url }"/>
-												</div>
+								<c:choose>
+									<c:when test="${fn:length(snsList) eq 0 }">
+										<div class="row">
+											<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+												<c:out value="${item.name }"/>님의 SNS 정보가 존재하지 않습니다.
 											</div>
 										</div>
-									</div>
-								</c:forEach>	
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${snsList}" var="snsList" varStatus="statusSnsList">
+											<div class="row">
+												<div class="col txwhite">
+													<div class="row">
+														<div class="col-2 gy-1">
+															<c:out value="${snsList.type }"/>
+														</div>
+														<div class="col-7 gy-1">
+															<c:out value="${snsList.url }"/>
+														</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>	
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>필모그래피</b></h4>
@@ -237,25 +248,36 @@
 									<div class="col regText">제목</div>
 									<div class="col regText">역활</div>
 								</div>
-								<c:forEach items="${filmoList}" var="filmoList" varStatus="statusfilmoList">
-									<div class="row gx-1 text-center mb-1">
-										<div class="col-3 txwhite">
-											<c:out value="${filmoList.period }"/>
+								<c:choose>
+									<c:when test="${fn:length(filmoList) eq 0 }">
+										<div class="row">
+											<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+												<c:out value="${item.name }"/>님의 필모그래피가 존재하지 않습니다.
+											</div>
 										</div>
-										<div class="col txwhite">
-											<c:out value="${filmoList.type }"/>
-										</div>
-										<div class="col txwhite">
-											<c:out value="${filmoList.producer }"/>
-										</div>
-										<div class="col txwhite">
-											<c:out value="${filmoList.name }"/>
-										</div>
-										<div class="col txwhite">
-											<c:out value="${filmoList.role }"/>
-										</div>
-									</div>
-								</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${filmoList}" var="filmoList" varStatus="statusfilmoList">
+											<div class="row gx-1 text-center mb-1">
+												<div class="col-3 txwhite">
+													<c:out value="${filmoList.period }"/>
+												</div>
+												<div class="col txwhite">
+													<c:out value="${filmoList.type }"/>
+												</div>
+												<div class="col txwhite">
+													<c:out value="${filmoList.producer }"/>
+												</div>
+												<div class="col txwhite">
+													<c:out value="${filmoList.name }"/>
+												</div>
+												<div class="col txwhite">
+													<c:out value="${filmoList.role }"/>
+												</div>
+											</div>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>프로필사진</b></h4>
@@ -280,11 +302,22 @@
 								<div class="row">
 									<div class="col">
 										<div class="row">
-											<c:forEach items="${actorVideo }" var="actorVideo" varStatus="statusactorVideoList">
-												<div class="col-6">
-													<video id="postImg" src="${actorVideo.path }${actorVideo.uuidName}" controls="controls" muted="muted" loop="loop"></video>	
-												</div>
-											</c:forEach>
+											<c:choose>
+												<c:when test="${fn:length(actorVideo) eq 0}">
+													<div class="row">
+														<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+															<c:out value="${item.name }"/>님의 연기영상이 존재하지 않습니다.
+														</div>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<c:forEach items="${actorVideo }" var="actorVideo" varStatus="statusactorVideoList">
+														<div class="col-6">
+															<video id="postImg" src="${actorVideo.path }${actorVideo.uuidName}" controls="controls" muted="muted" loop="loop"></video>	
+														</div>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 								</div>
@@ -301,26 +334,37 @@
 											<div class="col regText">전공</div>
 											<div class="col regText">구분</div>
 										</div>
-										<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
-										<div class="row gx-1 text-center">
-											<div class="col-4  txwhite">
-												<div class="input-group" style="display: flex; justify-content: center;">
-													<c:out value="${eduList.period_s }"/>
-													<span class="txwhite">~</span>
-													<c:out value="${eduList.period_e }"/>
+										<c:choose>
+											<c:when test="${fn:length(eduList) eq 0 }">
+												<div class="row">
+													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+														<c:out value="${item.name }"/>님의 학력사항이 존재하지 않습니다.
+													</div>
 												</div>
-											</div>
-											<div class="col txwhite">
-												<c:out value="${eduList.school_name }"/>
-											</div>
-											<div class="col txwhite">
-												<c:out value="${eduList.major }"/>
-											</div>
-											<div class="col txwhite">
-												<c:out value="${eduList.type }"/>
-											</div>
-										</div>
-										</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
+													<div class="row gx-1 text-center">
+														<div class="col-4  txwhite">
+															<div class="input-group" style="display: flex; justify-content: center;">
+																<c:out value="${eduList.period_s }"/>
+																<span class="txwhite">~</span>
+																<c:out value="${eduList.period_e }"/>
+															</div>
+														</div>
+														<div class="col txwhite">
+															<c:out value="${eduList.school_name }"/>
+														</div>
+														<div class="col txwhite">
+															<c:out value="${eduList.major }"/>
+														</div>
+														<div class="col txwhite">
+															<c:out value="${eduList.type }"/>
+														</div>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 								<div class="row">
@@ -332,24 +376,33 @@
 										</div>
 										<div class="row text-center gx-1">
 											<div class="col-4 regText">시기</div>
+											<div class="col regText">수상명</div>
 											<div class="col regText">발급기관</div>
-											<div class="col regText">발급명</div>
 										</div>
-										<div class="row gx-1 text-center">
-											<div class="col-4">
-												<div class="input-group">
-													<input type="date" class="form-control">
-													<span class="input-group-text">~</span>
-													<input type="date" class="form-control">
+										<c:choose>
+											<c:when test="${fn:length(AwardList) eq 0 }">
+												<div class="row">
+													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+														<c:out value="${item.name }"/>님의 수상경력이 존재하지 않습니다.
+													</div>
 												</div>
-											</div>
-											<div class="col">
-												<input type="text" class="form-control">
-											</div>
-											<div class="col">
-												<input type="text" class="form-control">
-											</div>
-										</div>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${AwardList }" var="AwardList" varStatus="statusAwardList">
+													<div class="row gx-1 text-center">
+														<div class="col-4">
+															<c:out value="${AwardList.period }"></c:out>
+														</div>
+														<div class="col">
+															<c:out value="${AwardList.name }"></c:out>
+														</div>
+														<div class="col">
+															<c:out value="${AwardList.issuer }"></c:out>
+														</div>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 								<div class="row">

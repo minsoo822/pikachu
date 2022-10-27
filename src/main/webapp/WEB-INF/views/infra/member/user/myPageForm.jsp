@@ -35,7 +35,7 @@
 		max-width: 100%;
 		max-height: 100%;
 	}
-	iframe {
+	video {
 		max-width: 100%;
 		max-height: 100%;
 	}
@@ -91,8 +91,32 @@
 					</li>
 				</ul>
 			<div>
-			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
-			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
+				<c:if test="${sessSeq eq null }">
+					<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+					<button type="button" class="btn" id="btnLogin">로그인</button>
+				</c:if>
+				<c:if test="${sessSeq ne null }">
+					<button type="button" class="btn">마이페이지</button>
+					<button type="button" class="btn" id="btnLogout">로그아웃</button>
+				</c:if>	
+			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div  class="modal-dialog">
+			    <div style="background: #393939;" class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5 homepageline" id="staticBackdropLabel"style="color: white;">Actor'<span style="color: #f9004d;">s</span></h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body" style="color: white; text-align: center; font-size: 20px;">
+			        가입 분류를 선택해주세요!!~
+			      </div>
+			      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
+			        <button type="button" class="indexbtn" id="goActorSignup" style="cursor: pointer;">배우로 가입하기</button>
+			        <button type="button" class="indexbtn" id="goDerectorSignup" style="cursor: pointer;">디렉터로 가입하기</button>
+			      </div>
+			    </div>
+			  </div>
 			</div>
 		</nav>
 	</div>
@@ -305,7 +329,11 @@
 								</div>
 								<c:choose>
 									<c:when test="${fn:length(imageSubView) eq 0 }">
-										
+										<div class="row">
+											<div class="col">
+												<c:out value="${item.name }"/>님의 프로필 사진이 존재하지 않습니다.
+											</div>
+										</div>
 									</c:when>
 									<c:otherwise>
 										<div class="row">
@@ -323,11 +351,6 @@
 								</c:choose>
 								<div class="row">
 									<div class="col">
-										<div class="row gx-0">
-											<div class="col-3">
-												<img alt="" src="" width="230px" height="345">
-											</div>
-										</div>
 										<div class="row mt-2">
 											<div class="col d-grid justify-content-end">
 												<input type="file" id="file" style="display: none;">
@@ -346,12 +369,22 @@
 								<div class="row">
 									<div class="col">
 										<div class="row">
-											<div class="col">
-												<iframe src='https://www.youtube.com/embed//x-TtMKkQ0eI' frameborder='0' allowfullscreen width="450px" height="250px"></iframe>
-											</div>
-											<div class="col">
-												<iframe src='https://www.youtube.com/embed//GLfKZlS3IbQ' frameborder='0' allowfullscreen width="450px" height="250px"></iframe>
-											</div>
+										<c:choose>
+											<c:when test="${fn:length(actorVideo) eq 0}">
+												<div class="row">
+													<div class="col">
+														<c:out value="${item.name }"/>님의 연기영상이 존재하지 않습니다.
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${actorVideo}" var="actorVideo" varStatus="statusactorVideoList">
+													<div class="col">
+														<video src="${actorVideo.path }${actorVideo.uuidName}" controls="controls" muted="muted"/>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>	
 										</div>
 										<div class="row">
 											<div class="col d-grid justify-content-end">
@@ -377,35 +410,54 @@
 											<div class="col regText">구분</div>
 											<div class="col-1 regText"></div>
 										</div>
-										<div class="row gx-1 text-center">
-											<div class="col-4">
-												<div class="input-group">
-													<input type="date" class="form-control">
-													<span class="input-group-text">~</span>
-													<input type="date" class="form-control">
+										<c:choose>
+											<c:when test="${fn:length(eduList) eq 0 }">
+												<div class="row">
+													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+														<c:out value="${item.name }"/>님의 학력사항이 존재하지 않습니다.
+													</div>
 												</div>
-											</div>
-											<div class="col">
-												<input type="text" class="form-control" value="동덕여자고등학교">
-											</div>
-											<div class="col">
-												<input type="text" class="form-control" value="">
-											</div>
-											<div class="col">
-												<select class="form-select">
-													<option>선택</option>
-													<option selected="selected">졸업</option>
-													<option>재학</option>
-													<option>휴학</option>
-													<option>중퇴</option>
-													<option>퇴학</option>
-												</select>
-											</div>
-											<div class="col-1">
-												<button type="button" class="regFrombutton" onclick="addEdu()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
-											</div>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
+													<div class="row gx-1 text-center">
+														<div class="col-4  txwhite">
+															<div class="input-group" style="display: flex; justify-content: center;">
+																<input type="date" class="form-control" value="${eduList.period_s }">
+																<span class="txwhite">~</span>
+																<input type="date" class="form-control" value="${eduList.period_e }">
+															</div>
+														</div>
+														<div class="col txwhite">
+															<input type="text" class="form-control" value="${eduList.school_name }">
+														</div>
+														<div class="col txwhite">
+															<input type="text" class="form-control" value="${eduList.major }">
+														</div>
+														<div class="col txwhite">
+															<div class="col">
+																<select class="form-select" name="">
+																	<option value="" <c:if test="${empty eduList.type }">selected</c:if>>선택</option>
+																	<option value="21" <c:if test="${eduList.type eq 21}">selected</c:if>>졸업</option>
+																	<option value="22" <c:if test="${eduList.type eq 22}">selected</c:if>>재학</option>
+																	<option value="23" <c:if test="${eduList.type eq 23}">selected</c:if>>휴학</option>
+																	<option value="24" <c:if test="${eduList.type eq 24}">selected</c:if>>중퇴</option>
+																	<option value="25" <c:if test="${eduList.type eq 25}">selected</c:if>>퇴학</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-1">
+															<button type="button" class="regFrombutton" onclick="addEdu()">
+																<i class="fa-solid fa-plus"></i>
+															</button>
+														</div>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+										<div class="row gx-1 text-center">
+											
+											
 										</div>
 									</div>
 								</div>
@@ -422,26 +474,35 @@
 											<div class="col regText">발급명</div>
 											<div class="col-1 regText"></div>
 										</div>
-										<div class="row gx-1 text-center">
-											<div class="col-4">
-												<div class="input-group">
-													<input type="date" class="form-control">
-													<span class="input-group-text">~</span>
-													<input type="date" class="form-control">
+										<c:choose>
+											<c:when test="${fn:length(AwardList) eq 0 }">
+												<div class="row">
+													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+														<c:out value="${item.name }"/>님의 수상경력이 존재하지 않습니다.
+													</div>
 												</div>
-											</div>
-											<div class="col">
-												<input type="text" class="form-control">
-											</div>
-											<div class="col">
-												<input type="text" class="form-control">
-											</div>
-											<div class="col-1">
-												<button type="button" class="regFrombutton" onclick="addEdu()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
-											</div>
-										</div>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${AwardList }" var="AwardList" varStatus="statusAwardList">
+													<div class="row gx-1 text-center">
+														<div class="col-4">
+															<input type="date" class="form-control" value="${AwardList.period }">
+														</div>
+														<div class="col">
+															<input type="text" class="form-control" value="${AwardList.name }">
+														</div>
+														<div class="col">
+															<input type="text" class="form-control" value="${AwardList.issuer }">
+														</div>
+														<div class="col-1">
+															<button type="button" class="regFrombutton" onclick="addEdu()">
+																<i class="fa-solid fa-plus"></i>
+															</button>
+														</div>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 								<div class="row">
@@ -453,9 +514,15 @@
 									<div class="col">
 										<div class="row">
 											<div class="col">
-												<textarea rows="10" cols="50"></textarea>
+												<textarea rows="10" cols="50"><c:out value="${item.aboutMe }"/></textarea>
 											</div>
 										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
+										<button type="button" class="regFrombutton">목록으로</button>
+										<a type="button" class="regFrombutton" style="margin-left: 10px;" id="">저장하기</a>
 									</div>
 								</div>
 							</div>
