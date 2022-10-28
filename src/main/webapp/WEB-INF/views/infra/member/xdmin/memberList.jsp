@@ -298,6 +298,7 @@
 					<td><c:out value="${list.company_useNy }"/></td>
 				</tr>	
 			</c:forEach>
+			
 		</c:otherwise>
 	</c:choose>	
 			</table>

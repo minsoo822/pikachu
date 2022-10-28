@@ -161,7 +161,7 @@
 							<tr>
 								<th><input class="form-check-input" type="checkbox" name="allCheck"></th>
 								<td>
-								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
+								<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>       <%--  순서 카운트  --%>
 								</td>
 								<td><c:out value="${list.type }"/></td>
 								<td><c:out value="${list.name }"/></td>

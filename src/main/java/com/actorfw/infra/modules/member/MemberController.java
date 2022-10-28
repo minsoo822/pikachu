@@ -54,8 +54,10 @@ public class MemberController {
         List<Member> directorList = service.listFromCategory(27);
         model.addAttribute("directorList", directorList);
 		System.out.println("Controll List :" + list);
+		
 		return "infra/member/xdmin/memberList";
 	}
+	
 
 //---------------------------------------------------------------------------------------------------------------	
 

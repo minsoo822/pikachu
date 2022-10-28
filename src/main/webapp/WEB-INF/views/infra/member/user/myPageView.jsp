@@ -126,7 +126,7 @@
 				<div class="row">
 					<div class="col-4">
 						<div class="row">
-							<div class="col" style="text-align: center;">
+							<div class="col" style="text-align: center; width: 500px; min-height: 720px;">
 								<img src="${imageMainView.path}${imageMainView.uuidName}">
 							</div>
 						</div>

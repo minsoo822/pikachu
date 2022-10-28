@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/home/")
-public class HomeController {
+public class HomevController {
     
     @Autowired
     HomeServiceImpl service;

@@ -20,6 +20,17 @@
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/adminstyle.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<style type="text/css">
+	.in:hover {
+		background: gray;
+		cursor: pointer;
+	}
+	
+	
+	
+	</style>
+
+
 </head>
 <body>
 <%-- 	<form name="form" action="" >
@@ -28,7 +39,7 @@
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
 --%>	
  	<form name="" id="mainForm" method="post">
-			<input type="hidden" name="seq" value="${dto.seq}">
+			<input type="hidden" name="seq">
 			<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 			<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 			<input type="hidden" name="checkboxSeqArray" >
@@ -238,15 +249,13 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${list}" var="list" varStatus="status">
-				<tr>
+				<tr onclick="goForm(${list.seq })" class="in">
 					<td><input class="form-check-input" type="checkbox"></td>
 					<td>
 					<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>       <%--  순서 카운트  --%>
 					</td>
 					 <td>
-						<a href="javascript:goForm(${list.seq })" class="text-decoration-none">
-							<c:out value="${list.seq }"/>
-						</a>
+						<c:out value="${list.seq }"/>
 					</td> 
 					<td><c:out value="${list.name }"/></td>
 					<td><c:out value="${list.delNy }"/></td>

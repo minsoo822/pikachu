@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
+
         private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
         
         /**
@@ -30,31 +31,6 @@ public class HomeController {
             model.addAttribute("serverTime", formattedDate );
             
             return "infra/member/xdmin/firstView";
-        }
         
-        @RequestMapping(value = "/a", method = RequestMethod.GET)
-        public String a(Locale locale, Model model) {
-            return "a";
         }
-        
-        @RequestMapping(value = "/b", method = RequestMethod.GET)
-        public String b(Locale locale, Model model) {
-            return "b";
-        }
-        
-        @RequestMapping(value = "/c", method = RequestMethod.GET)
-        public String c(Locale locale, Model model) {
-            return "c";
-        }
-        
-        @RequestMapping(value = "/d", method = RequestMethod.GET)
-        public String d(Locale locale, Model model) {
-            return "d";
-        }
-        
-        @RequestMapping(value = "/e", method = RequestMethod.GET)
-        public String e(Locale locale, Model model) {
-            return "e";
-        }
-        
 }

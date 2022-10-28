@@ -39,7 +39,29 @@
 		<include refid="selectCommon" />
 	</select>
 	
+	<select id="selectOne" resultMap="resultObj">
+		SELECT
+			*
+			,b.path
+			,b.uuidName
+		FROM member a
+		JOIN memberUploaded b
+		WHERE 1=1
+		AND b.defaultNy = 1
+		AND b.type = 2
+		AND b.pseq = #{seq}
+		AND a.seq = #{seq}
 		
+	</select>
+	
+	<select id="snslist" resultMap="resultObj">
+		SELECT
+			type
+			,url
+		FROM actor_sns
+		WHERE 1=1
+		AND member_seq = #{seq}
+	</select>
 		
 		
 	

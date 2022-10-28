@@ -15,7 +15,14 @@ public class ActorPostServiceImpl implements ActorPostService {
 	public List<ActorPost> actorList(ActorPostVo vo) throws Exception {
 		return dao.actorList(vo);
 	}
-
+	@Override
+    public ActorPost selectOne(ActorPostVo vo) throws Exception {
+	        return dao.selectOne(vo);
+	    }
+    @Override
+    public List<ActorPost> snslist(ActorPostVo vo) throws Exception {
+        return dao.snslist(vo);
+    }
     @Override
     public int selectOneCount(ActorPostVo vo) throws Exception {
         return dao.selectOneCount(vo);

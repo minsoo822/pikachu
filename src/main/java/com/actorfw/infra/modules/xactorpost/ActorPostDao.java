@@ -20,9 +20,19 @@ public class ActorPostDao {
 	public List<ActorPost> actorList(ActorPostVo vo) {
 		return sqlSession.selectList(namespace + ".actorList", vo);
 	}
+	public ActorPost selectOne(ActorPostVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo); }
+	
+	public List<ActorPost> snslist(ActorPostVo vo) throws Exception { return sqlSession.selectList(namespace + ".snslist", vo);}
+	
+	
+	
+	
+	
+	
+	
 	
 	public int selectOneCount(ActorPostVo vo) { return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	
-
+	
 	
 }

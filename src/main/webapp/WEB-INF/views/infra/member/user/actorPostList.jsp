@@ -26,7 +26,7 @@
 	
 <body>
 	<form name="mainForm" id="mainForm" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="seq" value="${dto.seq}">
+		<input type="hidden" name="seq">
 		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
@@ -97,20 +97,18 @@
 				<li><a href="#">여자</a></li>
 			</ul>
 		</div>
-		<a href="#" class="text-decoration-none">
-			<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
-				<c:forEach items="${list}" var="list" varStatus="status">			
-					<div class="cardactor col-2">
-						<img src="${list.path}${list.uuidName}" class="card-img-top" alt="">
-						<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
-						<div class="pra">
-							<input hidden type="text" value="${list.seq }">
-							<p style="text-align: center;"><c:out value="${list.age }"></c:out>세</p>
-						</div>
+		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
+			<c:forEach items="${list}" var="list" varStatus="status">			
+				<div class="cardactor col-2" onclick="goView(${list.seq})">
+					<img src="${list.path}${list.uuidName}" class="card-img-top" alt="">
+					<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
+					<div class="pra">
+						<input hidden type="text" value="${list.seq }">
+						<p style="text-align: center;"><c:out value="${list.age }"></c:out>세</p>
 					</div>
-				</c:forEach>
-			</div>
-		</a>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 	<!-- pagination s -->
 	<%@include file="../user/include/pagination.jsp"%>
@@ -167,6 +165,11 @@
 	
 	var goUrlList = "/Post/ActorPostList"; 			/* #-> */
 	
+	var seq = $("input:hidden[name=seq]")
+	
+	var form = $("#mainForm")
+	
+
 	
   	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);
@@ -174,7 +177,10 @@
 	}
 	
 	
-	
+	goView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/ActorView").submit();
+	}
 	
 	
 	

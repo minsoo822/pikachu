@@ -36,6 +36,17 @@ public class ActorPostController {
 		return "infra/member/user/actorPostList";
 	}
 	
+	@RequestMapping(value = "ActorView")
+	public String actorView(Model model, ActorPostVo vo) throws Exception {
+	    
+	    ActorPost item = service.selectOne(vo);
+	    model.addAttribute("item", item);
+	    
+	    List<ActorPost> snslist = service.snslist(vo);
+	    model.addAttribute("snslist", snslist);
+	    
+	    return "infra/member/user/actorView";
+	}
 		
 		
 		
