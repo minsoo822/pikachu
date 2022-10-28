@@ -29,10 +29,7 @@ public class MemberServiceImpl implements MemberService {
 //	sns정보
 	@Override
     public List<Member> selectSnsList(MemberVo vo) throws Exception { return dao.selectSnsList(vo); }
-
-
-
-    //	filmo정보
+//	filmo정보
 	@Override
     public List<Member> selectFilmoList(MemberVo vo) throws Exception { return dao.selectFilmoList(vo); }
 //  edu정보
@@ -49,7 +46,7 @@ public class MemberServiceImpl implements MemberService {
     
     
     
-    //--------------------------------------------------------------------------------------------------	
+//--------------------------------------------------------------------------------------------------	
 //	멤버인서트
 	@Override
 	public int insertCd(Member dto) throws Exception {
@@ -83,7 +80,6 @@ public class MemberServiceImpl implements MemberService {
         }
 		return insertCd;
 	}
-//------------------------------------------------------------ 배우상세	
 //  배우sns인서트
     @Override
     public int insertSnsCd(Member dto) throws Exception {
@@ -149,7 +145,7 @@ public class MemberServiceImpl implements MemberService {
                 } else {
                     dto.setType(2);
                 }
-                dto.setDefaultNy(j == 0 ? 1 : 0);
+                dto.setDefaultNy(0);
                 dto.setSort(j+1);
                 dto.setPseq(Integer.parseInt(dto.getSeq()));
 
@@ -159,6 +155,8 @@ public class MemberServiceImpl implements MemberService {
         }
 		return updateCd; 
 	}
+	
+//---------------------------------------------------------------------------------------	
 //  메인프로필사진 불러오기
 	@Override
 	public Member imageMainView(Member dto) throws Exception {

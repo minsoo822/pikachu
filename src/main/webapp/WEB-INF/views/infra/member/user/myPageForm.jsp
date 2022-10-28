@@ -45,6 +45,7 @@
 		max-width: 100%;
 		width: 500px;
 		color: white;
+		border-radius: 5px;
 	}
 	</style>
 </head>
@@ -152,6 +153,8 @@
 								<div class="row">
 									<div class="col mb-4"><h4><b>개인신상정보</b></h4></div>
 								</div>
+								<input type="hidden" name="user_type" value="${item.user_type }">
+								<input type="text">
 								<div class="row">
 									<div class="col txwhite">
 										<div class="row">
@@ -167,15 +170,21 @@
 											</div>
 										</div>
 										<div class="row">
+											<div class="col-2 gy-1">나이</div>
+											<div class="col-5 gy-1">
+												<input type="text" class="form-control" name="age" value="${item.age }">
+											</div>
+										</div>
+										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" name="" value="${item.actor_height }">
+												<input type="text" class="form-control" name="actor_height" value="${item.actor_height }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">몸무게</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" name="" value="${item.actor_weight }">
+												<input type="text" class="form-control" name="actor_weight" value="${item.actor_weight }">
 											</div>
 										</div>
 										<div class="row">
@@ -185,13 +194,13 @@
 													<input type="text" class="form-control" name="email" value="${item.email }">
 													<span class="input-group-text">@</span>
 													<select class="form-select" name="email_domain">
-														<option valuw=""<c:if test="${empty item.email_domain}">selected</c:if>>선택</option>
-														<option valuw="4" <c:if test="${item.email_domain eq 4 }">selected</c:if>>naver.com</option>
-														<option valuw="5" <c:if test="${item.email_domain eq 5 }">selected</c:if>>gamil.com</option>
-														<option valuw="6" <c:if test="${item.email_domain eq 6 }">selected</c:if>>daum.net</option>
-														<option valuw="7" <c:if test="${item.email_domain eq 7 }">selected</c:if>>nate.com</option>
-														<option valuw="8" <c:if test="${item.email_domain eq 8 }">selected</c:if>>dreamwiz.com</option>
-														<option valuw="9" <c:if test="${item.email_domain eq 9 }">selected</c:if>>freechal.com</option>
+														<option value=""<c:if test="${empty item.email_domain}">selected</c:if>>선택</option>
+														<option value="4" <c:if test="${item.email_domain eq 4 }">selected</c:if>>naver.com</option>
+														<option value="5" <c:if test="${item.email_domain eq 5 }">selected</c:if>>gamil.com</option>
+														<option value="6" <c:if test="${item.email_domain eq 6 }">selected</c:if>>daum.net</option>
+														<option value="7" <c:if test="${item.email_domain eq 7 }">selected</c:if>>nate.com</option>
+														<option value="8" <c:if test="${item.email_domain eq 8 }">selected</c:if>>dreamwiz.com</option>
+														<option value="9" <c:if test="${item.email_domain eq 9 }">selected</c:if>>freechal.com</option>
 													</select>
 												</div>
 											</div>
@@ -212,10 +221,10 @@
 											<div class="col-2 gy-1">쌍꺼풀 유무</div>
 											<div class="col-5 gy-1">
 												<select class="form-select" name="actor_eyelid">
-													<option valuw="" <c:if test="${empty item.actor_eyelid}">selected</c:if>>선택</option>
-													<option valuw="37" <c:if test="${item.actor_eyelid eq 37 }">selected</c:if>>겉쌍꺼풀</option>
-													<option valuw="38" <c:if test="${item.actor_eyelid eq 38 }">selected</c:if>>속쌍꺼풀</option>
-													<option valuw="39" <c:if test="${item.actor_eyelid eq 39 }">selected</c:if>>무쌍꺼풀</option>
+													<option value="" <c:if test="${empty item.actor_eyelid}">selected</c:if>>선택</option>
+													<option value="37" <c:if test="${item.actor_eyelid eq 37 }">selected</c:if>>겉쌍꺼풀</option>
+													<option value="38" <c:if test="${item.actor_eyelid eq 38 }">selected</c:if>>속쌍꺼풀</option>
+													<option value="39" <c:if test="${item.actor_eyelid eq 39 }">selected</c:if>>무쌍꺼풀</option>
 												</select>
 											</div>
 										</div>
@@ -223,10 +232,10 @@
 											<div class="col-2 gy-1">목소리 톤</div>
 											<div class="col-5 gy-1">
 												<select class="form-select" name="actor_voice">
-													<option valuw="" <c:if test="${empty item.actor_voice}">selected</c:if>>선택</option>
-													<option valuw="40" <c:if test="${item.actor_voice eq 40}">selected</c:if>>고음</option>
-													<option valuw="41" <c:if test="${item.actor_voice eq 41}">selected</c:if>>중음</option>
-													<option valuw="42" <c:if test="${item.actor_voice eq 42}">selected</c:if>>저음</option>
+													<option value="" <c:if test="${empty item.actor_voice}">selected</c:if>>선택</option>
+													<option value="40" <c:if test="${item.actor_voice eq 40}">selected</c:if>>고음</option>
+													<option value="41" <c:if test="${item.actor_voice eq 41}">selected</c:if>>중음</option>
+													<option value="42" <c:if test="${item.actor_voice eq 42}">selected</c:if>>저음</option>
 												</select>
 											</div>	
 										</div>
@@ -268,11 +277,11 @@
 									</div>
 								</div>
 								<div class="row text-center gx-1 mb-1">
-									<div class="col-2 regText">시기</div>
-									<div class="col regText">구분</div>
-									<div class="col regText">제작사</div>
-									<div class="col regText">제목</div>
-									<div class="col regText">역활</div>
+									<div class="col-2 pt-1 regText">시기</div>
+									<div class="col pt-1 regText">구분</div>
+									<div class="col pt-1 regText">제작사</div>
+									<div class="col pt-1 regText">제목</div>
+									<div class="col pt-1 regText">역활</div>
 									<div class="col-1">
 										<button type="button" class="regFrombutton">
 											<i class="fa-solid fa-plus"></i>
@@ -313,9 +322,9 @@
 												<div class="col">
 													<input type="text" class="form-control" value="${filmoList.role }">
 												</div>
-												<div class="col-1">
+												<div class="col-1 mt-1">
 													<button type="button" class="regFrombutton">
-														<i class="fa-solid fa-plus"></i>
+														<i class="fa-solid fa-minus"></i>
 													</button>
 												</div>
 											</div>
@@ -403,12 +412,16 @@
 												<h4><b>학력</b></h4>
 											</div>
 										</div>
-										<div class="row text-center gx-1">
-											<div class="col-4 regText">시기</div>
-											<div class="col regText">학교명</div>
-											<div class="col regText">전공</div>
-											<div class="col regText">구분</div>
-											<div class="col-1 regText"></div>
+										<div class="row text-center gx-1 mb-2">
+											<div class="col-4 pt-1 regText">시기</div>
+											<div class="col pt-1 regText">학교명</div>
+											<div class="col pt-1 regText">전공</div>
+											<div class="col pt-1 regText">구분</div>
+											<div class="col-1">
+												<button type="button" class="regFrombutton" onclick="addEdu()">
+													<i class="fa-solid fa-plus"></i>
+												</button>
+											</div>
 										</div>
 										<c:choose>
 											<c:when test="${fn:length(eduList) eq 0 }">
@@ -446,9 +459,9 @@
 																</select>
 															</div>
 														</div>
-														<div class="col-1">
+														<div class="col-1 mt-1">
 															<button type="button" class="regFrombutton" onclick="addEdu()">
-																<i class="fa-solid fa-plus"></i>
+																<i class="fa-solid fa-minus"></i>
 															</button>
 														</div>
 													</div>
@@ -496,7 +509,7 @@
 														</div>
 														<div class="col-1">
 															<button type="button" class="regFrombutton" onclick="addEdu()">
-																<i class="fa-solid fa-plus"></i>
+																<i class="fa-solid fa-minus"></i>
 															</button>
 														</div>
 													</div>
@@ -522,7 +535,7 @@
 								<div class="row">
 									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
 										<button type="button" class="regFrombutton">목록으로</button>
-										<a type="button" class="regFrombutton" style="margin-left: 10px;" id="">저장하기</a>
+										<a type="button" class="regFrombutton" style="margin-left: 10px;" id="btnSave">저장하기</a>
 									</div>
 								</div>
 							</div>
@@ -574,6 +587,37 @@
 	
 	
 	<script type="text/javascript">
+	
+	var form = $("#mainForm");
+	
+	$("#btnSave").on("click", function(){
+		form.attr("action", "/member/MypageUpdate").submit();
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
 	

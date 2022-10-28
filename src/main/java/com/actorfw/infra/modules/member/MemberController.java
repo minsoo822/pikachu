@@ -285,6 +285,7 @@ public class MemberController {
         return "infra/member/user/myPageView";
     }
 	
+	// 마이페이지 폼
 	@RequestMapping(value = "MypageForm")
 	public String mypageForm(@ModelAttribute("vo") MemberVo vo, Member dto, Model model, HttpSession httpSession) throws Exception {
 
@@ -319,7 +320,14 @@ public class MemberController {
 	}
     
 //---------------------------------------------------------------------------------------------------------------   
-    
+    @RequestMapping(value = "MypageUpdate")
+	public String myPageUpdate(Member dto) throws Exception {
+	    
+	    int myPageUpdate = service.updateCd(dto);
+	    System.out.println("myPageUpdate : " + myPageUpdate);
+	    return "redirect:/member/Mypage";
+	}
+	
 //------------------------------------------------------------------------------------- 화면구현
 	
 	//초기페이지

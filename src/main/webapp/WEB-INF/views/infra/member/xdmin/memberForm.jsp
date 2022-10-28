@@ -410,46 +410,6 @@
 	$("#btnSave").on("click", function(){
 		form.attr("action", goUrlInst).submit();
 		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   	//	if (validationInst() == false) return false;
-	   		
-	   		
-//			var obj = $("#mainPicture").files;
-			var obj = document.getElementById("mainPicture").files;
-			
-			var totalFileSize = 0;
-			var fileCount = obj.length;
-			var fileName = $("#mainPicture").val();
-			
-			fileName = fileName.slice(fileName.indexOf(".")+1).toLowerCase();
-			if(fileName != "jpg" && fileName != "png" && fileName != "jpeg" && fileName != "gif" && fileName != "bmp"){
-				alert("이미지 파일의 확장자를 확인해 주세요. ")
-				return false;
-			}
-
-			//파일갯수
-			if(fileCount > 2){
-				alert("프로필 사진은 2장만 등록 가능합니다. ")
-				return false;
-			}
-			
-			alert(obj);
-			alert(obj.length);
-
-			//파일용량체크
-			for(var i=0; i<obj.length; i++){
-				alert(obj[i].name + " : " + obj[i].size);
-			}
-			
-			//총파일 용량
-			for(var i=0; i<obj.length; i++){
-				totalFileSize += obj[i].size;
-				alert("totalFileSize : " + totalFileSize);
-			}
-			
-			
-			/* return false; */
-	   		
 	   		form.attr("action", goUrlInst).submit();
 	   	} else {
 	   		// update
@@ -546,6 +506,47 @@
 	    sidebar.classList.toggle("close");
 	  });
   
+	  
+ 		// insert
+	   	//	if (validationInst() == false) return false;
+	   		
+	   		
+//			var obj = $("#mainPicture").files;
+/* 			var obj = document.getElementById("mainPicture").files;
+			
+			var totalFileSize = 0;
+			var fileCount = obj.length;
+			var fileName = $("#mainPicture").val();
+			
+			fileName = fileName.slice(fileName.indexOf(".")+1).toLowerCase();
+			if(fileName != "jpg" && fileName != "png" && fileName != "jpeg" && fileName != "gif" && fileName != "bmp"){
+				alert("이미지 파일의 확장자를 확인해 주세요. ")
+				return false;
+			}
+
+			//파일갯수
+			if(fileCount > 2){
+				alert("프로필 사진은 2장만 등록 가능합니다. ")
+				return false;
+			}
+			
+			alert(obj);
+			alert(obj.length);
+
+			//파일용량체크
+			for(var i=0; i<obj.length; i++){
+				alert(obj[i].name + " : " + obj[i].size);
+			}
+			
+			//총파일 용량
+			for(var i=0; i<obj.length; i++){
+				totalFileSize += obj[i].size;
+				alert("totalFileSize : " + totalFileSize);
+			}
+			 */
+			
+			/* return false; */
+	   		
   </script>
 
 </body>
