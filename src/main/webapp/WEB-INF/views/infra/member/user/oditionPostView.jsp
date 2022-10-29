@@ -41,6 +41,10 @@
   i {
   	color: white;
   }
+  hr {
+  	color: white;
+  	width: 1300px;
+  }
 
 </style>
 	
@@ -156,12 +160,12 @@
 		<div class="comentbox">
 		<div class="row">
 			<div class="col">
-				<hr clas="comentLine">
+				<hr>
 				<h6 class="coment">댓글 2</h6>
-				<hr class="comentLine">
+				<hr>
 			</div>
 		</div>
-		<div class="row" style="margin-bottom: 20px;">
+		<div class="row" style="margin-bottom: 30px;">
 			<div class="col">
 				<!-- 댓글 s -->
 				<div class="row" style="margin-bottom: 20px;">
@@ -216,7 +220,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="row" style="width: 1400px; margin-right: auto; margin-left: auto;">
-					<hr class="comentLine">
+					<!-- <hr> -->
 					<div class="col-11">
 						<input type="text" class="form-control" placeholder="내용을 입력 해주세요.">
 					</div>
