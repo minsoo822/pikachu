@@ -46,8 +46,20 @@ public class ActorPost extends Base {
 	private String url;
 	private Integer member_seq;
 	
-	
 //----------------------------------------------------------	
+	
+	private String period;
+	private Integer type;
+	private String producer;
+	private String role;
+	
+	private String period_s;
+	private String period_e;
+	private String school_name;
+	private String major;
+    
+	private String issuer;
+	
 	
 	
 	
@@ -264,4 +276,60 @@ public class ActorPost extends Base {
 	public void setMember_seq(Integer member_seq) {
 		this.member_seq = member_seq;
 	}
+    public String getPeriod() {
+        return period;
+    }
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+    public Integer getType() {
+        return type;
+    }
+    public void setType(Integer type) {
+        this.type = type;
+    }
+    public String getProducer() {
+        return producer;
+    }
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
+    public String getPeriod_s() {
+        return period_s;
+    }
+    public void setPeriod_s(String period_s) {
+        this.period_s = period_s;
+    }
+    public String getPeriod_e() {
+        return period_e;
+    }
+    public void setPeriod_e(String period_e) {
+        this.period_e = period_e;
+    }
+    public String getSchool_name() {
+        return school_name;
+    }
+    public void setSchool_name(String school_name) {
+        this.school_name = school_name;
+    }
+    public String getMajor() {
+        return major;
+    }
+    public void setMajor(String major) {
+        this.major = major;
+    }
+    public String getIssuer() {
+        return issuer;
+    }
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
+    }
+	
+	
 }

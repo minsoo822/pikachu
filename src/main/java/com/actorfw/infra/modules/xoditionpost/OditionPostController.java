@@ -57,7 +57,16 @@ public class OditionPostController {
 			
 			return "redirect:/Post/oditionPostViewList";
 		}
-		
+
+        /* 오디션게시물 뷰 */
+		@RequestMapping(value = "oditionPostView")
+        public String oditionPostView(OditionPostVo vo, Model model) throws Exception {
+            
+            List<OditionPost> list = service.oditionList(vo);
+            model.addAttribute("list", list);
+            
+            return "infra/member/user/oditionPostView";
+        }
 	
 	
 }

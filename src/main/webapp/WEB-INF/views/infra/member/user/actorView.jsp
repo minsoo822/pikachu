@@ -48,10 +48,10 @@
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="../main/mainViewForm.html">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="../main/tourpostViewForm.html">프로필 투어</a></li>
-					<li><a href="../main/oditionPostViewForm.html">오디션 공고</a>
+					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">상업영화</a></li>
@@ -60,9 +60,9 @@
 							<li><a href="#">(바이럴)광고</a></li>
 						</ul>
 					</li>	
-					<li><a href="../main/actorPostViewForm.html">프로필 정보</a>
+					<li><a href="/Post/ActorPostList">프로필 정보</a>
 						<ul>
-							<li><a href="../main/actorPostViewForm.html">전체</a></li><br>
+							<li><a href="/Post/ActorPostList">전체</a></li><br>
 							<li><a href="../main/actorPostManViewForm.html">남자</a></li><br>
 							<li><a href="../main/actorPostWomanViewForm.html">여자</a></li>
 						</ul>
@@ -243,13 +243,13 @@
 								</div>
 								<div class="row text-center gx-1 mb-1">
 									<div class="col-3 regText">시기</div>
-									<div class="col regText">구분</div>
-									<div class="col regText">제작사</div>
-									<div class="col regText">제목</div>
-									<div class="col regText">역활</div>
+									<div class="col-1 regText">구분</div>
+									<div class="col-3 regText">제작사</div>
+									<div class="col-2 regText">제목</div>
+									<div class="col-3 regText">역활</div>
 								</div>
 								<c:choose>
-									<c:when test="${fn:length(filmoList) eq 0 }">
+									<c:when test="${fn:length(filmolist) eq 0 }">
 										<div class="row">
 											<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
 												<c:out value="${item.name }"/>님의 필모그래피가 존재하지 않습니다.
@@ -257,22 +257,22 @@
 										</div>
 									</c:when>
 									<c:otherwise>
-										<c:forEach items="${filmoList}" var="filmoList" varStatus="statusfilmoList">
+										<c:forEach items="${filmolist}" var="filmolist" varStatus="statusfilmoList">
 											<div class="row gx-1 text-center mb-1">
 												<div class="col-3 txwhite">
-													<c:out value="${filmoList.period }"/>
+													<c:out value="${filmolist.period }"/>
 												</div>
-												<div class="col txwhite">
-													<c:out value="${filmoList.type }"/>
+												<div class="col-1 txwhite">
+													<c:out value="${filmolist.type }"/>
 												</div>
-												<div class="col txwhite">
-													<c:out value="${filmoList.producer }"/>
+												<div class="col-3 txwhite">
+													<c:out value="${filmolist.producer }"/>
 												</div>
-												<div class="col txwhite">
-													<c:out value="${filmoList.name }"/>
+												<div class="col-2 txwhite">
+													<c:out value="${filmolist.name }"/>
 												</div>
-												<div class="col txwhite">
-													<c:out value="${filmoList.role }"/>
+												<div class="col-3 txwhite">
+													<c:out value="${filmolist.role }"/>
 												</div>
 											</div>
 										</c:forEach>
@@ -335,7 +335,7 @@
 											<div class="col regText">구분</div>
 										</div>
 										<c:choose>
-											<c:when test="${fn:length(eduList) eq 0 }">
+											<c:when test="${fn:length(edulist) eq 0 }">
 												<div class="row">
 													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 학력사항이 존재하지 않습니다.
@@ -343,23 +343,23 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
+												<c:forEach items="${edulist}" var="edulist" varStatus="statuseduList">
 													<div class="row gx-1 text-center">
 														<div class="col-4  txwhite">
 															<div class="input-group" style="display: flex; justify-content: center;">
-																<c:out value="${eduList.period_s }"/>
+																<c:out value="${edulist.period_s }"/>
 																<span class="txwhite">~</span>
-																<c:out value="${eduList.period_e }"/>
+																<c:out value="${edulist.period_e }"/>
 															</div>
 														</div>
 														<div class="col txwhite">
-															<c:out value="${eduList.school_name }"/>
+															<c:out value="${edulist.school_name }"/>
 														</div>
 														<div class="col txwhite">
-															<c:out value="${eduList.major }"/>
+															<c:out value="${edulist.major }"/>
 														</div>
 														<div class="col txwhite">
-															<c:out value="${eduList.type }"/>
+															<c:out value="${edulist.type }"/>
 														</div>
 													</div>
 												</c:forEach>
@@ -380,7 +380,7 @@
 											<div class="col regText">발급기관</div>
 										</div>
 										<c:choose>
-											<c:when test="${fn:length(AwardList) eq 0 }">
+											<c:when test="${fn:length(awardlist) eq 0 }">
 												<div class="row">
 													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 수상경력이 존재하지 않습니다.
@@ -388,16 +388,16 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${AwardList }" var="AwardList" varStatus="statusAwardList">
+												<c:forEach items="${awardlist }" var="awardlist" varStatus="statusAwardList">
 													<div class="row gx-1 text-center">
-														<div class="col-4">
-															<c:out value="${AwardList.period }"></c:out>
+														<div class="col-4 txwhite">
+															<c:out value="${awardlist.period }"></c:out>
 														</div>
-														<div class="col">
-															<c:out value="${AwardList.name }"></c:out>
+														<div class="col txwhite">
+															<c:out value="${awardlist.name }"></c:out>
 														</div>
-														<div class="col">
-															<c:out value="${AwardList.issuer }"></c:out>
+														<div class="col txwhite">
+															<c:out value="${awardlist.issuer }"></c:out>
 														</div>
 													</div>
 												</c:forEach>

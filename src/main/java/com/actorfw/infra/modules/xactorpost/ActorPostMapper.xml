@@ -53,7 +53,6 @@
 		AND a.seq = #{seq}
 		
 	</select>
-	
 	<select id="snslist" resultMap="resultObj">
 		SELECT
 			type
@@ -62,10 +61,54 @@
 		WHERE 1=1
 		AND member_seq = #{seq}
 	</select>
+	<select id="filmolist" resultMap="resultObj">
+		SELECT
+			period
+			,type
+			,producer
+			,name
+			,role
+		FROM actor_filmography
+		WHERE 1=1
+		AND member_seq = #{seq}	
+	</select>
 		
-		
-	
-
+	<select id="edulist" resultMap="resultObj">
+		SELECT
+			period_s
+			,period_e
+			,school_name
+			,major
+			,type
+		FROM actor_education
+		WHERE 1=1
+		AND member_seq = #{seq}	
+	</select>
+	<select id="awardlist" resultMap="resultObj">
+		SELECT
+			period
+			,name
+			,issuer
+		FROM actor_award
+		WHERE 1=1
+		AND member_seq = #{seq}	
+	</select>
+	<select id="imageSubView" resultMap="resultObj">
+		SELECT 
+			*
+		FROM memberUploaded
+		WHERE defaultNy = 0		<!-- defaultNy 0 = 메인이미지제외 -->	
+		AND   type = 2			<!-- type 2 = 서브이미지 -->
+		AND pseq = #{seq}
+	</select>
+	<select id="actorVideo" resultMap="resultObj">
+		SELECT 
+			*
+		FROM memberUploaded
+		WHERE defaultNy = 0		<!-- defaultNy 0 = 메인이미지제외 -->	
+		AND   type = 3			<!-- type 3 = 영상 -->
+		AND pseq = #{seq}
+	</select>
 
 
 

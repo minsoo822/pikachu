@@ -22,11 +22,19 @@
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
+	<style type="text/css">
+	
+	.in:hover {
+		background: gray;
+		cursor: pointer;
+	}
+		
+	</style>
 </head>
 	
 <body style="background-color: #101010;">
 <form method="post" id="mainForm">
-	<input type="hidden" name="seq" value="${dto.seq}">
+	<input type="hidden" name="seq">
 		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
@@ -158,7 +166,7 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${list}" var="list" varStatus="status">
-							<tr>
+							<tr class="in" onclick="goView(${list.seq})">
 								<th><input class="form-check-input" type="checkbox" name="allCheck"></th>
 								<td>
 								<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>       <%--  순서 카운트  --%>
@@ -174,23 +182,6 @@
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
-				<!-- <tr class="choise" onclick="oneLine('oditionPostModForm.html')">
-					<td>1</td>
-					<td>드라마</td>
-					<td>한강 (W캐스팅)</td>
-					<td>논현로 86길 29</td>
-					<td>2022-04-25. 19:35</td>
-					<td></td>
-				</tr>
-				<tr class="choise" onclick="twoLine('#')">
-					<td>2</td>
-					<td>상업영화</td>
-					<td>미스매치 (노시스 컴퍼니)</td>
-					<td>마포구 성암로 330</td>
-					<td>2022-06-11. 20:13</td>
-					<td></td>
-				</tr> -->
-				
 			</tbody>	
 		</table>
 	</div>
@@ -278,7 +269,10 @@
 		form.attr("action", goUrlOditionForm).submit();
 	});
 	
-	
+	goView = function(key) {
+		seq.attr("vlaue", key);
+		form.attr("action" ,"/Post/oditionPostView").submit();
+	}
 	
 	
 	
@@ -294,22 +288,7 @@
 	
 		document.querySelector(".disableLink").removeAttribute('href');
 		
-		function oneLine(url)
-		{
-		   document.location.href = url;
-		}
-		function twoLine(url)
-		{
-		   document.location.href = url;
-		}
-		function threeLine(url)
-		{
-		   document.location.href = url;
-		}
-		function fourLine(url)
-		{
-		   document.location.href = url;
-		}
+		
 	
 	
 	</script>

@@ -434,16 +434,16 @@
 		SELECT 
 			*
 		FROM memberUploaded
-		WHERE defaultNy = 0
-		AND   type = 2
+		WHERE defaultNy = 0		<!-- defaultNy 0 = 메인이미지제외 -->	
+		AND   type = 2			<!-- type 2 = 서브이미지 -->
 		AND pseq = #{pseq}
 	</select>
 	<select id="actorVideo" resultMap="resultObj">
 		SELECT 
 			*
 		FROM memberUploaded
-		WHERE defaultNy = 0
-		AND   type = 3
+		WHERE defaultNy = 0		<!-- defaultNy 0 = 메인이미지제외 -->	
+		AND   type = 3			<!-- type 3 = 영상 -->
 		AND pseq = #{pseq}
 	</select>
 

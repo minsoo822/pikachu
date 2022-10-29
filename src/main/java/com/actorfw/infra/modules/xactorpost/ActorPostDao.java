@@ -23,9 +23,11 @@ public class ActorPostDao {
 	public ActorPost selectOne(ActorPostVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo); }
 	
 	public List<ActorPost> snslist(ActorPostVo vo) throws Exception { return sqlSession.selectList(namespace + ".snslist", vo);}
-	
-	
-	
+	public List<ActorPost> filmolist(ActorPostVo vo) throws Exception { return sqlSession.selectList(namespace + ".filmolist", vo);}
+	public List<ActorPost> edulist(ActorPostVo vo) throws Exception { return sqlSession.selectList(namespace + ".edulist", vo);}
+	public List<ActorPost> awardlist(ActorPostVo vo) throws Exception { return sqlSession.selectList(namespace + ".awardlist", vo);}
+	public List<ActorPost> imageSubView(ActorPostVo vo) throws Exception { return sqlSession.selectList(namespace + ".imageSubView", vo);}
+	public List<ActorPost> actorVideo(ActorPostVo vo) throws Exception { return sqlSession.selectList(namespace + ".actorVideo", vo);}
 	
 	
 	

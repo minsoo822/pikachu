@@ -45,6 +45,21 @@ public class ActorPostController {
 	    List<ActorPost> snslist = service.snslist(vo);
 	    model.addAttribute("snslist", snslist);
 	    
+	    List<ActorPost> filmolist = service.filmolist(vo);
+        model.addAttribute("filmolist", filmolist);
+        
+        List<ActorPost> edulist = service.edulists(vo);
+        model.addAttribute("edulist", edulist);
+        
+        List<ActorPost> awardlist = service.awardlist(vo);
+        model.addAttribute("awardlist", awardlist);
+       
+        List<ActorPost> imageSubView = service.imageSubView(vo);
+        model.addAttribute("imageSubView", imageSubView);
+        
+        List<ActorPost> actorVideo = service.actorVideo(vo);
+        model.addAttribute("actorVideo", actorVideo);
+	    
 	    return "infra/member/user/actorView";
 	}
 		

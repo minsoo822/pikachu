@@ -3,7 +3,7 @@ package com.actorfw.infra.modules.xactorpost;
 import com.actorfw.infra.common.base.BaseVo;
 import com.actorfw.infra.common.constants.Constants;
 
-public class ActorPostVo {
+public class ActorPostVo extends BaseVo{
 
 	//	seq
 	private Integer seq;
