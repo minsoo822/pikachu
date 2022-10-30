@@ -1,12 +1,17 @@
 package com.actorfw.infra.modules.xoditionpost;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -60,12 +65,34 @@ public class OditionPostController {
 
         /* 오디션게시물 뷰 */
 		@RequestMapping(value = "oditionPostView")
-        public String oditionPostView(OditionPostVo vo, Model model) throws Exception {
+        public String oditionPostView(@ModelAttribute("vo") OditionPostVo vo, Model model) throws Exception {
             
-            List<OditionPost> list = service.oditionList(vo);
-            model.addAttribute("list", list);
+		    OditionPost item = service.oditionView(vo);
+		    model.addAttribute("item", item);
+            
+            /* 댓글 */
+            List<OditionPost> postComentList = service.postComentList(vo);
+            model.addAttribute("postComentList", postComentList);
             
             return "infra/member/user/oditionPostView";
+        }
+		
+		@ResponseBody
+		@RequestMapping(value = "oditionPostComentInst")
+        public Map<String, Object> insertComent(OditionPost dto) throws Exception {
+            		    
+            Map<String, Object> result = new HashMap<String, Object>();
+            
+		    int comentInst = service.insertComnt(dto);
+
+		    OditionPost comentItem = service.comentOne(dto);
+		    //dto에 담긴 member_seq 댓글작성자 닉네임, 프로필이미지를 join
+		    result.put("img", comentItem.getPath() + comentItem.getUuidName());
+		    result.put("writer", comentItem.getWriter());
+		    result.put("comment", dto.getContents());
+            //path  uuid  nickname 
+		    
+            return result;
         }
 	
 	

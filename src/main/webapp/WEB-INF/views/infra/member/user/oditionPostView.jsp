@@ -24,20 +24,19 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
 	<style>
-  .profile-user-img{
-  	background: red;
-    width: 40px;
-    height: 40px;
-    border-radius: 70%;
-    overflow: hidden;
-    text-align: center; 
-  }
-
-  .profile-user-img-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+	  .profile-user-img{
+	    width: 40px;
+	    height: 40px;
+	    border-radius: 70%;
+	    overflow: hidden;
+	    text-align: center; 
+	  }
+	
+	  .profile-user-img-img{
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	  }
   i {
   	color: white;
   }
@@ -51,7 +50,9 @@
 </head>
 	
 <body>
-	<form action="">
+	<form action="" id="mainForm" method="post">
+	<input type="hidden" id="post_odition_seq" name="seq" value="${item.seq }">
+	<input type="hidden" id="member_seq" name="member_seq" value="${sessSeq}">
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
@@ -124,12 +125,12 @@
 					<th>담당자</th>
 				</tr>
 				<tr style="background-color: #ADADAD;">
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
+					<td><c:out value="${item.name}"/></td>
+					<td><c:out value="${item.type}"/></td>
+					<td><c:out value="${item.producer}"/></td>
+					<td><c:out value="${item.director}"/></td>
+					<td><c:out value="${item.location}"/></td>
+					<td><c:out value="${item.manager}"/></td>
 				</tr>
 				<tr>
 					<th>극중배역</th>
@@ -140,15 +141,15 @@
 					<th>마감일</th>
 				</tr>
 				<tr style="background-color: #ADADAD;">
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
-					<td><c:out value=""/></td>
+					<td><c:out value="${item.casting}"/></td>
+					<td><c:out value="${item.age}"/></td>
+					<td><c:out value="${item.gender}"/></td>
+					<td><c:out value="${item.pay}"/></td>
+					<td><c:out value="${item.email}"/></td>
+					<td><c:out value="${item.deadline}"/></td>
 				</tr>
 			</table>
-			<textarea class="area" rows="" cols=""></textarea>
+			<textarea class="area" rows="" cols=""><c:out value="${item.contents}"/></textarea>
 		</div>
 		<div class="col d-grid justify-content-end" style="width: 1400px; margin-right: auto; margin-left: auto; margin-top: 30px;">
 			<a href="oditionPostViewForm.html">
@@ -166,33 +167,38 @@
 			</div>
 		</div>
 		<div class="row" style="margin-bottom: 30px;">
-			<div class="col">
+			<div class="col" id="comment_area">
 				<!-- 댓글 s -->
-				<div class="row" style="margin-bottom: 20px;">
-					<div class="col-1" style="display: flex; justify-content: center;">
-						<div class="profile-user-img"> 
-						<img src="이미지링크" alt="" class="profile-user-img-img"> 
+				<c:forEach items="${postComentList }" var="postComentList" varStatus="statuspostComentList">
+					<div class="row" style="margin-bottom: 20px;">
+						<div class="col-1" style="display: flex; justify-content: center;">
+							<div class="profile-user-img"> 
+							<img src="${postComentList.path}${postComentList.uuidName }" alt="" class="profile-user-img-img"> 
+							</div>
 						</div>
+						<div class="col" style=" color: white;">
+							<div class="row">
+								<div class="col-1" style="font-size: 8pt; width:68px; ">
+									<c:out value="${postComentList.writer }"></c:out>
+								</div>
+								<div class="col-1" style="font-size: 8pt; width: 150px;">
+									<c:out value="${postComentList.datetime }"></c:out>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<c:out value="${postComentList.contents }"></c:out>
+								</div>
+								<div class="col">
+									<button>답글달기</button>
+								</div>
+							</div>
+						</div>			
 					</div>
-					<div class="col" style=" color: white;">
-						<div class="row">
-							<div class="col-1" style="font-size: 8pt; width:68px; ">
-								이름은요
-							</div>
-							<div class="col-1" style="font-size: 8pt;">
-								시간
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								감사합니다
-							</div>
-						</div>
-					</div>			
-				</div>
+				</c:forEach>
 				<!-- 댓글 e -->
 				<!-- 대댓글 s -->
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-1" style="width: 90px; display: flex; justify-content:flex-end; align-items: center;">
 						<i class="fa-solid fa-right-long"></i>
 					</div>
@@ -213,7 +219,7 @@
 							</div>
 						</div>
 					</div>				
-				</div>
+				</div> -->
 				<!-- 대댓글 e -->
 			</div>
 		</div>
@@ -222,10 +228,10 @@
 				<div class="row" style="width: 1400px; margin-right: auto; margin-left: auto;">
 					<!-- <hr> -->
 					<div class="col-11">
-						<input type="text" class="form-control" placeholder="내용을 입력 해주세요.">
+						<input type="text" class="form-control" id="comment" name="contents" placeholder="내용을 입력 해주세요.">
 					</div>
 					<div class="col-1">
-						<button type="button" class="regFrombutton">등록</button>
+						<button type="button" class="regFrombutton" id="comentSave">등록</button>
 					</div>
 				</div>
 			</div>
@@ -264,6 +270,71 @@
 	</div>
 	</form>
 	<script type="text/javascript">
+	
+	var seq = $("input:hidden[name=seq]");
+	
+	var form = $("#mainForm");
+	
+	$("#comentSave").on("click", function() {
+		
+		$.ajax({
+			url: '/Post/oditionPostComentInst',
+			type: 'POST',
+			datatype: 'json',
+			data: {
+				post_odition_seq : $("#post_odition_seq").val(),
+				contents : $("#comment").val(),
+				member_seq : $("#member_seq").val(),
+			},
+			success:function(result){
+				
+				var txt = "";
+				
+				txt +='<div class="row" style="margin-bottom: 20px;">';
+				txt +='<div class="col-1" style="display: flex; justify-content: center;">';
+				txt +='<div class="profile-user-img"> ';
+				txt +='<img src="'+ result.img +'" alt="" class="profile-user-img-img"> ';
+				txt +='</div>';
+				txt +='</div>';
+				txt +='<div class="col" style=" color: white;">';
+				txt +='<div class="row">';
+				txt +='<div class="col-1" style="font-size: 8pt; width:68px; ">';
+				txt += result.writer;
+				txt +='</div>';
+				txt +='<div class="col-1" style="font-size: 8pt; width: 150px;">';
+				txt += '방금전';
+				txt +='</div>';
+				txt +='</div>';
+				txt +='<div class="row">';
+				txt +='<div class="col">';
+				txt += result.comment;
+				txt +='</div>';
+				/* txt +='<div class="col">';
+				txt +='<button>답글달기</button>';
+				txt +='</div>'; */
+				txt +='</div>';
+				txt +='</div>';
+				txt +='</div>';
+				
+				$("#comment_area").prepend(txt);
+				$("#comment").val("");
+			},
+			error:function(){
+				alert("ajax error..!");
+			}
+		})
+		
+		
+	});
+	
+	
+	/* comentSave = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/oditionPostComentInst").submti();
+	} */
+		
+	
+	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
 	

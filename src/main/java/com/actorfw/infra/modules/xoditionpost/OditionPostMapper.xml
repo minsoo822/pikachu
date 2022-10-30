@@ -66,6 +66,13 @@
 		ORDER BY seq DESC
 		LIMIT 1	
 	</select>
+	<select id="selectOne" resultMap="resultObj">
+		SELECT 
+			*
+		FROM post_odition
+		WHERE 1=1
+		AND seq = #{seq}
+	</select>
 	
 	<insert id="insrtOdition">
 		INSERT INTO post_odition (
@@ -131,6 +138,77 @@
 			,#{pseq}
 		)
 	</insert>
+	
+	<select id="postComentList" resultMap="resultObj">
+		SELECT
+			a.member_seq
+			,a.contents
+			,a.datetime
+			,b.path
+			,b.uuidName
+			,c.name AS writer
+		FROM post_odition_coment a
+		JOIN memberUploaded b
+		ON a.member_seq = b.pseq
+		JOIN member c
+		ON a.member_seq = c.seq
+		WHERE 1=1
+		AND b.defaultNy = 1
+		AND b.type = 2
+		AND a.member_seq = b.pseq
+		AND a.post_odition_seq = #{seq}
+		ORDER BY a.seq DESC
+	</select>
+	
+	<insert id="insertComnt">
+	INSERT INTO post_odition_coment (
+		member_seq
+		,contents
+		,post_odition_seq
+	)
+	VALUE (
+		#{member_seq}
+		,#{contents}
+		,#{post_odition_seq}
+	)	
+	</insert>
+	
+	<select id="comentOne" resultMap="resultObj">
+		SELECT
+			a.name AS writer
+		    ,b.path
+		    ,b.uuidName
+	    FROM member a
+	    JOIN memberUploaded b
+	    ON a.seq = b.pseq
+    	WHERE 1=1
+    	AND type = 2
+    	AND defaultNy = 1
+    	AND a.seq = #{member_seq}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

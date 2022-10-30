@@ -17,11 +17,14 @@ public class OditionPostDao {
 	
 	public static String namespace = "com.actorfw.infra.modules.xoditionpost.OditionPostMapper";
 	
-//	오디션리스트
+//	오디션게시판리스트
 	public List<OditionPost> oditionList(OditionPostVo vo) {
 		return sqlSession.selectList(namespace + ".oditionList", vo);
 	}
-	
+//	오디션세시물 샹세뷰
+	public OditionPost oditionView(OditionPostVo vo) {
+	    return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
 //	오디션정보Inst
 	public int insrtOdition(OditionPost dto) {
 		return sqlSession.insert(namespace +".insrtOdition", dto);
@@ -38,4 +41,14 @@ public class OditionPostDao {
 	    return sqlSession.selectOne(namespace + ".selectLastSeq", "");
 	}
 	
+    /* 댓글 */
+	public List<OditionPost> postComentList(OditionPostVo vo) { 
+	    return sqlSession.selectList(namespace + ".postComentList", vo);
+	    }
+	public int insertComnt(OditionPost dto) { 
+        return sqlSession.insert(namespace + ".insertComnt", dto);
+        }
+	public OditionPost comentOne(OditionPost dto) {
+	    return sqlSession.selectOne(namespace + ".comentOne", dto);
+	}
 }

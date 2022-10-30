@@ -7,9 +7,12 @@ import com.actorfw.infra.common.base.Base;
 public class OditionPost extends Base {
 
 	private String seq;
+	private String member_seq;
+	private String post_odition_seq;
+	
+	private String writer;
 	
 //	oditionPost
-	private String member_seq;
 	private Integer type;
 	private String name;
 	private String age;
@@ -26,6 +29,11 @@ public class OditionPost extends Base {
 	
 	private MultipartFile[] post_image;
 
+	
+	private String datetime;
+	
+	
+	
 //----------------------------------------	
 	
 	public String getSeq() {
@@ -34,6 +42,8 @@ public class OditionPost extends Base {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
+	
+	
   
 //----------------------------------------	
 	  public String getMember_seq() {
@@ -125,6 +135,24 @@ public class OditionPost extends Base {
         }
         public void setPost_image(MultipartFile[] post_image) {
             this.post_image = post_image;
+        }
+        public String getPost_odition_seq() {
+            return post_odition_seq;
+        }
+        public void setPost_odition_seq(String post_odition_seq) {
+            this.post_odition_seq = post_odition_seq;
+        }
+        public String getDatetime() {
+            return datetime;
+        }
+        public void setDatetime(String datetime) {
+            this.datetime = datetime;
+        }
+        public String getWriter() {
+            return writer;
+        }
+        public void setWriter(String writer) {
+            this.writer = writer;
         }
 	    
 	

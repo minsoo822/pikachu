@@ -19,7 +19,13 @@ public class OditionPostServiceImpl implements OditionPostService {
 		return dao.oditionList(vo);
 	}
 
-	@Override
+    @Override
+    public OditionPost oditionView(OditionPostVo vo) throws Exception {
+        return dao.oditionView(vo);
+    }
+
+
+    @Override
 	public int insrtOdition(OditionPost dto) throws Exception {
 		int insrtOdition = dao.insrtOdition(dto);
 	    int pseq = dao.selectLastSeq();
@@ -52,8 +58,22 @@ public class OditionPostServiceImpl implements OditionPostService {
         return dao.selectOneCount(vo);
     }
 
+
 	
-	
+    /* 댓글 */
+    @Override
+    public List<OditionPost> postComentList(OditionPostVo vo) throws Exception {
+        return dao.postComentList(vo);
+    }
+    @Override
+    public int insertComnt(OditionPost dto) throws Exception {
+        return dao.insertComnt(dto);
+    }
+
+    @Override
+    public OditionPost comentOne(OditionPost dto) throws Exception {
+        return dao.comentOne(dto);
+    }
 	
 
 }

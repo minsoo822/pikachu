@@ -34,7 +34,7 @@
 	
 <body style="background-color: #101010;">
 <form method="post" id="mainForm">
-	<input type="hidden" name="seq">
+	<input type="hidden" name="seq" value="${vo.seq }">
 		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
@@ -270,7 +270,7 @@
 	});
 	
 	goView = function(key) {
-		seq.attr("vlaue", key);
+		seq.attr("value", key);
 		form.attr("action" ,"/Post/oditionPostView").submit();
 	}
 	

@@ -9,7 +9,14 @@ public interface OditionPostService {
 	
 	//오디션정보Inst
 	public int insrtOdition(OditionPost dto) throws Exception;
+	public OditionPost oditionView(OditionPostVo vo) throws Exception;
 	
 	public int selectOneCount(OditionPostVo vo)  throws Exception;
+	
+	public OditionPost comentOne(OditionPost dto) throws Exception;
+	
+    /* 댓글 */
+	public List<OditionPost> postComentList(OditionPostVo vo) throws Exception;
+	public int insertComnt(OditionPost dto) throws Exception;
 	
 }
