@@ -80,7 +80,7 @@
 		<script type="text/javascript">
 		
 		function goHome() {
-			location.href="/member/mainHome";
+			location.href="/home/Home";
 		}
 		function goSignup() {
 			location.href="/member/loginForm";

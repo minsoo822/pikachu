@@ -10,7 +10,8 @@
 	
 	<select id="oditionList" resultMap="resultObj">
 		SELECT
-			a.name
+			a.seq
+			,a.name
 			,a.producer
 			,a.casting
 			,a.gender
@@ -26,7 +27,8 @@
 	
 	<select id="memberList" resultMap="resultObj">
 		SELECT
-			a.name
+			a.seq
+			,a.name
 			,a.age
 			,b.path
 			,b.uuidName

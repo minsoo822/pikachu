@@ -40,7 +40,7 @@
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 				<ul>
 					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
 					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
@@ -83,7 +83,7 @@
 					<button type="button" class="btn" id="btnLogin">로그인</button>
 				</c:if>
 				<c:if test="${sessSeq ne null }">
-					<button type="button" class="btn">마이페이지</button>
+					<button type="button" class="btn" id="btnMypage" value="${sessSeq }">마이페이지</button>
 					<button type="button" class="btn" id="btnLogout">로그아웃</button>
 				</c:if>	
 			</div>
@@ -107,11 +107,10 @@
 			</div>
 		</nav>
 	</div>
-	<br>sessSeq: <c:out value="${sessSeq }"/><br>
+	<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
 	sessId: <c:out value="${sessId }"/><br>
-	sessAmin <c:out value="${sessAdmin }"/>
-	</div>
+	sessAmin <c:out value="${sessAdmin }"/> --%>
 	<div class="oditionpost">
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">오디션 공고</h2>
@@ -242,6 +241,7 @@
 	var goUrlLogin = "/member/loginForm";
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
 	var goUrlMain = "/member/mainHome";
+	var goUrlMypage = "/member/Mypage";
 
 	
 	var goUrlOditionForm = "/Post/oditionPostForm";
@@ -267,6 +267,10 @@
 	
 	$("#btnForm").on("click", function() {
 		form.attr("action", goUrlOditionForm).submit();
+	});
+	
+	$("#btnMypage").on("click", function() {
+		form.attr("action", goUrlMypage).submit();
 	});
 	
 	goView = function(key) {

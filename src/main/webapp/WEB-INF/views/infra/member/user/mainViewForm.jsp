@@ -38,11 +38,11 @@
 	
 <body>
 <form method="post" name="mainForm" id="mainForm">
-	<input type="hidden" name="seq" value="${dto.seq }">
+	<input type="hidden" name="seq" value="${vo.seq }">
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 			<ul>
 				<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
 				<li><a href="/Post/oditionPostViewList">오디션 공고</a>
@@ -155,7 +155,7 @@
 		</div>
 		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
 		<c:forEach items="${memberList }" var="memberList" varStatus="statusmemberList">
-			<div class="cardactor col-2" >
+			<div class="cardactor col-2" onclick="goView(${memberList.seq})">
 				<img src="${memberList.path}${memberList.uuidName}" class="card-img-top" alt="..." href="">
 				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${memberList.name }"/></h5>
 				<div class="pra">
@@ -242,6 +242,10 @@
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
+	goView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/ActorView").submit();
+	}
 	
 	
 	$("#goActorSignup").on("click", function(){
@@ -250,7 +254,6 @@
 	$("#goDerectorSignup").on("click", function(){
 		form.attr("action", "/member/signUpDirectorForm").submit();
 	});
-	
 	
 	$("#btnMypage").on("click", function() {
 		form.attr("action", goUrlMypage).submit();

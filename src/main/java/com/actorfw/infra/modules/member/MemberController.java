@@ -222,7 +222,7 @@ public class MemberController {
             service.insertCareerCd(dto);
         }
 
-		return "redirect:/member/mainHome";
+		return "redirect:/home/Home";
 	}
 //	유저회원가입 감독 폼 페이지
 	@RequestMapping(value = "signUpDirectorForm")
@@ -248,7 +248,7 @@ public class MemberController {
 		    
 		    service.insertCompanyWorkCd(dto);
 		}
-		return "redirect:/member/mainHome";
+		return "redirect:/home/Home";
 	}
 	
 //---------------------------------------------------------------------------------------------------------------	
@@ -338,19 +338,19 @@ public class MemberController {
 		
 		return "infra/member/user/mainIndex";
 	}
-	//오디션포스트 리스트
-	@RequestMapping(value = "oditionPostViewForm")
-	public String oditionMod() throws Exception {
-		
-		return "infra/member/user/oditionPostViewForm";
-	}	
-	//배우포스트 리스트
-		@RequestMapping(value = "actorPostViewForm")
-		public String actorPostViewForm() throws Exception {
-			
-		return "infra/member/user/actorPostViewForm";
-	}
-		
+//	//오디션포스트 리스트
+//	@RequestMapping(value = "oditionPostViewForm")
+//	public String oditionMod() throws Exception {
+//		
+//		return "infra/member/user/oditionPostViewForm";
+//	}	
+//	//배우포스트 리스트
+//		@RequestMapping(value = "actorPostViewForm")
+//		public String actorPostViewForm() throws Exception {
+//			
+//		return "infra/member/user/actorPostViewForm";
+//	}
+//		
 	@RequestMapping(value = "firstView")
 	public String firstView() throws Exception {
 		
