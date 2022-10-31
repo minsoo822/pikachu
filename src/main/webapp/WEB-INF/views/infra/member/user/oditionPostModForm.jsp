@@ -35,7 +35,8 @@
 	
 <body>
 	<!-- start -->
-<form method="post" id="mainForm" enctype="multipart/form-data">	
+<form method="post" id="mainForm" enctype="multipart/form-data">
+	<input type="hidden" name="member_seq" value="${sessSeq}">	
  	<div class="hero">
 		<nav class="top-fixed">
 			<h2 class="logo"><a class="logolink" href="/member/mainHome">Actor'<span>s</span></a></h2>

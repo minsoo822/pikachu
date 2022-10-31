@@ -11,7 +11,7 @@ public class Home extends Base{
     private Integer gender;
     
     private String name;
-    private Integer age;
+    private String age;
     private String address;
     private String note;
     private String date;
@@ -47,10 +47,10 @@ public class Home extends Base{
     public void setName(String name) {
         this.name = name;
     }
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
     public String getAddress() {

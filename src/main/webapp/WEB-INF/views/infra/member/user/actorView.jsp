@@ -422,7 +422,6 @@
 								<div class="row">
 									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
 										<button type="button" class="regFrombutton">목록으로</button>
-										<a type="button" class="regFrombutton" style="margin-left: 10px;" id="btnForm">수정하기</a>
 									</div>
 								</div>
 							</div>

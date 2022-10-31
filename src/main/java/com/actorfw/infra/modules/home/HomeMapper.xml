@@ -34,7 +34,10 @@
 			,b.uuidName
 		FROM member a
 		JOIN memberUploaded b
-		ON a.seq = b. pseq	
+		ON a.seq = b.pseq	
+		AND a.user_type = 26
+		AND b.type = 2
+		AND b.defaultNy = 1
 		ORDER BY a.seq DESC
 		LIMIT 10
 	</select>

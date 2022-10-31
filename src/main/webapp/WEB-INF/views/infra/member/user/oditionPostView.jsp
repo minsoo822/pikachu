@@ -56,7 +56,7 @@
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="mainViewForm.html">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 				<ul>
 					<li><a href="tourpostViewForm.html">프로필 투어</a></li>
 					<li><a href="oditionPostViewForm.html">오디션 공고</a>

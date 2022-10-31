@@ -190,7 +190,7 @@ nav ul > li:hover > ul {
 	text-decoration: none;
 	border: 2px solid transparent;
 	font-weight: bold;
-	padding: 5px 15px;
+	padding: 0px 15px;
 	border-radius: 20px;
 	transition: .4s;
 }
@@ -227,6 +227,7 @@ nav ul > li:hover > ul {
 	transition: .3s;
 	background: #101010;
 }
+
 .cardactor h5 {
 	color: white;
 	font-size: 23px;
@@ -239,7 +240,36 @@ nav ul > li:hover > ul {
 	border-radius: 15px;
 	
 }
+.cardactorHome {
+	height: 330px;
+	width: 200px;
+	padding: 10px 10px;
+	background-color: #393939;
+	border-radius: 15px;
+	margin: 15px;
+	position: relative;
+	overflow: hidden;
+}
+.cardactorHome:hover {
+	transform: scale(1.1);
+	overflow:hidden;
+	cursor: pointer;
+	transition: .3s;
+	background: #000;
+}
 
+.cardactorHome h5 {
+	color: white;
+	font-size: 23px;
+	margin-bottom: 15px;
+}
+.cardactorHome img {
+	height: 255px;
+	width: 175px;
+	object-fit: cover;
+	border-radius: 15px;
+	
+}
 .card-img-top{
 	border-radius: 15px;
 	}
@@ -301,7 +331,7 @@ td {
 	margin-bottom: 20px;
 }
 .oditiontable.table{
-	width: 1600px;
+	width: 1400px;
 	margin-top: 35px;
 	margin-left: auto;
 	margin-right: auto;
@@ -512,8 +542,10 @@ a {
 	text-decoration: none
 }
 .oditiontype ul {
-	display: flex;
-	margin: 5px;
+	width: 1130px;
+	display: block;
+	margin: 5px auto;
+	padding-left: 0px;
 }
 .oditiontype ul li {
 	list-style: none;
@@ -521,8 +553,6 @@ a {
 	font-size: 20px;
 	display: inline-block;
 	padding: 10px 20px;
-	position: relative;
-	left: 330px;
 }
 .oditiontype ul li a {
 	color: white;
@@ -536,17 +566,18 @@ a {
 	transition: .4s;
 }
 .actortype ul {
-	display: flex;
-	margin: 5px;
+	width: 1130px;
+	display: block;
+	margin: 5px auto;
+	padding-left: 0px;
 }
+
 .actortype ul li {
 	list-style: none;
 	list-style-type: none;
 	font-size: 20px;
 	display: inline-block;
 	padding: 10px 20px;
-	position: relative;
-	left: 330px;
 }
 .actortype ul li a {
 	color: white;
@@ -883,7 +914,7 @@ body.homepage.is-preload #header::after {
 }
 
 .oditionsearch {
-	width: 1500px;
+	width: 1400px;
 	display: flex;
 	justify-content: flex-end;
 	margin-left: auto;

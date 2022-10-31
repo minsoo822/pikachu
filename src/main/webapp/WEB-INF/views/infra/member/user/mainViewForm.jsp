@@ -137,7 +137,7 @@
 										성별 : <c:out value="${oditionList.gender }"/>
 									</p>
 									<p style="text-align: center; ">
-										<a class="mainoditionbutton" href="#">더보기</a>
+										<button type="button" class="mainoditionbutton" onclick="goOditionView(${oditionList.seq})">더보기</button>
 									</p>
 								</div>
 							</div>
@@ -155,7 +155,7 @@
 		</div>
 		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
 		<c:forEach items="${memberList }" var="memberList" varStatus="statusmemberList">
-			<div class="cardactor col-2" onclick="goView(${memberList.seq})">
+			<div class="cardactorHome col-2" onclick="goActorView(${memberList.seq})">
 				<img src="${memberList.path}${memberList.uuidName}" class="card-img-top" alt="..." href="">
 				<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${memberList.name }"/></h5>
 				<div class="pra">
@@ -242,11 +242,15 @@
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
-	goView = function(key) {
+	goActorView = function(key) {
 		seq.attr("value", key);
 		form.attr("action", "/Post/ActorView").submit();
 	}
 	
+	goOditionView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/oditionPostView").submit();
+	}
 	
 	$("#goActorSignup").on("click", function(){
 		form.attr("action", "/member/signUpActorForm").submit();

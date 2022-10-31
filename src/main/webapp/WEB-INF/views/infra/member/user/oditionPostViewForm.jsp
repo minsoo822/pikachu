@@ -137,12 +137,12 @@
 			<div style="padding: 0px 5px;">
 				<input type="text" class="form-control" name="shValue" value="${vo.shValue }">
 			</div>
-			<div class="d-grid d-md-block">
+			<div class="d-grid d-md-block" >
 				<button type="submit" class="btn btn-primary">검색</button>
 				<button type="button" class="btn btn-primary" id="searchReset">리셋</button>
 			</div>
 		</div>
-			<table class="oditiontable table">
+		<table class="oditiontable table">
 			<thead>
 				<tr>
 					<th><input class="form-check-input" type="checkbox" name="allCheck"></th>
@@ -175,7 +175,7 @@
 								<td><c:out value="${list.gender }"/></td>
 								<td><c:out value="${list.casting }"/></td>
 								<td><c:out value="${list.pay }"/></td>
-								<td><c:out value="${list.member_seq }"/></td>
+								<td><c:out value="${list.writer }"/></td>
 								<td></td>
 							</tr>	
 						</c:forEach>
