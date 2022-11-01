@@ -326,6 +326,15 @@ public class MemberController {
         
         int myPageUpdate = service.updateCd(dto);
         System.out.println("myPageUpdate : " + myPageUpdate);
+        
+        for(int i = 0; i< dto.getSns_types().length ; i ++) {
+            System.out.println("sns1 : " + dto.getSns_types());
+           
+            dto.setUrl(dto.getUrls()[i]);
+            dto.setSns_type(dto.getSns_types()[i]);
+                      
+            service.insertSnsCd(dto);
+        }
        
         return "redirect:/member/Mypage";
     }

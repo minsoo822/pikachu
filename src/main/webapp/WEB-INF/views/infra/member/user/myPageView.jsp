@@ -395,7 +395,7 @@
 												<h4><b>수상</b></h4>
 											</div>
 										</div>
-										<div class="row text-center gx-1">
+										<div class="row text-center gx-1 mb-3">
 											<div class="col-4 regText">시기</div>
 											<div class="col regText">수상명</div>
 											<div class="col regText">발급기관</div>
@@ -411,13 +411,13 @@
 											<c:otherwise>
 												<c:forEach items="${AwardList }" var="AwardList" varStatus="statusAwardList">
 													<div class="row gx-1 text-center">
-														<div class="col-4">
+														<div class="col-4 txwhite">
 															<c:out value="${AwardList.period }"></c:out>
 														</div>
-														<div class="col">
+														<div class="col txwhite">
 															<c:out value="${AwardList.name }"></c:out>
 														</div>
-														<div class="col">
+														<div class="col txwhite">
 															<c:out value="${AwardList.issuer }"></c:out>
 														</div>
 													</div>

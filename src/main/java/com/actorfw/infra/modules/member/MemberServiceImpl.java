@@ -175,7 +175,9 @@ public class MemberServiceImpl implements MemberService {
     }
     //	아이디 중복체크
 	@Override
-	public int idCheck(Member dto) throws Exception  { return dao.idCheck(dto);}
+	public int idCheck(Member dto) throws Exception  { 
+	    
+	    return dao.idCheck(dto);}
 	
 //	로그인
 	@Override

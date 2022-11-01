@@ -117,6 +117,7 @@ public class Member extends Base {
   private String award_name;
   private String[] award_names;
   private String award_issuer;
+  private String issuer;
   private String[] award_issuers;
   
 //----------------------------------------------------------    
@@ -735,6 +736,12 @@ public class Member extends Base {
     }
     public void setPeriod_e(String period_e) {
         this.period_e = period_e;
+    }
+    public String getIssuer() {
+        return issuer;
+    }
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
     }
     
 	

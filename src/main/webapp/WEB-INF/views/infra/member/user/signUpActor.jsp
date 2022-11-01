@@ -58,7 +58,9 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="text" class="form-control" name="id" placeholder="ID">
+								<input type="hidden" id="idAllowedNy" name=idAllowedNy" value="0">
+								<input type="text" class="form-control" id="id" name="id" placeholder="ID">
+								<span id="id_check"></span>
 							</div>
 						</div>
 					</div>
@@ -70,7 +72,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="password" class="form-control" name="password" placeholder="PASSWORD">
+								<input type="password" class="form-control" id="pwd" name="password" placeholder="PASSWORD">
 							</div>
 						</div>
 					</div>
@@ -82,7 +84,9 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="text" class="form-control" name="password" placeholder="PASSWORD">
+								<input type="password" class="form-control" id="pwd2" name="password" placeholder="PASSWORD">
+								<span id="alert-success" style="display: none; color: lightgreen; text-align: left;"><i class="fa-solid fa-check"></i> 비밀번호가 일치합니다.</span>
+								<span id="alert-danger" style="display: none; color: red; text-align: left;"><i class="fa-solid fa-xmark"></i> 비밀번호가 일치하지 않습니다.</span>
 							</div>
 						</div>
 					</div>
@@ -499,9 +503,78 @@
 	
 	
 	$("#actorSignUp").on("click", function() {
-		alert("왜안돼");
 		form.attr("action", "/member/signUpActorInst").submit();
 	});
+		
+		/* $("#id").on("focusout", function(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/idCheck"
+				,data : { "id" : $("#id").val() }
+				,success: function(response) {
+					if(response.rt == "success") {
+						$("#id").classList.add('is-valid');
+
+						$("#idFeedback").classList.remove('invalid-feedback');
+						$("#idFeedback").classList.add('valid-feedback');
+						$("#idFeedback").innerText = "사용 가능합니다.";
+						
+						$("#idAllowedNy").value = 1;
+						
+					} else {
+						$("#id").classList.add('is-invalid');
+						
+						$("#idFeedback").classList.remove('valid-feedback');
+						$("#idFeedback").classList.add('invalid-feedback');
+						$("#idFeedback").innerText = "사용 불가합니다.";
+						
+						$("#idAllowedNy").value = 0;
+					}
+				}
+			});
+		}); */
+		$("#id").on("focusout", function(){ 
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/idCheck"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val() }
+				,dataType : 'json'
+				,success: function(response) {
+					if(response.rt == "success") {
+						$("#id_check").text("사용가능한 아이디입니다.");
+						$("#id_check").css("color", "lightgreen");
+					} else {
+						$("#id_check").text("이미 사용중인 아이디입니다.");
+						$("#id_check").css("color", "red");
+					}
+				}
+			});
+		});
+		$('#pwd2').focusout(function () {
+	        var pwd1 = $("#pwd").val();
+	        var pwd2 = $("#pwd2").val();
+	  
+	        if ( pwd1 != '' && pwd2 == '' ) {
+	            null;
+	        } else if (pwd1 != "" || pwd2 != "") {
+	            if (pwd1 == pwd2) {
+	                $("#alert-success").css('display', 'inline-block');
+	                $("#alert-danger").css('display', 'none');
+	            } else {
+	                $("#alert-success").css('display', 'none');
+	                $("#alert-danger").css('display', 'inline-block');
+	            }
+	        }
+	    });
+		
+		
+		
 	
 	</script>
 	
@@ -679,7 +752,6 @@
 			
 			$(id).remove();
 		}
-			
 	
 		</script>
 	

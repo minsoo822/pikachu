@@ -267,8 +267,13 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col m-4">
+									<div class="col-1 m-4">
 										<h4><b>SNS</b></h4>
+									</div>
+									<div class="col-1 m-4">
+										<button type="button" class="regFrombutton" onclick="addSns()">
+											<i class="fa-solid fa-plus"></i>
+										</button>
 									</div>
 								</div>
 								<c:choose>
@@ -282,18 +287,31 @@
 										</div>
 									</c:when>
 									<c:otherwise>
-											<div class="row">
-												<div class="col txwhite">
+										<div class="row">
+											<div class="col txwhite"  id="snsPoint">
 												<c:forEach items="${snsList }" var="snsList" varStatus="statussnsList">
 													<div class="row">
-														<div class="col-2 gy-1"><c:out value="${snsList.type }"></c:out></div>
+														<div class="col-3 gy-1">
+															<select class="form-select">
+																<option value=""></option>
+																<option value="11" <c:if test="${snsList.type eq 11 }">selected</c:if>>Instagram</option>
+																<option value="12" <c:if test="${snsList.type eq 12 }">selected</c:if>>Facebook</option>
+																<option value="13" <c:if test="${snsList.type eq 13 }">selected</c:if>>Youtube</option>
+																<option value="14" <c:if test="${snsList.type eq 14 }">selected</c:if>>Homepage</option>
+															</select>
+														</div>
 														<div class="col-7 gy-1">
 															<input type="text" class="form-control" value="${snsList.url }">
 														</div>
+														<div class="col-1 mt-1">
+															<button type="button" class="regFrombutton" onclick="remove(snsDelete' + count_sns + ')">
+																<i class="fa-solid fa-minus"></i>
+															</button>
+														</div>
 													</div>
-												</c:forEach>	
-												</div>
+												</c:forEach>
 											</div>
+										</div>
 									</c:otherwise>
 								</c:choose>
 								<div class="row">
@@ -308,7 +326,7 @@
 									<div class="col pt-1 regText">제목</div>
 									<div class="col pt-1 regText">역활</div>
 									<div class="col-1">
-										<button type="button" class="regFrombutton">
+										<button type="button" class="regFrombutton" onclick="addFilmo()">
 											<i class="fa-solid fa-plus"></i>
 										</button>
 									</div>
@@ -322,38 +340,42 @@
 										</div>
 									</c:when>
 									<c:otherwise>
-										<c:forEach items="${filmoList }" var="filmoList" varStatus="statusfilmoList">
-											<div class="row gx-1 text-center mb-1">
-												<div class="col-2">
-													<input type="date" class="form-control" value="${filmoList.period }">
-												</div>
-												<div class="col">
-													<select class="form-select">
-														<option value="" <c:if test="${empty filmoList.type }">selected</c:if>>선택</option>
-														<option value="15" <c:if test="${filmoList.type eq 15}">selected</c:if>>상업영화</option>
-														<option value="16" <c:if test="${filmoList.type eq 16}">selected</c:if>>단편(독립)영화</option>
-														<option value="17" <c:if test="${filmoList.type eq 17}">selected</c:if>>드라마</option>
-														<option value="18" <c:if test="${filmoList.type eq 18}">selected</c:if>>웹드라마</option>
-														<option value="19" <c:if test="${filmoList.type eq 19}">selected</c:if>>광고(CF)</option>
-														<option value="20" <c:if test="${filmoList.type eq 20}">selected</c:if>>바이럴광고</option>
-													</select>
-												</div>
-												<div class="col">
-													<input type="text" class="form-control" value="${filmoList.producer }">
-												</div>
-												<div class="col">
-													<input type="text" class="form-control" value="${filmoList.name }">
-												</div>
-												<div class="col">
-													<input type="text" class="form-control" value="${filmoList.role }">
-												</div>
-												<div class="col-1 mt-1">
-													<button type="button" class="regFrombutton">
-														<i class="fa-solid fa-minus"></i>
-													</button>
-												</div>
+										<div class="row">
+											<div class="col" id="filmoPoint">
+												<c:forEach items="${filmoList }" var="filmoList" varStatus="statusfilmoList">
+													<div class="row gx-1 text-center mb-1">
+														<div class="col-2">
+															<input type="date" class="form-control" value="${filmoList.period }">
+														</div>
+														<div class="col">
+															<select class="form-select">
+																<option value="" <c:if test="${empty filmoList.type }">selected</c:if>>선택</option>
+																<option value="15" <c:if test="${filmoList.type eq 15}">selected</c:if>>상업영화</option>
+																<option value="16" <c:if test="${filmoList.type eq 16}">selected</c:if>>단편(독립)영화</option>
+																<option value="17" <c:if test="${filmoList.type eq 17}">selected</c:if>>드라마</option>
+																<option value="18" <c:if test="${filmoList.type eq 18}">selected</c:if>>웹드라마</option>
+																<option value="19" <c:if test="${filmoList.type eq 19}">selected</c:if>>광고(CF)</option>
+																<option value="20" <c:if test="${filmoList.type eq 20}">selected</c:if>>바이럴광고</option>
+															</select>
+														</div>
+														<div class="col">
+															<input type="text" class="form-control" value="${filmoList.producer }">
+														</div>
+														<div class="col">
+															<input type="text" class="form-control" value="${filmoList.name }">
+														</div>
+														<div class="col">
+															<input type="text" class="form-control" value="${filmoList.role }">
+														</div>
+														<div class="col-1 mt-1">
+															<button type="button" class="regFrombutton">
+																<i class="fa-solid fa-minus"></i>
+															</button>
+														</div>
+													</div>
+												</c:forEach>	
 											</div>
-										</c:forEach>	
+										</div>
 									</c:otherwise>
 								</c:choose>
 								<div class="row">
@@ -457,46 +479,47 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
-													<div class="row gx-1 text-center">
-														<div class="col-4  txwhite">
-															<div class="input-group" style="display: flex; justify-content: center;">
-																<input type="date" class="form-control" value="${eduList.period_s }">
-																<span class="txwhite">~</span>
-																<input type="date" class="form-control" value="${eduList.period_e }">
+												<div class="row">
+													<div class="col" id="eduPoint">
+														<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
+															<div class="row gx-1 text-center">
+																<div class="col-4  txwhite">
+																	<div class="input-group" style="display: flex; justify-content: center;">
+																		<input type="date" class="form-control" value="${eduList.period_s }">
+																		<span class="txwhite">~</span>
+																		<input type="date" class="form-control" value="${eduList.period_e }">
+																	</div>
+																</div>
+																<div class="col txwhite">
+																	<input type="text" class="form-control" value="${eduList.school_name }">
+																</div>
+																<div class="col txwhite">
+																	<input type="text" class="form-control" value="${eduList.major }">
+																</div>
+																<div class="col txwhite">
+																	<div class="col">
+																		<select class="form-select" name="">
+																			<option value="" <c:if test="${empty eduList.type }">selected</c:if>>선택</option>
+																			<option value="21" <c:if test="${eduList.type eq 21}">selected</c:if>>졸업</option>
+																			<option value="22" <c:if test="${eduList.type eq 22}">selected</c:if>>재학</option>
+																			<option value="23" <c:if test="${eduList.type eq 23}">selected</c:if>>휴학</option>
+																			<option value="24" <c:if test="${eduList.type eq 24}">selected</c:if>>중퇴</option>
+																			<option value="25" <c:if test="${eduList.type eq 25}">selected</c:if>>퇴학</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="col-1 mt-1">
+																	<button type="button" class="regFrombutton" onclick="">
+																		<i class="fa-solid fa-minus"></i>
+																	</button>
+																</div>
 															</div>
-														</div>
-														<div class="col txwhite">
-															<input type="text" class="form-control" value="${eduList.school_name }">
-														</div>
-														<div class="col txwhite">
-															<input type="text" class="form-control" value="${eduList.major }">
-														</div>
-														<div class="col txwhite">
-															<div class="col">
-																<select class="form-select" name="">
-																	<option value="" <c:if test="${empty eduList.type }">selected</c:if>>선택</option>
-																	<option value="21" <c:if test="${eduList.type eq 21}">selected</c:if>>졸업</option>
-																	<option value="22" <c:if test="${eduList.type eq 22}">selected</c:if>>재학</option>
-																	<option value="23" <c:if test="${eduList.type eq 23}">selected</c:if>>휴학</option>
-																	<option value="24" <c:if test="${eduList.type eq 24}">selected</c:if>>중퇴</option>
-																	<option value="25" <c:if test="${eduList.type eq 25}">selected</c:if>>퇴학</option>
-																</select>
-															</div>
-														</div>
-														<div class="col-1 mt-1">
-															<button type="button" class="regFrombutton" onclick="addEdu()">
-																<i class="fa-solid fa-minus"></i>
-															</button>
-														</div>
+														</c:forEach>
+		
 													</div>
-												</c:forEach>
+												</div>
 											</c:otherwise>
 										</c:choose>
-										<div class="row gx-1 text-center">
-											
-											
-										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -511,6 +534,11 @@
 											<div class="col regText">발급기관</div>
 											<div class="col regText">발급명</div>
 											<div class="col-1 regText"></div>
+											<div class="col-1">
+												<button type="button" class="regFrombutton" onclick="addAward()">
+													<i class="fa-solid fa-plus"></i>
+												</button>
+											</div>
 										</div>
 										<c:choose>
 											<c:when test="${fn:length(AwardList) eq 0 }">
@@ -521,24 +549,28 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${AwardList }" var="AwardList" varStatus="statusAwardList">
-													<div class="row gx-1 text-center">
-														<div class="col-4">
-															<input type="date" class="form-control" value="${AwardList.period }">
-														</div>
-														<div class="col">
-															<input type="text" class="form-control" value="${AwardList.name }">
-														</div>
-														<div class="col">
-															<input type="text" class="form-control" value="${AwardList.issuer }">
-														</div>
-														<div class="col-1">
-															<button type="button" class="regFrombutton" onclick="addEdu()">
-																<i class="fa-solid fa-minus"></i>
-															</button>
-														</div>
+												<div class="row mb-1">
+													<div class="col" id="awardPoint">
+														<c:forEach items="${AwardList }" var="AwardList" varStatus="statusAwardList">
+															<div class="row gx-1 text-center pb-1">
+																<div class="col-4">
+																	<input type="date" class="form-control" value="${AwardList.period }">
+																</div>
+																<div class="col">
+																	<input type="text" class="form-control" value="${AwardList.name }">
+																</div>
+																<div class="col">
+																	<input type="text" class="form-control" value="${AwardList.issuer }">
+																</div>
+																<div class="col-1">
+																	<button type="button" class="regFrombutton">
+																		<i class="fa-solid fa-minus"></i>
+																	</button>
+																</div>
+															</div>
+														</c:forEach>
 													</div>
-												</c:forEach>
+												</div>
 											</c:otherwise>
 										</c:choose>
 									</div>
@@ -560,7 +592,7 @@
 								<div class="row">
 									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
 										<button type="button" class="regFrombutton">목록으로</button>
-										<a type="button" class="regFrombutton" style="margin-left: 10px;" id="btnSave">저장하기</a>
+										<button type="button" class="regFrombutton" style="margin-left: 10px;" id="btnSave">저장하기</button>
 									</div>
 								</div>
 							</div>
@@ -610,6 +642,162 @@
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
+	<script type="text/javascript">
+//	Sns추가
+	var count_sns = 0;	
+	
+	function addSns() {
+	
+	var tmp = "";	
+
+		tmp += '<div class="row" pb-1 text-center" id="snsDelete' + count_sns + '">';
+	    tmp += '<div class="col-3 gy-1">';
+	    tmp += '<select class="form-select" name="sns_types">';
+	    tmp += '<option value=""></option>';
+	    tmp += '<option value="11">Instagram</option>';
+	    tmp += '<option value="12">Facebook</option>';
+	    tmp += '<option value="13">Youtube</option>';
+	    tmp += '<option value="14">Homepage</option>';
+	    tmp += '</select>';
+	    tmp += '</div>';
+	    tmp += '<div class="col-7 gy-1">';
+	    tmp += '<input type="text" class="form-control" name="urls">';
+	    tmp += '</div>';
+	    tmp += '<div class="col-1 mt-1">';
+	    tmp += '<button type="button" class="regFrombutton" onclick="remove(snsDelete' + count_sns + ')">';
+	    tmp += '<i class="fa-solid fa-minus"></i>';
+	    tmp += '</button>';
+	    tmp += '</div>';
+	    tmp += '</div>';
+		
+		count_sns += 1;
+
+		$("#snsPoint").append(tmp);
+
+	}
+	
+//	필모그래피추가
+	var count_filmo = 0;	
+	
+	function addFilmo() {
+	
+	var tmp = "";
+		
+		tmp += '<div class="row gx-1 text-center pb-1" id="filmoDelete' + count_filmo + '">';
+		tmp += '<div class="col-2">';
+		tmp += '<input type="date" class="form-control" name="filmo_periods">';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<select class="form-select" name="filmo_types">';
+		tmp += '<option value="">선택</option>';
+		tmp += '<option value="15">상업영화</option>';
+		tmp += '<option value="16">단편(독립)영화</option>';
+		tmp += '<option value="17">드라마</option>';
+		tmp += '<option value="18">웹드라마</option>';
+		tmp += '<option value="19">광고(CF)</option>';
+		tmp += '<option value="20">바이럴광고</option>';
+		tmp += '</select>';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<input type="text" class="form-control" name="filmo_producers">';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<input type="text" class="form-control" name="filmo_names">';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<input type="text" class="form-control" name="filmo_roles">';
+		tmp += '</div>';
+		tmp += '<div class="col-1">';
+		tmp += '<button type="button" class="regFrombutton" onclick="remove(filmoDelete' + count_filmo + ')">';
+		tmp += '<i class="fa-solid fa-minus"></i>';
+		tmp += '</button>';
+		tmp += '</div>';
+		tmp += '</div>';
+		
+		count_filmo += 1;
+ 	
+		$("#filmoPoint").append(tmp);
+	}
+//	학력사항	
+	var count_edu = 0;	
+
+	function addEdu() {
+	
+	var tmp = "";
+		
+		tmp += '<div class="row gx-1 text-center pb-1" id="eduDelete' + count_edu + '">';
+		tmp += '<div class="col-4" txwhite>';
+		tmp += '<div class="input-group" style="display: flex; justify-content: center;">';
+		tmp += '<input type="date" class="form-control" name="eduList.periods_s">';
+		tmp += '<span class="txwhite">~</span>';
+		tmp += '<input type="date" class="form-control" name="eduList.periods_e">';
+		tmp += '</div>';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<input type="text" class="form-control" name="school_names">';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<input type="text" class="form-control" name="edu_majors">';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<select class="form-select" name="edu_types">';
+		tmp += '<option value="">선택</option>';
+		tmp += '<option value="21">졸업</option>';
+		tmp += '<option value="22">재학</option>';
+		tmp += '<option value="23">휴학</option>';
+		tmp += '<option value="24">중퇴</option>';
+		tmp += '<option value="25">퇴학</option>';
+		tmp += '</select>';
+		tmp += '</div>';
+		tmp += '<div class="col-1">';
+		tmp += '<button type="button" class="regFrombutton1" onclick="remove(eduDelete' + count_edu + ')">';
+		tmp += '<i class="fa-solid fa-minus"></i>';
+		tmp += '</button>';
+		tmp += '</div>';
+		tmp += '</div>';
+		
+		
+		count_edu += 1;
+		
+		$("#eduPoint").append(tmp);
+	}
+//	수상
+	var count_award = 0;	
+	
+	function addAward() {
+
+	var tmp = "";	
+	
+		tmp += '<div class="row gx-1 text-center pb-1" id="awardDelete' + count_award + '">';
+		tmp += '<div class="col-4">';
+		tmp += '<input type="date" class="form-control" name="award_periods">';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<input type="text" class="form-control" name="award_names">';
+		tmp += '</div>';
+		tmp += '<div class="col">';
+		tmp += '<input type="text" class="form-control" name="award_issuers">';
+		tmp += '</div>';
+		tmp += '<div class="col-1">';
+		tmp += '<button type="button" class="regFrombutton" onclick="remove(awardDelete' + count_award + ')">';
+		tmp += '<i class="fa-solid fa-minus"></i>';
+		tmp += '</button>';
+		tmp += '</div>';
+		tmp += '</div>';
+		
+		count_award += 1;
+		
+		$("#awardPoint").append(tmp);
+	}
+		function remove(id) {
+			
+			$(id).remove();
+		}
+	
+		
+		
+	
+	</script>
 	
 	<script type="text/javascript">
 	
@@ -619,29 +807,7 @@
 		form.attr("action", "/member/MypageUpdate").submit();
 	});
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 		document.querySelector(".disableLink").removeAttribute('href');
 	
