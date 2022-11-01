@@ -53,10 +53,10 @@
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="../main/mainViewForm.html">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="../main/tourpostViewForm.html">프로필 투어</a></li>
-					<li><a href="../main/oditionPostViewForm.html">오디션 공고</a>
+					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">상업영화</a></li>
@@ -65,7 +65,7 @@
 							<li><a href="#">(바이럴)광고</a></li>
 						</ul>
 					</li>	
-					<li><a href="../main/actorPostViewForm.html">프로필 정보</a>
+					<li><a href="/Post/ActorPostList">프로필 정보</a>
 						<ul>
 							<li><a href="../main/actorPostViewForm.html">전체</a></li><br>
 							<li><a href="../main/actorPostManViewForm.html">남자</a></li><br>
@@ -168,6 +168,12 @@
 											</div>
 										</div>
 										<div class="row">
+											<div class="col-2 gy-1">성별</div>
+											<div class="col-5 gy-1">
+												<c:out value="${item.gender }"/>
+											</div>
+										</div>
+										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
 												<c:out value="${item.actor_weight }"/>
@@ -236,7 +242,7 @@
 														<div class="col-2 gy-1">
 															<c:forEach items="${listSnstype }" var="listSnstype" varStatus="statuslistSnstype">
 																<c:if test="${snsList.type eq listSnstype.seq}"><c:out value="${listSnstype.name }"/></c:if>	
-															</c:forEach>
+															</c:forEach> 
 														</div>
 														<div class="col-7 gy-1">
 															<c:out value="${snsList.url }"/>

@@ -146,7 +146,6 @@
 			,company_useNy
 			,delNy
 			,creDate
-			,modDate
 			,adminNy
 			,actor_specialty
 			,aboutMe
@@ -170,9 +169,8 @@
 			,#{actor_voice}
 			,#{age}
 			,#{company_useNy}
-			,#{delNy}
-			,#{creDate}
-			,#{modDate}
+			,0
+			,now()
 			,#{adminNy}
 			,#{actor_specialty}
 			,#{aboutMe}
@@ -317,16 +315,14 @@
 			,telecom 			= #{telecom}
 			,phone_number 		= #{phone_number}
 			,director_type 		= #{director_type}
-			,actor_picture 		= #{actor_picture}
 			,actor_height 		= #{actor_height}
 			,actor_weight 		= #{actor_weight}
 			,actor_eyelid 		= #{actor_eyelid}
 			,actor_voice 		= #{actor_voice}
 			,age 				= #{age}
 			,company_useNy 		= #{company_useNy}
-			,delNy 				= #{delNy}
-			,creDate 			= #{creDate}
-			,modDate 			= #{modDate}
+			,delNy 				= 0
+			,modDate 			= now()
 			,adminNy 			= #{adminNy}
 			,actor_specialty 	= #{actor_specialty}
 			,aboutMe 			= #{aboutMe}

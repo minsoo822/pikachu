@@ -320,15 +320,18 @@ public class MemberController {
         model.addAttribute("AwardList", AwardList);
 	    return "infra/member/user/myPageForm";
 	}
+	
+    @RequestMapping(value = "MypageUpdate")
+    public String myPageUpdate(Member dto) throws Exception {
+        
+        int myPageUpdate = service.updateCd(dto);
+        System.out.println("myPageUpdate : " + myPageUpdate);
+       
+        return "redirect:/member/Mypage";
+    }
     
 //---------------------------------------------------------------------------------------------------------------   
-    @RequestMapping(value = "MypageUpdate")
-	public String myPageUpdate(Member dto) throws Exception {
-	    
-	    int myPageUpdate = service.updateCd(dto);
-	    System.out.println("myPageUpdate : " + myPageUpdate);
-	    return "redirect:/member/Mypage";
-	}
+  
 	
 //------------------------------------------------------------------------------------- 화면구현
 	

@@ -51,13 +51,14 @@
 </head>
 <body>
 	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="seq" value="${item.seq }">
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="../main/mainViewForm.html">Actor'<span>s</span></a></h2>
+			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="../main/tourpostViewForm.html">프로필 투어</a></li>
-					<li><a href="../main/oditionPostViewForm.html">오디션 공고</a>
+					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">상업영화</a></li>
@@ -66,7 +67,7 @@
 							<li><a href="#">(바이럴)광고</a></li>
 						</ul>
 					</li>	
-					<li><a href="../main/actorPostViewForm.html">프로필 정보</a>
+					<li><a href="/Post/ActorPostList">프로필 정보</a>
 						<ul>
 							<li><a href="../main/actorPostViewForm.html">전체</a></li><br>
 							<li><a href="../main/actorPostManViewForm.html">남자</a></li><br>
@@ -138,7 +139,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="file" multiple="multiple" id="" class="file">
+								<input type="file" name="plofil_image" id="" class="file">
 							</div>
 						</div>
 						<div class="row">
@@ -154,7 +155,10 @@
 									<div class="col mb-4"><h4><b>개인신상정보</b></h4></div>
 								</div>
 								<input type="hidden" name="user_type" value="${item.user_type }">
-								<input type="text">
+								<input type="hidden" name="id" value="${item.id }">
+								<input type="hidden" name="password" value="${item.password }">
+								<input type="hidden" name="company_useNy" value="${item.company_useNy }">
+								<input type="hidden" name="adminNy" value="${item.adminNy }">
 								<div class="row">
 									<div class="col txwhite">
 										<div class="row">
@@ -166,13 +170,23 @@
 										<div class="row">
 											<div class="col-2 gy-1">출생</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" name="dob" value="${item.dob }">
+												<input type="date" class="form-control" name="dob" value="${item.dob }">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">나이</div>
 											<div class="col-5 gy-1">
 												<input type="text" class="form-control" name="age" value="${item.age }">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-2 gy-1">성별</div>
+											<div class="col-5 gy-1">
+												<select class="form-select" name="gender">
+													<option value="" <c:if test="${empty item.gender}">selected</c:if>>선택</option>
+													<option value="28" <c:if test="${item.gender eq 28 }">selected</c:if>>남자</option>
+													<option value="29" <c:if test="${item.gender eq 29 }">selected</c:if>>여자</option>
+												</select>
 											</div>
 										</div>
 										<div class="row">
@@ -203,6 +217,17 @@
 														<option value="9" <c:if test="${item.email_domain eq 9 }">selected</c:if>>freechal.com</option>
 													</select>
 												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-2 gy-1">통신사</div>
+											<div class="col-5 gy-1">
+												<select class="form-select" name="telecom">
+													<option value=""<c:if test="${empty item.telecom}">selected</c:if>>선택</option>
+													<option value="1" <c:if test="${item.telecom eq 1 }">selected</c:if>>skt</option>
+													<option value="2" <c:if test="${item.telecom eq 2 }">selected</c:if>>kt</option>
+													<option value="3" <c:if test="${item.telecom eq 3 }">selected</c:if>>lgU+</option>
+												</select>
 											</div>
 										</div>
 										<div class="row">
@@ -527,7 +552,7 @@
 									<div class="col">
 										<div class="row">
 											<div class="col">
-												<textarea rows="10" cols="50"><c:out value="${item.aboutMe }"/></textarea>
+												<textarea rows="10" cols="50" name="aboutMe"><c:out value="${item.aboutMe }"/></textarea>
 											</div>
 										</div>
 									</div>

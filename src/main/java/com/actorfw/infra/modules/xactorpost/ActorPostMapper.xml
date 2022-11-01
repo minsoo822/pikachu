@@ -109,6 +109,7 @@
 		AND   type = 3			<!-- type 3 = 영상 -->
 		AND pseq = #{seq}
 	</select>
+	
 
 
 

@@ -37,8 +37,8 @@ public class Member extends Base {
 	private Integer adminNy;
 	private String actor_specialty;
 	private String aboutMe;
-	
-//-------------------------------------------------
+
+	//-------------------------------------------------
 	
 	private String period;
 	private String period_s;
@@ -57,13 +57,9 @@ public class Member extends Base {
 //	private MultipartFile[] UploadedFile;
 	
 
-	public String getProducer() {
-        return producer;
-    }
-    public void setProducer(String producer) {
-        this.producer = producer;
-    }
     private MultipartFile[] plofil_image;
+    private MultipartFile[] sub_image;
+    private MultipartFile[] video;
 	
 	
 	
@@ -200,6 +196,12 @@ public class Member extends Base {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getProducer() {
+	    return producer;
+	}
+	public void setProducer(String producer) {
+	    this.producer = producer;
+	}
 	public String getDob() {
 		return dob;
 	}
@@ -329,25 +331,7 @@ public class Member extends Base {
 
 //------------------------------------------------------
 	
-//	public Integer[] getSns_type() {
-//        return sns_type;
-//    }
-//    public void setSns_type(Integer[] sns_type) {
-//        this.sns_type = sns_type;
-//    }
-//    public String[] getUrl() {
-//        return url;
-//    }
-//    public void setUrl(String[] url) {
-//        this.url = url;
-//    }
-//    public Integer[] getMember_SnsSeq() {
-//        return member_SnsSeq;
-//    }
-//    public void setMember_SnsSeq(Integer[] member_SnsSeq) {
-//        this.member_SnsSeq = member_SnsSeq;
-//    }
-//
+
 ////------------------------------------------------------
 //    
 //    public String[] getFilmo_period() {
@@ -393,6 +377,18 @@ public class Member extends Base {
 	
     public String getFilmo_period() {
         return filmo_period;
+    }
+    public MultipartFile[] getSub_image() {
+        return sub_image;
+    }
+    public void setSub_image(MultipartFile[] sub_image) {
+        this.sub_image = sub_image;
+    }
+    public MultipartFile[] getVideo() {
+        return video;
+    }
+    public void setVideo(MultipartFile[] video) {
+        this.video = video;
     }
     public String getUrl() {
         return url;

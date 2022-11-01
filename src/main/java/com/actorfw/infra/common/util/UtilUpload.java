@@ -57,6 +57,8 @@ public class UtilUpload {
 		}
 	}
 
+//-------------------------------------------------------------------------------------------------------------------------	
+//	   오디션공고에 들어가는 이미지
 	   public static void PuploadPost (MultipartFile multipartFile, String className, OditionPost dto) throws Exception {
 	        String fileName = multipartFile.getOriginalFilename();
 //	      컴퓨터에 저장되어있는 파일 이름 담아주기 보리.png
