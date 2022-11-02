@@ -156,7 +156,11 @@ public class MemberServiceImpl implements MemberService {
 		return updateCd; 
 	}
 	
-//---------------------------------------------------------------------------------------	
+	@Override
+    public int updateSnsCd(Member dto) throws Exception {
+        return dao.updateSnsCd(dto);
+    }
+    //---------------------------------------------------------------------------------------	
 //  메인프로필사진 불러오기
 	@Override
 	public Member imageMainView(Member dto) throws Exception {
@@ -176,7 +180,7 @@ public class MemberServiceImpl implements MemberService {
     //	아이디 중복체크
 	@Override
 	public int idCheck(Member dto) throws Exception  { 
-	    
+	    dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 	    return dao.idCheck(dto);}
 	
 //	로그인

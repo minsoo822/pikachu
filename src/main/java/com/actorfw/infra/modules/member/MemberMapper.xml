@@ -137,16 +137,13 @@
 			,telecom
 			,phone_number
 			,director_type
-			,actor_picture
 			,actor_height
 			,actor_weight
 			,actor_eyelid
 			,actor_voice
 			,age
 			,company_useNy
-			,delNy
 			,creDate
-			,adminNy
 			,actor_specialty
 			,aboutMe
 		)
@@ -162,16 +159,13 @@
 			,#{telecom}
 			,#{phone_number}
 			,#{director_type}
-			,#{actor_picture}
 			,#{actor_height}
 			,#{actor_weight}
 			,#{actor_eyelid}
 			,#{actor_voice}
 			,#{age}
 			,#{company_useNy}
-			,0
 			,now()
-			,#{adminNy}
 			,#{actor_specialty}
 			,#{aboutMe}
 		)
@@ -321,15 +315,13 @@
 			,actor_voice 		= #{actor_voice}
 			,age 				= #{age}
 			,company_useNy 		= #{company_useNy}
-			,delNy 				= 0
 			,modDate 			= now()
-			,adminNy 			= #{adminNy}
 			,actor_specialty 	= #{actor_specialty}
 			,aboutMe 			= #{aboutMe}
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
-<!-- 	<update id="updateSnsCd">
+	<update id="updateSnsCd">
 		UPDATE actor_sns
 		SET
 			type		   = #{sns_type}
@@ -337,9 +329,7 @@
 		WHERE 1=1
 			AND member_seq = #{seq}
 	</update>
-	<update id="updateFilmoCd">
 	
-	</update> -->
 	
 	<!-- 아이디중복 체크 -->
 	<select id="idCheck" resultType="Integer">

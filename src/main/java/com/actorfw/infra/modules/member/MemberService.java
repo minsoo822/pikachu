@@ -42,7 +42,7 @@ public interface MemberService {
 //---------------------------------------------------------------------    
 //	멤버업데이트
 	public int updateCd(Member dto) throws Exception; 
-
+	public int updateSnsCd(Member dto) throws Exception;
 	
 //	아이디중복 체크
 	public int idCheck(Member dto) throws Exception;

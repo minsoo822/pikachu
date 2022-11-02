@@ -279,10 +279,8 @@
 								<c:choose>
 									<c:when test="${fn:length(snsList) eq 0 }">
 										<div class="row">
-											<div class="col txwhite">
-												<div class="row">
-													<div class="col-2 gy-1">SNS 정보가 없습니다.</div>
-												</div>
+											<div class="col" id="snsPoint"  style="text-align: center; color: white; font-size: 15pt;">
+												<c:out value="${item.name }"/>님의 SNS 정보가 존재하지 않습니다.
 											</div>
 										</div>
 									</c:when>
@@ -292,7 +290,7 @@
 												<c:forEach items="${snsList }" var="snsList" varStatus="statussnsList">
 													<div class="row">
 														<div class="col-3 gy-1">
-															<select class="form-select">
+															<select class="form-select" name="sns_type">
 																<option value=""></option>
 																<option value="11" <c:if test="${snsList.type eq 11 }">selected</c:if>>Instagram</option>
 																<option value="12" <c:if test="${snsList.type eq 12 }">selected</c:if>>Facebook</option>
@@ -301,7 +299,7 @@
 															</select>
 														</div>
 														<div class="col-7 gy-1">
-															<input type="text" class="form-control" value="${snsList.url }">
+															<input type="text" class="form-control" name="url" value="${snsList.url }">
 														</div>
 														<div class="col-1 mt-1">
 															<button type="button" class="regFrombutton" onclick="remove(snsDelete' + count_sns + ')">
@@ -334,7 +332,7 @@
 								<c:choose>
 									<c:when test="${fn:length(filmoList) eq 0 }">
 										<div class="row">
-											<div class="col">
+											<div class="col" id="filmoPoint"  style="text-align: center; color: white; font-size: 15pt;">
 												<c:out value="${item.name }"/>님의 필모그래피가 존재하지 않습니다.
 											</div>
 										</div>
@@ -473,7 +471,7 @@
 										<c:choose>
 											<c:when test="${fn:length(eduList) eq 0 }">
 												<div class="row">
-													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+													<div class="col mt-3" id="eduPoint" style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 학력사항이 존재하지 않습니다.
 													</div>
 												</div>
@@ -543,7 +541,7 @@
 										<c:choose>
 											<c:when test="${fn:length(AwardList) eq 0 }">
 												<div class="row">
-													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+													<div class="col mt-3" id="awardPoint" style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 수상경력이 존재하지 않습니다.
 													</div>
 												</div>

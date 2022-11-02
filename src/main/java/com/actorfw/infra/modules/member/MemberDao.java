@@ -54,6 +54,7 @@ public class MemberDao {
 //-------------------------------------------------------------------------------------------   
 	//	업데이트
 	public int updateCd(Member dto) { return sqlSession.update(namespace + ".updateCd", dto); }
+	public int updateSnsCd(Member dto) { return sqlSession.update(namespace + ".updateCd", dto); }
 	
 //	아이디 중복 체크
 	public int idCheck(Member dto) { return sqlSession.selectOne(namespace + ".idCheck", dto); }
