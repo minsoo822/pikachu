@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.actorfw.infra.modules.code.CodeServiceImpl"/>
 
 <!doctype html>
 
@@ -35,8 +36,10 @@
 <body style="background-color: #101010;">
 <form method="post" id="mainForm">
 	<input type="hidden" name="seq" value="${vo.seq }">
-		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
 	<!-- start -->
  	<div class="hero">
 		<nav class="top-fixed">
@@ -166,13 +169,23 @@
 					<c:otherwise>
 						<c:forEach items="${list}" var="list" varStatus="status">
 							<tr class="in" onclick="goView(${list.seq})">
-								<th><input class="form-check-input" type="checkbox" name="allCheck"></th>
 								<td>
-								<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>       <%--  순서 카운트  --%>
+									<input class="form-check-input" type="checkbox" name="allCheck">
 								</td>
-								<td><c:out value="${list.type }"/></td>
+								<td>
+									<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>       <%--  순서 카운트  --%>
+								</td>
+								<td>
+									<c:forEach items="${listCodeFilmo_type }" var="listFilmo_type" varStatus="statuslistCodeFilmo_type">
+										<c:if test="${list.type eq listFilmo_type.seq}"><c:out value="${listFilmo_type.name }"/></c:if>	
+									</c:forEach>
+								</td>
 								<td><c:out value="${list.name }"/></td>
-								<td><c:out value="${list.gender }"/></td>
+								<td>
+									<c:forEach items="${listCodeGender }" var="listGender" varStatus="statuslistGender">
+										<c:if test="${list.gender eq listGender.seq}"><c:out value="${listGender.name }"/></c:if>	
+									</c:forEach>
+								</td>
 								<td><c:out value="${list.casting }"/></td>
 								<td><c:out value="${list.pay }"/></td>
 								<td><c:out value="${list.writer }"/></td>

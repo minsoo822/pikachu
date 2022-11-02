@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.actorfw.infra.modules.code.CodeServiceImpl"/>
 
 <html lang="ko">
 <head>
@@ -39,6 +40,8 @@
 <body>
 <form method="post" name="mainForm" id="mainForm">
 	<input type="hidden" name="seq" value="${vo.seq }">
+	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4') }"/>
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7') }"/>
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -134,7 +137,9 @@
 										제작 : <c:out value="${oditionList.producer }"/><br> 
 										배역 : <c:out value="${oditionList.casting }"/><br>
 										연령 : <c:out value="${oditionList.age }"/><br>
-										성별 : <c:out value="${oditionList.gender }"/>
+										성별 : <c:forEach items="${listCodeGender}" var="listGender" varStatus="statuslistGender">	
+												<c:if test="${oditionList.gender eq listGender.seq }"><c:out value="${listGender.name }"/></c:if>			
+											 </c:forEach>
 									</p>
 									<p style="text-align: center; ">
 										<button type="button" class="mainoditionbutton" onclick="goOditionView(${oditionList.seq})">더보기</button>
@@ -183,7 +188,11 @@
 			<tbody>
 				<c:forEach items="${tourList}" var="tourList" varStatus="statustourList">
 					<tr>
-						<td><c:out value="${tourList.type }"/></td>
+						<td>
+							<c:forEach items="${listCodeFilmo_type }" var="listFilmo_type" varStatus="statuslistFilmo_type">
+								<c:if test="${tourList.type eq listFilmo_type.seq }"><c:out value="${listFilmo_type.name }"/></c:if>	
+							</c:forEach>	
+						</td>
 						<td><c:out value="${tourList.name }"/></td>
 						<td><c:out value="${tourList.address }"/></td>
 						<td><c:out value="${tourList.date }"/></td>

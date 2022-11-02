@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.actorfw.infra.modules.code.CodeServiceImpl"/>
 
 <html lang="ko">
 <head>
@@ -33,6 +34,7 @@
 	<input type="hidden" name="seq" value="${dto.seq }">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4') }"></c:set>
 	<!-- start -->
  	<div class="tourpostbanner">
 		<nav class="top-fixed">
@@ -151,9 +153,13 @@
 						<c:forEach items="${list}" var="list" varStatus="status">
 							<tr>
 								<td>
-								<%-- <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> --%>       <%--  순서 카운트  --%>
+									<c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/>      <%--  순서 카운트  --%>
 								</td>
-								<td><c:out value="${list.tourType }"/></td>
+								<td>
+									<c:forEach items="${listCodeFilmo_type }" var="listFilmo_type" varStatus="statuslistCodeFilmo_type">
+										<c:if test="${list.tourType eq listFilmo_type.seq }"><c:out value="${listFilmo_type.name }"/></c:if>	
+									</c:forEach>	
+								</td>
 								<td><c:out value="${list.tourName }"/></td>
 								<td><c:out value="${list.tourAddress }"/></td>
 								<td><c:out value="${list.tourDate }"/></td>

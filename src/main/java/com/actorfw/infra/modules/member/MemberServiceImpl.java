@@ -180,13 +180,12 @@ public class MemberServiceImpl implements MemberService {
     //	아이디 중복체크
 	@Override
 	public int idCheck(Member dto) throws Exception  { 
-	    dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 	    return dao.idCheck(dto);}
 	
 //	로그인
 	@Override
 	public Member logInCd(Member dto) throws Exception  { 
-	    
+        /* dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword())); */
 	    return dao.logInCd(dto); 
 	    }
 //	페이징
