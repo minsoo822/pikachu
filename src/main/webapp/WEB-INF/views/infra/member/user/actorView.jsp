@@ -45,6 +45,11 @@
 <body>
 	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="seq" value="${vo.seq }">
+	<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode('10') }"/>
+	<c:set var="listCodeEyelid" value="${CodeServiceImpl.selectListCachedCode('9') }"/>
+	<c:set var="listCodeSnstype" value="${CodeServiceImpl.selectListCachedCode('3') }"/>
+	<c:set var="listCodeFilmotype" value="${CodeServiceImpl.selectListCachedCode('4') }"/>
+	<c:set var="listCodeEdutype" value="${CodeServiceImpl.selectListCachedCode('5') }"/>
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -195,13 +200,17 @@
 										<div class="row">
 											<div class="col-2 gy-1">쌍꺼풀 유무</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_eyelid }"/>
+												<c:forEach items="${listCodeEyelid }" var="listEyelid" varStatus="statuslistEyelid">
+													<c:if test="${item.actor_eyelid eq listEyelid.seq}"><c:out value="${listEyelid.name }"/></c:if>	
+												</c:forEach>		
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">목소리 톤</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_voice }"/>
+												<c:forEach items="${listCodeVoice }" var="listVoice" varStatus="statuslistVoice">
+													<c:if test="${item.actor_voice eq listVoice.seq}"><c:out value="${listVoice.name }"/></c:if>	
+												</c:forEach>
 											</div>	
 										</div>
 									</div>
@@ -225,7 +234,9 @@
 												<div class="col txwhite">
 													<div class="row">
 														<div class="col-2 gy-1">
-															<c:out value="${snslist.type }"/>
+															<c:forEach items="${listCodeSnstype }" var="listSnstype" varStatus="statuslistSnstype">
+																<c:if test="${snslist.type eq listSnstype.seq}"><c:out value="${listSnstype.name }"/></c:if>	
+															</c:forEach>
 														</div>
 														<div class="col-7 gy-1">
 															<c:out value="${snslist.url }"/>
@@ -263,7 +274,9 @@
 													<c:out value="${filmolist.period }"/>
 												</div>
 												<div class="col-1 txwhite">
-													<c:out value="${filmolist.type }"/>
+													<c:forEach items="${listCodeFilmotype }" var="listFilmotype" varStatus="statuslistFilmotype">
+														<c:if test="${filmolist.type eq listFilmotype.seq}"><c:out value="${listFilmotype.name }"/></c:if>	
+													</c:forEach>
 												</div>
 												<div class="col-3 txwhite">
 													<c:out value="${filmolist.producer }"/>
@@ -359,7 +372,9 @@
 															<c:out value="${edulist.major }"/>
 														</div>
 														<div class="col txwhite">
-															<c:out value="${edulist.type }"/>
+															<c:forEach items="${listCodeEdutype }" var="listEdutype" varStatus="statuslistEdutype">
+																<c:if test="${edulist.type eq listEdutype.seq}"><c:out value="${listEdutype.name }"/></c:if>	
+															</c:forEach>
 														</div>
 													</div>
 												</c:forEach>

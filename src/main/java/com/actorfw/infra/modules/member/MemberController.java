@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.actorfw.infra.common.util.UtilSecurity;
 import com.actorfw.infra.modules.xactorpost.ActorPostVo;
 import com.actorfw.infra.modules.xtourpost.TourPostVo;
 
@@ -113,8 +114,6 @@ public class MemberController {
 //	로그인폼
 	@RequestMapping(value = "loginForm")
 	public String loginForm(Member dto) throws Exception {
-		Member loginForm = service.logInCd(dto);
-		System.out.println("loginForm : " + loginForm);
 		return "infra/member/user/loginForm";
 	}
 //	아이디 비밀번호체크
@@ -123,7 +122,6 @@ public class MemberController {
 	public Map<String, Object> logInCd(Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		Member logInCd = service.logInCd(dto);
-		System.out.println("logInCd: " + logInCd);
 		if(logInCd != null) {
 			returnMap.put("rt", "success");
 			httpSession.setMaxInactiveInterval(60 * 30); // 60second * 30 = 30minute

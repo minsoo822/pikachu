@@ -349,7 +349,7 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="file" class="form-control" name="plofil_image">
+								<input type="file" class="form-control" multiple name="plofil_image">
 							</div>
 						</div>
 					</div>

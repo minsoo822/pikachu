@@ -185,7 +185,7 @@ public class MemberServiceImpl implements MemberService {
 //	로그인
 	@Override
 	public Member logInCd(Member dto) throws Exception  { 
-        /* dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword())); */
+        dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 	    return dao.logInCd(dto); 
 	    }
 //	페이징

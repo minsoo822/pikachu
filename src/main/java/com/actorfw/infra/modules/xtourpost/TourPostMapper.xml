@@ -66,7 +66,7 @@
 			,#{tourZip_code}
 			,#{tourAddress}
 			,#{tourAddress_detail}
-			,#{tourDate}
+			,now()
 			,#{tourNote}
 		)	
 			<selectKey resultType="String" keyProperty="seq" order="AFTER">
