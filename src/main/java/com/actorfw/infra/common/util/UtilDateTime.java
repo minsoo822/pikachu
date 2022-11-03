@@ -12,6 +12,11 @@ public class UtilDateTime {
 			return localDateTimeString;
 		}
 
+		public static String dateTimeToString (String CreDate) throws Exception {
+            LocalDateTime localDateTime = LocalDateTime.now();
+            String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            return localDateTimeString;
+        }
 		
 		
 }

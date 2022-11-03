@@ -312,7 +312,7 @@
 						<a class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" onclick="btnDelete()"><i class="fa-solid fa-trash-can"></i></a>
 					</div>
 					<div class="d-grid gap-2 d-md-flex btn2">
-						<button class="btn btn-success" type="submit"><i class="fa-solid fa-file-excel"></i></button>
+						<button class="btn btn-success" type="button" id="btnExcel"><i class="fa-solid fa-file-excel"></i></button>
 						<button class="btn btn-primary" type="button" id="btnForm"><i class="fa-solid fa-plus"></i></button>
 					</div>
 				</div>
@@ -329,6 +329,7 @@
 	var goUrlUpdt = "/member/memberUpdt";				/* #-> */
 	var goUrlUele = "/member/memberUele";				/* #-> */
 	var goUrlDele = "/member/memberDele";				/* #-> */
+	var excelUri = "/member/excelDownload";				/* #-> */
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
@@ -338,7 +339,9 @@
 	$("#searchReset").on("click", function() {
 		location.href= "/member/memberList";
 	});
-	
+	$("#btnExcel").click(function() {
+		form.attr("action", excelUri).submit();
+	});
 	$("#btnSave").on("click", function(){
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
