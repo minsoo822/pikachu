@@ -73,6 +73,17 @@ public class CodeServiceImpl implements CodeService {
         }
         return rt;
     }
+    public static String selectOneCachedCode(String code) throws Exception {
+        String rt = "";
+        for(Code codeRow : Code.cachedCodeArrayList) {
+            if (codeRow.getSeq().equals(code)) {
+                rt = codeRow.getName();
+            } else {
+                // by pass
+            }
+        }
+        return rt;
+    }
 
 //	페이징
 	@Override
