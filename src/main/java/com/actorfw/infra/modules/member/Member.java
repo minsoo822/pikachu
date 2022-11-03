@@ -11,6 +11,7 @@ public class Member extends Base {
 	private String seq;
 	private String member_seq;
 	
+	private String issuer;
 	
 	
 	private Integer user_type;
@@ -79,12 +80,23 @@ public class Member extends Base {
 //	private String[] member_FilmoSeq;
 
 //--------------------------------------------------------
-	private Integer sns_type;
+    private String snsSeq;
+    private String[] snsSeqs;
+    
+    private Integer sns_type;
 	private Integer[] sns_types;
 	private String url;
 	private String[] urls;
+	private Integer Upsns_type;
+    private Integer[] Upsns_types;
+    private String Upurl;
+    private String[] Upurls;
+
     
 //----------------------------------------------------------    
+  
+  private String filmoSeq;
+  private String[] filmoSeqs;  
     
   private String filmo_period;
   private String[] filmo_periods;
@@ -96,8 +108,22 @@ public class Member extends Base {
   private String[] filmo_names;
   private String filmo_role;
   private String[] filmo_roles;
+  
+  private String Upfilmo_period;
+  private String[] Upfilmo_periods;
+  private Integer Upfilmo_type;
+  private Integer[] Upfilmo_types;
+  private String Upfilmo_producer;
+  private String[] Upfilmo_producers;
+  private String Upfilmo_name;
+  private String[] Upfilmo_names;
+  private String Upfilmo_role;
+  private String[] Upfilmo_roles;
 
 //--------------------------------------------------------
+  
+  private String eduSeq;
+  private String[] eduSeqs;  
   
   private String edu_period_s;
   private String[] edu_periods_s;
@@ -110,15 +136,35 @@ public class Member extends Base {
   private Integer edu_type;
   private Integer[] edu_types;
   
+  private String Upedu_period_s;
+  private String[] Upedu_periods_s;
+  private String Upedu_period_e;
+  private String[] Upedu_periods_e;
+  private String Upschool_name;
+  private String[] Upschool_names;
+  private String Upedu_major;
+  private String[] Upedu_majors;
+  private Integer Upedu_type;
+  private Integer[] Upedu_types;
+  
 //----------------------------------------------------------    
+  
+  private String awardSeq;
+  private String[] awardSeqs;  
   
   private String award_period;
   private String[] award_periods;
   private String award_name;
   private String[] award_names;
   private String award_issuer;
-  private String issuer;
   private String[] award_issuers;
+  
+  private String Upaward_period;
+  private String[] Upaward_periods;
+  private String Upaward_name;
+  private String[] Upaward_names;
+  private String Upaward_issuer;
+  private String[] Upaward_issuers;
   
 //----------------------------------------------------------    
   
@@ -737,12 +783,241 @@ public class Member extends Base {
     public void setPeriod_e(String period_e) {
         this.period_e = period_e;
     }
+    public Integer getUpsns_type() {
+        return Upsns_type;
+    }
+    public void setUpsns_type(Integer upsns_type) {
+        Upsns_type = upsns_type;
+    }
+    public Integer[] getUpsns_types() {
+        return Upsns_types;
+    }
+    public void setUpsns_types(Integer[] upsns_types) {
+        Upsns_types = upsns_types;
+    }
+    public String getUpurl() {
+        return Upurl;
+    }
+    public void setUpurl(String upurl) {
+        Upurl = upurl;
+    }
+    public String[] getUpurls() {
+        return Upurls;
+    }
+    public void setUpurls(String[] upurls) {
+        Upurls = upurls;
+    }
+    public String getSnsSeq() {
+        return snsSeq;
+    }
+    public void setSnsSeq(String snsSeq) {
+        this.snsSeq = snsSeq;
+    }
+    public String[] getSnsSeqs() {
+        return snsSeqs;
+    }
+    public void setSnsSeqs(String[] snsSeqs) {
+        this.snsSeqs = snsSeqs;
+    }
+    public String getFilmoSeq() {
+        return filmoSeq;
+    }
+    public void setFilmoSeq(String filmoSeq) {
+        this.filmoSeq = filmoSeq;
+    }
+    public String[] getFilmoSeqs() {
+        return filmoSeqs;
+    }
+    public void setFilmoSeqs(String[] filmoSeqs) {
+        this.filmoSeqs = filmoSeqs;
+    }
+    public String getUpfilmo_period() {
+        return Upfilmo_period;
+    }
+    public void setUpfilmo_period(String upfilmo_period) {
+        Upfilmo_period = upfilmo_period;
+    }
+    public String[] getUpfilmo_periods() {
+        return Upfilmo_periods;
+    }
+    public void setUpfilmo_periods(String[] upfilmo_periods) {
+        Upfilmo_periods = upfilmo_periods;
+    }
+    public Integer getUpfilmo_type() {
+        return Upfilmo_type;
+    }
+    public void setUpfilmo_type(Integer upfilmo_type) {
+        Upfilmo_type = upfilmo_type;
+    }
+    public Integer[] getUpfilmo_types() {
+        return Upfilmo_types;
+    }
+    public void setUpfilmo_types(Integer[] upfilmo_types) {
+        Upfilmo_types = upfilmo_types;
+    }
+    public String getUpfilmo_producer() {
+        return Upfilmo_producer;
+    }
+    public void setUpfilmo_producer(String upfilmo_producer) {
+        Upfilmo_producer = upfilmo_producer;
+    }
+    public String[] getUpfilmo_producers() {
+        return Upfilmo_producers;
+    }
+    public void setUpfilmo_producers(String[] upfilmo_producers) {
+        Upfilmo_producers = upfilmo_producers;
+    }
+    public String getUpfilmo_name() {
+        return Upfilmo_name;
+    }
+    public void setUpfilmo_name(String upfilmo_name) {
+        Upfilmo_name = upfilmo_name;
+    }
+    public String[] getUpfilmo_names() {
+        return Upfilmo_names;
+    }
+    public void setUpfilmo_names(String[] upfilmo_names) {
+        Upfilmo_names = upfilmo_names;
+    }
+    public String getUpfilmo_role() {
+        return Upfilmo_role;
+    }
+    public void setUpfilmo_role(String upfilmo_role) {
+        Upfilmo_role = upfilmo_role;
+    }
+    public String[] getUpfilmo_roles() {
+        return Upfilmo_roles;
+    }
+    public void setUpfilmo_roles(String[] upfilmo_roles) {
+        Upfilmo_roles = upfilmo_roles;
+    }
+    public String getEduSeq() {
+        return eduSeq;
+    }
+    public void setEduSeq(String eduSeq) {
+        this.eduSeq = eduSeq;
+    }
+    public String[] getEduSeqs() {
+        return eduSeqs;
+    }
+    public void setEduSeqs(String[] eduSeqs) {
+        this.eduSeqs = eduSeqs;
+    }
+    public String getUpedu_period_s() {
+        return Upedu_period_s;
+    }
+    public void setUpedu_period_s(String upedu_period_s) {
+        Upedu_period_s = upedu_period_s;
+    }
+    public String[] getUpedu_periods_s() {
+        return Upedu_periods_s;
+    }
+    public void setUpedu_periods_s(String[] upedu_periods_s) {
+        Upedu_periods_s = upedu_periods_s;
+    }
+    public String getUpedu_period_e() {
+        return Upedu_period_e;
+    }
+    public void setUpedu_period_e(String upedu_period_e) {
+        Upedu_period_e = upedu_period_e;
+    }
+    public String[] getUpedu_periods_e() {
+        return Upedu_periods_e;
+    }
+    public void setUpedu_periods_e(String[] upedu_periods_e) {
+        Upedu_periods_e = upedu_periods_e;
+    }
+    public String getUpschool_name() {
+        return Upschool_name;
+    }
+    public void setUpschool_name(String upschool_name) {
+        Upschool_name = upschool_name;
+    }
+    public String[] getUpschool_names() {
+        return Upschool_names;
+    }
+    public void setUpschool_names(String[] upschool_names) {
+        Upschool_names = upschool_names;
+    }
+    public String getUpedu_major() {
+        return Upedu_major;
+    }
+    public void setUpedu_major(String upedu_major) {
+        Upedu_major = upedu_major;
+    }
+    public String[] getUpedu_majors() {
+        return Upedu_majors;
+    }
+    public void setUpedu_majors(String[] upedu_majors) {
+        Upedu_majors = upedu_majors;
+    }
+    public Integer getUpedu_type() {
+        return Upedu_type;
+    }
+    public void setUpedu_type(Integer upedu_type) {
+        Upedu_type = upedu_type;
+    }
+    public Integer[] getUpedu_types() {
+        return Upedu_types;
+    }
+    public void setUpedu_types(Integer[] upedu_types) {
+        Upedu_types = upedu_types;
+    }
+    public String getAwardSeq() {
+        return awardSeq;
+    }
+    public void setAwardSeq(String awardSeq) {
+        this.awardSeq = awardSeq;
+    }
+    public String[] getAwardSeqs() {
+        return awardSeqs;
+    }
+    public void setAwardSeqs(String[] awardSeqs) {
+        this.awardSeqs = awardSeqs;
+    }
+    public String getUpaward_period() {
+        return Upaward_period;
+    }
+    public void setUpaward_period(String upaward_period) {
+        Upaward_period = upaward_period;
+    }
+    public String[] getUpaward_periods() {
+        return Upaward_periods;
+    }
+    public void setUpaward_periods(String[] upaward_periods) {
+        Upaward_periods = upaward_periods;
+    }
+    public String getUpaward_name() {
+        return Upaward_name;
+    }
+    public void setUpaward_name(String upaward_name) {
+        Upaward_name = upaward_name;
+    }
+    public String[] getUpaward_names() {
+        return Upaward_names;
+    }
+    public void setUpaward_names(String[] upaward_names) {
+        Upaward_names = upaward_names;
+    }
+    public String getUpaward_issuer() {
+        return Upaward_issuer;
+    }
+    public void setUpaward_issuer(String upaward_issuer) {
+        Upaward_issuer = upaward_issuer;
+    }
+    public String[] getUpaward_issuers() {
+        return Upaward_issuers;
+    }
+    public void setUpaward_issuers(String[] upaward_issuers) {
+        Upaward_issuers = upaward_issuers;
+    }
     public String getIssuer() {
         return issuer;
     }
     public void setIssuer(String issuer) {
         this.issuer = issuer;
     }
+    
     
 	
 	

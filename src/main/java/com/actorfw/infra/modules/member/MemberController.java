@@ -54,7 +54,6 @@ public class MemberController {
 	@RequestMapping(value = "memberList")
 	public String selectList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		
-	    
 	    setParamsPaging(vo);
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
@@ -166,7 +165,6 @@ public class MemberController {
         }
     }
 
-
 //---------------------------------------------------------------------------------------------------------------	
 
 //	관리자화면 회원폼
@@ -251,19 +249,6 @@ public class MemberController {
 		
 		return "infra/member/user/mainViewForm";
 	}
-//	유저 회원가입 공통페이지
-//	@RequestMapping(value = "signUpForm")
-//	public String signUp() throws Exception {
-//		
-//		  return "infra/member/user/signUpForm";
-//	}
-//	@RequestMapping(value = "signUpInst")
-//	public String signUpInst(Member dto) throws Exception {
-//		
-//		int signUpInst = service.insertCd(dto);
-//		
-//		return "infra/member/user/signUpActor";
-//	}	
 //-------------------------------------------------------------------------------------------	
 	
 //	유저회원가입 배우페이지
@@ -430,26 +415,84 @@ public class MemberController {
     public String myPageUpdate(Member dto) throws Exception {
         
         int myPageUpdate = service.updateCd(dto);
-        System.out.println("myPageUpdate : " + myPageUpdate);
-//        sns업데이트
-        int myPageSnsUpdate = service.updateSnsCd(dto);
-        System.out.println("updateSnsCd : " + myPageSnsUpdate);
+//      sns업데이트
+        for(int i=0; i< dto.getUpsns_types().length; i++) {
+            dto.setSnsSeq(dto.getSnsSeqs()[i]);
+            dto.setUpurl(dto.getUpurls()[i]);
+            dto.setUpsns_type(dto.getUpsns_types()[i]);
+            
+            service.updateSnsCd(dto);
+        }
+//      SnsInst추가라인
+        for(int i = 0; i< dto.getSns_types().length ; i ++) {
+            dto.setUrl(dto.getUrls()[i]);
+            dto.setSns_type(dto.getSns_types()[i]);
+                      
+            service.insertSnsCd(dto);
+        }
+//      filmo업데이트
+        for(int i=0; i< dto.getUpfilmo_types().length; i++) {
+            dto.setFilmoSeq(dto.getFilmoSeqs()[i]);
+            dto.setUpfilmo_period(dto.getUpfilmo_periods()[i]);
+            dto.setUpfilmo_type(dto.getUpfilmo_types()[i]);
+            dto.setUpfilmo_producer(dto.getUpfilmo_producers()[i]);
+            dto.setUpfilmo_name(dto.getUpfilmo_names()[i]);
+            dto.setUpfilmo_role(dto.getUpfilmo_roles()[i]);
+            
+            service.updateFilmoCd(dto);
+        }
+        //filmoInst추가라인
+        for(int i = 0; i < dto.getFilmo_names().length; i++) {
+            dto.setFilmo_period(dto.getFilmo_periods()[i]);
+            dto.setFilmo_type(dto.getFilmo_types()[i]);
+            dto.setFilmo_producer(dto.getFilmo_producers()[i]);
+            dto.setFilmo_name(dto.getFilmo_names()[i]);
+            dto.setFilmo_role(dto.getFilmo_roles()[i]);
+            
+            service.insertFilmoCd(dto);
+        }
+//      edu업데이트
+        for(int i = 0; i < dto.getUpedu_periods_s().length; i++) {
+            dto.setEduSeq(dto.getEduSeqs()[i]);
+            dto.setUpedu_period_s(dto.getUpedu_periods_s()[i]);
+            dto.setUpedu_period_e(dto.getUpedu_periods_e()[i]);
+            dto.setUpschool_name(dto.getUpschool_names()[i]);
+            dto.setUpedu_major(dto.getUpedu_majors()[i]);
+            dto.setUpedu_type(dto.getUpedu_types()[i]);
         
-        //추가라인
-//        for(int i = 0; i< dto.getSns_types().length ; i ++) {
-//            System.out.println("sns1 : " + dto.getSns_types());
-//           
-//            dto.setUrl(dto.getUrls()[i]);
-//            dto.setSns_type(dto.getSns_types()[i]);
-//                      
-//            service.insertSnsCd(dto);
-//        }
-       
+            service.updateEduCd(dto);
+        }
+//      eduInst추가라인
+        for(int i = 0; i < dto.getEdu_periods_s().length; i++) {
+            dto.setEdu_period_s(dto.getEdu_periods_s()[i]);
+            dto.setEdu_period_e(dto.getEdu_periods_e()[i]);
+            dto.setSchool_name(dto.getSchool_names()[i]);
+            dto.setEdu_major(dto.getEdu_majors()[i]);
+            dto.setEdu_type(dto.getEdu_types()[i]);
+        
+            service.insertEduCd(dto);
+        }
+//      award업데이트
+        for(int i = 0; i < dto.getUpaward_periods().length; i++) {
+            dto.setAwardSeq(dto.getAwardSeqs()[i]);
+            dto.setUpaward_period(dto.getUpaward_periods()[i]);
+            dto.setUpaward_name(dto.getUpaward_names()[i]);
+            dto.setUpaward_issuer(dto.getUpaward_issuers()[i]);
+          
+            service.updateAwardCd(dto);
+        }
+//      AwardInst추가라인
+        for(int i = 0; i < dto.getAward_periods().length; i++) {
+            
+            dto.setAward_period(dto.getAward_periods()[i]);
+            dto.setAward_name(dto.getAward_names()[i]);
+            dto.setAward_issuer(dto.getAward_issuers()[i]);
+          
+            service.insertAwardCd(dto);
+        }
         return "redirect:/member/Mypage";
     }
     
-//---------------------------------------------------------------------------------------------------------------   
-  
 	
 //------------------------------------------------------------------------------------- 화면구현
 	
@@ -459,19 +502,6 @@ public class MemberController {
 		
 		return "infra/member/user/mainIndex";
 	}
-//	//오디션포스트 리스트
-//	@RequestMapping(value = "oditionPostViewForm")
-//	public String oditionMod() throws Exception {
-//		
-//		return "infra/member/user/oditionPostViewForm";
-//	}	
-//	//배우포스트 리스트
-//		@RequestMapping(value = "actorPostViewForm")
-//		public String actorPostViewForm() throws Exception {
-//			
-//		return "infra/member/user/actorPostViewForm";
-//	}
-//		
 	@RequestMapping(value = "firstView")
 	public String firstView() throws Exception {
 		

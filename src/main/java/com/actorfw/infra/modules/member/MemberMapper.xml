@@ -51,7 +51,8 @@
 	
 	<select id="selectSnsList" resultMap="resultObj">
 		SELECT
-			type
+			snsSeq
+			,type
 		    ,url
 		    ,member_seq
 		FROM actor_sns
@@ -60,7 +61,8 @@
 	</select>
 	<select id="selectFilmoList" resultMap="resultObj">
 		SELECT
-			period
+			filmoSeq
+			,period
 			,type
 			,producer
 			,name
@@ -71,7 +73,8 @@
 	</select>
 	<select id="selectEduList" resultMap="resultObj">
 		SELECT
-			period_s
+			eduSeq
+			,period_s
 			,period_e
 			,school_name
 			,major
@@ -82,7 +85,8 @@
 	</select>
 	<select id="selectAwardList" resultMap="resultObj">
 		SELECT
-			period
+			awardSeq
+			,period
 			,name
 			,issuer
 		FROM actor_award
@@ -324,11 +328,44 @@
 	<update id="updateSnsCd">
 		UPDATE actor_sns
 		SET
-			type		   = #{sns_type}
-			,url		   = #{url}
+			type		   = #{Upsns_type}
+			,url		   = #{Upurl}
 		WHERE 1=1
-			AND member_seq = #{seq}
+			AND snsSeq = #{snsSeq}
 	</update>
+	<update id="updateFilmoCd">
+		UPDATE actor_filmography
+		SET
+			period		= #{Upfilmo_period}
+			,type		= #{Upfilmo_type}
+			,producer	= #{Upfilmo_producer}
+			,name		= #{Upfilmo_name}
+			,role		= #{Upfilmo_role}
+		WHERE 1=1
+			AND filmoSeq = #{filmoSeq}
+	</update>
+	<update id="updateEduCd">
+		UPDATE actor_sns
+		SET
+			period_s		= #{Upedu_period_s}
+			,period_e		= #{Upedu_period_e}
+			,school_name	= #{Upschool_name}
+			,major			= #{Upedu_major}
+			,type			= #{Upedu_type}
+		WHERE 1=1
+			AND eudSeq = #{eduSeq}
+	</update>
+	<update id="updateAwardCd">
+		UPDATE actor_filmography
+		SET
+			period		= #{Upaward_period}
+			,name		= #{Upaward_name}
+			,issuer		= #{Upaward_issuer}
+		WHERE 1=1
+			AND awardSeq = #{awardSeq}
+	</update>
+	
+	
 	
 	
 	<!-- 아이디중복 체크 -->
@@ -432,12 +469,5 @@
 		AND   type = 3			<!-- type 3 = 영상 -->
 		AND pseq = #{pseq}
 	</select>
-
-
-
-
-
-
-
 
 </mapper>

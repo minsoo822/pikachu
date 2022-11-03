@@ -160,6 +160,18 @@ public class MemberServiceImpl implements MemberService {
     public int updateSnsCd(Member dto) throws Exception {
         return dao.updateSnsCd(dto);
     }
+    @Override
+    public int updateFilmoCd(Member dto) throws Exception {
+        return dao.updateFilmoCd(dto);
+    }
+    @Override
+    public int updateEduCd(Member dto) throws Exception {
+        return dao.updateEduCd(dto);
+    }
+    @Override
+    public int updateAwardCd(Member dto) throws Exception {
+        return dao.updateAwardCd(dto);
+    }
     //---------------------------------------------------------------------------------------	
 //  메인프로필사진 불러오기
 	@Override

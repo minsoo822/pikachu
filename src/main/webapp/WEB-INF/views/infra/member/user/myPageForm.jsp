@@ -52,6 +52,8 @@
 <body>
 	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="seq" value="${item.seq }">
+	<input type="hidden" name="snsSeq">
+	
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -289,8 +291,9 @@
 											<div class="col txwhite"  id="snsPoint">
 												<c:forEach items="${snsList }" var="snsList" varStatus="statussnsList">
 													<div class="row">
+														<input type="hidden" class="form-control" name="snsSeqs" value="${snsList.snsSeq }">
 														<div class="col-3 gy-1">
-															<select class="form-select" name="sns_type">
+															<select class="form-select" name="Upsns_types">
 																<option value=""></option>
 																<option value="11" <c:if test="${snsList.type eq 11 }">selected</c:if>>Instagram</option>
 																<option value="12" <c:if test="${snsList.type eq 12 }">selected</c:if>>Facebook</option>
@@ -299,7 +302,7 @@
 															</select>
 														</div>
 														<div class="col-7 gy-1">
-															<input type="text" class="form-control" name="url" value="${snsList.url }">
+															<input type="text" class="form-control" name="Upurls" value="${snsList.url }">
 														</div>
 														<div class="col-1 mt-1">
 															<button type="button" class="regFrombutton" onclick="remove(snsDelete' + count_sns + ')">
@@ -342,11 +345,12 @@
 											<div class="col" id="filmoPoint">
 												<c:forEach items="${filmoList }" var="filmoList" varStatus="statusfilmoList">
 													<div class="row gx-1 text-center mb-1">
+														<input type="hidden" name="filmoSeqs" value="${filmoList.filmoSeq}">
 														<div class="col-2">
-															<input type="date" class="form-control" value="${filmoList.period }">
+															<input type="date" class="form-control" name="Upfilmo_periods" value="${filmoList.period }">
 														</div>
 														<div class="col">
-															<select class="form-select">
+															<select class="form-select" name="Upfilmo_types">
 																<option value="" <c:if test="${empty filmoList.type }">selected</c:if>>선택</option>
 																<option value="15" <c:if test="${filmoList.type eq 15}">selected</c:if>>상업영화</option>
 																<option value="16" <c:if test="${filmoList.type eq 16}">selected</c:if>>단편(독립)영화</option>
@@ -357,13 +361,13 @@
 															</select>
 														</div>
 														<div class="col">
-															<input type="text" class="form-control" value="${filmoList.producer }">
+															<input type="text" class="form-control" name="Upfilmo_producers" value="${filmoList.producer }">
 														</div>
 														<div class="col">
-															<input type="text" class="form-control" value="${filmoList.name }">
+															<input type="text" class="form-control" name="Upfilmo_names" value="${filmoList.name }">
 														</div>
 														<div class="col">
-															<input type="text" class="form-control" value="${filmoList.role }">
+															<input type="text" class="form-control" name="Upfilmo_roles" value="${filmoList.role }">
 														</div>
 														<div class="col-1 mt-1">
 															<button type="button" class="regFrombutton">
@@ -481,22 +485,23 @@
 													<div class="col" id="eduPoint">
 														<c:forEach items="${eduList}" var="eduList" varStatus="statuseduList">
 															<div class="row gx-1 text-center">
+																<input type="hidden" name="eduSeqs" value="${eduList.eduSeq }">
 																<div class="col-4  txwhite">
 																	<div class="input-group" style="display: flex; justify-content: center;">
-																		<input type="date" class="form-control" value="${eduList.period_s }">
+																		<input type="date" name="Upedu_periods_s" class="form-control" value="${eduList.period_s }">
 																		<span class="txwhite">~</span>
-																		<input type="date" class="form-control" value="${eduList.period_e }">
+																		<input type="date" name="Upedu_periods_e" class="form-control" value="${eduList.period_e }">
 																	</div>
 																</div>
 																<div class="col txwhite">
-																	<input type="text" class="form-control" value="${eduList.school_name }">
+																	<input type="text" name="Upschool_names" class="form-control" value="${eduList.school_name }">
 																</div>
 																<div class="col txwhite">
-																	<input type="text" class="form-control" value="${eduList.major }">
+																	<input type="text" name="Upedu_majors" class="form-control" value="${eduList.major }">
 																</div>
 																<div class="col txwhite">
 																	<div class="col">
-																		<select class="form-select" name="">
+																		<select class="form-select" name="Upedu_types">
 																			<option value="" <c:if test="${empty eduList.type }">selected</c:if>>선택</option>
 																			<option value="21" <c:if test="${eduList.type eq 21}">selected</c:if>>졸업</option>
 																			<option value="22" <c:if test="${eduList.type eq 22}">selected</c:if>>재학</option>
@@ -551,14 +556,15 @@
 													<div class="col" id="awardPoint">
 														<c:forEach items="${AwardList }" var="AwardList" varStatus="statusAwardList">
 															<div class="row gx-1 text-center pb-1">
+																<input type="hidden" name="awardSeqs" value="${AwardList.awardSeq }">
 																<div class="col-4">
-																	<input type="date" class="form-control" value="${AwardList.period }">
+																	<input type="date" name="Upaward_periods" class="form-control" value="${AwardList.period }">
 																</div>
 																<div class="col">
-																	<input type="text" class="form-control" value="${AwardList.name }">
+																	<input type="text" name="Upaward_names" class="form-control" value="${AwardList.name }">
 																</div>
 																<div class="col">
-																	<input type="text" class="form-control" value="${AwardList.issuer }">
+																	<input type="text" name="Upaward_issuers" class="form-control" value="${AwardList.issuer }">
 																</div>
 																<div class="col-1">
 																	<button type="button" class="regFrombutton">
@@ -639,6 +645,19 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+	
+	var MypgeUpdt = "/member/MypageUpdate";
+	
+	var form = $("#mainForm");
+	
+	$("#btnSave").on("click", function(){
+		form.attr("action", MypgeUpdt).submit();
+	});
+	
+	
+	</script>
 	
 	<script type="text/javascript">
 //	Sns추가
@@ -791,26 +810,11 @@
 			
 			$(id).remove();
 		}
-	
-		
-		
-	
-	</script>
-	
-	<script type="text/javascript">
-	
-	var form = $("#mainForm");
-	
-	$("#btnSave").on("click", function(){
-		form.attr("action", "/member/MypageUpdate").submit();
-	});
-	
 
-	
 		document.querySelector(".disableLink").removeAttribute('href');
-	
-	
 	</script>
+	
+	
 
 </body>
 </html>
