@@ -39,6 +39,8 @@ public class MemberDao {
 //-------------------------------------------------------------------------------------------  
 //	인서트
 	public int insertCd(Member dto) { return sqlSession.insert(namespace + ".insertCd", dto); }
+//  SNS회원가입
+    public int kakaoInst(Member dto) { return sqlSession.insert(namespace + ".kakaoInst", dto); }
 //-------------------------------------------------------------------------------------------  
 	//배우인서트
 	public int insertSnsCd(Member dto) { return sqlSession.insert(namespace + ".insertSnsCd", dto); }
@@ -63,8 +65,9 @@ public class MemberDao {
 	public int idCheck(Member dto) { return sqlSession.selectOne(namespace + ".idCheck", dto); }
 	
 //	로그인
-	public Member logInCd(Member dto) { return sqlSession.selectOne(namespace + ".logInCd", dto);
-	}
+	public Member logInCd(Member dto) { return sqlSession.selectOne(namespace + ".logInCd", dto); }
+//  kakao로그인
+    public Member snsLoginCheck(Member dto) { return sqlSession.selectOne(namespace + ".snsLoginCheck", dto); }
 	
 //	메인페이지 리스트에 올것듯 -----------------------------------------------------------
 	

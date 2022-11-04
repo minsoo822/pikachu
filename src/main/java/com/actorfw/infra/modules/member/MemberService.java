@@ -26,6 +26,8 @@ public interface MemberService {
 //---------------------------------------------------------------------	
 //	멤버 공통부분 인서트
 	public int insertCd(Member dto) throws Exception;
+//  SNS멤버 공통부분 인서트
+    public int kakaoInst(Member dto) throws Exception;
 //--------------------------------------------------------------------- 	
 //  배우인서트
     public int insertSnsCd(Member dto) throws Exception;
@@ -49,6 +51,7 @@ public interface MemberService {
 	
 //	아이디중복 체크
 	public int idCheck(Member dto) throws Exception;
+
 	
 //	로그인
 	public Member logInCd(Member dto) throws Exception;
@@ -58,4 +61,16 @@ public interface MemberService {
 	public List<Member> actorVideo(Member dto) throws Exception;
 //	페이징
 	public int selectOneCount(MemberVo vo) throws Exception;
+	
+//----------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

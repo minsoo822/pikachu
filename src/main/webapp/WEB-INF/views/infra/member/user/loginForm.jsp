@@ -51,7 +51,7 @@
 				<b style="color: white;">cookie.seq:</b>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
-				<a type="button" class="btn" style="background-color: yellow" onclick="kakaoLogin()">Kakao</a>
+				<a type="button" class="btn" style="background-color: yellow" id="kakaoBtn">Kakao</a>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
 				<button type="button" class="btn" style="background-color: #19CE60; color: white;">Naver</button>
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 	</form>
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>3
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
@@ -90,21 +90,91 @@
 	      },
 	    })
 	  }
-	//카카오로그아웃  
-	function kakaoLogout() {
-	    if (Kakao.Auth.getAccessToken()) {
-	      Kakao.API.request({
-	        url: '/v1/user/unlink',
-	        success: function (response) {
-	        	console.log(response)
-	        },
-	        fail: function (error) {
-	          console.log(error)
-	        },
-	      })
-	      Kakao.Auth.setAccessToken(undefined)
-	    }
-	  }  
+	$("#kakaoBtn").on("click", function() {
+		/* Kakao.Auth.authorize({
+		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+		    }); */
+		
+		Kakao.Auth.login({
+		      success: function (response) {
+		        Kakao.API.request({
+		          url: '/v2/user/me',
+		          success: function (response) {
+		        	  
+		        	  var accessToken = Kakao.Auth.getAccessToken();
+		        	  Kakao.Auth.setAccessToken(accessToken);
+
+		        	  var account = response.kakao_account;
+		        	  
+		        	  console.log(response)
+		        	  console.log("email : " + account.email);
+		        	  console.log("name : " + account.name);
+		        	  console.log("picture : " + account.profile.thumbnail_image_url);
+		        	  console.log("picture : " + account.gender);
+		        	  console.log("picture : " + account.birthday);
+		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+  	        	  
+  	        	  
+  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+				
+  	        	  $.ajax({
+					async: true
+					,cache: false
+					,type:"POST"
+					,url: "/member/kakaoLoginProc"
+					,data: {
+						email : account.email
+						,name : account.name
+						,gender : account.gender
+						,dob : account.birthday
+							
+					}
+					,success : function(response) {
+						if (response.rt == "fail") {
+							alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+							return false;
+						} else {
+							window.location.href = "/sportMain";
+						}
+					},
+					error : function(jqXHR, status, error) {
+						alert("알 수 없는 에러 [ " + error + " ]");
+					}
+				});
+		          },
+		          fail: function (error) {
+		            console.log(error)
+		          },
+		        })
+		      },
+		      fail: function (error) {
+		        console.log(error)
+		      },
+		    })
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/* === loginCheck === */
 	function logIn() {

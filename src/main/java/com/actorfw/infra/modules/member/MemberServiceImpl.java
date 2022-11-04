@@ -47,6 +47,12 @@ public class MemberServiceImpl implements MemberService {
     
     
 //--------------------------------------------------------------------------------------------------	
+//	카카오 인서트
+	@Override
+    public int kakaoInst(Member dto) throws Exception {
+        return dao.kakaoInst(dto);
+    }
+	
 //	멤버인서트
 	@Override
 	public int insertCd(Member dto) throws Exception {
@@ -80,7 +86,8 @@ public class MemberServiceImpl implements MemberService {
         }
 		return insertCd;
 	}
-//  배우sns인서트
+
+    //  배우sns인서트
     @Override
     public int insertSnsCd(Member dto) throws Exception {
         return dao.insertSnsCd(dto);
@@ -204,6 +211,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int selectOneCount(MemberVo vo) throws Exception { return dao.selectOneCount(vo);
 	}
+    
+	
+//---------------------------------------------------------------------------------
+	
+	
+	
+	
 	
 	
 }
