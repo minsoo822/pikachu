@@ -449,7 +449,7 @@ public class MemberController {
         
         int myPageUpdate = service.updateCd(dto);
 //      SnsInst추가라인
-        if(dto.getSns_types().length > 0 ) {
+        if(dto.getSns_types() != null && dto.getSns_types().length > 0 ) {
             
             for(int i = 0; i< dto.getSns_types().length ; i ++) {
                 dto.setUrl(dto.getUrls()[i]);
@@ -459,7 +459,7 @@ public class MemberController {
             }
         } 
 //      sns업데이트
-        if(dto.getUpsns_types().length > 0) {
+        if(dto.getUpsns_types() != null && dto.getUpsns_types().length > 0) {
             
             for(int i=0; i< dto.getUpsns_types().length; i++) {
                 dto.setSnsSeq(dto.getSnsSeqs()[i]);
@@ -469,66 +469,83 @@ public class MemberController {
                 service.updateSnsCd(dto);
             }
         }
-////      filmo업데이트
-//        for(int i=0; i< dto.getUpfilmo_types().length; i++) {
-//            dto.setFilmoSeq(dto.getFilmoSeqs()[i]);
-//            dto.setUpfilmo_period(dto.getUpfilmo_periods()[i]);
-//            dto.setUpfilmo_type(dto.getUpfilmo_types()[i]);
-//            dto.setUpfilmo_producer(dto.getUpfilmo_producers()[i]);
-//            dto.setUpfilmo_name(dto.getUpfilmo_names()[i]);
-//            dto.setUpfilmo_role(dto.getUpfilmo_roles()[i]);
-//            
-//            service.updateFilmoCd(dto);
-//        }
-//        //filmoInst추가라인
-//        for(int i = 0; i < dto.getFilmo_names().length; i++) {
-//            dto.setFilmo_period(dto.getFilmo_periods()[i]);
-//            dto.setFilmo_type(dto.getFilmo_types()[i]);
-//            dto.setFilmo_producer(dto.getFilmo_producers()[i]);
-//            dto.setFilmo_name(dto.getFilmo_names()[i]);
-//            dto.setFilmo_role(dto.getFilmo_roles()[i]);
-//            
-//            service.insertFilmoCd(dto);
-//        }
-////      edu업데이트
-//        for(int i = 0; i < dto.getUpedu_periods_s().length; i++) {
-//            dto.setEduSeq(dto.getEduSeqs()[i]);
-//            dto.setUpedu_period_s(dto.getUpedu_periods_s()[i]);
-//            dto.setUpedu_period_e(dto.getUpedu_periods_e()[i]);
-//            dto.setUpschool_name(dto.getUpschool_names()[i]);
-//            dto.setUpedu_major(dto.getUpedu_majors()[i]);
-//            dto.setUpedu_type(dto.getUpedu_types()[i]);
-//        
-//            service.updateEduCd(dto);
-//        }
-////      eduInst추가라인
-//        for(int i = 0; i < dto.getEdu_periods_s().length; i++) {
-//            dto.setEdu_period_s(dto.getEdu_periods_s()[i]);
-//            dto.setEdu_period_e(dto.getEdu_periods_e()[i]);
-//            dto.setSchool_name(dto.getSchool_names()[i]);
-//            dto.setEdu_major(dto.getEdu_majors()[i]);
-//            dto.setEdu_type(dto.getEdu_types()[i]);
-//        
-//            service.insertEduCd(dto);
-//        }
-////      award업데이트
-//        for(int i = 0; i < dto.getUpaward_periods().length; i++) {
-//            dto.setAwardSeq(dto.getAwardSeqs()[i]);
-//            dto.setUpaward_period(dto.getUpaward_periods()[i]);
-//            dto.setUpaward_name(dto.getUpaward_names()[i]);
-//            dto.setUpaward_issuer(dto.getUpaward_issuers()[i]);
-//          
-//            service.updateAwardCd(dto);
-//        }
-////      AwardInst추가라인
-//        for(int i = 0; i < dto.getAward_periods().length; i++) {
-//            
-//            dto.setAward_period(dto.getAward_periods()[i]);
-//            dto.setAward_name(dto.getAward_names()[i]);
-//            dto.setAward_issuer(dto.getAward_issuers()[i]);
-//          
-//            service.insertAwardCd(dto);
-//        }
+//      filmo업데이트
+        if(dto.getUpfilmo_types() != null && dto.getUpfilmo_types().length > 0) {
+            
+            for(int i=0; i< dto.getUpfilmo_types().length; i++) {
+                dto.setFilmoSeq(dto.getFilmoSeqs()[i]);
+                dto.setUpfilmo_period(dto.getUpfilmo_periods()[i]);
+                dto.setUpfilmo_type(dto.getUpfilmo_types()[i]);
+                dto.setUpfilmo_producer(dto.getUpfilmo_producers()[i]);
+                dto.setUpfilmo_name(dto.getUpfilmo_names()[i]);
+                dto.setUpfilmo_role(dto.getUpfilmo_roles()[i]);
+                
+                service.updateFilmoCd(dto);
+            }
+        }
+        //filmoInst추가라인
+        if(dto.getFilmo_names() != null && dto.getFilmo_names().length > 0) {
+            
+            for(int i = 0; i < dto.getFilmo_names().length; i++) {
+                dto.setFilmo_period(dto.getFilmo_periods()[i]);
+                dto.setFilmo_type(dto.getFilmo_types()[i]);
+                dto.setFilmo_producer(dto.getFilmo_producers()[i]);
+                dto.setFilmo_name(dto.getFilmo_names()[i]);
+                dto.setFilmo_role(dto.getFilmo_roles()[i]);
+                
+                service.insertFilmoCd(dto);
+            }
+        }
+//      edu업데이트
+        if(dto.getUpschool_names() != null && dto.getUpschool_names().length > 0) {
+            
+            for(int i = 0; i < dto.getUpedu_periods_s().length; i++) {
+                dto.setEduSeq(dto.getEduSeqs()[i]);
+                dto.setUpedu_period_s(dto.getUpedu_periods_s()[i]);
+                dto.setUpedu_period_e(dto.getUpedu_periods_e()[i]);
+                dto.setUpschool_name(dto.getUpschool_names()[i]);
+                dto.setUpedu_major(dto.getUpedu_majors()[i]);
+                dto.setUpedu_type(dto.getUpedu_types()[i]);
+                
+                service.updateEduCd(dto);
+            }
+        }
+//      eduInst추가라인
+        if(dto.getEdu_periods_s() != null && dto.getEdu_periods_s().length > 0 ) {
+            
+            for(int i = 0; i < dto.getEdu_periods_s().length; i++) {
+                dto.setEdu_period_s(dto.getEdu_periods_s()[i]);
+                dto.setEdu_period_e(dto.getEdu_periods_e()[i]);
+                dto.setSchool_name(dto.getSchool_names()[i]);
+                dto.setEdu_major(dto.getEdu_majors()[i]);
+                dto.setEdu_type(dto.getEdu_types()[i]);
+                
+                service.insertEduCd(dto);
+            }
+        }
+//      award업데이트
+        if(dto.getUpaward_periods() != null && dto.getUpaward_periods().length > 0) {
+            
+            for(int i = 0; i < dto.getUpaward_periods().length; i++) {
+                dto.setAwardSeq(dto.getAwardSeqs()[i]);
+                dto.setUpaward_period(dto.getUpaward_periods()[i]);
+                dto.setUpaward_name(dto.getUpaward_names()[i]);
+                dto.setUpaward_issuer(dto.getUpaward_issuers()[i]);
+                
+                service.updateAwardCd(dto);
+            }
+        }
+//      AwardInst추가라인
+        if(dto.getAward_periods() != null && dto.getAward_periods().length > 0) {
+            
+            for(int i = 0; i < dto.getAward_periods().length; i++) {
+                dto.setAward_period(dto.getAward_periods()[i]);
+                dto.setAward_name(dto.getAward_names()[i]);
+                dto.setAward_issuer(dto.getAward_issuers()[i]);
+                
+                service.insertAwardCd(dto);
+            }
+        }
         return "redirect:/member/Mypage";
     }
     

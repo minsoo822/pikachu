@@ -345,7 +345,7 @@
 			AND filmoSeq = #{filmoSeq}
 	</update>
 	<update id="updateEduCd">
-		UPDATE actor_sns
+		UPDATE actor_education
 		SET
 			period_s		= #{Upedu_period_s}
 			,period_e		= #{Upedu_period_e}
@@ -353,10 +353,10 @@
 			,major			= #{Upedu_major}
 			,type			= #{Upedu_type}
 		WHERE 1=1
-			AND eudSeq = #{eduSeq}
+			AND eduSeq = #{eduSeq}
 	</update>
 	<update id="updateAwardCd">
-		UPDATE actor_filmography
+		UPDATE actor_award
 		SET
 			period		= #{Upaward_period}
 			,name		= #{Upaward_name}

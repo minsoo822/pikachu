@@ -100,6 +100,7 @@ public class MemberServiceImpl implements MemberService {
 //  배우edu인서트
     @Override
     public int insertEduCd(Member dto) throws Exception {
+        System.out.println("insertEduCdSerImpl :" + dao.insertEduCd(dto));
         return dao.insertEduCd(dto);
     }
 //  배우award인서트    

@@ -279,8 +279,6 @@
 								<c:choose>
 									<c:when test="${fn:length(snsList) eq 0 }">
 										<div class="row">
-											<input type="hidden" class="form-control" name="sns_types">
-											<input type="hidden" class="form-control" name="urls">
 											<div class="col" id="snsPoint"  style="text-align: center; color: white; font-size: 15pt;">
 												<c:out value="${item.name }"/>님의 SNS 정보가 존재하지 않습니다.
 											</div>
@@ -291,8 +289,6 @@
 											<div class="col txwhite"  id="snsPoint">
 												<c:forEach items="${snsList }" var="snsList" varStatus="statussnsList">
 													<div class="row">
-														<input type="hidden" class="form-control" name="sns_types">
-														<input type="hidden" class="form-control" name="urls">
 														<input type="hidden" class="form-control" name="snsSeqs" value="${snsList.snsSeq }">
 														<div class="col-3 gy-1">
 															<select class="form-select" name="Upsns_types">
