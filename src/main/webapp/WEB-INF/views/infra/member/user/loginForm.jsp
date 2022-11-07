@@ -121,7 +121,7 @@
 							}
 						},
 						error : function(jqXHR, status, error) {
-							alert("알 수 없는 에러 [ " + error + " ]");
+							alert("아작스 에러 [ " + error + " ]");
 						}
 					});
 					},
