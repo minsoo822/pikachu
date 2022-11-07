@@ -107,9 +107,9 @@
 						,url: "/member/kakaoLoginProc"
 						,data: {
 							id : account.email
-							,name : account.name
-							,gender : account.gender
-							,dob : account.birthday
+							,email : account.email
+	   						,name : account.profile.nickname
+							,gender : account.gender == 'male' ? 28 : 29
 								
 						},datatype: 'json'
 						,success : function(response) {
@@ -135,27 +135,6 @@
 			},
 		})
 	});
-		
-		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	/* === loginCheck === */

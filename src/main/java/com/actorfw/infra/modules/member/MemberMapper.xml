@@ -181,13 +181,13 @@
 		INSERT INTO member (
 			id
 			,name
-			,dob
+			,email
 			,gender
 		)
 		VALUES (
 			#{id}
 			,#{name}
-			,#{dob}
+			,#{email}
 			,#{gender}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
