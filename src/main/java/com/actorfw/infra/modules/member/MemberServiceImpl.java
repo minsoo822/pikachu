@@ -208,7 +208,12 @@ public class MemberServiceImpl implements MemberService {
         dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 	    return dao.logInCd(dto); 
 	    }
-//	페이징
+	
+@Override
+    public Member kakaoLogincheck(Member dto) throws Exception {
+        return dao.kakaoLogincheck(dto);
+    }
+    //	페이징
 	@Override
 	public int selectOneCount(MemberVo vo) throws Exception { return dao.selectOneCount(vo);
 	}

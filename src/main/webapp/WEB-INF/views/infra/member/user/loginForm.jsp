@@ -64,98 +64,80 @@
 			</div>
 		</div>
 	</form>
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>3
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 	Kakao.init('4a832cceac8c9100e4ed44c4163d468a'); //발급받은 키 중 javascript키를 사용해준다.
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	//카카오로그인
-	function kakaoLogin() {
-	    Kakao.Auth.login({
-	      success: function (response) {
-	        Kakao.API.request({
-	          url: '/v2/user/me',
-	          success: function (response) {
-	        	  console.log(response)
-	          },
-	          fail: function (error) {
-	            console.log(error)
-	          },
-	        })
-	      },
-	      fail: function (error) {
-	        console.log(error)
-	      },
-	    })
-	  }
+	
 	$("#kakaoBtn").on("click", function() {
-		/* Kakao.Auth.authorize({
-		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
-		    }); */
-		
-		Kakao.Auth.login({
-		      success: function (response) {
-		        Kakao.API.request({
-		          url: '/v2/user/me',
-		          success: function (response) {
-		        	  
-		        	  var accessToken = Kakao.Auth.getAccessToken();
-		        	  Kakao.Auth.setAccessToken(accessToken);
-
-		        	  var account = response.kakao_account;
-		        	  
-		        	  console.log(response)
-		        	  console.log("email : " + account.email);
-		        	  console.log("name : " + account.name);
-		        	  console.log("picture : " + account.profile.thumbnail_image_url);
-		        	  console.log("picture : " + account.gender);
-		        	  console.log("picture : " + account.birthday);
-		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
-  	        	  
-  	        	  
-  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
-				
-  	        	  $.ajax({
-					async: true
-					,cache: false
-					,type:"POST"
-					,url: "/member/kakaoLoginProc"
-					,data: {
-						email : account.email
-						,name : account.name
-						,gender : account.gender
-						,dob : account.birthday
-							
-					}
-					,success : function(response) {
-						if (response.rt == "fail") {
-							alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
-							return false;
-						} else {
-							window.location.href = "/sportMain";
+			/* Kakao.Auth.authorize({
+			      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+			    }); */
+			
+			    Kakao.Auth.login({
+				   	success:function(response){
+				   		Kakao.API.request({ 
+				   			url:'/v2/user/me',
+				   			success:function(response){
+				   				
+				   				var token = Kakao.Auth.getAccessToken(); 
+				   				console.log(token);
+				   				
+				   				Kakao.Auth.setAccessToken(token);
+				   				var account = response.kakao_account;  
+			        	   
+			        	  console.log(response)
+			        	  console.log("email : " + account.email);
+			        	  console.log("name : " + account.profile.nickname);
+			        	  console.log("picture : " + account.profile.thumbnail_image_url);
+			        	  console.log("picture : " + account.gender);
+			        	  console.log("picture : " + account.birthday);
+			        	 /*  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length)); */
+	  	        	  
+	  	        	  
+	  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+					
+	  	        	  $.ajax({
+						async: true
+						,cache: false
+						,type:"POST"
+						,url: "/member/kakaoLoginProc"
+						,data: {
+							id : account.email
+							,name : account.name
+							,gender : account.gender
+							,dob : account.birthday
+								
+						},datatype: 'json'
+						,success : function(response) {
+							if (response.rt == "fail") {
+								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+								return false;
+							} else {
+								window.location.href = "/home/Home";
+							}
+						},
+						error : function(jqXHR, status, error) {
+							alert("알 수 없는 에러 [ " + error + " ]");
 						}
+					});
 					},
-					error : function(jqXHR, status, error) {
-						alert("알 수 없는 에러 [ " + error + " ]");
-					}
-				});
-		          },
-		          fail: function (error) {
-		            console.log(error)
-		          },
-		        })
-		      },
-		      fail: function (error) {
-		        console.log(error)
-		      },
-		    })
+					fail: function (error) {
+					console.log(error)
+					},
+				})
+			},
+			fail: function (error) {
+			console.log(error)
+			},
+		})
 	});
-	
-	
-	
-	
+		
+		
+		
 	
 	
 	

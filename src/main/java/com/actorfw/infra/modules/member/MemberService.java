@@ -54,7 +54,8 @@ public interface MemberService {
 
 	
 //	로그인
-	public Member logInCd(Member dto) throws Exception;
+	public Member logInCd(Member dto) throws Exception; 
+	public Member kakaoLogincheck(Member dto) throws Exception;
 	
 	public Member imageMainView(Member dto) throws Exception; 
 	public List<Member> imageSubView(Member dto) throws Exception;

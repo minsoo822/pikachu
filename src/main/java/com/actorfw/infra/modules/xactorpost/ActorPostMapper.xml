@@ -99,8 +99,6 @@
 		FROM memberUploaded
 		WHERE defaultNy = 0		<!-- defaultNy 0 = 메인이미지제외 -->	
 		AND   type = 2			<!-- type 2 = 서브이미지 -->
-        ORDER BY seq DESC
-        LIMIT 4			
 		AND pseq = #{seq}
 	</select>
 	<select id="actorVideo" resultMap="resultObj">

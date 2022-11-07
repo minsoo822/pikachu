@@ -177,11 +177,27 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	<insert id="kakaoInst">
+		INSERT INTO member (
+			id
+			,name
+			,dob
+			,gender
+		)
+		VALUES (
+			#{id}
+			,#{name}
+			,#{dob}
+			,#{gender}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		</insert>
 	<!-- Actor Inst s -->	
 	<insert id="insertSnsCd">
 		INSERT INTO actor_sns (
 			type
-			,url
 			,member_seq
 		)
 		VALUES (
@@ -391,6 +407,18 @@
 		WHERE 1=1
 			AND id = #{id}
 			AND password = #{password}
+	</select>
+	<select id="kakaoLogincheck" resultMap="resultObj">
+		SELECT
+			seq
+			,id
+			,password
+			,name
+			,adminNy
+		FROM 
+			member
+		WHERE 1=1
+			AND id = #{id}
 	</select>
 	
 	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->

@@ -67,7 +67,7 @@ public class MemberDao {
 //	로그인
 	public Member logInCd(Member dto) { return sqlSession.selectOne(namespace + ".logInCd", dto); }
 //  kakao로그인
-    public Member snsLoginCheck(Member dto) { return sqlSession.selectOne(namespace + ".snsLoginCheck", dto); }
+    public Member kakaoLogincheck(Member dto) { return sqlSession.selectOne(namespace + ".kakaoLogincheck", dto); }
 	
 //	메인페이지 리스트에 올것듯 -----------------------------------------------------------
 	

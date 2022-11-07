@@ -44,6 +44,10 @@
 			<exclude-mapping path="/member/signUpDirectorInst" />
 			<exclude-mapping path="/rest/**" />
 			
+			<!-- 카카오 로그인(controller, 카카오톡 서버 controller) -->
+			<exclude-mapping path="/member/kakaoLoginProc"/>
+			<exclude-mapping path="/v2/user/me"/>
+			
 			<exclude-mapping path="/member/mainIndex" />
 			<beans:bean id="checkLoginSessionInterception" class="com.actorfw.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
