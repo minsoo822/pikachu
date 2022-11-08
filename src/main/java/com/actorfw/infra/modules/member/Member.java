@@ -10,6 +10,7 @@ public class Member extends Base {
 	
 	private String seq;
 	private String member_seq;
+	private String fileSeq;
 	
 	private String issuer;
 	
@@ -1016,6 +1017,12 @@ public class Member extends Base {
     }
     public void setIssuer(String issuer) {
         this.issuer = issuer;
+    }
+    public String getFileSeq() {
+        return fileSeq;
+    }
+    public void setFileSeq(String fileSeq) {
+        this.fileSeq = fileSeq;
     }
     
     

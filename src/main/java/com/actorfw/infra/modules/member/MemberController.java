@@ -503,7 +503,7 @@ public class MemberController {
 //      edu업데이트
         if(dto.getUpschool_names() != null && dto.getUpschool_names().length > 0) {
             
-            for(int i = 0; i < dto.getUpedu_periods_s().length; i++) {
+            for(int i = 0; i < dto.getUpschool_names().length; i++) {
                 dto.setEduSeq(dto.getEduSeqs()[i]);
                 dto.setUpedu_period_s(dto.getUpedu_periods_s()[i]);
                 dto.setUpedu_period_e(dto.getUpedu_periods_e()[i]);
@@ -515,9 +515,9 @@ public class MemberController {
             }
         }
 //      eduInst추가라인
-        if(dto.getEdu_periods_s() != null && dto.getEdu_periods_s().length > 0 ) {
+        if(dto.getSchool_names() != null && dto.getSchool_names().length > 0 ) {
             
-            for(int i = 0; i < dto.getEdu_periods_s().length; i++) {
+            for(int i = 0; i < dto.getSchool_names().length; i++) {
                 dto.setEdu_period_s(dto.getEdu_periods_s()[i]);
                 dto.setEdu_period_e(dto.getEdu_periods_e()[i]);
                 dto.setSchool_name(dto.getSchool_names()[i]);

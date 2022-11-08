@@ -321,7 +321,7 @@
 	    </div>
 		</section>
 	</form>
-  <script>
+	<script>
   
 	var goUrlList = "/member/memberList"; 			/* #-> */
 	var goUrlForm = "/member/memberForm";
@@ -423,7 +423,7 @@
 	    sidebar.classList.toggle("close");
 	  });
   
-  </script>
+	</script>
 
 
 

@@ -30,22 +30,22 @@
 		<div class="container">
 			<div>
 				<a href="#" style="text-decoration: none;">
-					<h1 class="title">Actor'<span>s</span></h1>
+				<h1 class="title">Actor'<span>s</span></h1>
 				</a>
 			</div>
 			<div style="width: 400px; margin-left: auto; margin-right: auto;">
-				<input id="id" style="margin-bottom: 16px;" class="form-control" type="text"placeholder="ID">
-				<input id="password" class="form-control" type="password"  placeholder="Password">
+				<input id="id" style="margin-bottom: 16px;" class="form-control" type="text"placeholder="ID"/>
+				<input id="password" class="form-control" type="password"  placeholder="Password"/>
 			</div>
 			<div class="row form-check form-switch" style="margin: 10px 0px 0px 450px;" >
-				<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+				<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"/>
 				<label class="form-check-label" for="flexSwitchCheckChecked" style="color: white; margin-bottom: 20px;">아이디 저장</label>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-3" style="width: 400px;">
 				<button type="button" class="btn btn-secondary" onclick="logIn()">Login</button>
 			</div>
 			<div class="col-2 mx-auto my-4" style="text-align: center;">
-			<a class="find" href="">아이디 / 비밀번호 찾기</a>
+				<a class="find" href="">아이디 / 비밀번호 찾기</a>
 			</div>
 			<div class="mx-auto pt-4" style="border-top: solid gray 1px; width: 400px;">
 				<b style="color: white;">cookie.seq:</b>
@@ -73,57 +73,57 @@
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
 	
 	$("#kakaoBtn").on("click", function() {
-			/* Kakao.Auth.authorize({
-			      redirectUri: 'http://localhost:8080/member/kakaoCallback',
-			    }); */
-			
-			    Kakao.Auth.login({
-				   	success:function(response){
-				   		Kakao.API.request({ 
-				   			url:'/v2/user/me',
-				   			success:function(response){
-				   				
-				   				var token = Kakao.Auth.getAccessToken(); 
-				   				console.log(token);
-				   				
-				   				Kakao.Auth.setAccessToken(token);
-				   				var account = response.kakao_account;  
-			        	   
-			        	  console.log(response)
-			        	  console.log("email : " + account.email);
-			        	  console.log("name : " + account.profile.nickname);
-			        	  console.log("picture : " + account.profile.thumbnail_image_url);
-			        	  console.log("picture : " + account.gender);
-			        	  console.log("picture : " + account.birthday);
-			        	 /*  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length)); */
-	  	        	  
-	  	        	  
-	  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
-					
-	  	        	  $.ajax({
-						async: true
-						,cache: false
-						,type:"POST"
-						,url: "/member/kakaoLoginProc"
-						,data: {
-							id : account.email
-							,email : account.email
-	   						,name : account.profile.nickname
-							,gender : account.gender == 'male' ? 28 : 29
-								
-						},datatype: 'json'
-						,success : function(response) {
-							if (response.rt == "fail") {
+		/* Kakao.Auth.authorize({
+		redirectUri: 'http://localhost:8080/member/kakaoCallback',
+		}); */
+
+		Kakao.Auth.login({
+			success:function(response){
+				Kakao.API.request({ 
+					url:'/v2/user/me',
+					success:function(response){
+
+						var token = Kakao.Auth.getAccessToken(); 
+						console.log(token);
+
+						Kakao.Auth.setAccessToken(token);
+						var account = response.kakao_account;  
+
+						console.log(response)
+						console.log("email : " + account.email);
+						console.log("name : " + account.profile.nickname);
+						console.log("picture : " + account.profile.thumbnail_image_url);
+						console.log("picture : " + account.gender);
+						console.log("picture : " + account.birthday);
+						/*  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length)); */
+
+
+						/*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+
+						$.ajax({
+							async: true
+							,cache: false
+							,type:"POST"
+							,url: "/member/kakaoLoginProc"
+							,datatype: 'json'
+							,data: {
+								id : account.email
+								,email : account.email
+								,name : account.profile.nickname
+								,gender : account.gender == 'male' ? 28 : 29
+							}
+							,success : function(response) {
+								if (response.rt == "fail") {
 								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 								return false;
-							} else {
+								} else {
 								window.location.href = "/home/Home";
+								}
+							},
+							error : function(jqXHR, status, error) {
+								alert("아작스 에러 [ " + error + " ]");
 							}
-						},
-						error : function(jqXHR, status, error) {
-							alert("아작스 에러 [ " + error + " ]");
-						}
-					});
+						});
 					},
 					fail: function (error) {
 					console.log(error)
@@ -135,7 +135,6 @@
 			},
 		})
 	});
-	
 	
 	/* === loginCheck === */
 	function logIn() {

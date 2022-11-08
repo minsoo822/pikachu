@@ -70,7 +70,6 @@ public class MemberServiceImpl implements MemberService {
 //                		MemberServiceImpl.java  ->	 MemberServiceImpl -> ""  ->	 memberserviceimpl -> 	member
                 UtilUpload.uploadPost(myFile, pathModule, dto);
                     
-                    System.out.println(myFile.getOriginalFilename());
                 if(myFile.getOriginalFilename().toUpperCase().contains(".MP4") == true ) {
                     dto.setType(3);
                 } else {
@@ -100,7 +99,6 @@ public class MemberServiceImpl implements MemberService {
 //  배우edu인서트
     @Override
     public int insertEduCd(Member dto) throws Exception {
-        System.out.println("insertEduCdSerImpl :" + dao.insertEduCd(dto));
         return dao.insertEduCd(dto);
     }
 //  배우award인서트    
@@ -138,6 +136,7 @@ public class MemberServiceImpl implements MemberService {
 		int updateCd = dao.updateCd(dto);
   
         int j = 0;
+        
         for(MultipartFile myFile : dto.getPlofil_image()) {
 
             if(!myFile.isEmpty()) {
@@ -148,19 +147,53 @@ public class MemberServiceImpl implements MemberService {
                  
                 UtilUpload.uploadPost(myFile, pathModule, dto);
 
-                if(myFile.getOriginalFilename().toUpperCase().contains(".MP4") == true ) {
-                    dto.setType(3);
-                } else {
-                    dto.setType(2);
-                }
-                dto.setDefaultNy(0);
+                dto.setType(2);
+                dto.setDefaultNy(1);
                 dto.setSort(j+1);
                 dto.setPseq(Integer.parseInt(dto.getSeq()));
 
-                dao.insertMemberUpload(dto);
+                dao.updateUploaded(dto);
                 j++;
             }
         }
+//        for(MultipartFile myFile : dto.getSub_image()) {
+//
+//            if(!myFile.isEmpty()) {
+//                // postServiceImpl
+//                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//                
+////                      MemberServiceImpl.java  ->   MemberServiceImpl -> ""  ->     memberserviceimpl ->   member
+//                 
+//                UtilUpload.uploadPost(myFile, pathModule, dto);
+//
+//                dto.setType(2);
+//                dto.setDefaultNy(0);
+//                dto.setSort(j+1);
+//                dto.setPseq(Integer.parseInt(dto.getSeq()));
+//
+//                dao.updateUploaded(dto);
+//                j++;
+//            }
+//        }
+//        for(MultipartFile myFile : dto.getVideo()) {
+//
+//            if(!myFile.isEmpty()) {
+//                // postServiceImpl
+//                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//                
+////                      MemberServiceImpl.java  ->   MemberServiceImpl -> ""  ->     memberserviceimpl ->   member
+//                 
+//                UtilUpload.uploadPost(myFile, pathModule, dto);
+//
+//                dto.setType(3);
+//                dto.setDefaultNy(0);
+//                dto.setSort(j+1);
+//                dto.setPseq(Integer.parseInt(dto.getSeq()));
+//
+//                dao.updateUploaded(dto);
+//                j++;
+//            }
+//        }
 		return updateCd; 
 	}
 	

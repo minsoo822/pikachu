@@ -198,6 +198,7 @@
 	<insert id="insertSnsCd">
 		INSERT INTO actor_sns (
 			type
+			,url
 			,member_seq
 		)
 		VALUES (
@@ -497,5 +498,21 @@
 		AND   type = 3			<!-- type 3 = 영상 -->
 		AND pseq = #{pseq}
 	</select>
+	<update id="updateUploaded">
+		UPDATE memberUploaded
+		SET	
+			type			= #{type}
+			,defaultNy		= #{defaultNy}
+			,sort			= #{sort}
+			,path			= #{path}
+			,originalName	= #{originalName}
+			,uuidName		= #{uuidName}
+			,ext			= #{ext}
+			,size			= #{size}
+			,delNy			= 0
+		WHERE 1=1
+		AND pseq = #{seq}
+		AND fileSeq = #{fileSeq}
+	</update>
 
 </mapper>

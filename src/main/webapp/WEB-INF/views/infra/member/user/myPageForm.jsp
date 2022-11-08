@@ -31,7 +31,9 @@
 	/* div {
 		border: 1px solid orange;
 	} */
-	img {
+	.mainImg {
+		width: 500px;
+		height: 700px;
 		max-width: 100%;
 		max-height: 100%;
 	}
@@ -134,17 +136,13 @@
 					<div class="col-4">
 						<div class="row">
 							<div class="col" style="text-align: center; width: 500px; min-height: 720px;">
-								<img alt="" src="${imageMainView.path }${imageMainView.uuidName}">
+								<input type="hidden" name="fileSeq" value="${imageMainView.fileSeq }">
+								<img class="mainImg" id="mainimage" name="plofil_image" src="${imageMainView.path }${imageMainView.uuidName}">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="file" name="plofil_image" id="" class="file">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col p-5" style="text-align: center; color: white;">
-								<h2><b><c:out value="${item.name }"></c:out></b></h2>
+								<input type="file" name="plofil_image" id="mainimagefile" class="file">
 							</div>
 						</div>
 					</div>
@@ -386,7 +384,7 @@
 								<c:choose>
 									<c:when test="${fn:length(imageSubView) eq 0 }">
 										<div class="row">
-											<div class="col">
+											<div class="col" id="filmoPoint"  style="text-align: center; color: white; font-size: 15pt;">
 												<c:out value="${item.name }"/>님의 프로필 사진이 존재하지 않습니다.
 											</div>
 										</div>
@@ -397,7 +395,7 @@
 												<div class="row gx-0">
 													<c:forEach items="${imageSubView}" var="imageSubView" varStatus="statusSubImg">
 														<div class="col-3">
-															<img alt="" class="subProfile" src="${imageSubView.path}${imageSubView.uuidName}">
+															<img id="subimg" class="subProfile" src="${imageSubView.path}${imageSubView.uuidName}">
 														</div>
 													</c:forEach>	
 												</div>
@@ -406,15 +404,8 @@
 									</c:otherwise>
 								</c:choose>
 								<div class="row">
-									<div class="col">
-										<div class="row mt-2">
-											<div class="col d-grid justify-content-end">
-												<input type="file" id="file" style="display: none;">
-												<button type="button" class="regFrombutton" onclick="onclick=document.all.file.click()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
-											</div>
-										</div>
+									<div class="col d-flex justify-content-end">
+										<input type="file" name="plofil_image" id="subimgfile" class="file" multiple>
 									</div>
 								</div>
 								<div class="row">
@@ -428,7 +419,7 @@
 										<c:choose>
 											<c:when test="${fn:length(actorVideo) eq 0}">
 												<div class="row">
-													<div class="col">
+													<div class="col" id="filmoPoint"  style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 연기영상이 존재하지 않습니다.
 													</div>
 												</div>
@@ -443,11 +434,8 @@
 										</c:choose>	
 										</div>
 										<div class="row">
-											<div class="col d-grid justify-content-end">
-												<input type="file" id="file2" style="display: none;">
-												<button type="button" class="regFrombutton" onclick="onclick=document.all.file2.click()">
-													<i class="fa-solid fa-plus"></i>
-												</button>
+											<div class="col d-flex justify-content-end">
+												<input type="file" name="plofil_image" id="" class="file" multiple>
 											</div>
 										</div>
 									</div>
@@ -655,9 +643,6 @@
 	});
 	
 	
-	</script>
-	
-	<script type="text/javascript">
 //	Sns추가
 	var count_sns = 0;	
 	
@@ -743,9 +728,9 @@
 		tmp += '<div class="row gx-1 text-center pb-1" id="eduDelete' + count_edu + '">';
 		tmp += '<div class="col-4" txwhite>';
 		tmp += '<div class="input-group" style="display: flex; justify-content: center;">';
-		tmp += '<input type="date" class="form-control" name="eduList.periods_s">';
+		tmp += '<input type="date" class="form-control" name="edu_periods_s">';
 		tmp += '<span class="txwhite">~</span>';
-		tmp += '<input type="date" class="form-control" name="eduList.periods_e">';
+		tmp += '<input type="date" class="form-control" name="edu_periods_e">';
 		tmp += '</div>';
 		tmp += '</div>';
 		tmp += '<div class="col">';
@@ -809,7 +794,14 @@
 			$(id).remove();
 		}
 
-		document.querySelector(".disableLink").removeAttribute('href');
+//	이미지 미리보기
+    $("#mainimagefile").on("change", function(e) {
+		var tmp = e.target.files[0];
+	    var img = URL.createObjectURL(tmp);
+	    $("#mainimage").attr("src", img);
+	});
+//	disable
+	document.querySelector(".disableLink").removeAttribute('href');
 	</script>
 	
 	

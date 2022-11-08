@@ -135,11 +135,6 @@
 								<img src="${imageMainView.path}${imageMainView.uuidName}">
 							</div>
 						</div>
-						<div class="row">
-							<div class="col p-5" style="text-align: center; color: white;">
-								<h2><b><c:out value="${item.name }"/></b></h2>
-							</div>
-						</div>
 					</div>
 					<div class="col">
 						<div class="row">
