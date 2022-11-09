@@ -174,7 +174,7 @@
 										<div class="row">
 											<div class="col-2 gy-1">나이</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" name="age" value="${item.age }">
+												<input type="text" class="form-control" name="age" value="${item.age }"><span class="base1">살</span>
 											</div>
 										</div>
 										<div class="row">
@@ -453,14 +453,14 @@
 											<div class="col pt-1 regText">전공</div>
 											<div class="col pt-1 regText">구분</div>
 											<div class="col-1">
-												<button type="button" class="regFrombutton" onclick="addEdu()">
+												<button type="button" class="regFrombutton" onclick="addEdu()" id="eduOnDisplay">
 													<i class="fa-solid fa-plus"></i>
 												</button>
 											</div>
 										</div>
 										<c:choose>
 											<c:when test="${fn:length(eduList) eq 0 }">
-												<div class="row">
+												<div class="row" id="eduNoneDiv">
 													<div class="col mt-3" id="eduPoint" style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 학력사항이 존재하지 않습니다.
 													</div>
@@ -793,8 +793,9 @@
 			
 			$(id).remove();
 		}
+		
 
-//	이미지 미리보기
+//	메인이미지 미리보기
     $("#mainimagefile").on("change", function(e) {
 		var tmp = e.target.files[0];
 	    var img = URL.createObjectURL(tmp);
