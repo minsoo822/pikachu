@@ -162,7 +162,7 @@
 		<div class="row">
 			<div class="col">
 				<hr>
-				<h6 class="coment">댓글 <c:out value="${postComentList.count }"/></h6>
+				<h6 class="coment">댓글</h6>
 				<hr>
 			</div>
 		</div>

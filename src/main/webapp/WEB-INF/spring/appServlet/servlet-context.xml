@@ -35,7 +35,7 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/"/>
 			<exclude-mapping path="/resources/**" />
-			<exclude-mapping path="/member/mainHome" />
+			<exclude-mapping path="/home/Home" />
 			<exclude-mapping path="/member/loginForm" />
 			<exclude-mapping path="/member/loginCheck" />
 			<exclude-mapping path="/member/signUpActorForm" />

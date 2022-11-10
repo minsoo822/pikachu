@@ -190,14 +190,7 @@
     	AND a.seq = #{member_seq}
 	</select>
 	
-	<!-- <select id="postComentCount" resultType="Integer">
-		SELECT
-		COUNT(seq) AS count
-	    FROM post_odition_coment
-	    WHERE 1=1
-	    AND post_odition_seq = #{seq}
-	</select> -->
-	
+
 	
 	
 	

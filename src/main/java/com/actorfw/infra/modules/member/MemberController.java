@@ -280,10 +280,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "logoutForm")
-	public String logoutForm() throws Exception {
+	public String logoutForm(HttpSession httpSession) throws Exception {
 		
+		httpSession.invalidate();
 		
-		return "infra/member/user/mainViewForm";
+		return "redirect:/home/Home";
 	}
 //-------------------------------------------------------------------------------------------	
 	
