@@ -67,8 +67,8 @@ public class MemberDao {
 //	로그인
 	public Member logInCd(Member dto) { return sqlSession.selectOne(namespace + ".logInCd", dto); }
 //  kakao로그인
-    public Member kakaoLogincheck(Member dto) { return sqlSession.selectOne(namespace + ".kakaoLogincheck", dto); }
-	
+    public Member kakaoLogincheck(Member dto) { return sqlSession.selectOne(namespace + ".kakaoLogincheck", dto); } 
+    public Member naverLogincheck(Member dto) { return sqlSession.selectOne(namespace + ".naverLogincheck", dto); }
 //	메인페이지 리스트에 올것듯 -----------------------------------------------------------
 	
 	public int selectLastSeq() { return sqlSession.selectOne(namespace + ".selectLastSeq" , "");}

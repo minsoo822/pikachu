@@ -74,6 +74,11 @@ public class OditionPostServiceImpl implements OditionPostService {
     public OditionPost comentOne(OditionPost dto) throws Exception {
         return dao.comentOne(dto);
     }
+
+//    @Override
+//    public int postComentCount(OditionPostVo vo) throws Exception {
+//        return dao.postComentCount(vo);
+//    }
 	
 
 }

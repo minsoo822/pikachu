@@ -18,5 +18,5 @@ public interface OditionPostService {
     /* 댓글 */
 	public List<OditionPost> postComentList(OditionPostVo vo) throws Exception;
 	public int insertComnt(OditionPost dto) throws Exception;
-	
+//	public int postComentCount(OditionPostVo vo)  throws Exception;
 }

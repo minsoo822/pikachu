@@ -83,6 +83,24 @@ public class MemberServiceImpl implements MemberService {
                 j++;
             }
         }
+        for(MultipartFile myFile : dto.getVideo()) {
+
+            if(!myFile.isEmpty()) {
+                // postServiceImpl
+                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                
+//                      MemberServiceImpl.java  ->   MemberServiceImpl -> ""  ->     memberserviceimpl ->   member
+                UtilUpload.uploadPost(myFile, pathModule, dto);
+                    
+                dto.setType(3);
+                dto.setDefaultNy(0);
+                dto.setSort(j+1);
+                dto.setPseq(pseq);
+
+                dao.insertMemberUpload(dto);
+                j++;
+            }
+        }
 		return insertCd;
 	}
 
@@ -241,10 +259,13 @@ public class MemberServiceImpl implements MemberService {
         dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 	    return dao.logInCd(dto); 
 	    }
-	
-@Override
+	@Override
     public Member kakaoLogincheck(Member dto) throws Exception {
         return dao.kakaoLogincheck(dto);
+    }
+    @Override
+    public Member naverLogincheck(Member dto) throws Exception {
+        return dao.naverLogincheck(dto);
     }
     //	페이징
 	@Override

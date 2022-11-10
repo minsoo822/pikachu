@@ -25,7 +25,23 @@
 		span {
 			color: red;
 		}		
-	
+		
+		/* 이미지 프리뷰 s */
+		.preview {
+			margin-bottom: 50px;
+		}
+	    .imgs_wrap {
+			background: gray;
+			height: 150px;
+		}
+		.imgs_wrap img {
+			height: 140px;
+			width: 100px;
+			max-width: 100%;
+			max-height: 100%;
+			padding: 10px 0px 0px 15px;
+		}
+    /* 이미지 프리뷰 e */
 	</style>
 	
 
@@ -334,7 +350,12 @@
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="file" class="form-control">
+								<span>영상은 최대 2개까지 가능합니다</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="file" class="form-control" name="video" multiple>
 							</div>
 						</div>
 					</div>
@@ -346,10 +367,20 @@
 							<div class="col">
 								<h4><b>프로필 사진</b></h4>
 							</div>
+						</div>	
+						<div class="row">	
+							<div class="col">
+								<span>사진은 최소2장 최대5장 을 넣어주세요</span>
+							</div>
+						</div>
+						<div class="row preview">
+							<div class="col">
+								<input type="file" id="input_imgs" class="form-control" multiple name="plofil_image">
+							</div>
 						</div>
 						<div class="row">
-							<div class="col">
-								<input type="file" class="form-control" multiple name="plofil_image">
+							<div class="col imgs_wrap">
+							
 							</div>
 						</div>
 					</div>
@@ -753,6 +784,45 @@
 			$(id).remove();
 		}
 	
+//		이미지 여러장 미리보기
+	    $("#file").on('change',function(){
+	    	  var fileName = $("#file").val();
+	    	  $(".upload-name").val(fileName);
+	    	});
+	    
+	    var sel_files = [];
+
+	    $(document).ready(function() {
+	        $("#input_imgs").on("change", handleImgsFilesSelect);
+	    }); 
+
+	    function handleImgsFilesSelect(e) {
+	        var files = e.target.files;
+	        var filesArr = Array.prototype.slice.call(files);
+
+	        filesArr.forEach(function(f) {
+	            if(!f.type.match("image.*")) {
+	                alert("확장자는 이미지 확장자만 가능합니다.");
+	                return;
+	            }
+
+	            sel_files.push(f);
+
+	            var reader = new FileReader();
+	            reader.onload = function(e) {
+	                var img_html = "<img src=\"" + e.target.result + "\" />";
+	                $(".imgs_wrap").append(img_html);
+	            }
+	            reader.readAsDataURL(f);
+	        });
+	    }
+	    
+	    $("#input_imgs").on('change',function(){
+	    	  var fileName = $("#input_imgs").val();
+	    	  $(".upload-name").val(fileName);
+	    	});
+	    
+		
 		</script>
 	
 </body>

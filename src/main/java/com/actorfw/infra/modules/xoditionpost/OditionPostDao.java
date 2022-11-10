@@ -51,4 +51,8 @@ public class OditionPostDao {
 	public OditionPost comentOne(OditionPost dto) {
 	    return sqlSession.selectOne(namespace + ".comentOne", dto);
 	}
+//	댓글 카운트
+//	public int postComentCount(OditionPostVo vo) {
+//        return sqlSession.selectOne(namespace + ".postComentCount" , vo);
+//    }
 }

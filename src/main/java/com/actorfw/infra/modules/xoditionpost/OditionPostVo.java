@@ -5,6 +5,8 @@ import com.actorfw.infra.common.base.BaseVo;
 public class OditionPostVo extends BaseVo {
     
     private String seq;
+    private String post_odition_seq;
+    
 
     public String getSeq() {
         return seq;
@@ -13,6 +15,15 @@ public class OditionPostVo extends BaseVo {
     public void setSeq(String seq) {
         this.seq = seq;
     }
+
+    public String getPost_odition_seq() {
+        return post_odition_seq;
+    }
+
+    public void setPost_odition_seq(String post_odition_seq) {
+        this.post_odition_seq = post_odition_seq;
+    }
+    
     
     
     

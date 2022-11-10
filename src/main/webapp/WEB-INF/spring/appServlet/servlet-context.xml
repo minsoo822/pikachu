@@ -48,6 +48,9 @@
 			<exclude-mapping path="/member/kakaoLoginProc"/>
 			<exclude-mapping path="/v2/user/me"/>
 			
+			<!-- 구글 로그인 -->
+			<exclude-mapping path="https://people.googleapis.com/v1/people/me"/>
+			
 			<exclude-mapping path="/member/mainIndex" />
 			<beans:bean id="checkLoginSessionInterception" class="com.actorfw.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>

@@ -74,6 +74,9 @@ public class OditionPostController {
             List<OditionPost> postComentList = service.postComentList(vo);
             model.addAttribute("postComentList", postComentList);
             
+//            int count = service.postComentCount(vo);
+//            model.addAttribute("postComentList", postComentList);
+            
             return "infra/member/user/oditionPostView";
         }
 		

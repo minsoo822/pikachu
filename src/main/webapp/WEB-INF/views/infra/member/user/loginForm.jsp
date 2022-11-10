@@ -11,6 +11,8 @@
 <html lang="ko">
 <head>
 	<title>Home</title>
+	<!-- content에 자신의 OAuth2.0 클라이언트ID를 넣습니다. 구글로그인-->
+	<meta name ="google-signin-client_id" content="315503510334-mlu7bdjnse35d8r67vfi63spf39kiop0.apps.googleusercontent.com">
 	<!-- Boxiocns CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<!-- Font Awesome -->
@@ -34,8 +36,8 @@
 				</a>
 			</div>
 			<div style="width: 400px; margin-left: auto; margin-right: auto;">
-				<input id="id" style="margin-bottom: 16px;" class="form-control" type="text"placeholder="ID"/>
-				<input id="password" class="form-control" type="password"  placeholder="Password"/>
+				<input id="id" style="margin-bottom: 16px;" class="form-control" value="minsoo822" type="text"placeholder="ID"/>
+				<input id="password" class="form-control" type="password" value="rlaals12" placeholder="Password"/>
 			</div>
 			<div class="row form-check form-switch" style="margin: 10px 0px 0px 450px;" >
 				<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"/>
@@ -54,21 +56,27 @@
 				<a type="button" class="btn" style="background-color: yellow" id="kakaoBtn">Kakao</a>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
-				<button type="button" class="btn" style="background-color: #19CE60; color: white;">Naver</button>
+				<a id="naverIdLogin_loginButton" href="javascript:void(0)" type="button" class="btn" style="background-color: #19CE60; color: white;">Naver</a>
 			</div>
-			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
-				<button type="button" class="btn" style="background-color: #E94235; color: white;">Google</button>
+			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;" id="GgCustomLogin">
+				<a href="javascript:void(0)" type="button" class="btn" style="background-color: #E94235; color: white;">Google</a>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
 				<button type="button" class="btn btn" style="background-color: #4867AA; color: white;">Facebook</button>
 			</div>
 		</div>
 	</form>
+	<!-- 카카오 api 사용을 위한 스크립트 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<!-- 구글 api 사용을 위한 스크립트 -->
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	<!-- 네이버 api 사용을 위한 스크립트 -->
+	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
+	//카카오
 	Kakao.init('4a832cceac8c9100e4ed44c4163d468a'); //발급받은 키 중 javascript키를 사용해준다.
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
 	
@@ -135,6 +143,116 @@
 			},
 		})
 	});
+	
+	//구글
+	//처음 실행하는 함수
+	function init() {
+		gapi.load('auth2', function() {
+			gapi.auth2.init();
+			options = new gapi.auth2.SigninOptionsBuilder();
+			options.setPrompt('select_account');
+	        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+			options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+	        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+	        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+			gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+		})
+	}
+
+	function onSignIn(googleUser) {
+		var access_token = googleUser.getAuthResponse().access_token
+		$.ajax({
+	    	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+			url: 'https://people.googleapis.com/v1/people/me'
+	        // key에 자신의 API 키를 넣습니다.
+			, data: {personFields:'birthdays', key:'AIzaSyCFqr1IsTrG2BGRmNdMgqGEXB6CMuVggpQ', 'access_token': access_token}
+			, method:'GET'
+		})
+		.done(function(e){
+	        //프로필을 가져온다.
+			var profile = googleUser.getBasicProfile();
+			console.log(profile)
+		})
+		.fail(function(e){
+			console.log(e);
+		})
+	}
+	function onSignInFailure(t){		
+		console.log(t);
+	}
+	
+	/* //네이버
+	var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "6xqOog_0sWr3vXefVQrC", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+				callbackUrl: "http://localhost:8080/member/loginForm", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+				isPopup: false,
+				callbackHandle: true
+			}
+		);	
+
+	naverLogin.init();
+
+	window.addEventListener('load', function () {
+		naverLogin.getLoginStatus(function (status) {
+			if (status) {
+				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
+	    		
+				console.log(naverLogin.user); 
+	    		
+	            if( email == undefined || email == null) {
+					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+					naverLogin.reprompt();
+					return;
+				}
+			} else {
+				console.log("callback 처리에 실패하였습니다.");
+			}
+		});
+	});
+
+
+	var testPopUp;
+	function openPopUp() {
+	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+	}
+	function closePopUp(){
+	    testPopUp.close();
+	}
+
+	function naverLogout() {
+		openPopUp();
+		setTimeout(function() {
+			closePopUp();
+			}, 1000);
+		
+		
+	} */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/* === loginCheck === */
 	function logIn() {

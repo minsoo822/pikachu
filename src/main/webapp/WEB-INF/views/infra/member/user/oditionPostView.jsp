@@ -149,7 +149,7 @@
 					<td><c:out value="${item.deadline}"/></td>
 				</tr>
 			</table>
-			<textarea class="area" rows="" cols=""><c:out value="${item.contents}"/></textarea>
+			<textarea class="area" rows="" cols="" readonly><c:out value="${item.contents}"/></textarea>
 		</div>
 		<div class="col d-grid justify-content-end" style="width: 1400px; margin-right: auto; margin-left: auto; margin-top: 30px;">
 			<a href="oditionPostViewForm.html">
@@ -162,7 +162,7 @@
 		<div class="row">
 			<div class="col">
 				<hr>
-				<h6 class="coment">댓글 2</h6>
+				<h6 class="coment">댓글 <c:out value="${postComentList.count }"/></h6>
 				<hr>
 			</div>
 		</div>
@@ -185,14 +185,14 @@
 									<c:out value="${postComentList.datetime }"></c:out>
 								</div>
 							</div>
-							<div class="row">
+							<%-- <div class="row">
 								<div class="col">
 									<c:out value="${postComentList.contents }"></c:out>
 								</div>
 								<div class="col">
 									<button>답글달기</button>
 								</div>
-							</div>
+							</div> --%>
 						</div>			
 					</div>
 				</c:forEach>

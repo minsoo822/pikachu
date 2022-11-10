@@ -27,6 +27,9 @@ public class OditionPost extends Base {
 	private String email;
 	private String contents;
 	
+	private String count;
+	
+	
 	private MultipartFile[] post_image;
 
 	
@@ -154,6 +157,13 @@ public class OditionPost extends Base {
         public void setWriter(String writer) {
             this.writer = writer;
         }
+        public String getCount() {
+            return count;
+        }
+        public void setCount(String count) {
+            this.count = count;
+        }
+        
 	    
 	
 //----------------------------------------

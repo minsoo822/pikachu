@@ -174,7 +174,7 @@
 										<div class="row">
 											<div class="col-2 gy-1">나이</div>
 											<div class="col-5 gy-1">
-												<input type="text" class="form-control" name="age" value="${item.age }"><span class="base1">살</span>
+												<input type="text" class="form-control" name="age" value="${item.age }">
 											</div>
 										</div>
 										<div class="row">
