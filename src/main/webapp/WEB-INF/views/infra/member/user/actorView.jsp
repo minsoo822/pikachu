@@ -39,7 +39,10 @@
 		max-width: 100%;
 		max-height: 100%;
 	}
-	
+	.nomal {
+		color: white;
+		
+	}
 	</style>
 </head>
 <body>
@@ -164,19 +167,19 @@
 										<div class="row">
 											<div class="col-2 gy-1">나이</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.age }"/>
+												<span class="nomal"><c:out value="${item.age }"/>세</span>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">신체</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_weight }"/>
+												<span class="nomal"><c:out value="${item.actor_height }"/>cm</span>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">몸무게</div>
 											<div class="col-5 gy-1">
-												<c:out value="${item.actor_weight }"/>
+												<span class="nomal"><c:out value="${item.actor_weight }"/>kg</span>
 											</div>
 										</div>
 										<div class="row">

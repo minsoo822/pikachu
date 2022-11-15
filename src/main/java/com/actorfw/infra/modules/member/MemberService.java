@@ -28,6 +28,7 @@ public interface MemberService {
 	public int insertCd(Member dto) throws Exception;
 //  SNS멤버 공통부분 인서트
     public int kakaoInst(Member dto) throws Exception;
+    public int naverInst(Member dto) throws Exception;
 //--------------------------------------------------------------------- 	
 //  배우인서트
     public int insertSnsCd(Member dto) throws Exception;
@@ -55,8 +56,7 @@ public interface MemberService {
 	
 //	로그인
 	public Member logInCd(Member dto) throws Exception; 
-	public Member kakaoLogincheck(Member dto) throws Exception;
-	public Member naverLogincheck(Member dto) throws Exception;
+	public Member snsLogincheck(Member dto) throws Exception;
 	
 	public Member imageMainView(Member dto) throws Exception; 
 	public List<Member> imageSubView(Member dto) throws Exception;

@@ -24,10 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.actorfw.infra.common.constants.Constants;
 import com.actorfw.infra.common.util.UtilDateTime;
-import com.actorfw.infra.common.util.UtilSecurity;
 import com.actorfw.infra.modules.code.CodeServiceImpl;
-import com.actorfw.infra.modules.xactorpost.ActorPostVo;
-import com.actorfw.infra.modules.xtourpost.TourPostVo;
 
 @Controller
 @RequestMapping (value = "/member/")
@@ -231,22 +228,45 @@ public class MemberController {
         String[] split = txt.split("@");
         dto.setId(split[0]);
         
-        Member kakaoLogin = service.kakaoLogincheck(dto);
+        Member kakaoLogin = service.snsLogincheck(dto);
         
 //         System.out.println("test : " + dto.getToken());
         
         if (kakaoLogin == null) {
-            service.kakaoInst(dto);
+            service.kakaoInst(dto);    
             
-//            httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+            httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
             // session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
             session(dto, httpSession); 
             returnMap.put("rt", "success");
         } else {
-//            httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+            httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
             
             // session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
             session(kakaoLogin, httpSession);
+            returnMap.put("rt", "success");
+        }
+        return returnMap;
+    }
+	@ResponseBody
+    @RequestMapping(value = "naverLoginProc")
+    public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+        Map<String, Object> returnMap = new HashMap<String, Object>();
+        
+        Member naverLogin = service.snsLogincheck(dto);
+        
+        if (naverLogin == null) {
+            service.naverInst(dto);
+            
+            httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+            // session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(dto, httpSession); 
+            returnMap.put("rt", "success");
+        } else {
+            httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+            
+            // session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+            session(naverLogin, httpSession);
             returnMap.put("rt", "success");
         }
         return returnMap;

@@ -193,7 +193,26 @@
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-		</insert>
+	</insert>
+	<insert id="naverInst">
+		INSERT INTO member (
+			id
+			,name
+			,email
+			,gender
+			,phone_number
+		)
+		VALUES (
+			#{id}
+			,#{name}
+			,#{email}
+			,#{gender}
+			,#{phone_number}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	<!-- Actor Inst s -->	
 	<insert id="insertSnsCd">
 		INSERT INTO actor_sns (
@@ -409,7 +428,7 @@
 			AND id = #{id}
 			AND password = #{password}
 	</select>
-	<select id="kakaoLogincheck" resultMap="resultObj">
+	<select id="snsLogincheck" resultMap="resultObj">
 		SELECT
 			seq
 			,id
@@ -421,19 +440,6 @@
 		WHERE 1=1
 			AND id = #{id}
 	</select>
-	<select id="naverLogincheck" resultMap="resultObj">
-		SELECT
-			seq
-			,id
-			,password
-			,name
-			,adminNy
-		FROM 
-			member
-		WHERE 1=1
-			AND id = #{id}
-	</select>
-	
 	<select id="selectLastSeq" resultType="Integer"> <!-- 마지막 seq 조회 -->
 		SELECT
 			seq

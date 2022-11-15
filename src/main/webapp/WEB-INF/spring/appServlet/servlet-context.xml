@@ -47,6 +47,8 @@
 			<!-- 카카오 로그인(controller, 카카오톡 서버 controller) -->
 			<exclude-mapping path="/member/kakaoLoginProc"/>
 			<exclude-mapping path="/v2/user/me"/>
+			<!-- 네이버로그인(controller, 네이버 서버 controller) -->
+			<exclude-mapping path="/member/naverLoginProc"/>
 			
 			<!-- 구글 로그인 -->
 			<exclude-mapping path="https://people.googleapis.com/v1/people/me"/>

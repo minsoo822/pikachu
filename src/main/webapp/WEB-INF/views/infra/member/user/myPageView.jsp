@@ -39,7 +39,10 @@
 		max-width: 100%;
 		max-height: 100%;
 	}
-	
+	.baseLine {
+		background-color: white;
+		height: 5px;
+	}
 	</style>
 </head>
 <body>
@@ -216,6 +219,7 @@
 										</div>
 									</div>
 								</div>
+								<hr class="baseLine">
 								<div class="row">
 									<div class="col m-4">
 										<h4><b>SNS</b></h4>
@@ -247,7 +251,8 @@
 											</div>
 										</c:forEach>
 									</c:otherwise>
-								</c:choose>	
+								</c:choose>
+								<hr class="baseLine">	
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>필모그래피</b></h4>
@@ -292,6 +297,7 @@
 										</c:forEach>
 									</c:otherwise>
 								</c:choose>
+								<hr class="baseLine">
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>프로필사진</b></h4>
@@ -308,6 +314,7 @@
 										</div>
 									</div>
 								</div>
+								<hr class="baseLine">
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>연기영상</b></h4>
@@ -335,6 +342,7 @@
 										</div>
 									</div>
 								</div>
+								<hr class="baseLine">
 								<div class="row">
 									<div class="col">
 										<div class="row">
@@ -383,6 +391,7 @@
 										</c:choose>
 									</div>
 								</div>
+								<hr class="baseLine">
 								<div class="row">
 									<div class="col">
 										<div class="row">
@@ -421,6 +430,7 @@
 										</c:choose>
 									</div>
 								</div>
+								<hr class="baseLine">
 								<div class="row">
 									<div class="col mt-5 mb-3">
 										<h4><b>자기소개</b></h4>

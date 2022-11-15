@@ -41,6 +41,7 @@ public class MemberDao {
 	public int insertCd(Member dto) { return sqlSession.insert(namespace + ".insertCd", dto); }
 //  SNS회원가입
     public int kakaoInst(Member dto) { return sqlSession.insert(namespace + ".kakaoInst", dto); }
+    public int naverInst(Member dto) { return sqlSession.insert(namespace + ".naverInst", dto); }
 //-------------------------------------------------------------------------------------------  
 	//배우인서트
 	public int insertSnsCd(Member dto) { return sqlSession.insert(namespace + ".insertSnsCd", dto); }
@@ -66,9 +67,8 @@ public class MemberDao {
 	
 //	로그인
 	public Member logInCd(Member dto) { return sqlSession.selectOne(namespace + ".logInCd", dto); }
-//  kakao로그인
-    public Member kakaoLogincheck(Member dto) { return sqlSession.selectOne(namespace + ".kakaoLogincheck", dto); } 
-    public Member naverLogincheck(Member dto) { return sqlSession.selectOne(namespace + ".naverLogincheck", dto); }
+//  sns로그인
+    public Member snsLogincheck(Member dto) { return sqlSession.selectOne(namespace + ".snsLogincheck", dto); } 
 //	메인페이지 리스트에 올것듯 -----------------------------------------------------------
 	
 	public int selectLastSeq() { return sqlSession.selectOne(namespace + ".selectLastSeq" , "");}

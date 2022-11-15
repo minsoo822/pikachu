@@ -53,13 +53,13 @@
 				<b style="color: white;">cookie.seq:</b>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
-				<a type="button" class="btn" style="background-color: yellow" id="kakaoBtn">Kakao</a>
+				<a id="kakaoBtn" type="button" class="btn" style="background-color: yellow">Kakao</a>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
-				<a id="naverIdLogin_loginButton" href="javascript:void(0)" type="button" class="btn" style="background-color: #19CE60; color: white;">Naver</a>
+				<a id="naverBtn" type="button" class="btn" style="background-color: #19CE60; color: white;">Naver</a>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;" id="GgCustomLogin">
-				<a href="javascript:void(0)" type="button" class="btn" style="background-color: #E94235; color: white;">Google</a>
+				<a type="button" class="btn" style="background-color: #E94235; color: white;">Google</a>
 			</div>
 			<div class="d-grid gap-2 mx-auto mt-2" style="width: 400px;">
 				<button type="button" class="btn btn" style="background-color: #4867AA; color: white;">Facebook</button>
@@ -129,7 +129,7 @@
 								}
 							},
 							error : function(jqXHR, status, error) {
-								alert("아작스 에러 [ " + error + " ]");
+								alert("카카오 로그인아작스 에러 [ " + error + " ]");
 							}
 						});
 					},
@@ -144,7 +144,75 @@
 		})
 	});
 	
-	//구글
+	/* 네이버로그인 s */
+	$("#naverBtn").on("click", function() {
+		
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "6xqOog_0sWr3vXefVQrC",
+				callbackUrl: "http://localhost:8080/member/loginForm",
+				isPopup: true,
+			}
+		);
+		
+		naverLogin.init();
+		naverLogin.getLoginStatus(function (status) {
+			if(!status)
+				
+			naverLogin.authorize();
+      		setLoginStatus();
+			
+		});
+			
+		function setLoginStatus() {
+			
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/naverLoginProc"
+				,datatype: 'json'
+				,data: {
+					"name": naverLogin.user.name, 
+					"id":  naverLogin.user.id,
+					"phone_number": naverLogin.user.mobile, 
+					"email": naverLogin.user.email, 
+					"gender": naverLogin.user.gender == 'M' ? 28 : 29
+				}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return false;
+					} else {
+						window.location.href = "/home/Home";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("네이버로그인 아작스 에러 [ " + error + " ]");
+				}
+			});
+		}
+	});
+	
+		/* 네이버로그인 e */
+	/* var testPopUp;
+	function openPopUp() {
+	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+	}
+	function closePopUp(){
+	    testPopUp.close();
+	}
+
+	function naverLogout() {
+		openPopUp();
+		setTimeout(function() {
+			closePopUp();
+			}, 1000);
+		
+		
+	} */
+	
+/* 	//구글
 	//처음 실행하는 함수
 	function init() {
 		gapi.load('auth2', function() {
@@ -180,80 +248,10 @@
 	function onSignInFailure(t){		
 		console.log(t);
 	}
+	 */
 	
-	/* //네이버
-	var naverLogin = new naver.LoginWithNaverId(
-			{
-				clientId: "6xqOog_0sWr3vXefVQrC", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-				callbackUrl: "http://localhost:8080/member/loginForm", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
-				isPopup: false,
-				callbackHandle: true
-			}
-		);	
+	
 
-	naverLogin.init();
-
-	window.addEventListener('load', function () {
-		naverLogin.getLoginStatus(function (status) {
-			if (status) {
-				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
-	    		
-				console.log(naverLogin.user); 
-	    		
-	            if( email == undefined || email == null) {
-					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-					naverLogin.reprompt();
-					return;
-				}
-			} else {
-				console.log("callback 처리에 실패하였습니다.");
-			}
-		});
-	});
-
-
-	var testPopUp;
-	function openPopUp() {
-	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
-	}
-	function closePopUp(){
-	    testPopUp.close();
-	}
-
-	function naverLogout() {
-		openPopUp();
-		setTimeout(function() {
-			closePopUp();
-			}, 1000);
-		
-		
-	} */
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/* === loginCheck === */
 	function logIn() {
 		$.ajax({

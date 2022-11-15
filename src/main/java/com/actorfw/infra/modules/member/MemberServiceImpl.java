@@ -52,8 +52,12 @@ public class MemberServiceImpl implements MemberService {
     public int kakaoInst(Member dto) throws Exception {
         return dao.kakaoInst(dto);
     }
-	
-//	멤버인서트
+//  네이버 인서트
+	@Override
+    public int naverInst(Member dto) throws Exception {
+        return dao.naverInst(dto);
+    }
+    //	멤버인서트
 	@Override
 	public int insertCd(Member dto) throws Exception {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
@@ -253,19 +257,15 @@ public class MemberServiceImpl implements MemberService {
 	public int idCheck(Member dto) throws Exception  { 
 	    return dao.idCheck(dto);}
 	
-//	로그인
+//	로그인s
 	@Override
 	public Member logInCd(Member dto) throws Exception  { 
         dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 	    return dao.logInCd(dto); 
 	    }
 	@Override
-    public Member kakaoLogincheck(Member dto) throws Exception {
-        return dao.kakaoLogincheck(dto);
-    }
-    @Override
-    public Member naverLogincheck(Member dto) throws Exception {
-        return dao.naverLogincheck(dto);
+    public Member snsLogincheck(Member dto) throws Exception {
+        return dao.snsLogincheck(dto);
     }
     //	페이징
 	@Override
