@@ -53,76 +53,10 @@
 	<c:set var="listCodeSnstype" value="${CodeServiceImpl.selectListCachedCode('3') }"/>
 	<c:set var="listCodeFilmotype" value="${CodeServiceImpl.selectListCachedCode('4') }"/>
 	<c:set var="listCodeEdutype" value="${CodeServiceImpl.selectListCachedCode('5') }"/>
-	<!-- start -->
-	<div class="hero">
-		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
-				<ul>
-					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
-					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
-						<ul>
-							<li><a href="#">전체</a></li>
-							<li><a href="#">상업영화</a></li>
-							<li><a href="#">독립(단편)영화</a></li>
-							<li><a href="#">(웹)드라마</a></li>
-							<li><a href="#">(바이럴)광고</a></li>
-						</ul>
-					</li>	
-					<li><a href="/Post/ActorPostList">프로필 정보</a>
-						<ul>
-							<li><a href="/Post/ActorPostList">전체</a></li><br>
-							<li><a href="../main/actorPostManViewForm.html">남자</a></li><br>
-							<li><a href="../main/actorPostWomanViewForm.html">여자</a></li>
-						</ul>
-					</li>	
-					<li><a href="#" class="disableLink">커뮤니티</a>
-						<!-- <ul>
-							<li><a href="#">자유게시판</a></li>
-							<li><a href="#">Q&A게시판</a></li>
-							<li><a href="#">홍보게시판</a></li>
-							<li><a href="#">스터디게시판</a></li>
-						</ul> -->
-					</li>
-					<li><a href="#" class="disableLink">자료실</a>
-						<!-- <ul>
-							<li><a href="#">전체</a></li>
-							<li><a href="#">한국시나리오</a></li>
-							<li><a href="#">외국시나리오</a></li>
-							<li><a href="#">자작시나리오</a></li>
-							<li><a href="#">기타자료실</a></li>
-						</ul> -->
-					</li>
-				</ul>
-			<div>
-				<c:if test="${sessSeq eq null }">
-					<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
-					<button type="button" class="btn" id="btnLogin">로그인</button>
-				</c:if>
-				<c:if test="${sessSeq ne null }">
-					<button type="button" class="btn">마이페이지</button>
-					<button type="button" class="btn" id="btnLogout">로그아웃</button>
-				</c:if>	
-			</div>
-			<!-- Modal -->
-			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			  <div  class="modal-dialog">
-			    <div style="background: #393939;" class="modal-content">
-			      <div class="modal-header">
-			        <h1 class="modal-title fs-5 homepageline" id="staticBackdropLabel"style="color: white;">Actor'<span style="color: #f9004d;">s</span></h1>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body" style="color: white; text-align: center; font-size: 20px;">
-			        가입 분류를 선택해주세요!!~
-			      </div>
-			      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
-			        <button type="button" class="indexbtn" id="goActorSignup" style="cursor: pointer;">배우로 가입하기</button>
-			        <button type="button" class="indexbtn" id="goDerectorSignup" style="cursor: pointer;">디렉터로 가입하기</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-		</nav>
-	</div>
+	<!-- header s -->
+    <%@include file="/resources/include/header.jsp"%>
+    <!-- header e -->
+	
 	<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
 	sessName: <c:out value="${sessName }"/><br>
 	sessId: <c:out value="${sessId }"/><br>
@@ -135,12 +69,7 @@
 					<div class="col-4">
 						<div class="row">
 							<div class="col" style="text-align: center;">
-								<img src="${item.path}${item.uuidName}">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col p-5" style="text-align: center; color: white;">
-								<h2><b><c:out value="${item.name }"/></b></h2>
+								<img src="${item.path}${item.uuidName}" style="width: 800px;">
 							</div>
 						</div>
 					</div>
@@ -507,43 +436,60 @@
 	
 	
 	
+	var goUrlLogout = "/member/logoutForm";
+	var goUrlLogin = "/member/loginForm";
+	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
+	var goUrlMain = "/member/mainHome";
+	var goUrlMypage = "/member/Mypage";
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("#mainForm");
+	var formVo = $("form[name=formVo]");
+	
+	goActorView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/ActorView").submit();
+	}
+	
+	goOditionView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/oditionPostView").submit();
+	}
+	
+	$("#goActorSignup").on("click", function(){
+		form.attr("action", "/member/signUpActorForm").submit();
+	});
+	$("#goDerectorSignup").on("click", function(){
+		form.attr("action", "/member/signUpDirectorForm").submit();
+	});
+	
+	$("#btnMypage").on("click", function() {
+		form.attr("action", goUrlMypage).submit();
+	});
+	
+	$("#btnLogin").on("click", function() {
+		form.attr("action", goUrlLogin).submit();
+	});
+	
+	$("#btnLogout").on("click", function() {
+		form.attr("action", goUrlLogout).submit();
+	});
+	$("#btnSignUp").on("click", function() {
+		swal({
+			  title: "Good job!",
+			  text: "You clicked the button!",
+			  icon: "success",
+			  button: "Aww yiss!",
+			  button: "Aww yiss!",
+			});
+		/* form.attr("action", goUrlSignUp).submit(); */
+	});
+	
+	//상단바 디세이블처리
+	document.querySelector(".disableLink").removeAttribute('href');
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		document.querySelector(".disableLink").removeAttribute('href');
 	
 	
 	</script>

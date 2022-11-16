@@ -54,51 +54,9 @@
 	<input type="hidden" id="post_odition_seq" name="seq" value="${item.seq }">
 	<input type="hidden" id="member_seq" name="member_seq" value="${sessSeq}">
 	<!-- start -->
- 	<div class="hero">
-		<nav class="top-fixed">
-			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
-				<ul>
-					<li><a href="tourpostViewForm.html">프로필 투어</a></li>
-					<li><a href="oditionPostViewForm.html">오디션 공고</a>
-						<ul>
-							<li><a href="#">전체</a></li>
-							<li><a href="#">상업영화</a></li>
-							<li><a href="#">독립(단편)영화</a></li>
-							<li><a href="#">(웹)드라마</a></li>
-							<li><a href="#">(바이럴)광고</a></li>
-						</ul>
-					</li>	
-					<li><a href="actorPostViewForm.html">프로필 정보</a>
-						<ul>
-							<li><a href="actorPostViewForm.html">전체</a></li><br>
-							<li><a href="actorPostManViewForm.html">남자</a></li><br>
-							<li><a href="actorPostWomanViewForm.html">여자</a></li>
-						</ul>
-					</li>	
-					<li><a href="#" class="disableLink">커뮤니티</a>
-						<!-- <ul>
-							<li><a href="#">자유게시판</a></li>
-							<li><a href="#">Q&A게시판</a></li>
-							<li><a href="#">홍보게시판</a></li>
-							<li><a href="#">스터디게시판</a></li>
-						</ul> -->
-					</li>
-					<li><a href="#" class="disableLink">자료실</a>
-						<!-- <ul>
-							<li><a href="#">전체</a></li>
-							<li><a href="#">한국시나리오</a></li>
-							<li><a href="#">외국시나리오</a></li>
-							<li><a href="#">자작시나리오</a></li>
-							<li><a href="#">기타자료실</a></li>
-						</ul> -->
-					</li>
-				</ul>
-			<div>
-			<a href="../member/memberRegForm.html" class="btn">회원가입</a>
-			<a href="../member/memberLoginForm.html" class="btn">로그인</a>
-			</div>
-		</nav>
-	</div>
+ 	<!-- header s -->
+    <%@include file="/resources/include/header.jsp"%>
+    <!-- header e -->
 
 	<div class="oditionpost">
 		<div class="titile">
@@ -152,7 +110,7 @@
 			<textarea class="area" rows="" cols="" readonly><c:out value="${item.contents}"/></textarea>
 		</div>
 		<div class="col d-grid justify-content-end" style="width: 1400px; margin-right: auto; margin-left: auto; margin-top: 30px;">
-			<a href="oditionPostViewForm.html">
+			<a href="/Post/oditionPostViewList">
 				<button type="button" class="regFrombutton">
 					목록으로
 				</button>
@@ -327,7 +285,59 @@
 		
 	});
 	
+	var goUrlLogout = "/member/logoutForm";
+	var goUrlLogin = "/member/loginForm";
+	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
+	var goUrlMain = "/member/mainHome";
+	var goUrlMypage = "/member/Mypage";
 	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("#mainForm");
+	var formVo = $("form[name=formVo]");
+	
+	goActorView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/ActorView").submit();
+	}
+	
+	goOditionView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/oditionPostView").submit();
+	}
+	
+	$("#goActorSignup").on("click", function(){
+		form.attr("action", "/member/signUpActorForm").submit();
+	});
+	$("#goDerectorSignup").on("click", function(){
+		form.attr("action", "/member/signUpDirectorForm").submit();
+	});
+	
+	$("#btnMypage").on("click", function() {
+		form.attr("action", goUrlMypage).submit();
+	});
+	
+	$("#btnLogin").on("click", function() {
+		form.attr("action", goUrlLogin).submit();
+	});
+	
+	$("#btnLogout").on("click", function() {
+		form.attr("action", goUrlLogout).submit();
+	});
+	$("#btnSignUp").on("click", function() {
+		swal({
+			  title: "Good job!",
+			  text: "You clicked the button!",
+			  icon: "success",
+			  button: "Aww yiss!",
+			  button: "Aww yiss!",
+			});
+		/* form.attr("action", goUrlSignUp).submit(); */
+	});
+	
+	//상단바 디세이블처리
+	document.querySelector(".disableLink").removeAttribute('href');
+	</script>
 	/* comentSave = function(key) {
 		seq.attr("value", key);
 		form.attr("action", "/Post/oditionPostComentInst").submti();

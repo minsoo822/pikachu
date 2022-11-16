@@ -28,9 +28,9 @@
 		border: none;
 		color: white;
 	}
-	/* div {
-		border: 1px solid orange;
-	} */
+	div {
+		/* border: 1px solid orange; */
+	}
 	img {
 		max-width: 100%;
 		max-height: 100%;
@@ -43,6 +43,14 @@
 		background-color: white;
 		height: 5px;
 	}
+	.nomal {
+		color: white;
+		font-size: 15pt;
+		
+	}
+	.txwhite {
+		font-size: 15pt;
+	}
 	</style>
 </head>
 <body>
@@ -53,6 +61,7 @@
 	<c:set var="listCodeSnstype" value="${CodeServiceImpl.selectListCachedCode('3') }"/>
 	<c:set var="listCodeFilmotype" value="${CodeServiceImpl.selectListCachedCode('4') }"/>
 	<c:set var="listCodeEdutype" value="${CodeServiceImpl.selectListCachedCode('5') }"/>
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7') }"/>
 	<!-- start -->
 	<div class="hero">
 		<nav class="top-fixed">
@@ -149,73 +158,70 @@
 									<div class="col txwhite">
 										<div class="row">
 											<div class="col-2">이름</div>
-											<div class="col-5">
-												<c:out value="${item.name }"/>
+											<div class="col-4">
+												<span class="nomal"><c:out value="${item.name }"/></span>
 											</div>
-										</div>
-										<div class="row">
 											<div class="col-2 gy-1">출생</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.dob }"/>
+											<div class="col-4 gy-1">
+												<span class="nomal"><c:out value="${item.dob }"/></span>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-2 gy-1">나이</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.age }"/>
+											<div class="col-4 gy-1">
+												<span class="nomal"><c:out value="${item.age }"/>&nbsp;세</span>
 											</div>
-										</div>
-										<div class="row">
 											<div class="col-2 gy-1">성별</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.gender }"/>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">신체</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.actor_weight }"/>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">몸무게</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.actor_weight }"/>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">이메일</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.email}"/>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">연락처</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.phone_number }"/>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">특기</div>
-											<div class="col-5 gy-1">
-												<c:out value="${item.actor_specialty }"/>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2 gy-1">쌍꺼풀 유무</div>
-											<div class="col-5 gy-1">
-												<c:forEach items="${listCodeEyelid }" var="listEyelid" varStatus="statuslistEyelid">
-													<c:if test="${item.actor_eyelid eq listEyelid.seq}"><c:out value="${listEyelid.name }"/></c:if>	
+											<div class="col-4 gy-1">
+												<c:forEach items="${listCodeGender }" var="listGender" varStatus="statuslistGender">
+													<c:if test="${item.gender eq listGender.seq }"><c:out value="${listGender.name }"/></c:if>	
 												</c:forEach>
 											</div>
 										</div>
 										<div class="row">
+											<div class="col-2 gy-1">신체</div>
+											<div class="col-4 gy-1">
+												<span class="nomal"><c:out value="${item.actor_height }"/>&nbsp;Cm</span>
+											</div>
+											<div class="col-2 gy-1">몸무게</div>
+											<div class="col-4 gy-1">
+												<span class="nomal"><c:out value="${item.actor_weight }"/>&nbsp;Kg</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-2 gy-1">이메일</div>
+											<div class="col-4 gy-1">
+												<span class="nomal"><c:out value="${item.email}"/>@naver.com</span>
+											</div>
+											<div class="col-2 gy-1">연락처</div>
+											<div class="col-4 gy-1">
+												<span class="nomal"><c:out value="${item.phone_number }"/></span>
+											</div>
+										</div>
+										<div class="row">
+											
+										</div>
+										<div class="row">
+											<div class="col-2 gy-1">쌍꺼풀</div>
+											<div class="col-4 gy-1">
+												<c:forEach items="${listCodeEyelid }" var="listEyelid" varStatus="statuslistEyelid">
+													<c:if test="${item.actor_eyelid eq listEyelid.seq}"><c:out value="${listEyelid.name }"/></c:if>	
+												</c:forEach>
+											</div>
 											<div class="col-2 gy-1">목소리 톤</div>
-											<div class="col-5 gy-1">
+											<div class="col-4 gy-1">
 												<c:forEach items="${listCodeVoice }" var="listVoice" varStatus="statuslistVoice">
 													<c:if test="${item.actor_voice eq listVoice.seq }"><c:out value="${listVoice.name }"/></c:if>	
 												</c:forEach>	
 											</div>	
+										</div>
+										<div class="row">
+											<div class="col-2 gy-1">특기</div>
+											<div class="col-10 gy-1">
+												<span class="nomal"><c:out value="${item.actor_specialty }"/></span>
+											</div>
+										</div>
+										<div class="row">
 										</div>
 									</div>
 								</div>
@@ -228,7 +234,7 @@
 								<c:choose>
 									<c:when test="${fn:length(snsList) eq 0 }">
 										<div class="row">
-											<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+											<div class="col m-3" style="text-align: center; color: white; font-size: 15pt;">
 												<c:out value="${item.name }"/>님의 SNS 정보가 존재하지 않습니다.
 											</div>
 										</div>
@@ -268,7 +274,7 @@
 								<c:choose>
 									<c:when test="${fn:length(filmoList) eq 0 }">
 										<div class="row">
-											<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+											<div class="col m-3" style="text-align: center; color: white; font-size: 15pt;">
 												<c:out value="${item.name }"/>님의 필모그래피가 존재하지 않습니다.
 											</div>
 										</div>
@@ -326,7 +332,7 @@
 											<c:choose>
 												<c:when test="${fn:length(actorVideo) eq 0}">
 													<div class="row">
-														<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+														<div class="col m-3" style="text-align: center; color: white; font-size: 15pt;">
 															<c:out value="${item.name }"/>님의 연기영상이 존재하지 않습니다.
 														</div>
 													</div>
@@ -359,7 +365,7 @@
 										<c:choose>
 											<c:when test="${fn:length(eduList) eq 0 }">
 												<div class="row">
-													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+													<div class="col m-3" style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 학력사항이 존재하지 않습니다.
 													</div>
 												</div>
@@ -407,7 +413,7 @@
 										<c:choose>
 											<c:when test="${fn:length(AwardList) eq 0 }">
 												<div class="row">
-													<div class="col mt-3" style="text-align: center; color: white; font-size: 15pt;">
+													<div class="col m-3" style="text-align: center; color: white; font-size: 15pt;">
 														<c:out value="${item.name }"/>님의 수상경력이 존재하지 않습니다.
 													</div>
 												</div>
@@ -515,7 +521,58 @@
 	});
 	
 	
+	var goUrlLogout = "/member/logoutForm";
+	var goUrlLogin = "/member/loginForm";
+	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
+	var goUrlMain = "/member/mainHome";
+	var goUrlMypage = "/member/Mypage";
 	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("#mainForm");
+	var formVo = $("form[name=formVo]");
+	
+	goActorView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/ActorView").submit();
+	}
+	
+	goOditionView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/oditionPostView").submit();
+	}
+	
+	$("#goActorSignup").on("click", function(){
+		form.attr("action", "/member/signUpActorForm").submit();
+	});
+	$("#goDerectorSignup").on("click", function(){
+		form.attr("action", "/member/signUpDirectorForm").submit();
+	});
+	
+	$("#btnMypage").on("click", function() {
+		form.attr("action", goUrlMypage).submit();
+	});
+	
+	$("#btnLogin").on("click", function() {
+		form.attr("action", goUrlLogin).submit();
+	});
+	
+	$("#btnLogout").on("click", function() {
+		form.attr("action", goUrlLogout).submit();
+	});
+	$("#btnSignUp").on("click", function() {
+		swal({
+			  title: "Good job!",
+			  text: "You clicked the button!",
+			  icon: "success",
+			  button: "Aww yiss!",
+			  button: "Aww yiss!",
+			});
+		/* form.attr("action", goUrlSignUp).submit(); */
+	});
+	
+	//상단바 디세이블처리
+	document.querySelector(".disableLink").removeAttribute('href');
 	
 	
 	
