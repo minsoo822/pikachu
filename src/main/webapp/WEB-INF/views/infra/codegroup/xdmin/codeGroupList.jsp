@@ -82,9 +82,9 @@
 	          <i class='bx bxs-chevron-down arrow' ></i>
 	        </div>
 	        <ul class="sub-menu">
-	          <li><a class="link_name" href="#">회원관리</a></li>
-	          <li><a href="/member/actorList">배우 관리</a></li>
-	          <li><a href="/member/directorList">디렉터 관리</a></li>
+	          <li><a class="link_name" href="/member/memberList">회원관리</a></li>
+	          <!-- <li><a href="/member/actorList">배우 관리</a></li>
+	          <li><a href="/member/directorList">디렉터 관리</a></li> -->
 	        </ul>
 	      </li>
 	      <!-- <li>

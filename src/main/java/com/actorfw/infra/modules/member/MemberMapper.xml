@@ -18,11 +18,11 @@
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND user_type LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
-		<choose>
-			<!-- useNy -->
+		<!-- <choose>
+			useNy
 			<when test="shUseOption == 0"> AND useNy LIKE CONCAT ('%',0,'%')</when>
 			<when test="shUseOption == 1"> AND useNy LIKE CONCAT ('%',1,'%')</when>
-		</choose>
+		</choose> -->
 		<choose>
 			<!-- delNy -->
 			<when test="shDelOption == 0"> AND delNy LIKE CONCAT ('%',0,'%')</when>
