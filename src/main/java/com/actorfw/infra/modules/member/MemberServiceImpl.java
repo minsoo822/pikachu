@@ -257,7 +257,7 @@ public class MemberServiceImpl implements MemberService {
 	public int idCheck(Member dto) throws Exception  { 
 	    return dao.idCheck(dto);}
 	
-//	로그인s
+//	로그인
 	@Override
 	public Member logInCd(Member dto) throws Exception  { 
         dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));

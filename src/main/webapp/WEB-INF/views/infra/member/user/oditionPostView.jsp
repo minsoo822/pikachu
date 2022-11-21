@@ -143,14 +143,14 @@
 									<c:out value="${postComentList.datetime }"></c:out>
 								</div>
 							</div>
-							<%-- <div class="row">
+							<div class="row">
 								<div class="col">
 									<c:out value="${postComentList.contents }"></c:out>
 								</div>
-								<div class="col">
+								<!-- <div class="col">
 									<button>답글달기</button>
-								</div>
-							</div> --%>
+								</div> -->
+							</div>
 						</div>			
 					</div>
 				</c:forEach>
