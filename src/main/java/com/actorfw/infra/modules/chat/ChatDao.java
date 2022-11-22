@@ -25,4 +25,9 @@ public class ChatDao {
     public Chat selectChatWithoutLoginUser(Chat chatRoom) { return sqlSession.selectOne(namespace+".selectChatWithoutLoginUser", chatRoom); }
   //로그인한 USER가 가진 채팅방의 채팅상대 시퀀스를 가져온다.  
     
+    public void insertChat(Chat dto) { sqlSession.insert(namespace+".insertChat", dto); }
+
+    public void insertChatUser(Chat dto) { sqlSession.insert(namespace+".insertChatUser", dto); }
+
+    public Chat selectOneChat(Chat dto) { return sqlSession.selectOne(namespace+".selectOneChat", dto);}
 }
