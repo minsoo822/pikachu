@@ -22,11 +22,26 @@
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
+	<style type="text/css">
+	.chat {
+		background-color: transparent;
+		border: none;
+		color: skyblue;
+		font-size: 30px;
+		position: relative;
+		bottom: 335px;
+		left: 135px;
+		
+	}
+	
+	</style>
+	
 </head>
 	
 <body>
 	<form name="mainForm" id="mainForm" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="seq">
+		<input type="hidden" name="cuMember">
 		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
@@ -99,13 +114,14 @@
 		</div>
 		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
 			<c:forEach items="${list}" var="list" varStatus="status">			
-				<div class="cardactor col-2" onclick="goView(${list.seq})">
+				<div class="cardactor col-2" onclick="javascript:goView(${list.seq});">
 					<img src="${list.path}${list.uuidName}" class="card-img-top" alt="">
 					<h5 style="text-align: center; margin-bottom: 0px; margin-top: 5px;"><c:out value="${list.name }"></c:out></h5>
 					<div class="pra">
 						<input hidden type="text" value="${list.seq }">
 						<p style="text-align: center;"><c:out value="${list.age }"></c:out>세</p>
 					</div>
+					<button type="button" class="chat" onclick="javascript:event.stopPropagation();goChat(${list.seq});" ><i class="fa-solid fa-comment-dots"></i></button>
 				</div>
 			</c:forEach>
 		</div>
@@ -166,6 +182,7 @@
 	var goUrlList = "/Post/ActorPostList"; 			/* #-> */
 	
 	var seq = $("input:hidden[name=seq]")
+	var cuMember = $("input:hidden[name=cuMember]")
 	
 	var form = $("#mainForm")
 	
@@ -177,16 +194,19 @@
 	}
 	
 	
-	goView = function(key) {
-		seq.attr("value", key);
-		form.attr("action", "/Post/ActorView").submit();
-	}
 	
 	$("#btnMypage").on("click", function() {
 		form.attr("action", goUrlMypage).submit();
 	});
 	
-	
+	goView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/ActorView").submit();
+	}
+	goChat = function(key) {
+		cuMember.attr("value", key);
+		form.attr("action", "/chat/").submit();
+	}
 	
 	
 	

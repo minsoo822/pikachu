@@ -43,11 +43,21 @@
 		color: white;
 		
 	}
+	.chat {
+		background-color: transparent;
+		border: none;
+		color: skyblue;
+		font-size: 50px;
+		position: relative;
+		right: 150px;
+		bottom: 5px;
+	}
 	</style>
 </head>
 <body>
 	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="seq" value="${vo.seq }">
+	<input type="hidden" name="cuMember" value="${item.seq }">
 	<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode('10') }"/>
 	<c:set var="listCodeEyelid" value="${CodeServiceImpl.selectListCachedCode('9') }"/>
 	<c:set var="listCodeSnstype" value="${CodeServiceImpl.selectListCachedCode('3') }"/>
@@ -78,6 +88,9 @@
 							<div class="col ps-5">
 								<div class="row">
 									<div class="col mb-4"><h4><b>개인신상정보</b></h4></div>
+									<div class="col mb-4">
+										<button type="button" class="chat" id="goChat"><i class="fa-solid fa-comment-dots"></i></button>
+									</div>
 								</div>
 								<div class="row">
 									<div class="col txwhite">
@@ -446,6 +459,11 @@
 	
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
+	
+	$("#goChat").on("click", function(){
+		form.attr("action", "/chat/").submit();
+	});
+	
 	
 	goActorView = function(key) {
 		seq.attr("value", key);
