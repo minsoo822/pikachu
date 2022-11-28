@@ -205,7 +205,7 @@
 	}
 	goChat = function(key) {
 		cuMember.attr("value", key);
-		form.attr("action", "/chat/").submit();
+		form.attr("action", "/chat/instChat").submit();
 	}
 	
 	

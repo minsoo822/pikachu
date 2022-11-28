@@ -254,12 +254,12 @@
 	        	<div class="row justify-content-center h-100">
 	                <div class="col-md-4 col-xl-3 chat">
 	                    <div class="card mb-sm-3 mb-md-0 contacts_card">
-	                        <div class="card-header">
+	                        <!-- <div class="card-header">
 	                            <div class="input-group">
 									<input type="text" placeholder="add ChatUser Seq..." id="cuMember" name="cuMember" class="form-control search">
 	                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
 	                            </div>
-	                        </div>
+	                        </div> -->
 	                        <div class="card-body contacts_body">
 	                            <ui class="contacts" id="chatList">
 	                            	<c:forEach items="${list }" var="list" varStatus="status">
@@ -287,7 +287,7 @@
 	                <div class="col-md-8 col-xl-6 chat">
 	                    <div class="card">	                       
 	                        <div id="chatBox" class="card-body msg_card_body">
-										<!-- 채팅 메세지 박스 -->
+							<!-- 채팅 메세지 박스 -->
 	                        </div>
 	                        <div class="card-footer">
 	                            <div class="input-group">
@@ -309,7 +309,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-	<script type="module">
+	<script type="module">	//모듈로 하지않으면 임포트가 작동하지않는다.
 
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 	
