@@ -56,9 +56,15 @@ public class ChatController {
     @RequestMapping(value="instChat")
     public String instChat(HttpSession httpSession,Chat dto,Model model) throws Exception {
         
-        Chat newChat = service.createChat(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()),dto.getCuMember());
         List<Chat> list = service.selectChatListFromOne(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()));
         model.addAttribute("list", list);
+        
+        //기존 채팅방이 존재하지 않을때만 채팅방 생성
+        int Count = service.selectCountChat(dto); 
+        if(Count == 0 ) {
+            service.createChat(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()),dto.getCuMember());
+        }
+         
         
         return "infra/chat/user/chat";
     }

@@ -41,6 +41,20 @@
 		<!-- 마지막 WHERE 두가지를 통해 로그인한 USER가 참여한 채팅방의 상대방 정보를 추출 -->
 	
 	</select>
+	
+	<select id="selectCountChat" resultType="Integer">
+		SELECT 
+			COUNT(*) 
+		FROM chatUser ch
+	    JOIN member mm
+	    ON ch.cuMember = mm.seq
+	    LEFT JOIN memberUploaded up
+	    ON mm.seq = up.pseq
+	    AND up.defaultNy = 1
+	    AND up.delNy = 0
+		WHERE 1=1
+	    AND ch.cuMember = #{cuMember}
+	</select>
 
 	<select id="selectOneChat" resultMap="resultMapObj">
 		SELECT

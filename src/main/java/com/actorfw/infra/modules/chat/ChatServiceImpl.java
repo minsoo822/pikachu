@@ -49,4 +49,12 @@ public class ChatServiceImpl implements ChatService{
         
         return dao.selectOneChat(dto);
     }
+    
+    @Override
+    public int selectCountChat(Chat dto) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.selectCountChat(dto);
+    }
+    
+    
 }
