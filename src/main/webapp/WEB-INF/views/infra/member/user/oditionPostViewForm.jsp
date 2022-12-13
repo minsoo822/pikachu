@@ -36,6 +36,7 @@
 <body style="background-color: #101010;">
 <form method="post" id="mainForm">
 	<input type="hidden" name="seq" value="${vo.seq }">
+	<input type="hidden" name="type" id="type" value="">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
@@ -48,11 +49,12 @@
 					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
 					<li><a href="/Post/oditionPostViewList">오디션 공고</a>
 						<ul>
-							<li><a href="#">전체</a></li>
-							<li><a href="#">상업영화</a></li>
-							<li><a href="#">독립(단편)영화</a></li>
-							<li><a href="#">(웹)드라마</a></li>
-							<li><a href="#">(바이럴)광고</a></li>
+							<li><a href="/Post/oditionPostViewList">전체</a></li>
+							<c:forEach items="${categoriTyList }" var="categoriTyList" varStatus="status" >
+								<li>
+									<a onclick="areaTy(${categoriTyList.seq})" href="#"><c:out value="${categoriTyList.name }"/></a>
+								</li>
+							</c:forEach>
 						</ul>
 					</li>	
 					<li><a href="/Post/ActorPostList">프로필 정보</a>
@@ -120,11 +122,16 @@
 		</div>
 		<div class="oditiontype">
 			<ul>
-				<li><a href="oditionPostViewForm.html" style="color: #f9004d;">전체</a></li>
-				<li><a href="#">상업영화</a></li>
+				<li><a href="/Post/oditionPostViewList" style="color: #f9004d;">전체</a></li>
+			<c:forEach items="${categoriTyList }" var="categoriTyList" varStatus="status" >
+				<li>
+					<a onclick="areaTy(${categoriTyList.seq})" href="#"><c:out value="${categoriTyList.name }"/></a>
+				</li>
+			</c:forEach>
+				<!-- <li><a href="#">상업영화</a></li>
 				<li><a href="#">단편(독립)영화</a></li>
 				<li><a href="#">(웹)드라마</a></li>
-				<li><a href="#">(바이럴)CF광고</a></li>
+				<li><a href="#">(바이럴)CF광고</a></li> -->
 			</ul>
 		</div>
 		<div class="oditionsearch">
@@ -260,7 +267,8 @@
 	var goUrlOditionForm = "/Post/oditionPostForm";
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
-	
+	var type = $("input:hidden[name=type]");
+	var gender = $("input:hidden[name=gender]");
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
@@ -291,8 +299,13 @@
 		form.attr("action" ,"/Post/oditionPostView").submit();
 	}
 	
-	
-	
+	areaTy = function(key) {
+		type.val(key);
+		form.attr("action" , "/Post/oditionPostViewList").submit();
+    };
+    area = function(key) {
+		gender.val(key);
+    };
 	
 	
 	

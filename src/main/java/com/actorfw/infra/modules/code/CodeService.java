@@ -17,4 +17,8 @@ public interface CodeService {
 	public void selectListCachedCodeArrayList() throws Exception;
 	
 	public int selectOneCount(CodeVo vo) throws Exception;	
+	
+	public List<Code> categoriGdList(CodeVo vo) throws Exception;  
+	public List<Code> categoriTyList(CodeVo vo) throws Exception;
+	
 }

@@ -7,6 +7,7 @@ public class ActorPostVo extends BaseVo{
 
 	//	seq
 	private Integer seq;
+	private Integer gender;
 	
 	
 	// search
@@ -247,6 +248,14 @@ public class ActorPostVo extends BaseVo{
 
     public void setStartRnumForMysql(int startRnumForMysql) {
         this.startRnumForMysql = startRnumForMysql;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 	
 	

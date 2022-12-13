@@ -8,12 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.actorfw.infra.modules.code.Code;
+import com.actorfw.infra.modules.code.CodeServiceImpl;
+import com.actorfw.infra.modules.code.CodeVo;
+
 @Controller
 @RequestMapping(value = "/Post/")
 public class ActorPostController {
 
 	@Autowired
 	ActorPostServiceImpl service;
+	@Autowired
+	CodeServiceImpl serviceCode;
 	
 //--------------------------------------------------------------------------------
 	
@@ -24,9 +30,12 @@ public class ActorPostController {
 	}
 	
 	@RequestMapping(value = "ActorPostList")
-	public String oditionList(@ModelAttribute("vo") ActorPostVo vo, Model model, ActorPost dto) throws Exception {
+	public String oditionList(@ModelAttribute("vo") ActorPostVo vo, CodeVo cdvo ,Model model, ActorPost dto) throws Exception {
 		
 	    setParamsPaging(vo);
+	    
+	    List<Code> categoriGdList = serviceCode.categoriGdList(cdvo);
+	    model.addAttribute("categoriGdList", categoriGdList);
 	    
 		List<ActorPost> list = service.actorList(vo);
 		model.addAttribute("list", list);

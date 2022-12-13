@@ -90,6 +90,18 @@ public class CodeServiceImpl implements CodeService {
 	public int selectOneCount(CodeVo vo) throws Exception {
 		return dao.selectOneCount(vo);
 	}
+
+    @Override
+    public List<Code> categoriGdList(CodeVo vo) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.categoriGdList(vo);
+    }
+
+    @Override
+    public List<Code> categoriTyList(CodeVo vo) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.categoriTyList(vo);
+    }
 	
 	
 	

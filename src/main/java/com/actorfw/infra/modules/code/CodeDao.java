@@ -50,7 +50,11 @@ public class CodeDao {
 		return sqlsession.selectOne(namespace + ".selectOneCount" , vo);
 	}
 	
-
-	
+	public List<Code> categoriGdList(CodeVo vo) throws Exception {
+	    return sqlsession.selectList(namespace + ".categoriGdList", vo);
+	}
+	public List<Code> categoriTyList(CodeVo vo) throws Exception {
+        return sqlsession.selectList(namespace + ".categoriTyList", vo);
+    }
 	
 }

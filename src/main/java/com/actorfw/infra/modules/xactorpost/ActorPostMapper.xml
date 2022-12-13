@@ -25,12 +25,17 @@
 	
 	<select id="actorList" resultMap="resultObj">
 		<include refid="Base.selectListUpperForMysql" />
-			SELECT
+		SELECT
 			a.*
 			,b.path
 			,b.uuidName
-			<include refid="selectCommon" />
-			ORDER BY a.seq DESC
+		<include refid="selectCommon" />
+			<choose>
+				<when test="gender != null">
+					AND a.gender = #{gender}
+				</when>
+			</choose>
+		ORDER BY a.seq DESC
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	

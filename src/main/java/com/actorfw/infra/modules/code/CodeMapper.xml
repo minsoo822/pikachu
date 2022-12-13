@@ -127,8 +127,17 @@
 			    AND useNy = 1
 	</select>
 		
-
-
-
+	<select id="categoriGdList" resultMap="resultMapObj">
+		SELECT
+    		*
+	    FROM cc
+	    WHERE ccg_seq = 7
+	</select>
+	<select id="categoriTyList" resultMap="resultMapObj">
+		SELECT
+    		*
+	    FROM cc
+	    WHERE ccg_seq = 4
+	</select>
 
 </mapper>

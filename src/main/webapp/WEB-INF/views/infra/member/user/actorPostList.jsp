@@ -42,6 +42,7 @@
 	<form name="mainForm" id="mainForm" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="seq">
 		<input type="hidden" name="cuMember">
+		<input type="hidden" name="gender" id="gender" value="">
 		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 	<!-- start -->
@@ -62,8 +63,11 @@
 					<li><a href="/Post/ActorPostList">프로필 정보</a>
 						<ul>
 							<li><a href="/Post/ActorPostList">전체</a></li><br>
-							<li><a href="#">남자</a></li><br>
-							<li><a href="#">여자</a></li>
+							<c:forEach items="${categoriGdList }" var="categoriGdList" varStatus="status" begin="0" end="1" step="1">
+								<li>
+									<a  id="category${categoriGdList.seq}" name="crArea${categoriGdList.seq}" onclick="area(${categoriGdList.seq})" href="#"><c:out value="${categoriGdList.name }"/></a>
+								</li>
+							</c:forEach>
 						</ul>
 					</li>	
 					<li><a href="#" class="disableLink">커뮤니티</a>
@@ -107,9 +111,14 @@
 		</div>
 		<div class="actortype">
 			<ul>
-				<li><a href="#">전체</a></li>
-				<li><a href="#">남자</a></li>
-				<li><a href="#">여자</a></li>
+				<li><a href="/Post/ActorPostList">전체</a></li>
+			<c:forEach items="${categoriGdList }" var="categoriGdList" varStatus="status" begin="0" end="1" step="1">
+				<li>
+					<a  id="category${categoriGdList.seq}" name="crArea${categoriGdList.seq}" onclick="area(${categoriGdList.seq})" href="#"><c:out value="${categoriGdList.name }"/></a>
+				</li>
+				<!-- <li><a href="#">남자</a></li>
+				<li><a href="#">여자</a></li> -->
+			</c:forEach>
 			</ul>
 		</div>
 		<div class="boxattor row" style="margin-left: auto; margin-right: auto; width: 1180px;">
@@ -183,7 +192,8 @@
 	
 	var seq = $("input:hidden[name=seq]")
 	var cuMember = $("input:hidden[name=cuMember]")
-	
+	var gender = $("input:hidden[name=gender]");
+	var type = $("input:hidden[name=type]");
 	var form = $("#mainForm")
 	
 
@@ -208,7 +218,10 @@
 		form.attr("action", "/chat/instChat").submit();
 	}
 	
-	
+	area = function(key) {
+		gender.val(key);
+		form.attr("action" , "/Post/ActorPostList").submit();
+    };
 	
 	
 	
