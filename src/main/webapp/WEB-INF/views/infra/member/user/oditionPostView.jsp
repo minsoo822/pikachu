@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.actorfw.infra.modules.code.CodeServiceImpl"/>
 
 
 <!doctype html>
@@ -51,6 +52,8 @@
 	
 <body>
 	<form action="" id="mainForm" method="post">
+	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
 	<input type="hidden" id="post_odition_seq" name="seq" value="${item.seq }">
 	<input type="hidden" id="member_seq" name="member_seq" value="${sessSeq}">
 	<!-- start -->
@@ -83,7 +86,11 @@
 				</tr>
 				<tr style="background-color: #ADADAD;">
 					<td><c:out value="${item.name}"/></td>
-					<td><c:out value="${item.type}"/></td>
+					<td>
+					<c:forEach items="${listCodeFilmo_type }" var="listFilmo_type" varStatus="statuslistCodeFilmo_type">
+						<c:if test="${item.type eq listFilmo_type.seq}"><c:out value="${listFilmo_type.name }"/></c:if>
+					</c:forEach>
+					</td>	
 					<td><c:out value="${item.producer}"/></td>
 					<td><c:out value="${item.director}"/></td>
 					<td><c:out value="${item.location}"/></td>
@@ -100,8 +107,12 @@
 				<tr style="background-color: #ADADAD;">
 					<td><c:out value="${item.casting}"/></td>
 					<td><c:out value="${item.age}"/></td>
+					<td>
+						<c:forEach items="${listCodeGender }" var="listGender" varStatus="statuslistGender">
+							<c:if test="${item.gender eq listGender.seq}"><c:out value="${listGender.name }"/></c:if>	
+						</c:forEach>
+					</td>
 					<td><c:out value="${item.gender}"/></td>
-					<td><c:out value="${item.pay}"/></td>
 					<td><c:out value="${item.email}"/></td>
 					<td><c:out value="${item.deadline}"/></td>
 				</tr>
