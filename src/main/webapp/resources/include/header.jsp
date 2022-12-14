@@ -29,15 +29,15 @@
 						<li><a href="#">스터디게시판</a></li>
 					</ul> -->
 				</li>
-				<!-- <li><a href="#" class="disableLink">자료실</a>
-					<ul>
+				<li><a href="#" class="">나의오디션지원목록</a>
+					<!-- <ul>
 						<li><a href="#">전체</a></li>
 						<li><a href="#">한국시나리오</a></li>
 						<li><a href="#">외국시나리오</a></li>
 						<li><a href="#">자작시나리오</a></li>
 						<li><a href="#">기타자료실</a></li>
-					</ul>
-				</li> -->
+					</ul> -->
+				</li>
 			</ul>
 			<div>
 			<c:if test="${sessSeq eq null }">

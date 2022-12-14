@@ -121,12 +121,18 @@
 			</table>
 			<textarea class="area" rows="" cols="" readonly ><c:out value="${item.contents}"/></textarea>
 		</div>
-		<div class="col d-grid justify-content-end" style="width: 1400px; margin-right: auto; margin-left: auto; margin-top: 30px;">
-			<a href="/Post/oditionPostViewList">
+		<div class="col" style="width: 1400px; margin-top: 30px; text-align: right;">
+			<a href="#" style="margin-left: 10px; text-decoration: none;">
+				<button id="suPport" type="button" class="regFrombutton" style="background: green;">
+					지원하기
+				</button>
+			</a>
+			<a href="/Post/oditionPostViewList" style="margin-left: 10px; ">
 				<button type="button" class="regFrombutton">
 					목록으로
 				</button>
 			</a>
+			
 		</div>
 		<div class="comentbox">
 		<div class="row">
@@ -347,6 +353,11 @@
 		/* form.attr("action", goUrlSignUp).submit(); */
 	});
 	
+	$("#suPport").on("click", function(){
+		swal("지원완료!", "해당 작품에 지원되었습니다!", "success");
+	});
+	
+	
 	//상단바 디세이블처리
 	document.querySelector(".disableLink").removeAttribute('href');
 	</script>
@@ -361,7 +372,7 @@
 	
 	
 	</script>
-	
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

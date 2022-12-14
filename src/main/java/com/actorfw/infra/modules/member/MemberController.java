@@ -573,7 +573,10 @@ public class MemberController {
         return "redirect:/member/Mypage";
     }
     
-	
+    @RequestMapping(value = "mySupport")
+    public String mySupport() throws Exception {
+        return "infra/member/user/mySupport";
+    }
 //------------------------------------------------------------------------------------- 화면구현
 	
 	//초기페이지
