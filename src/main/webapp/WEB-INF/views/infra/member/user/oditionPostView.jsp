@@ -57,7 +57,9 @@
 	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
 	<input type="hidden" id="post_odition_seq" name="seq" value="${item.seq }">
+	<input type="hidden" id="post_odition_seq" name="post_odition_seq" value="">
 	<input type="hidden" id="member_seq" name="member_seq" value="${sessSeq}">
+	
 	<!-- start -->
  	<!-- header s -->
     <%@include file="/resources/include/header.jsp"%>
@@ -354,13 +356,36 @@
 	});
 	
 	$("#suPport").on("click", function(){
-		swal("지원완료!", "해당 작품에 지원되었습니다!", "success");
+		
+		$.ajax({
+			url: '/Post/supportInst'
+			,type: 'POST'
+			,datatype: 'json'
+			,data: {
+				post_odition_seq : $("#post_odition_seq").val()
+				,member_seq : $("#member_seq").val()
+			}
+			,success: function(result) {
+				if(result.rt == "success") {
+					swal("지원 성공!", "작품에 접수 되었습니다.", "success")
+					.then(function() {
+						location.href="/Post/oditionPostViewList";
+					});
+					/* form.attr("action", goUrlMain).submit(); */
+				} else {
+					swal("지원 실패!", "이미 지원하진 작품입니다.", "error");
+					return false;
+				}
+			}
+			,error : function(){
+				alert("ajax error..!")
+			}
+		})
 	});
 	
 	
 	//상단바 디세이블처리
-	document.querySelector(".disableLink").removeAttribute('href');
-	</script>
+	/* document.querySelector(".disableLink").removeAttribute('href'); */
 	/* comentSave = function(key) {
 		seq.attr("value", key);
 		form.attr("action", "/Post/oditionPostComentInst").submti();
@@ -368,7 +393,7 @@
 		
 	
 	
-		document.querySelector(".disableLink").removeAttribute('href');
+		/* document.querySelector(".disableLink").removeAttribute('href'); */
 	
 	
 	</script>

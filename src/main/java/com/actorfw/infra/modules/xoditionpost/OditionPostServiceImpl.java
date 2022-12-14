@@ -75,6 +75,18 @@ public class OditionPostServiceImpl implements OditionPostService {
         return dao.comentOne(dto);
     }
 
+    @Override
+    public int oditionSupportInst(OditionPost dto) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.oditionSupportInst(dto);
+    }
+
+    @Override
+    public int supportCount(OditionPost dto) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.supportCount(dto);
+    }
+
 //    @Override
 //    public int postComentCount(OditionPostVo vo) throws Exception {
 //        return dao.postComentCount(vo);

@@ -574,7 +574,12 @@ public class MemberController {
     }
     
     @RequestMapping(value = "mySupport")
-    public String mySupport() throws Exception {
+    public String mySupport(MemberVo vo, Model model, HttpSession httpSession) throws Exception {
+        
+        vo.setSeq((String)httpSession.getAttribute("sessSeq"));
+        List<Member> supportList = service.supportList(vo);
+        model.addAttribute("supportList", supportList);
+        
         return "infra/member/user/mySupport";
     }
 //------------------------------------------------------------------------------------- 화면구현

@@ -195,7 +195,27 @@
     	AND a.seq = #{member_seq}
 	</select>
 	
-
+	<insert id="oditionSupportInst">
+		INSERT INTO oditionSupport (
+			odition_seq
+			,mm_seq
+		)
+		VALUE (
+			#{post_odition_seq}
+			,#{member_seq}
+		)
+		<selectKey resultType="String" keyProperty="ifspSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<select id="supportCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM oditionSupport 
+		WHERE 1=1
+		AND odition_seq = #{post_odition_seq}
+		AND mm_seq = #{member_seq}
+	</select>
 	
 	
 	

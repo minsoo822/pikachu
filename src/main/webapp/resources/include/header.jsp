@@ -29,7 +29,7 @@
 						<li><a href="#">스터디게시판</a></li>
 					</ul> -->
 				</li>
-				<li><a href="#" class="">나의오디션지원목록</a>
+				<li><a href="/member/mySupport" class="">나의오디션지원목록</a>
 					<!-- <ul>
 						<li><a href="#">전체</a></li>
 						<li><a href="#">한국시나리오</a></li>

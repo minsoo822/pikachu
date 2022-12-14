@@ -26,8 +26,9 @@
 	
 	<style>
 	
-	img {
-		
+	img.card-img-top{
+		min-height: 180px;
+		max-height: 180px;
 	}
 	  	
 	</style>
@@ -40,53 +41,34 @@
  	<!-- header s -->
     <%@include file="/resources/include/header.jsp"%>
     <!-- header e -->
-	<div class="row m-5">
-		<div class="col-3">
-			<div class="card">
-				<img src="/resources/image/1987.jpg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+    <input type="hidden" name="member_seq" value="${sessSeq }">
+    <input type="hidden" id="post_odition_seq" name="seq" value="">
+	<div class="row m-5" style="display: flex; justify-content: center; margin-left: auto; margin-right: auto;">
+		<c:forEach items="${supportList }" var="supportList" varStatus="status">
+			<div class="col-3" >
+				<div class="card" style="height: 400px;">
+					<img src="${supportList.path}${supportList.uuidName}" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title"><c:out value="${supportList.name }"/></h5>
+						<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+					<a href="#" onclick="goPost(${supportList.odition_seq})" class="btn btn-primary">게시물로 가기</a>
+				</div>
+				</div>
 			</div>
-			</div>
-		</div>
-		<div class="col-3">
-			<div class="card">
-				<img src="/resources/image/1987.jpg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-			</div>
-		</div>
-		<div class="col-3">
-			<div class="card">
-				<img src="/resources/image/1987.jpg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-			</div>
-		</div>
-		<div class="col-3">
-			<div class="card">
-				<img src="/resources/image/1987.jpg" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-			</div>
-		</div>
+		</c:forEach>
     </div>
 
 	
 	</form>
 	<script type="text/javascript">
 	
+	form = $("#mainForm");
+	seq = $("#post_odition_seq");
+	
+	goPost = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/oditionPostView").submit();
+	}
 	
 	</script>
 	

@@ -532,5 +532,20 @@
 		AND pseq = #{seq}
 		AND fileSeq = #{fileSeq}
 	</update>
+	<select id="supportList" resultMap="resultObj">
+		SELECT
+			su.*
+		    ,odi.name
+		    ,odi.email
+		 	,odiup.uuidName
+		    ,odiup.path
+		FROM oditionSupport su
+		JOIN odition_PostUploaded odiup
+		ON su.odition_seq = odiup.pseq
+		JOIN post_odition odi
+		ON su.odition_seq = odi.seq
+		WHERE 1=1
+		AND su.mm_seq = #{seq}
+	</select>
 
 </mapper>

@@ -271,6 +271,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int selectOneCount(MemberVo vo) throws Exception { return dao.selectOneCount(vo);
 	}
+    @Override
+    public List<Member> supportList(MemberVo vo) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.supportList(vo);
+    }
     
 	
 //---------------------------------------------------------------------------------

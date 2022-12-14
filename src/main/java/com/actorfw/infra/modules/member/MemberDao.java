@@ -32,6 +32,13 @@ public class MemberDao {
 //  award정보
 	public List<Member> selectAwardList(MemberVo vo) { return sqlSession.selectList(namespace + ".selectAwardList", vo); }
 //-------------------------------------------------------------------------------------------	
+//  오디션지원현황 리스트
+	public List<Member> supportList(MemberVo vo) { return sqlSession.selectList(namespace + ".supportList", vo); }
+//-------------------------------------------------------------------------------------------  
+	
+	
+	
+	
 	
 	public Member selectOne (MemberVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);

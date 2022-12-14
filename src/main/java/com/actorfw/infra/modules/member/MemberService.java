@@ -21,6 +21,9 @@ public interface MemberService {
 //  award정보
     public List<Member> selectAwardList(MemberVo vo) throws Exception;
 //--------------------------------------------------------------------- 	
+//  오디션지원현황 리스트
+    public List<Member> supportList(MemberVo vo) throws Exception;
+//--------------------------------------------------------------------- 
 	public Member selectOne(MemberVo vo) throws Exception;
     /* public int selectSeq() throws Exception; */
 //---------------------------------------------------------------------	

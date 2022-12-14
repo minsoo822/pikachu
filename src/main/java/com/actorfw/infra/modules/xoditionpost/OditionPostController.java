@@ -78,6 +78,8 @@ public class OditionPostController {
 		    OditionPost item = service.oditionView(vo);
 		    model.addAttribute("item", item);
             
+		    
+		    
             /* 댓글 */
             List<OditionPost> postComentList = service.postComentList(vo);
             model.addAttribute("postComentList", postComentList);
@@ -106,5 +108,20 @@ public class OditionPostController {
             return result;
         }
 	
-	
+		@ResponseBody
+		@RequestMapping(value = "supportInst")
+		public Map<String, Object> supportInst(OditionPost dto) throws Exception {
+		    
+		    Map<String, Object> result = new HashMap<String, Object>();
+		    
+		    int supportCount = service.supportCount(dto);
+
+		    if(supportCount == 0) {
+		        service.oditionSupportInst(dto);
+		        result.put("rt", "success");
+		    } 
+		    
+		    
+		    return result;
+		}
 }

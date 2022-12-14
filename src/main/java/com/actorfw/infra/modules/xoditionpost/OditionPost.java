@@ -7,6 +7,7 @@ import com.actorfw.infra.common.base.Base;
 public class OditionPost extends Base {
 
 	private String seq;
+	private String ifspSeq;
 	private String member_seq;
 	private String post_odition_seq;
 	
@@ -162,6 +163,12 @@ public class OditionPost extends Base {
         }
         public void setCount(String count) {
             this.count = count;
+        }
+        public String getIfspSeq() {
+            return ifspSeq;
+        }
+        public void setIfspSeq(String ifspSeq) {
+            this.ifspSeq = ifspSeq;
         }
         
 	    

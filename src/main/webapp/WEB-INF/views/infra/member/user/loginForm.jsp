@@ -261,7 +261,10 @@
 			,dataType:"json"
 			,url: "/member/loginCheck"
 			/* ,data : $("#formLogin").serialize() */
-			,data : { "id" : $("#id").val(), "password" : $("#password").val() }
+			,data : { 
+					"id" : $("#id").val(), 
+					"password" : $("#password").val() 
+					}
 			,success: function(response) {
 				if(response.rt == "success") {
 					swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")

@@ -11,6 +11,9 @@ public class Member extends Base {
 	private String seq;
 	private String member_seq;
 	private String fileSeq;
+	private String ifspSeq;
+	private String odition_seq;
+	private String mm_seq;
 	
 	private String issuer;
 	
@@ -1023,6 +1026,24 @@ public class Member extends Base {
     }
     public void setFileSeq(String fileSeq) {
         this.fileSeq = fileSeq;
+    }
+    public String getIfspSeq() {
+        return ifspSeq;
+    }
+    public void setIfspSeq(String ifspSeq) {
+        this.ifspSeq = ifspSeq;
+    }
+    public String getOdition_seq() {
+        return odition_seq;
+    }
+    public void setOdition_seq(String odition_seq) {
+        this.odition_seq = odition_seq;
+    }
+    public String getMm_seq() {
+        return mm_seq;
+    }
+    public void setMm_seq(String mm_seq) {
+        this.mm_seq = mm_seq;
     }
     
     
