@@ -50,18 +50,18 @@
 		<nav class="top-fixed">
 			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 				<ul>
-					<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
+					<!-- <li><a href="/Post/tourPostViewList">프로필 투어</a></li> -->
 					<li><a href=/Post/oditionPostViewList>오디션 공고</a>
-						<ul>
+						<!-- <ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">상업영화</a></li>
 							<li><a href="#">독립(단편)영화</a></li>
 							<li><a href="#">(웹)드라마</a></li>
 							<li><a href="#">(바이럴)광고</a></li>
-						</ul>
+						</ul> -->
 					</li>	
 					<li><a href="/Post/ActorPostList">프로필 정보</a>
-						<ul>
+						<%-- <ul>
 							<li><a href="/Post/ActorPostList">전체</a></li><br>
 							<c:forEach items="${categoriGdList }" var="categoriGdList" varStatus="status" begin="0" end="1" step="1">
 								<li>
@@ -71,22 +71,22 @@
 						</ul>
 					</li>	
 					<li><a href="#" class="disableLink">커뮤니티</a>
-						<!-- <ul>
+						<ul>
 							<li><a href="#">자유게시판</a></li>
 							<li><a href="#">Q&A게시판</a></li>
 							<li><a href="#">홍보게시판</a></li>
 							<li><a href="#">스터디게시판</a></li>
-						</ul> -->
+						</ul>
 					</li>
 					<li><a href="#" class="disableLink">자료실</a>
-						<!-- <ul>
+						<ul>
 							<li><a href="#">전체</a></li>
 							<li><a href="#">한국시나리오</a></li>
 							<li><a href="#">외국시나리오</a></li>
 							<li><a href="#">자작시나리오</a></li>
 							<li><a href="#">기타자료실</a></li>
-						</ul> -->
-					</li>
+						</ul>
+					</li> --%>
 				</ul>
 			<div>
 			<c:if test="${sessSeq eq null }">

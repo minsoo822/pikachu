@@ -43,48 +43,51 @@
 	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4') }"/>
 	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7') }"/>
 	<!-- start -->
-	<div class="hero">
+	 	<div class="hero">
 		<nav class="top-fixed">
 			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
-			<ul>
-				<li><a href="/Post/tourPostViewList">프로필 투어</a></li>
-				<li><a href="/Post/oditionPostViewList">오디션 공고</a>
-					<ul>
-						<li><a href="#">전체</a></li>
-						<li><a href="#">상업영화</a></li>
-						<li><a href="#">독립(단편)영화</a></li>
-						<li><a href="#">(웹)드라마</a></li>
-						<li><a href="#">(바이럴)광고</a></li>
-					</ul>
-				</li>	
-				<li><a href="/Post/ActorPostList">프로필 정보</a>
-					<ul>
-						<li><a href="/Post/ActorPostList">전체</a></li><br>
-						<li><a href="#">남자</a></li><br>
-						<li><a href="#">여자</a></li>
-					</ul>
-				</li>	
-				<li><a href="#" class="disableLink">커뮤니티</a>
-					<!-- <ul>
-						<li><a href="#">자유게시판</a></li>
-						<li><a href="#">Q&A게시판</a></li>
-						<li><a href="#">홍보게시판</a></li>
-						<li><a href="#">스터디게시판</a></li>
-					</ul> -->
-				</li>
-				<li><a href="#" class="disableLink">자료실</a>
-					<!-- <ul>
-						<li><a href="#">전체</a></li>
-						<li><a href="#">한국시나리오</a></li>
-						<li><a href="#">외국시나리오</a></li>
-						<li><a href="#">자작시나리오</a></li>
-						<li><a href="#">기타자료실</a></li>
-					</ul> -->
-				</li>
-			</ul>
+				<ul>
+					<!-- <li><a href="/Post/tourPostViewList">프로필 투어</a></li> -->
+					<li><a href=/Post/oditionPostViewList>오디션 공고</a>
+						<!-- <ul>
+							<li><a href="#">전체</a></li>
+							<li><a href="#">상업영화</a></li>
+							<li><a href="#">독립(단편)영화</a></li>
+							<li><a href="#">(웹)드라마</a></li>
+							<li><a href="#">(바이럴)광고</a></li>
+						</ul> -->
+					</li>	
+					<li><a href="/Post/ActorPostList">프로필 정보</a>
+						<%-- <ul>
+							<li><a href="/Post/ActorPostList">전체</a></li><br>
+							<c:forEach items="${categoriGdList }" var="categoriGdList" varStatus="status" begin="0" end="1" step="1">
+								<li>
+									<a  id="category${categoriGdList.seq}" name="crArea${categoriGdList.seq}" onclick="area(${categoriGdList.seq})" href="#"><c:out value="${categoriGdList.name }"/></a>
+								</li>
+							</c:forEach>
+						</ul>
+					</li>	
+					<li><a href="#" class="disableLink">커뮤니티</a>
+						<ul>
+							<li><a href="#">자유게시판</a></li>
+							<li><a href="#">Q&A게시판</a></li>
+							<li><a href="#">홍보게시판</a></li>
+							<li><a href="#">스터디게시판</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="disableLink">자료실</a>
+						<ul>
+							<li><a href="#">전체</a></li>
+							<li><a href="#">한국시나리오</a></li>
+							<li><a href="#">외국시나리오</a></li>
+							<li><a href="#">자작시나리오</a></li>
+							<li><a href="#">기타자료실</a></li>
+						</ul>
+					</li> --%>
+				</ul>
 			<div>
 			<c:if test="${sessSeq eq null }">
-				<button type="button" class="btn" id="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">회원가입</button>
+				<button type="button" class="btn" id="btnSignUp" disabled>회원가입</button>
 				<button type="button" class="btn" id="btnLogin">로그인</button>
 			</c:if>
 			<c:if test="${sessSeq ne null }">
@@ -94,6 +97,7 @@
 				<%-- <br>sessSeq: <c:out value="${sessSeq }"/><br>
 				sessName: <c:out value="${sessName }"/><br>
 				sessId: <c:out value="${sessId }"/><br> --%>
+			</div>
 			</div>
 			<!-- Modal -->
 			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

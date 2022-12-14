@@ -59,7 +59,7 @@
     <!-- header e -->
 
 	<div class="oditionpost">
-		<div class="titile">
+		<!-- <div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">오디션 공고</h2>
 		</div>
 		<div class="oditiontype">
@@ -70,9 +70,8 @@
 				<li><a href="#">(웹)드라마</a></li>
 				<li><a href="#">(바이럴)CF광고</a></li>
 			</ul>
-		</div>
+		</div> -->
 		<div class="oditiontable">
-			<h2 style="color: white; font-size: 50px; width: 1300px; margin: 20px auto;">한강</h2>
 			<table class="table oditionView">
 				<tr>
 					<th>제목</th>
