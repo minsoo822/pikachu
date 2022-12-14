@@ -38,14 +38,16 @@
 	    height: 100%;
 	    object-fit: cover;
 	  }
-  i {
-  	color: white;
-  }
-  hr {
-  	color: white;
-  	width: 1300px;
-  }
-
+	  i {
+	  	color: white;
+	  }
+	  hr {
+	  	color: white;
+	  	width: 1300px;
+	  }
+	.area {
+		padding-left: 50px;
+	}
 </style>
 	
 </head>
@@ -117,7 +119,7 @@
 					<td><c:out value="${item.deadline}"/></td>
 				</tr>
 			</table>
-			<textarea class="area" rows="" cols="" readonly><c:out value="${item.contents}"/></textarea>
+			<textarea class="area" rows="" cols="" readonly ><c:out value="${item.contents}"/></textarea>
 		</div>
 		<div class="col d-grid justify-content-end" style="width: 1400px; margin-right: auto; margin-left: auto; margin-top: 30px;">
 			<a href="/Post/oditionPostViewList">
