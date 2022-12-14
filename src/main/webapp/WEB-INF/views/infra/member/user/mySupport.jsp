@@ -25,12 +25,31 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	
 	<style>
-	
-	img.card-img-top{
+		
+	/* img.card-img-top{
 		min-height: 180px;
 		max-height: 180px;
-	}
-	  	
+	} */
+		div	{
+			/* border: solid 1px orange; */
+		}
+		.card {
+			width: 18rem; 
+			margin: auto; 
+			margin-bottom: 30px; 
+			height: 400px; 
+			padding:0px;
+		
+		}
+		.card-main {
+			font-size: 10pt;
+			font-weight: bold;		 
+		}
+		
+		.card-sub {
+			font-size: 8pt; 
+		}
+			  	
 	</style>
 	
 </head>
@@ -43,23 +62,25 @@
     <!-- header e -->
     <input type="hidden" name="member_seq" value="${sessSeq }">
     <input type="hidden" id="post_odition_seq" name="seq" value="">
-	<div class="row m-5" style="display: flex; justify-content: center; margin-left: auto; margin-right: auto;">
-		<c:forEach items="${supportList }" var="supportList" varStatus="status">
-			<div class="col-3" >
-				<div class="card" style="height: 400px;">
-					<img src="${supportList.path}${supportList.uuidName}" class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title"><c:out value="${supportList.name }"/></h5>
-						<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-					<a href="#" onclick="goPost(${supportList.odition_seq})" class="btn btn-primary">게시물로 가기</a>
-				</div>
-				</div>
-			</div>
-		</c:forEach>
-    </div>
 
-	
-	</form>
+	<div class="container" style="min-height: 700px;"> 
+		<form action="" id="mainForm" method="post">
+			<div class="row favoraite_card_row" style="height: 500px;">
+				<c:forEach items="${supportList }" var="supportList" varStatus="status">
+					<div class="card" >       
+						<img src="${supportList.path}${supportList.uuidName}" class="card-img-top" alt="..." style="height: 250px; cursor:pointer;" onclick="openPost(${list.postSeq})"> 
+						<div class="card-body">
+							<div class="row justify-content-center mt-2" style="height: 50px;">  
+								<div class="col text-center">
+									<span class="card-sub"><c:out value="${supportList.name }"/></span>  
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach> 
+			</div>
+		</form>
+	</div>	
 	<script type="text/javascript">
 	
 	form = $("#mainForm");

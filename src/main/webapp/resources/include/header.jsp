@@ -5,7 +5,7 @@
 			<h2 class="logo"><a class="logolink" href="/home/Home">Actor'<span>s</span></a></h2>
 			<ul>
 				<!-- <li><a href="/Post/tourPostViewList">프로필 투어</a></li> -->
-				<li><a href="/Post/oditionPostViewList">오디션 공고</a>
+				<li><a href="/Post/oditionPostViewList">오디션</a>
 					<!-- <ul>
 						<li><a href="#">전체</a></li>
 						<li><a href="#">상업영화</a></li>
@@ -14,14 +14,14 @@
 						<li><a href="#">(바이럴)광고</a></li>
 					</ul> -->
 				</li>	
-				<li><a href="/Post/ActorPostList">프로필 정보</a>
+				<li><a href="/Post/ActorPostList">프로필</a>
 					<ul>
 					<!-- <li><a href="/Post/ActorPostList">전체</a></li><br>
 						<li><a href="#">남자</a></li><br>
 						<li><a href="#">여자</a></li> -->
 					</ul>
 				</li>	
-				<li><a href="#" class="">나의채팅방</a>
+				<li><a href="/chat/" class="">채팅</a>
 					<!-- <ul>
 						<li><a href="#">자유게시판</a></li>
 						<li><a href="#">Q&A게시판</a></li>
@@ -29,7 +29,7 @@
 						<li><a href="#">스터디게시판</a></li>
 					</ul> -->
 				</li>
-				<li><a href="/member/mySupport" class="">나의오디션지원목록</a>
+				<li><a href="/member/mySupport" class="">지원목록</a>
 					<!-- <ul>
 						<li><a href="#">전체</a></li>
 						<li><a href="#">한국시나리오</a></li>

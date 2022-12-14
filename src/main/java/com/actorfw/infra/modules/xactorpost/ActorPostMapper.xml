@@ -42,6 +42,11 @@
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
+			<choose>
+				<when test="gender != null">
+					AND a.gender = #{gender}
+				</when>
+			</choose>
 	</select>
 	
 	<select id="selectOne" resultMap="resultObj">

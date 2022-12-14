@@ -123,7 +123,7 @@
 			</table>
 			<textarea class="area" rows="" cols="" readonly ><c:out value="${item.contents}"/></textarea>
 		</div>
-		<div class="col" style="width: 1400px; margin-top: 30px; text-align: right;">
+		<div class="col" style="width: 1400px; margin-top: 30px; text-align: right; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
 			<a href="#" style="margin-left: 10px; text-decoration: none;">
 				<button id="suPport" type="button" class="regFrombutton" style="background: green;">
 					지원하기
