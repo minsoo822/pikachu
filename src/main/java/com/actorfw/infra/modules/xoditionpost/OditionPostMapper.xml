@@ -97,7 +97,10 @@
 			,manager	 
 			,pay		 
 			,email		 
-			,contents	
+			,contents
+			,zip_code
+			,address
+			,address_detail	
 		)
 		VALUE (
 			#{type}
@@ -114,6 +117,9 @@
 			,#{pay}
 			,#{email}
 			,#{contents}
+			,#{zip_code}
+			,#{address}
+			,#{address_detail}
 		)	
 			<selectKey resultType="String" keyProperty="seq" order="AFTER">
 				SELECT last_insert_id()
@@ -208,6 +214,14 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	<delete id="oditionSupportDel">
+	
+	DELETE 
+	FROM oditionSupport
+	WHERE odition_seq = #{post_odition_seq}
+	AND mm_seq = #{member_seq}
+	
+	</delete>
 	<select id="supportCount" resultType="Integer">
 		SELECT
 			COUNT(*)

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,12 +75,16 @@ public class OditionPostController {
 
         /* 오디션게시물 뷰 */
 		@RequestMapping(value = "oditionPostView")
-        public String oditionPostView(@ModelAttribute("vo") OditionPostVo vo, Model model) throws Exception {
+        public String oditionPostView(@ModelAttribute("vo") OditionPostVo vo, OditionPost dto , Model model, HttpSession httpSession) throws Exception {
             
 		    OditionPost item = service.oditionView(vo);
 		    model.addAttribute("item", item);
-            
 		    
+		    
+		    dto.setPost_odition_seq(vo.getSeq());
+		    dto.setMember_seq((String)httpSession.getAttribute("sessSeq"));
+		    int count = service.supportCount(dto);
+		    model.addAttribute("count", count);
 		    
             /* 댓글 */
             List<OditionPost> postComentList = service.postComentList(vo);
@@ -124,4 +130,12 @@ public class OditionPostController {
 		    
 		    return result;
 		}
+		@RequestMapping(value = "supportDel")
+        public String supportDel(OditionPost dto, OditionPostVo vo) throws Exception {
+           
+		    dto.setPost_odition_seq(vo.getSeq());
+		    service.oditionSupportDel(dto);
+		    
+            return "redirect:/Post/oditionPostViewList";
+        }
 }

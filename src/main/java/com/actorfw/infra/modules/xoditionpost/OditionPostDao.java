@@ -54,6 +54,9 @@ public class OditionPostDao {
 	public int oditionSupportInst(OditionPost dto) {
 	    return sqlSession.insert(namespace + ".oditionSupportInst", dto);
 	}
+	public int oditionSupportDel(OditionPost dto) {
+	    return sqlSession.delete(namespace + ".oditionSupportDel", dto);
+	}
 	public int supportCount(OditionPost dto) {
 	    return sqlSession.selectOne(namespace + ".supportCount", dto);
 	}

@@ -36,6 +36,9 @@ public class OditionPost extends Base {
 	
 	private String datetime;
 	
+	private Integer zip_code;
+	private String address;
+	private String address_detail;
 	
 	
 //----------------------------------------	
@@ -169,6 +172,24 @@ public class OditionPost extends Base {
         }
         public void setIfspSeq(String ifspSeq) {
             this.ifspSeq = ifspSeq;
+        }
+        public Integer getZip_code() {
+            return zip_code;
+        }
+        public void setZip_code(Integer zip_code) {
+            this.zip_code = zip_code;
+        }
+        public String getAddress() {
+            return address;
+        }
+        public void setAddress(String address) {
+            this.address = address;
+        }
+        public String getAddress_detail() {
+            return address_detail;
+        }
+        public void setAddress_detail(String address_detail) {
+            this.address_detail = address_detail;
         }
         
 	    
