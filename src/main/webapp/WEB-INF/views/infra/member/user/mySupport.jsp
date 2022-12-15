@@ -47,7 +47,9 @@
 		}
 		
 		.card-sub {
-			font-size: 8pt; 
+			font-size: 15pt; 
+			font-weight: bold;	
+				
 		}
 			  	
 	</style>
@@ -65,19 +67,24 @@
 
 	<div class="container" style="min-height: 700px;"> 
 		<form action="" id="mainForm" method="post">
-			<div class="row favoraite_card_row" style="height: 500px;">
+			<div class="row favoraite_card_row" style="height: 500px; margin-top: 50px;">
 				<c:forEach items="${supportList }" var="supportList" varStatus="status">
-					<div class="card" >       
-						<img src="${supportList.path}${supportList.uuidName}" class="card-img-top" alt="..." style="height: 250px; cursor:pointer;" onclick="openPost(${list.postSeq})"> 
+					<div class="card" style="margin-right: 20px; margin-left: 20px;">       
+						<img src="${supportList.path}${supportList.uuidName}" class="card-img-top" alt="..." style="height: 250px; cursor:pointer;"> 
 						<div class="card-body">
 							<div class="row justify-content-center mt-2" style="height: 50px;">  
 								<div class="col text-center">
 									<span class="card-sub"><c:out value="${supportList.name }"/></span>  
 								</div>
 							</div>
+							<div class="row justify-content-center mt-2" style="height: 50px;">  
+								<div class="col text-center">
+									<button onclick="goPost(${supportList.odition_seq})" class="regFrombutton">게시물가기</button>
+								</div>
+							</div>
 						</div>
 					</div>
-				</c:forEach> 
+				</c:forEach>
 			</div>
 		</form>
 	</div>	
