@@ -82,6 +82,12 @@ public class OditionPostServiceImpl implements OditionPostService {
     }
 
     @Override
+    public int oditionSupportDel(OditionPost dto) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.oditionSupportDel(dto);
+    }
+
+    @Override
     public int supportCount(OditionPost dto) throws Exception {
         // TODO Auto-generated method stub
         return dao.supportCount(dto);

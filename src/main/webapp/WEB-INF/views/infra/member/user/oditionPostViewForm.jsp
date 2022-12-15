@@ -137,7 +137,7 @@
 			</tbody>	
 		</table>
 	</div>
-	<%-- <div>
+	<div>
 		<c:if test="${sessAdmin eq 1 }">
 		<div class="groupbutton">
 			<div class="d-grid gap-2 d-md-block btn1" style="float: left;">
@@ -153,7 +153,7 @@
 	<c:if test="${sessAdmin ne 1 }">
 		
 	</c:if>	
-	</div> --%>
+	</div>
 	<!-- pagination s -->
 	<%@include file="../user/include/pagination.jsp"%>
 	<!-- pagination e -->

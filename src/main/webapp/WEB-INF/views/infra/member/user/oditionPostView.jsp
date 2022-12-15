@@ -59,7 +59,8 @@
 	<input type="hidden" id="post_odition_seq" name="seq" value="${item.seq }">
 	<input type="hidden" id="post_odition_seq" name="post_odition_seq" value="">
 	<input type="hidden" id="member_seq" name="member_seq" value="${sessSeq}">
-	
+	<input type="hidden" id="odition_seq" name="odition_seq" value="${vo.seq }">
+	<input type="hidden" id="mm_seq" name="mm_seq" value="${sessSeq}">
 	<!-- start -->
  	<!-- header s -->
     <%@include file="/resources/include/header.jsp"%>
@@ -116,19 +117,37 @@
 							<c:if test="${item.gender eq listGender.seq}"><c:out value="${listGender.name }"/></c:if>	
 						</c:forEach>
 					</td>
-					<td><c:out value="${item.gender}"/></td>
+					<td><c:out value="${item.pay}"/></td>
 					<td><c:out value="${item.email}"/></td>
 					<td><c:out value="${item.deadline}"/></td>
 				</tr>
 			</table>
-			<textarea class="area" rows="" cols="" readonly ><c:out value="${item.contents}"/></textarea>
+			<div class="row" style="margin-left: auto; margin-right: auto; width: 1400px; height: 400px; margin-bottom: 50px;">
+				<div class="col-7">
+					<textarea class="" rows="" cols="" readonly style="height: 400px; padding: 50px;"><c:out value="${item.contents}"/></textarea>
+				</div>
+				<div class="col-5">
+					<div id="map" style="width:100%;height:100%;"></div>
+				</div>
+			</div>
 		</div>
 		<div class="col" style="width: 1400px; margin-top: 30px; text-align: right; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
-			<a href="#" style="margin-left: 10px; text-decoration: none;">
-				<button id="suPport" type="button" class="regFrombutton" style="background: green;">
-					지원하기
-				</button>
-			</a>
+			<c:choose>
+				<c:when test="${count == 0 }">
+					<a href="#" style="margin-left: 10px; text-decoration: none;">
+						<button id="suPport" type="button" class="regFrombutton" style="background: green;">
+							지원하기
+						</button>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<a href="#" style="margin-left: 10px; text-decoration: none;">
+						<button id="suPportDel" type="button" class="btn btn-warning">
+							지원취소
+						</button>
+					</a>
+				</c:otherwise>			
+			</c:choose>
 			<a href="/Post/oditionPostViewList" style="margin-left: 10px; ">
 				<button type="button" class="regFrombutton">
 					목록으로
@@ -216,7 +235,7 @@
 		</div>
 		</div>
 	</div>
-	
+	<input type="hidden" id="address" value="${item.address }">
 	<!-- footer -->
 	<div class="footer">
 		<div class="row">
@@ -247,6 +266,58 @@
 		</div>
 	</div>
 	</form>
+	<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4a832cceac8c9100e4ed44c4163d468a&libraries=services,clusterer,drawing"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+	
+	
+	var address = $("#address").val();
+	
+		console.log(address);
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+	
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch(address , function(result, status) {
+	
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">촬영장소</div>'
+	        });
+	        infowindow.open(map, marker);
+	
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	});    
+	
+	</script>
+	
 	<script type="text/javascript">
 	
 	var seq = $("input:hidden[name=seq]");
@@ -372,15 +443,34 @@
 						location.href="/Post/oditionPostViewList";
 					});
 					/* form.attr("action", goUrlMain).submit(); */
-				} else {
-					swal("지원 실패!", "이미 지원하진 작품입니다.", "error");
-					return false;
 				}
 			}
 			,error : function(){
 				alert("ajax error..!")
 			}
 		})
+	});
+	
+	$("#suPportDel").on("click", function(){
+		swal({
+			  title: "지원을 취소하시겠어요?",
+			  text: "지원하신 작품이 취소될수있습니다!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    swal("지원하신 작품 취소가 완료되었습니다!", {
+			      icon: "success",
+			    })
+			    .then(function() {
+					form.attr("action", "/Post/supportDel").submit();
+			    });
+			  } else {
+			    swal("변동사항 없습니다");
+			  }
+			});
 	});
 	
 	
@@ -397,9 +487,5 @@
 	
 	
 	</script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
