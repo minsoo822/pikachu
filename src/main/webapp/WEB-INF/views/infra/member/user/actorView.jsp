@@ -374,7 +374,7 @@
 									<div class="col">
 										<div class="row">
 											<div class="col">
-												<textarea rows="10" cols="50"><c:out value="${item.aboutMe }"/></textarea>
+												<textarea rows="10" cols="50" readonly	><c:out value="${item.aboutMe }"/></textarea>
 											</div>
 										</div>
 									</div>
