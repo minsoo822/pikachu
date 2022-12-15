@@ -258,15 +258,15 @@
         }
 	</style>
 </head>
-<body> 
+<body style="background: #101010;"> 
 	<!-- header s -->
     <%@include file="/resources/include/header.jsp"%>
     <!-- header e -->	
 	<div class="container">
-        <div class="page-content">
+        <div class="page-content" style="width: 70%; margin-left: auto; margin-right: auto; margin-top: 50px; margin-bottom: 70px;">
         	<form id="mainForm" method="POST">
         		<input type="hidden" id="selectedRoom">
-	        	<div class="row justify-content-center h-100">
+	        	<div class="row justify-content-center h-70">
 	                <div class="col-md-4 col-xl-3 chat">
 	                    <div class="card mb-sm-3 mb-md-0 contacts_card">
 	                        <!-- <div class="card-header">
@@ -275,7 +275,7 @@
 	                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
 	                            </div>
 	                        </div> -->
-	                        <div class="card-body contacts_body">
+	                        <div class="card-body contacts_body" style="border-top-left-radius: 15px; border-top-right-radius: 15px; ">
 	                            <ui class="contacts" id="chatList">
 	                            	<c:forEach items="${list }" var="list" varStatus="status">
 										<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
@@ -301,7 +301,7 @@
 	                </div>
 	                <div class="col-md-8 col-xl-6 chat">
 	                    <div class="card">	                       
-	                        <div id="chatBox" class="card-body msg_card_body">
+	                        <div id="chatBox" class="card-body msg_card_body" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
 							<!-- 채팅 메세지 박스 -->
 	                        </div>
 	                        <div class="card-footer">
