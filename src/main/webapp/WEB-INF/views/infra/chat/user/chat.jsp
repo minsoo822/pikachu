@@ -286,7 +286,7 @@
 																${list.path}${list.uuidName}
 															  </c:if>" class="rounded-circle user_img">
 		                                        </div>
-		                                        <div class="chat_product_info">
+		                                        <div class="chat_product_info"> 
 													<!-- 아래 mmNickName  도 본인의 dto field에 맞게 수정 -->
 		                                            <span class="status"><c:out value="${list.name }"/></span>
 		                                 			<p>TEST TEXT FIELD</p>
