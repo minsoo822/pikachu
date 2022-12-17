@@ -124,7 +124,7 @@
 			</table>
 			<div class="row" style="margin-left: auto; margin-right: auto; width: 1400px; height: 400px; margin-bottom: 50px;">
 				<div class="col-7">
-					<textarea class="" rows="" cols="" readonly style="height: 400px; padding: 50px;"><c:out value="${item.contents}"/></textarea>
+					<textarea class="" rows="" cols="" readonly style="height: 400px; padding: 50px; background-color: #d9d9d9;"><c:out value="${item.contents}"/></textarea>
 				</div>
 				<div class="col-5">
 					<div id="map" style="width:100%;height:100%;"></div>
@@ -132,6 +132,11 @@
 			</div>
 		</div>
 		<div class="col" style="width: 1400px; margin-top: 30px; text-align: right; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+			<a href="#" style="margin-left: 10px; text-decoration: none;">
+						<button id="" type="button" class="btn btn-warning">
+							지원현황
+						</button>
+					</a>
 			<c:choose>
 				<c:when test="${count == 0 }">
 					<a href="#" style="margin-left: 10px; text-decoration: none;">

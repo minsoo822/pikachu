@@ -146,6 +146,8 @@
 
 	<script type="text/javascript">
 	
+	var form = $("#mainForm");
+	
 	$("#goHome").on("click", function(){
 		location.href = "/home/Home";
 	});

@@ -8,4 +8,6 @@ public interface HomeService {
     public List<Home> memberList(HomeVo vo) throws Exception;
     public List<Home> tourList(HomeVo vo) throws Exception;
 
+    public int memberCount(HomeVo vo) throws Exception;
+    public int postCount(HomeVo vo) throws Exception;
 }

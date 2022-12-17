@@ -54,6 +54,19 @@
 		ORDER BY seq DESC
 		LIMIT 8
 	</select>
+	<select id="memberCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM member 
+		WHERE 1=1
+	</select>
+	<select id="postCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM post_odition
+		WHERE 1=1
+	</select>
+	
 
 </mapper>
 	

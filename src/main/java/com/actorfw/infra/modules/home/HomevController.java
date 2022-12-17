@@ -17,15 +17,18 @@ public class HomevController {
     
     @RequestMapping(value = "Home")
     public String oditionList(@ModelAttribute("vo") HomeVo vo  , Model model) throws Exception {
+       
+        int memberCount = service.memberCount(vo);
+        model.addAttribute("memberCount", memberCount);
+        
+        int postCount = service.postCount(vo);
+        model.addAttribute("postCount", postCount);
+        
         List<Home> oditionList = service.oditionList(vo);
         model.addAttribute("oditionList", oditionList);
         
         List<Home> memberList = service.memberList(vo);
         model.addAttribute("memberList", memberList);
-        System.out.println("투어리스트2");
-        List<Home> tourList = service.tourList(vo);
-        System.out.println("투어리스트1");
-        model.addAttribute("tourList", tourList);
         
         return "infra/member/user/mainViewForm";
     }

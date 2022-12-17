@@ -20,6 +20,16 @@ public class HomeServiceImpl implements HomeService {
         System.out.println("투어리스트1");
         return dao.tourList(vo); 
     }
+    @Override
+    public int memberCount(HomeVo vo) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.memberCount(vo);
+    }
+    @Override
+    public int postCount(HomeVo vo) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.postCount(vo);
+    }
     
     
     

@@ -51,7 +51,9 @@
 			font-weight: bold;	
 				
 		}
-			  	
+		.regFrombutton:hover {
+			color: #f9004d;
+		}		  	
 	</style>
 	
 </head>

@@ -32,6 +32,23 @@
     	border: solid 1px orange;
     
     } */
+    	.graphBox{
+		posiotion:relative;
+		width:100%;
+		display:grid;
+		grid-template-columns: 1fr 2fr;
+		grid-gap:30px;
+		min-height: 200px;
+	}
+	
+	.graphBox .box{ 
+		position:relative;
+		background: #fff;
+		padding:20px;
+		width:100%;
+		box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+		border-radius: 20px;
+	}
 	</style>
 	
 </head>
@@ -47,8 +64,56 @@
     <%@include file="/resources/include/header.jsp"%>
     <!-- header e -->
 	<!-- odition post summary -->
-
-	<div class="odition">
+	<div class="tour">
+		<div class="titile">
+			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">통계 정보</h2>
+		</div>
+		<div class="container">
+			<div class="row d-flex" style="justify-content:space-between; align-items:center; padding-left: 10px;padding-right: 10px;">
+				<div class="col-3">
+			        <div class="row" style="width:250px; height:150px; border:none; border-radius:10px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); background: #757575; margin: 25px;">
+			            <div class="col-8" style="padding-top:36px; padding-left: 30px;">
+			                <div class="row"> 
+			                    <span style="font-size:26pt; font-weight:bold; color: white;"><c:out value="${memberCount }"></c:out></span>
+			                </div>
+			                <div class="row">
+			                    <span style="color:#fcfc; font-size:12pt; font-weight:500; padding-left:15px;">회원수</span>   
+			                </div>
+			            </div>
+			            <div class="col text-center" style="padding-top:50px;">
+			                <i style="color:#101010; font-size:36pt; margin-top:auto;" class="fa-solid fa-user"></i> 
+			            </div>
+			        </div>
+			        <div class="row" style="width:250px; height:150px; border:none; border-radius:10px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); background: #757575; margin-left: 25px;ss">
+			            <div class="col-7" style="padding-top:36px; padding-left: 30px;">
+			                <div class="row"> 
+			                    <span style="font-size:26pt; font-weight:bold; color: white;"><c:out value="${postCount }"></c:out></span>
+			                </div>
+			                <div class="row">
+			                    <span style="color:#fcfc; font-size:12pt; font-weight:500; padding-left:15px;">게시물 수</span>   
+			                </div>
+			            </div> 
+			            <div class="col text-center" style="padding-top:50px;">
+			                <i style="color:#101010; font-size:36pt; margin-top:auto;" class="fa-regular fa-pen-to-square"></i>
+			            </div>
+			        </div>
+				</div>			
+				<div class="col-9">
+					<div class="row mt-4">
+			        	<div class="graphBox" style="padding-left: 0px; padding-right: 0px;">
+			        		<div class="box">
+			        			<canvas id="myChart"></canvas> 
+			        		</div>
+			        		<div class="box">	        			
+			        			<canvas id="myChart2"></canvas> 
+			        		</div>
+			        	</div>
+			        </div>
+				</div>	
+			</div>
+		</div>
+	</div>	        
+	<div class="odition" style="background: black;">
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">오디션 공고</h2>
 		</div>
@@ -85,7 +150,7 @@
 		</div>
 	</div>	
 	<!-- profil post summary -->
-	<div class="actor">
+	<div class="actor" style="background: #101010;">
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">배우 프로필</h2>
 		</div>
@@ -102,37 +167,7 @@
 		</div>
 	</div>
 	<!-- tour post summary -->
-	<div class="tour">
-		<div class="titile">
-			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">투어 정보</h2>
-		</div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>분류</th>
-					<th>작품제목 (제작사)</th>
-					<th>위치</th>
-					<th>생성일</th>
-					<th>비고</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${tourList}" var="tourList" varStatus="statustourList">
-					<tr>
-						<td>
-							<c:forEach items="${listCodeFilmo_type }" var="listFilmo_type" varStatus="statuslistFilmo_type">
-								<c:if test="${tourList.type eq listFilmo_type.seq }"><c:out value="${listFilmo_type.name }"/></c:if>	
-							</c:forEach>	
-						</td>
-						<td><c:out value="${tourList.name }"/></td>
-						<td><c:out value="${tourList.address }"/></td>
-						<td><c:out value="${tourList.date }"/></td>
-						<td><c:out value="${tourList.note }"/></td>
-					</tr>	
-				</c:forEach>
-			</tbody>	
-		</table>
-	</div>
+	
 	<!-- footer -->
 		<div class="footer">
 		<div class="row">
@@ -165,6 +200,7 @@
 	</div>
 </form>	
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/2b8f3e92c4.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -224,6 +260,60 @@
 	//상단바 디세이블처리
 	document.querySelector(".disableLink").removeAttribute('href');
 	</script>
+	
+	<script>
+	  const ctx = document.getElementById('myChart');
+	
+	  new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+		    labels: ['남', '여'],
+		    datasets: [{
+		      label: '# of Votes',
+		      data: [12, 19],
+		      borderWidth: 1
+		    }]
+		  },
+		  options: {
+		    scales: {
+		      y: {
+		        beginAtZero: true
+		      }
+		    }
+		  }
+		});
+	  const ctx2 = document.getElementById('myChart2');
+	  new Chart(ctx2, {
+	    type: 'line',
+	    data: {
+	      labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+	      datasets: [
+	    	  {
+	    	      label: '남',
+	    	      data: [12, 22, 33, 22, 21, 56],
+	    	      borderColor: '#36A2EB',
+	    	      backgroundColor: '#9BD0F5',
+	    	    },
+	    	    { 
+	    	      label: '여',
+	    	      data: [43, 31, 14, 23, 7, 34],
+	    	      borderColor: '#FF6384',
+	    	      backgroundColor: '#FFB1C1',
+	    	    }
+    	  ]
+	    },
+	    options: {
+	      scales: {
+	        y: {
+	          beginAtZero: true
+	        }
+	      }
+	    }
+	  });
+	</script>
+	
+	
+	
 	
 
 </body>

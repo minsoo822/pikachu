@@ -21,4 +21,12 @@ public class HomeDao {
     public List<Home> memberList(HomeVo vo) { return sqlSession.selectList(namespace + ".memberList", vo); }
     public List<Home> tourList(HomeVo vo) { return sqlSession.selectList(namespace + ".tourList", vo); }
     
+    //count
+    public int memberCount(HomeVo vo) {
+        return sqlSession.selectOne(namespace + ".memberCount", vo);
+    }
+    public int postCount(HomeVo vo) {
+        return sqlSession.selectOne(namespace + ".postCount", vo);
+    }
+    
 }
