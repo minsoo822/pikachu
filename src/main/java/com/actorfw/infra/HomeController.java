@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class BasicController {
+public class HomeController {
 
-        private static final Logger logger = LoggerFactory.getLogger(BasicController.class);
+        private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
         
         /**
          * Simply selects the home view to render by returning its name.
