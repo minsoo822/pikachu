@@ -289,7 +289,7 @@
 		                                        <div class="chat_product_info"> 
 													<!-- 아래 mmNickName  도 본인의 dto field에 맞게 수정 -->
 		                                            <span class="status"><c:out value="${list.name }"/></span>
-		                                 			<p>TEST TEXT FIELD</p>
+		                                 			<p><!-- TEST TEXT FIELD --></p>
 		                                        </div>
 		                                    </div>
 		                                </li>
