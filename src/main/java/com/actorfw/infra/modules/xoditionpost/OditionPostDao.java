@@ -40,7 +40,9 @@ public class OditionPostDao {
 	public int selectLastSeq() {
 	    return sqlSession.selectOne(namespace + ".selectLastSeq", "");
 	}
-	
+	public List<OditionPost> supportList(OditionPostVo vo) { 
+	    return sqlSession.selectList(namespace + ".supportList", vo);
+    }
     /* 댓글 */
 	public List<OditionPost> postComentList(OditionPostVo vo) { 
 	    return sqlSession.selectList(namespace + ".postComentList", vo);

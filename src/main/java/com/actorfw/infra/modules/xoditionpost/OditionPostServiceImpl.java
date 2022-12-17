@@ -60,6 +60,12 @@ public class OditionPostServiceImpl implements OditionPostService {
 
 
 	
+    @Override
+    public List<OditionPost> supportList(OditionPostVo vo) throws Exception {
+        // TODO Auto-generated method stub
+        return dao.supportList(vo);
+    }
+
     /* 댓글 */
     @Override
     public List<OditionPost> postComentList(OditionPostVo vo) throws Exception {

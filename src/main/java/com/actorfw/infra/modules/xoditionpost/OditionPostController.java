@@ -138,4 +138,44 @@ public class OditionPostController {
 		    
             return "redirect:/Post/oditionPostViewList";
         }
+		
+      @ResponseBody
+        @RequestMapping(value = "supportList")
+        public Map<String, Object> supportList(OditionPostVo vo) throws Exception {
+            
+            Map<String, Object> result = new HashMap<String, Object>();
+            
+            List<OditionPost> list = service.supportList(vo);
+            
+            if(list == null) {
+                result.put("rt", "fail");
+            } else {
+                result.put("rt", "success");
+                result.put("list", list);
+            }
+            
+            return result;
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }

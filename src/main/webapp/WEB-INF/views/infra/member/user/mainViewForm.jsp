@@ -65,9 +65,9 @@
     <!-- header e -->
 	<!-- odition post summary -->
 	<div class="tour">
-		<div class="titile">
+		<!-- <div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">통계 정보</h2>
-		</div>
+		</div> -->
 		<div class="container">
 			<div class="row d-flex" style="justify-content:space-between; align-items:center; padding-left: 10px;padding-right: 10px;">
 				<div class="col-3">

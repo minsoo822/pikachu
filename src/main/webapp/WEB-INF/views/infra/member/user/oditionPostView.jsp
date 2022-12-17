@@ -48,6 +48,82 @@
 	.area {
 		padding-left: 50px;
 	}
+/* --------------------------------------------------------------- */	
+	.modal-close {
+	    color: #999;
+	    position: absolute;
+	    right: 15px;
+	    top: 10px;
+	    text-decoration-line: none;
+	}
+	
+	.modal-content {
+	    background-color: #fff;
+	    width: 350px;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    border-radius: 10px;
+	    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+	    text-align: center; 
+	    padding: 10px;
+	}
+	
+	.modal {
+	    background-color: rgba(0, 0, 0, 0.4);
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    height: 100vh;
+	    width: 100%;
+	    /* display: none; */
+	} 
+	
+	.modal.active {
+	    display: block;
+	}
+	
+	.modal-body {
+	    /* background-color: rgb(224, 224, 224); */ 
+	    width: 100%;
+	    height: 300px;
+	    border-radius: 5px;
+	    overflow-y: auto;
+	}
+	
+	.modal-body::-webkit-scrollbar { 
+	    display: none; /* Chrome, Safari, Opera*/
+	}
+	
+	.modal-block{ 
+	    width: 100%;
+	    height: 40px;
+	    display: flex;
+	    align-items: center;
+	    border-bottom: 1px solid #e0e0e0;
+		margin-bottom: 10px;
+		padding: 0px 0px 10px 0px;
+	}
+	
+	.modal-block img{
+		object-fit:auto;
+		width: 30px; 
+		height: 30px;
+	}
+	
+	.modal_overlay {
+	  position: fixed;
+	  top:0;
+	  left:0;
+	  z-index: 100;
+	  width: 100%;
+	  height: 100%;
+	  background-color: rgba(0,0,0,0.3);
+	  backdrop-filter: blur(10px);
+	  transition: all 0.3s;
+	}
+		
 </style>
 	
 </head>
@@ -61,6 +137,7 @@
 	<input type="hidden" id="member_seq" name="member_seq" value="${sessSeq}">
 	<input type="hidden" id="odition_seq" name="odition_seq" value="${vo.seq }">
 	<input type="hidden" id="mm_seq" name="mm_seq" value="${sessSeq}">
+	<input type="hidden" id="seq" name="seq" value="">
 	<!-- start -->
  	<!-- header s -->
     <%@include file="/resources/include/header.jsp"%>
@@ -133,7 +210,7 @@
 		</div>
 		<div class="col" style="width: 1400px; margin-top: 30px; text-align: right; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
 			<a href="#" style="margin-left: 10px; text-decoration: none;">
-						<button id="" type="button" class="btn btn-warning">
+						<button onclick="suPportList()" type="button" class="btn btn-success">
 							지원현황
 						</button>
 					</a>
@@ -159,6 +236,18 @@
 				</button>
 			</a>
 			
+		</div>
+		<!-- 팔로우 모달 창 -->
+		<div class="modal"  id="modal-notice">
+			<div class="modal-content">
+				<a href="javascript:closeModal('modal-notice')" class="modal-close">x</a>
+				<span id="followTitle" style="font-weight:bold; font-size: 13pt; margin-bottom:5px;">작품 지원현황</span>
+				<div id="modaldata" class="modal-body">
+				
+				<!-- 지원자 정보 들어가는 곳  -->
+				            
+				</div>
+			</div>	
 		</div>
 		<div class="comentbox">
 		<div class="row">
@@ -280,10 +369,8 @@
 	
 	<script type="text/javascript">
 	
-	
 	var address = $("#address").val();
 	
-		console.log(address);
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
 	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -321,13 +408,56 @@
 	    } 
 	});    
 	
-	</script>
-	
-	<script type="text/javascript">
 	
 	var seq = $("input:hidden[name=seq]");
 	
 	var form = $("#mainForm");
+	
+	
+	suPportList = function() {
+			
+		$('#modaldata').html('');
+		
+		$.ajax({
+			
+			url: '/Post/supportList',
+			type: 'POST',
+			datatype: 'json',
+			data: {
+				odition_seq : $("#odition_seq").val()
+			},
+			success:function(result) {
+				if(result.rt == "success") {
+					var txt = "";
+					
+					for(var i = 0; i < result.list.length; i++) {
+						
+					txt += '<div class="row modal-block">'
+						txt += '<div class="col-2">'
+						txt += '<img src="'+result.list[i].path + result.list[i].uuidName+'" alt="" width="100%" height="100%" style="border-radius:50%;">'
+						txt += '</div>'
+						txt += '<div class="col-6 text-start" style="cursor:pointer; font-size:10pt;" onclick="runForm(' + result.list[i].seq +')">'+result.list[i].name+'</div>'
+						txt += '<div class="col-3 text-end"></div>'
+						txt += '</div>'
+					}
+					
+					$('#modaldata').html(txt); 
+				}
+			},
+			error:function(){
+				alert("ajax error..!");
+			}
+			
+		});
+		
+		$("#modal-notice").addClass('active');
+			
+	};
+	
+	//모달 닫기
+	closeModal = function(modal) {
+		$("#"+modal).removeClass('active');
+	};
 	
 	$("#comentSave").on("click", function() {
 		
@@ -389,13 +519,11 @@
 	
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
+	var member_seq = $("#member_seq").val();
+	
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
 	
-	goActorView = function(key) {
-		seq.attr("value", key);
-		form.attr("action", "/Post/ActorView").submit();
-	}
 	
 	goOditionView = function(key) {
 		seq.attr("value", key);
@@ -420,6 +548,16 @@
 	$("#btnLogout").on("click", function() {
 		form.attr("action", goUrlLogout).submit();
 	});
+	
+	runForm = function(key) {
+		if (key == member_seq) {
+			form.attr("action", goUrlMypage).submit();
+		} else {
+			seq.attr("value", key);
+			form.attr("action" ,"/Post/ActorView").submit();
+			
+		}
+	};
 	$("#btnSignUp").on("click", function() {
 		swal({
 			  title: "Good job!",
@@ -477,6 +615,9 @@
 			  }
 			});
 	});
+	
+	
+	
 	
 	
 	//상단바 디세이블처리

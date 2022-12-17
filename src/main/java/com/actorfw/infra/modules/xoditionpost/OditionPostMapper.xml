@@ -231,6 +231,21 @@
 		AND mm_seq = #{member_seq}
 	</select>
 	
+	<select id="supportList" resultMap="resultObj">
+	SELECT
+	    mm.seq
+	    ,mm.name
+	    ,up.path
+	    ,up.uuidName
+	FROM oditionSupport su
+	JOIN member mm
+	ON su.mm_seq = mm.seq
+	JOIN memberUploaded up
+	ON su.mm_seq = up.pseq
+	WHERE su.odition_seq = #{odition_seq}
+	AND up.type = 2
+	AND up.defaultNy = 1
+	</select>
 	
 	
 	
