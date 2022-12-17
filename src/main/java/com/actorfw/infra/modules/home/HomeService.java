@@ -13,4 +13,10 @@ public interface HomeService {
     public int womanCount() throws Exception;
     
     public int postCount(HomeVo vo) throws Exception;
+    public int movieCount() throws Exception;
+    public int shortCount() throws Exception;
+    public int dramaCount() throws Exception;
+    public int wepCount() throws Exception;
+    public int cfCount() throws Exception;
+    public int viCount() throws Exception;
 }

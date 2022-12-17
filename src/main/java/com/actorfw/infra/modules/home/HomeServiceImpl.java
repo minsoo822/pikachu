@@ -40,6 +40,30 @@ public class HomeServiceImpl implements HomeService {
         // TODO Auto-generated method stub
         return dao.postCount(vo);
     }
+    @Override
+    public int movieCount() throws Exception {
+        return dao.movieCount();
+    }
+    @Override
+    public int shortCount() throws Exception {
+        return dao.shortCount();
+    }
+    @Override
+    public int dramaCount() throws Exception {
+        return dao.dramaCount();
+    }
+    @Override
+    public int wepCount() throws Exception {
+        return dao.wepCount();
+    }
+    @Override
+    public int cfCount() throws Exception {
+        return dao.cfCount();
+    }
+    @Override
+    public int viCount() throws Exception {
+        return dao.viCount();
+    }
     
     
     

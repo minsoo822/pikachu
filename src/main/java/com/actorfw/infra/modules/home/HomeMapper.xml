@@ -79,7 +79,42 @@
 		FROM post_odition
 		WHERE 1=1
 	</select>
-	
+	<select id="movieCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM post_odition
+		WHERE type = 15
+	</select>
+	<select id="shortCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM post_odition
+		WHERE type = 16
+	</select>
+	<select id="dramaCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM post_odition
+		WHERE type = 17
+	</select>
+	<select id="wepCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM post_odition
+		WHERE type = 18
+	</select>
+	<select id="cfCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM post_odition
+		WHERE type = 19
+	</select>
+	<select id="viCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM post_odition
+		WHERE type = 20
+	</select>
 
 </mapper>
 	

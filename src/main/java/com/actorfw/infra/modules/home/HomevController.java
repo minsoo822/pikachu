@@ -24,10 +24,22 @@ public class HomevController {
         model.addAttribute("man", man);
         int woman = service.womanCount();
         model.addAttribute("woman", woman);
-        
+//-----------------------------------------------------------        
         int postCount = service.postCount(vo);
         model.addAttribute("postCount", postCount);
-        
+        int movieCount = service.movieCount();
+        model.addAttribute("movieCount", movieCount);
+        int shortCount = service.shortCount();
+        model.addAttribute("shortCount", shortCount);
+        int dramaCount = service.dramaCount();
+        model.addAttribute("dramaCount", dramaCount);
+        int wepCount = service.wepCount();
+        model.addAttribute("wepCount", wepCount);
+        int cfCount = service.cfCount();
+        model.addAttribute("cfCount", cfCount);
+        int viCount = service.viCount();
+        model.addAttribute("viCount", viCount);
+//-----------------------------------------------------------      
         List<Home> oditionList = service.oditionList(vo);
         model.addAttribute("oditionList", oditionList);
         

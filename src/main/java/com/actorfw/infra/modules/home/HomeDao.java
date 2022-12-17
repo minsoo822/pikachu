@@ -31,9 +31,13 @@ public class HomeDao {
     public int womanCount() {
         return sqlSession.selectOne(namespace + ".womanCount", "");
     }
-    
-    public int postCount(HomeVo vo) {
-        return sqlSession.selectOne(namespace + ".postCount", vo);
-    }
+//---------------------------------------------------------------    
+    public int postCount(HomeVo vo) { return sqlSession.selectOne(namespace + ".postCount", vo); }
+    public int movieCount() { return sqlSession.selectOne(namespace + ".movieCount", ""); }
+    public int shortCount() { return sqlSession.selectOne(namespace + ".shortCount", ""); }
+    public int dramaCount() { return sqlSession.selectOne(namespace + ".dramaCount", ""); }
+    public int wepCount() { return sqlSession.selectOne(namespace + ".wepCount", ""); }
+    public int cfCount() { return sqlSession.selectOne(namespace + ".cfCount", ""); }
+    public int viCount() { return sqlSession.selectOne(namespace + ".viCount", ""); }
     
 }

@@ -287,32 +287,36 @@
 			});
 	  const ctx2 = document.getElementById('myChart2');
 	  new Chart(ctx2, {
-	    type: 'line',
-	    data: {
-	      labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
-	      datasets: [
-	    	  {
-	    	      label: '남',
-	    	      data: [12, 22, 33, 22, 21, 56],
-	    	      borderColor: '#36A2EB',
-	    	      backgroundColor: '#9BD0F5',
-	    	    },
-	    	    { 
-	    	      label: '여',
-	    	      data: [43, 31, 14, 23, 7, 34],
-	    	      borderColor: '#FF6384',
-	    	      backgroundColor: '#FFB1C1',
-	    	    }
-    	  ]
-	    },
-	    options: {
-	      scales: {
-	        y: {
-	          beginAtZero: true
-	        }
-	      }
-	    }
-	  });
+		    type: 'bar',
+		    data: {
+		        labels: [
+		        	'상업영화', 
+        			'단편영화', 
+        			'드라마', 
+        			'웹드라마', 
+        			'광고(CF)', 
+        			'바이럴광고'],
+		        datasets: [{
+		            label: '공고 게시물 수',
+		            data: [
+		            	${movieCount}, 
+		            	${shortCount}, 
+		            	${dramaCount}, 
+		            	${wepCount}, 
+		            	${cfCount}, 
+		            	${viCount}
+	            	],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            y: {
+		                beginAtZero: true
+		            }
+		        }
+		    }
+		});
 	</script>
 	
 	
