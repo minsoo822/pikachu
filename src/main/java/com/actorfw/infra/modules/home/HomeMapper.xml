@@ -21,6 +21,7 @@
 		FROM post_odition a
 		JOIN odition_PostUploaded b
 		ON a.seq = b.pseq
+		AND a.type = 15
 		ORDER BY a.seq DESC
 		LIMIT 6;
 	</select>
@@ -59,6 +60,18 @@
 			COUNT(*)
 		FROM member 
 		WHERE 1=1
+	</select>
+	<select id="manCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM member 
+		WHERE gender = 28
+	</select>
+	<select id="womanCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM member 
+		WHERE gender = 29
 	</select>
 	<select id="postCount" resultType="Integer">
 		SELECT

@@ -9,5 +9,8 @@ public interface HomeService {
     public List<Home> tourList(HomeVo vo) throws Exception;
 
     public int memberCount(HomeVo vo) throws Exception;
+    public int manCount() throws Exception;
+    public int womanCount() throws Exception;
+    
     public int postCount(HomeVo vo) throws Exception;
 }

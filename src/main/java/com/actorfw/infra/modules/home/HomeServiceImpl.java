@@ -26,6 +26,16 @@ public class HomeServiceImpl implements HomeService {
         return dao.memberCount(vo);
     }
     @Override
+    public int manCount() throws Exception {
+        // TODO Auto-generated method stub
+        return dao.manCount();
+    }
+    @Override
+    public int womanCount() throws Exception {
+        // TODO Auto-generated method stub
+        return dao.womanCount();
+    }
+    @Override
     public int postCount(HomeVo vo) throws Exception {
         // TODO Auto-generated method stub
         return dao.postCount(vo);

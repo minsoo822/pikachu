@@ -269,19 +269,22 @@
 		data: {
 		    labels: ['남', '여'],
 		    datasets: [{
-		      label: '# of Votes',
-		      data: [12, 19],
-		      borderWidth: 1
-		    }]
-		  },
-		  options: {
-		    scales: {
-		      y: {
-		        beginAtZero: true
-		      }
-		    }
-		  }
-		});
+				label: '회원수',
+				data: [
+			    	  ${man}, 
+			    	  ${woman}
+			   	  ],
+			      borderWidth: 1
+			    }]
+			  },
+			  options: {
+			    scales: {
+			      y: {
+			        beginAtZero: true
+			      }
+			    }
+			  }
+			});
 	  const ctx2 = document.getElementById('myChart2');
 	  new Chart(ctx2, {
 	    type: 'line',

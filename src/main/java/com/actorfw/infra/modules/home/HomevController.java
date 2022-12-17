@@ -20,6 +20,10 @@ public class HomevController {
        
         int memberCount = service.memberCount(vo);
         model.addAttribute("memberCount", memberCount);
+        int man = service.manCount();
+        model.addAttribute("man", man);
+        int woman = service.womanCount();
+        model.addAttribute("woman", woman);
         
         int postCount = service.postCount(vo);
         model.addAttribute("postCount", postCount);

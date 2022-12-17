@@ -25,6 +25,13 @@ public class HomeDao {
     public int memberCount(HomeVo vo) {
         return sqlSession.selectOne(namespace + ".memberCount", vo);
     }
+    public int manCount() {
+        return sqlSession.selectOne(namespace + ".manCount", "");
+    }
+    public int womanCount() {
+        return sqlSession.selectOne(namespace + ".womanCount", "");
+    }
+    
     public int postCount(HomeVo vo) {
         return sqlSession.selectOne(namespace + ".postCount", vo);
     }
