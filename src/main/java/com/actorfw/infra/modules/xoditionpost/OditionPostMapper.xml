@@ -218,7 +218,7 @@
 	
 	DELETE 
 	FROM oditionSupport
-	WHERE odition_seq = #{post_odition_seq}
+	WHERE odition_seq = #{odition_seq}
 	AND mm_seq = #{member_seq}
 	
 	</delete>

@@ -10,6 +10,7 @@ public class OditionPost extends Base {
 	private String ifspSeq;
 	private String member_seq;
 	private String post_odition_seq;
+	private String odition_seq;
 	
 	private String writer;
 	
@@ -190,6 +191,12 @@ public class OditionPost extends Base {
         }
         public void setAddress_detail(String address_detail) {
             this.address_detail = address_detail;
+        }
+        public String getOdition_seq() {
+            return odition_seq;
+        }
+        public void setOdition_seq(String odition_seq) {
+            this.odition_seq = odition_seq;
         }
         
 	    

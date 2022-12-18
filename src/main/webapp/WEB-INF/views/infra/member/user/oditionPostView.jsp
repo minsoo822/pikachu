@@ -132,8 +132,7 @@
 	<form action="" id="mainForm" method="post">
 	<c:set var="listCodeFilmo_type" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('7')}"/>
-	<input type="hidden" id="post_odition_seq" name="seq" value="${item.seq }">
-	<input type="hidden" id="post_odition_seq" name="post_odition_seq" value="">
+	<input type="hidden" id="post_odition_seq" name="post_odition_seq" value="${item.seq }">
 	<input type="hidden" id="member_seq" name="member_seq" value="${sessSeq}">
 	<input type="hidden" id="odition_seq" name="odition_seq" value="${vo.seq }">
 	<input type="hidden" id="mm_seq" name="mm_seq" value="${sessSeq}">

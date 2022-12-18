@@ -56,7 +56,7 @@
 </head>
 <body>
 	<form action="" id="mainForm" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="seq" value="${vo.seq }">
+	<input type="hidden" name="member_seq" value="${vo.seq }">
 	<input type="hidden" name="cuMember" value="${item.seq }">
 	<c:set var="listCodeVoice" value="${CodeServiceImpl.selectListCachedCode('10') }"/>
 	<c:set var="listCodeEyelid" value="${CodeServiceImpl.selectListCachedCode('9') }"/>
