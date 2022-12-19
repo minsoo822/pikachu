@@ -554,7 +554,6 @@
 		} else {
 			seq.attr("value", key);
 			form.attr("action" ,"/Post/ActorView").submit();
-			
 		}
 	};
 	$("#btnSignUp").on("click", function() {

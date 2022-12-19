@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CRMXLJZ8GE"></script>
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -207,6 +209,14 @@
 	
 	<script type="text/javascript">
 	
+	
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-CRMXLJZ8GE');
+	
+	
 	var goUrlLogout = "/member/logoutForm";
 	var goUrlLogin = "/member/loginForm";
 	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
@@ -258,7 +268,7 @@
 	});
 	
 	//상단바 디세이블처리
-	document.querySelector(".disableLink").removeAttribute('href');
+	//document.querySelector(".disableLink").removeAttribute('href');
 	</script>
 	
 	<script>
