@@ -73,7 +73,7 @@
     <%@include file="/resources/include/header.jsp"%>
     <!-- header e -->
 	<!-- odition post summary -->
-	<div class="tour">
+	<%-- <div class="tour">
 		<!-- <div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">통계 정보</h2>
 		</div> -->
@@ -121,7 +121,7 @@
 				</div>	
 			</div>
 		</div>
-	</div>	        
+	</div> --%>	        
 	<div class="odition" style="background: black;">
 		<div class="titile">
 			<h2 style="color: white; font-size: 50px; width: 1130px; margin: 15px auto;">오디션 공고</h2>
