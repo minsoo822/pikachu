@@ -451,6 +451,46 @@
 	
 	<script>
 				
+	var goUrlLogout = "/member/logoutForm";
+	var goUrlLogin = "/member/loginForm";
+	var goUrlIndex = "/member/mainIndex"; 			/* #-> */
+	var goUrlMain = "/member/mainHome";
+	var goUrlMypage = "/member/Mypage";
+	
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("#mainForm");
+	var formVo = $("form[name=formVo]");
+	
+	goActorView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/ActorView").submit();
+	}
+	
+	goOditionView = function(key) {
+		seq.attr("value", key);
+		form.attr("action", "/Post/oditionPostView").submit();
+	}
+	
+	$("#goActorSignup").on("click", function(){
+		form.attr("action", "/member/signUpActorForm").submit();
+	});
+	$("#goDerectorSignup").on("click", function(){
+		form.attr("action", "/member/signUpDirectorForm").submit();
+	});
+	
+	$("#btnMypage").on("click", function() {
+		form.attr("action", goUrlMypage).submit();
+	});
+	
+	$("#btnLogin").on("click", function() {
+		form.attr("action", goUrlLogin).submit();
+	});
+	
+	$("#btnLogout").on("click", function() {
+		form.attr("action", goUrlLogout).submit();
+	});
+	
 		getnow = function() {
 				
 			var timestamp = new Date().getTime();

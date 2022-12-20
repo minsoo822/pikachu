@@ -279,7 +279,7 @@
 				if(response.rt == "success") {
 					swal("로그인 성공!", response.name + " 회원님 로그인되었습니다.", "success")
 					.then(function() {
-						location.href="${pageContext.request.contextPath}/.do";
+						location.href="/home/Home";
 					});
 					/* form.attr("action", goUrlMain).submit(); */
 				} else {
