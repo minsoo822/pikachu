@@ -10,7 +10,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<title>Home</title>
+	<title>로그인</title>
 	<!-- content에 자신의 OAuth2.0 클라이언트ID를 넣습니다. 구글로그인-->
 	<meta name ="google-signin-client_id" content="315503510334-mlu7bdjnse35d8r67vfi63spf39kiop0.apps.googleusercontent.com">
 	<!-- Boxiocns CDN Link -->
@@ -21,6 +21,16 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />		<!-- jQuery UI CSS파일 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>							<!-- jQuery 기본 js파일 -->
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
+	    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>										<!-- jQuery UI 라이브러리 js파일 -->
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CRMXLJZ8GE"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-CRMXLJZ8GE');
+	</script>
 	<!-- user css -->
 	<link rel="stylesheet" href="/resources/css/LoginSign.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
