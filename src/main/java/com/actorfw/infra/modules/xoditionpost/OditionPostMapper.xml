@@ -17,10 +17,10 @@
 		<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if> -->
 		<choose>
 			<!-- <when test="shOption == 0"></when> -->
-			<when test="shOption == 1">AND type LIKE CONCAT ('%',#{shValue},'%') </when>
-			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND gender LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 4">AND member_seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND a.type LIKE CONCAT ('%',#{shValue},'%') </when>
+			<when test="shOption == 2">AND a.name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND b.gender LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND a.member_seq LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 		<!-- <choose>
 			useNy
@@ -55,7 +55,7 @@
 			,b.name AS writer
 		<include refid="selectCommon" />
 			<choose>
-				<when test="type != null">
+				<when test="type != null and type != ''">
 					AND a.type = #{type}
 				</when>
 			</choose>

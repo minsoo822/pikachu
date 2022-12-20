@@ -250,6 +250,9 @@
 		gender.val(key);
     };
 	
+	$("#searchReset").on("click", function(){
+		location.href = "/Post/oditionPostViewList";
+	})
 	
 	
 	
@@ -258,8 +261,7 @@
 	
 	
 	
-	
-		document.querySelector(".disableLink").removeAttribute('href');
+		//document.querySelector(".disableLink").removeAttribute('href');
 		
 		
 	
