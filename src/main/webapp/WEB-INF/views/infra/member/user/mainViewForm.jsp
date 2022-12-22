@@ -52,7 +52,7 @@
 	
 	.graphBox .box{ 
 		position:relative;
-		background: #fff;
+		background: #232323;
 		padding:20px;
 		width:100%;
 		box-shadow: 0 7px 25px rgba(0,0,0,0.08);
