@@ -391,7 +391,7 @@
 								</div>
 								<div class="row">
 									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
-										<button type="button" class="regFrombutton">목록으로</button>
+										<button type="button" class="regFrombutton" onclick="back()">목록으로</button>
 									</div>
 								</div>
 							</div>
@@ -469,6 +469,11 @@
 	
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
+	
+	back = function() {
+		form.attr("action", "/Post/ActorPostList").submit();
+	}
+	
 	
 	$("#goChat").on("click", function(){
 		form.attr("action", "/chat/").submit();

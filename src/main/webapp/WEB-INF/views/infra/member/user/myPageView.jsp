@@ -398,7 +398,7 @@
 								</div>
 								<div class="row">
 									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
-										<button type="button" class="regFrombutton">뒤로가기</button>
+										<button type="button" class="regFrombutton" onclick="back()">뒤로가기</button>
 										<a type="button" class="regFrombutton" style="margin-left: 10px;" id="btnForm">수정하기</a>
 									</div>
 								</div>
@@ -476,6 +476,10 @@
 	
 	var form = $("#mainForm");
 	var formVo = $("form[name=formVo]");
+	
+	back = function() {
+		form.attr("action", "/Post/ActorPostList").submit();
+	}
 	
 	goActorView = function(key) {
 		seq.attr("value", key);
