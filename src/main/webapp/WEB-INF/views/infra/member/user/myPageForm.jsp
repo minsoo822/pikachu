@@ -524,7 +524,7 @@
 								</div>
 								<div class="row">
 									<div class="col" style="display: flex; justify-content: flex-end; margin: 30px 0px;">
-										<button type="button" class="regFrombutton">목록으로</button>
+										<button type="button" class="regFrombutton" onclick="back()">뒤로가기</button>
 										<button type="button" class="regFrombutton" style="margin-left: 10px;" id="btnSave">저장하기</button>
 									</div>
 								</div>
@@ -585,6 +585,9 @@
 		form.attr("action", MypgeUpdt).submit();
 	});
 	
+	back = function() {
+		form.attr("action", "/member/Mypage").submit();
+	}
 	
 //	Sns추가
 	var count_sns = 0;	
