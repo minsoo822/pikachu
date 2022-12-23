@@ -66,6 +66,11 @@
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
+			<choose>
+				<when test="type != null and type != ''">
+					AND a.type = #{type}
+				</when>
+			</choose>
 	</select>
 	<select id="selectLastSeq" resultType="Integer">
 		SELECT
