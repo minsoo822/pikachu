@@ -144,7 +144,7 @@
 	            <img src="/resources/image/403019_avatar_male_man_person_user_icon.png" alt="profileImg">
 	          </div>
 	          <div class="name-job">
-	            <div class="profile_name">Min soo</div>
+	            <div class="profile_name">Minsoo</div>
 	            <div class="job"></div>
 	          </div>
 	          <i class='bx bx-log-out' ></i>
