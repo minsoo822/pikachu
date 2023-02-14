@@ -268,6 +268,7 @@
 	});
 	
 	//상단바 디세이블처리
+	//상단바 디세이블처리
 	//document.querySelector(".disableLink").removeAttribute('href');
 	</script>
 	
